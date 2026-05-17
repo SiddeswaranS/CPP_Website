@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#0EA5E9" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="glow" cx="80%" cy="50%" r="40%">
+      <stop offset="0%" stop-color="#0EA5E9" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#0EA5E9" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- Logo block + wordmark -->
+  <rect x="80" y="80" width="64" height="64" rx="14" fill="#0EA5E9"/>
+  <path d="M100 102 H132 M100 114 H132 M100 126 H120" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+  <text x="164" y="128" font-family="JetBrains Mono, monospace" font-size="36" font-weight="700" fill="white">CPP</text>
+  <text x="248" y="128" font-family="Inter, sans-serif" font-size="16" fill="#94A3B8">Platform</text>
+
+  <!-- Pill / category -->
+  <rect x="80" y="200" width="350" height="36" rx="18" fill="#0EA5E9" fill-opacity="0.15"/>
+  <circle cx="100" cy="218" r="4" fill="#0EA5E9"/>
+  <text x="115" y="224" font-family="JetBrains Mono, monospace" font-size="13" font-weight="600" fill="#7DD3FC" letter-spacing="0.5">CONFIGURABLE PRODUCT PLATFORM</text>
+
+  <!-- Headline -->
+  <text x="80" y="320" font-family="JetBrains Mono, monospace" font-size="58" font-weight="700" fill="white">Stop losing orders to</text>
+  <text x="80" y="390" font-family="JetBrains Mono, monospace" font-size="58" font-weight="700" fill="#0EA5E9">Excel BOM errors.</text>
+
+  <!-- Subhead -->
+  <text x="80" y="450" font-family="Inter, sans-serif" font-size="22" fill="#CBD5E1">Real-time constraint propagation · Deterministic BOM</text>
+  <text x="80" y="482" font-family="Inter, sans-serif" font-size="22" fill="#CBD5E1">Built for Indian B2B manufacturing.</text>
+
+  <!-- Stats strip -->
+  <line x1="80" y1="530" x2="1120" y2="530" stroke="#1E293B" stroke-width="1"/>
+  <text x="80"  y="575" font-family="JetBrains Mono, monospace" font-size="28" font-weight="700" fill="#0EA5E9">&lt;50ms</text>
+  <text x="80"  y="600" font-family="Inter, sans-serif" font-size="13" fill="#64748B">Propagation latency</text>
+  <text x="350" y="575" font-family="JetBrains Mono, monospace" font-size="28" font-weight="700" fill="#0EA5E9">100k+</text>
+  <text x="350" y="600" font-family="Inter, sans-serif" font-size="13" fill="#64748B">Parts per family</text>
+  <text x="600" y="575" font-family="JetBrains Mono, monospace" font-size="28" font-weight="700" fill="#0EA5E9">100%</text>
+  <text x="600" y="600" font-family="Inter, sans-serif" font-size="13" fill="#64748B">Deterministic BOM</text>
+  <text x="850" y="575" font-family="JetBrains Mono, monospace" font-size="28" font-weight="700" fill="#0EA5E9">0</text>
+  <text x="850" y="600" font-family="Inter, sans-serif" font-size="13" fill="#64748B">ERP re-keying</text>
+
+  <!-- Made in India badge -->
+  <text x="1050" y="600" text-anchor="end" font-family="Inter, sans-serif" font-size="13" fill="#475569">cpplatform.in</text>
+</svg>

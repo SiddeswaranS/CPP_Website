@@ -3,30 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CPP — Configurable Product Platform for Indian B2B Manufacturers</title>
-  <meta name="description" content="CPP eliminates BOM errors and cuts quote-to-order cycles from weeks to hours. Real-time constraint propagation, deterministic BOM derivation, and ERP-ready integration for elevators, switchgear, HVAC, and industrial machinery manufacturers in India.">
+  <meta name="theme-color" content="#0EA5E9">
+  <title>CPP — Configurable Product Platform for B2B Manufacturers</title>
+  <meta name="description" content="CPP eliminates BOM errors and cuts quote-to-order from weeks to hours. Real-time constraints, deterministic BOM, rule-driven pricing, ERP push.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://cpplatform.in/">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CPP Platform">
   <meta property="og:title" content="CPP — Stop Losing Orders to Excel BOM Errors">
-  <meta property="og:description" content="Your engineers are spending 3 days validating configurations that a constraint engine can solve in 50ms. CPP is the product knowledge platform built for Indian B2B manufacturers.">
-  <meta property="og:image" content="/assets/images/og-image.jpg">
+  <meta property="og:description" content="The constraint engine for Indian B2B manufacturers. Real-time configuration, deterministic BOM, rule-driven pricing, direct ERP push.">
+  <meta property="og:image" content="https://cpplatform.in/assets/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:url" content="https://cpplatform.in/">
+  <meta property="og:locale" content="en_IN">
+
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="CPP — Configurable Product Platform">
-  <meta name="twitter:image" content="/assets/images/og-image.jpg">
+  <meta name="twitter:description" content="Constraint engine for Indian B2B manufacturers. Configure, price, derive BOM, push to ERP — in minutes.">
+  <meta name="twitter:image" content="https://cpplatform.in/assets/images/og-image.jpg">
 
-  <!-- JSON-LD -->
+  <!-- JSON-LD: Organization + WebSite + SoftwareApplication -->
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"CPP — Configurable Product Platform","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","priceCurrency":"INR","price":"0","description":"Free trial available"},"description":"Deterministic product knowledge and inference engine for Indian B2B manufacturers. Real-time constraint propagation, BOM derivation, and ERP integration.","url":"https://cpplatform.in"}
+  {"@context":"https://schema.org","@type":"Organization","name":"CPP Platform","alternateName":"Configurable Product Platform","url":"https://cpplatform.in/","logo":"https://cpplatform.in/assets/images/og-image.jpg","description":"Deterministic product knowledge and inference engine for Indian B2B manufacturers.","foundingDate":"2026","areaServed":{"@type":"Country","name":"India"},"contactPoint":{"@type":"ContactPoint","contactType":"sales","email":"sales@cpplatform.in","areaServed":"IN","availableLanguage":["English","Hindi"]}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebSite","name":"CPP Platform","url":"https://cpplatform.in/","potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://cpplatform.in/?q={search_term_string}"},"query-input":"required name=search_term_string"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"CPP — Configurable Product Platform","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","priceCurrency":"INR","price":"0","description":"Free trial available"},"description":"Deterministic product knowledge and inference engine for Indian B2B manufacturers. Real-time constraint propagation, BOM derivation, pricing, and ERP integration.","url":"https://cpplatform.in"}
   </script>
 
-  <!-- Preconnect -->
+  <!-- Preconnect — all third-party origins used -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -54,14 +70,17 @@
   <!-- AOS -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="assets/css/custom.css">
+  <!-- Custom CSS (minified) -->
+  <link rel="stylesheet" href="assets/css/custom.min.css?v=1.1.0">
 
   <!-- Alpine (deferred — must come before body content) -->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
 </head>
 
 <body class="font-sans bg-surface text-ink antialiased">
+
+<!-- Skip-to-content (accessibility + SEO signal) -->
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-brand focus:text-white focus:font-semibold focus:px-4 focus:py-2 focus:rounded-lg">Skip to main content</a>
 
 <!-- ═══════════════════════════════════════════════════════
      §1 NAVIGATION
@@ -120,6 +139,7 @@
   </div>
 </nav>
 
+<main id="main">
 
 <!-- ═══════════════════════════════════════════════════════
      §2 HERO
@@ -1639,31 +1659,68 @@
             <span x-show="errors.company" x-text="errors.company" class="text-xs text-red-500"></span>
           </div>
 
+          <!-- Industry custom dropdown -->
           <div class="flex flex-col gap-1">
             <label class="text-sm font-medium text-ink">Industry <span class="text-red-500">*</span></label>
-            <select x-model="form.industry" :class="errors.industry ? 'input-error' : ''"
-              class="border border-slate-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand transition-all bg-white">
-              <option value="">Select your industry</option>
-              <option>Elevators &amp; Escalators</option>
-              <option>Switchgear &amp; Electrical Panels</option>
-              <option>HVAC &amp; Cooling Systems</option>
-              <option>Industrial Machinery</option>
-              <option>Power Transformers</option>
-              <option>Other Manufacturing</option>
-            </select>
+            <div x-data="{ open: false }" class="relative">
+              <button type="button" @click="open = !open" @keydown.escape="open = false"
+                class="w-full flex items-center justify-between border rounded-lg px-4 py-2.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand transition-all text-left"
+                :class="errors.industry ? 'border-red-400' : 'border-slate-300'">
+                <span :class="form.industry ? 'text-ink' : 'text-slate-400'" x-text="form.industry || 'Select your industry'"></span>
+                <svg class="w-4 h-4 text-brand flex-shrink-0 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </button>
+              <div x-show="open" @click.outside="open = false"
+                x-transition:enter="transition ease-out duration-100" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0"
+                x-transition:leave="transition ease-in duration-75" x-transition:leave-end="opacity-0"
+                class="absolute z-50 w-full mt-1 bg-white border border-slate-200 rounded-lg shadow-lg overflow-hidden">
+                <div class="py-1">
+                  <template x-for="opt in ['Elevators & Escalators','Switchgear & Electrical Panels','HVAC & Cooling Systems','Industrial Machinery','Power Transformers','Other Manufacturing']" :key="opt">
+                    <button type="button" @click="form.industry = opt; open = false"
+                      class="w-full text-left px-4 py-2.5 text-sm flex items-center justify-between gap-2 transition-colors duration-100"
+                      :class="form.industry === opt ? 'bg-brand text-white font-medium' : 'text-ink hover:bg-sky-50 hover:text-brand'">
+                      <span x-text="opt"></span>
+                      <svg x-show="form.industry === opt" class="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                      </svg>
+                    </button>
+                  </template>
+                </div>
+              </div>
+            </div>
             <span x-show="errors.industry" x-text="errors.industry" class="text-xs text-red-500"></span>
           </div>
 
+          <!-- SKUs custom dropdown -->
           <div class="flex flex-col gap-1">
             <label class="text-sm font-medium text-ink">Number of Configurable SKUs</label>
-            <select x-model="form.skus"
-              class="border border-slate-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand transition-all bg-white">
-              <option value="">Select approximate range</option>
-              <option>Less than 1,000</option>
-              <option>1,000 – 10,000</option>
-              <option>10,000 – 100,000</option>
-              <option>100,000+</option>
-            </select>
+            <div x-data="{ open: false }" class="relative">
+              <button type="button" @click="open = !open" @keydown.escape="open = false"
+                class="w-full flex items-center justify-between border border-slate-300 rounded-lg px-4 py-2.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand transition-all text-left">
+                <span :class="form.skus ? 'text-ink' : 'text-slate-400'" x-text="form.skus || 'Select approximate range'"></span>
+                <svg class="w-4 h-4 text-brand flex-shrink-0 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </button>
+              <div x-show="open" @click.outside="open = false"
+                x-transition:enter="transition ease-out duration-100" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0"
+                x-transition:leave="transition ease-in duration-75" x-transition:leave-end="opacity-0"
+                class="absolute z-50 w-full mt-1 bg-white border border-slate-200 rounded-lg shadow-lg overflow-hidden">
+                <div class="py-1">
+                  <template x-for="opt in ['Less than 1,000','1,000 – 10,000','10,000 – 100,000','100,000+']" :key="opt">
+                    <button type="button" @click="form.skus = opt; open = false"
+                      class="w-full text-left px-4 py-2.5 text-sm flex items-center justify-between gap-2 transition-colors duration-100"
+                      :class="form.skus === opt ? 'bg-brand text-white font-medium' : 'text-ink hover:bg-sky-50 hover:text-brand'">
+                      <span x-text="opt"></span>
+                      <svg x-show="form.skus === opt" class="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                      </svg>
+                    </button>
+                  </template>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="flex flex-col gap-1">
@@ -1707,6 +1764,8 @@
   </div>
 </section>
 
+
+</main>
 
 <!-- ═══════════════════════════════════════════════════════
      §14 FOOTER
@@ -1772,7 +1831,7 @@
 <!-- Scripts -->
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/countup.js@2.8.0/dist/countUp.umd.js"></script>
-<script src="assets/js/main.js"></script>
+<script src="assets/js/main.min.js?v=1.1.0"></script>
 
 </body>
 </html>

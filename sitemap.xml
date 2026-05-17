@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://cpplatform.in/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://cpplatform.in/industries/elevators.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://cpplatform.in/industries/switchgear.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://cpplatform.in/industries/hvac.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://cpplatform.in/industries/industrial-machinery.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://cpplatform.in/industries/power-transformers.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://cpplatform.in/</loc><lastmod>2026-05-17</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://cpplatform.in/industries/elevators.html</loc><lastmod>2026-05-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://cpplatform.in/industries/switchgear.html</loc><lastmod>2026-05-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://cpplatform.in/industries/hvac.html</loc><lastmod>2026-05-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://cpplatform.in/industries/industrial-machinery.html</loc><lastmod>2026-05-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://cpplatform.in/industries/power-transformers.html</loc><lastmod>2026-05-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
