@@ -136,8 +136,13 @@ input[type="range"]::-moz-range-thumb {
 .nav-link:hover { color: #0EA5E9; }
 .nav-link:hover::after { width: 100%; }
 
-/* ── Smooth scroll ── */
-html { scroll-behavior: smooth; }
+/* ── Smooth scroll + fixed-header anchor offset ── */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4rem; /* matches nav h-16 (64px) so anchor jumps land below header */
+}
+/* Sections also get scroll-margin so deep-linked URLs land correctly */
+section[id] { scroll-margin-top: 4rem; }
 
 /* ── Hero stat number accent ── */
 .stat-number {
