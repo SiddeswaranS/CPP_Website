@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CPP for Switchgear Manufacturers — IEC 60947 Constraint Automation | Zero BOM Rework</title>
+  <meta name="description" content="CPP enforces IEC 60947 compliance at selection time for switchgear and electrical panel manufacturers. Eliminate busbar rating errors, breaker incompatibilities, and rework at ₹4–12 lakh per panel.">
+  <link rel="canonical" href="https://cpplatform.in/industries/switchgear.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{brand:{DEFAULT:'#0EA5E9',dark:'#0284C7',light:'#BAE6FD'},surface:'#F1F5F9',ink:'#0F172A'},fontFamily:{mono:['"JetBrains Mono"','monospace'],sans:['Inter','sans-serif']}}}}</script>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/custom.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body class="font-sans bg-surface text-ink antialiased">
+
+<nav class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-slate-100 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+    <a href="../index.html" class="flex items-center gap-2.5">
+      <div class="w-8 h-8 bg-brand rounded-lg flex items-center justify-center"><svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h10M4 18h6"/></svg></div>
+      <span class="font-mono font-bold text-xl text-ink">CPP</span>
+    </a>
+    <a href="../index.html#demo" class="inline-flex items-center gap-1.5 bg-brand hover:bg-brand-dark text-white font-semibold text-sm px-4 py-2 rounded-lg transition-colors">Request Demo →</a>
+  </div>
+</nav>
+
+<section class="pt-24 pb-16 bg-ink">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-xs font-mono text-brand font-semibold uppercase tracking-wider mb-4">Switchgear &amp; Electrical Panels</div>
+    <h1 class="font-mono font-bold text-4xl lg:text-5xl text-white leading-tight mb-6">
+      Wrong busbar rating. Wrong breaker.<br><span class="text-brand">Wrong order. Dead deal.</span>
+    </h1>
+    <p class="text-slate-400 text-xl leading-relaxed max-w-3xl mb-8">ABB and Schneider-class switchgear involves interdependent ratings across current, voltage, breaking capacity, and enclosure class. CPP enforces IEC 60947 compliance at the moment of selection — impossible combinations are never offered.</p>
+    <div class="flex flex-wrap gap-3">
+      <a href="../index.html#demo" class="inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white font-semibold px-6 py-3 rounded-lg transition-colors">Request Switchgear Demo →</a>
+    </div>
+  </div>
+</section>
+
+<section class="py-14 bg-white">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="text-center p-5 bg-surface rounded-xl border border-slate-100" data-aos="fade-up"><div class="font-mono font-bold text-2xl text-brand mb-1">23 → 1–2</div><div class="text-xs text-slate-500">Rework incidents / quarter</div></div>
+      <div class="text-center p-5 bg-surface rounded-xl border border-slate-100" data-aos="fade-up" data-aos-delay="80"><div class="font-mono font-bold text-2xl text-brand mb-1">5d → 6h</div><div class="text-xs text-slate-500">Quote turnaround</div></div>
+      <div class="text-center p-5 bg-surface rounded-xl border border-slate-100" data-aos="fade-up" data-aos-delay="160"><div class="font-mono font-bold text-2xl text-brand mb-1">IEC 60947</div><div class="text-xs text-slate-500">Compliance at selection</div></div>
+      <div class="text-center p-5 bg-surface rounded-xl border border-slate-100" data-aos="fade-up" data-aos-delay="240"><div class="font-mono font-bold text-2xl text-brand mb-1">1 day</div><div class="text-xs text-slate-500">Catalogue update (was 3 weeks)</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 bg-surface">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12">
+      <div>
+        <h2 class="font-mono font-bold text-2xl text-ink mb-4">Why switchgear configuration breaks without constraints</h2>
+        <div class="space-y-4 text-slate-600 leading-relaxed">
+          <p>Switchgear panel design is a network of interdependencies: incoming supply voltage constrains busbar cross-section; busbar rating constrains breaker frame size; breaking capacity constrains cable size; cable size constrains gland plate spec; enclosure class constrains IP rating and ventilation.</p>
+          <p>A single incompatible selection cascades through the entire panel design. When the error is caught at FAT — or worse, at site — the cost is ₹4–12 lakh in rework plus a delayed commissioning penalty and a damaged customer relationship.</p>
+          <p>CPP encodes these interdependencies as typed IEC 60947 constraint rules. The copper schedule and full panel BOM derive deterministically from a valid configuration — ready for purchase order and shop drawing in the same session.</p>
+        </div>
+      </div>
+      <div>
+        <h2 class="font-mono font-bold text-2xl text-ink mb-4">Three switchgear sub-use-cases</h2>
+        <div class="space-y-4">
+          <div class="bg-white rounded-xl p-5 border border-slate-100"><h3 class="font-semibold text-ink mb-1">LT Distribution Panels (up to 1,000V)</h3><p class="text-slate-500 text-sm">ACB/MCCB selection, busbar sizing, and cable schedule derived automatically from load schedule inputs.</p></div>
+          <div class="bg-white rounded-xl p-5 border border-slate-100"><h3 class="font-semibold text-ink mb-1">MV Switchgear (up to 36 kV)</h3><p class="text-slate-500 text-sm">VCB interrupting rating, CT ratio, relay coordination, and cable box constraints enforced at selection. IEC 62271 rules encoded.</p></div>
+          <div class="bg-white rounded-xl p-5 border border-slate-100"><h3 class="font-semibold text-ink mb-1">Motor Control Centres (MCC)</h3><p class="text-slate-500 text-sm">Starter type, DOL/VFD selection, thermal relay setting, and cable routing validated against motor rating and duty cycle automatically.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 bg-brand">
+  <div class="max-w-3xl mx-auto px-4 text-center">
+    <h2 class="font-mono font-bold text-3xl text-white mb-4">Ready to eliminate switchgear rework?</h2>
+    <p class="text-white/80 mb-8">Book a 45-minute demo. We'll model your standard panel family in CPP and demonstrate IEC 60947 constraint enforcement live.</p>
+    <a href="../index.html#demo" class="inline-flex items-center gap-2 bg-white text-brand hover:bg-brand-light font-bold px-8 py-3.5 rounded-xl transition-colors shadow-lg">Book Switchgear Demo →</a>
+  </div>
+</section>
+
+<footer class="bg-ink py-8 text-center"><p class="text-slate-400 text-sm font-mono">© 2026 CPP Platform Pvt. Ltd. · <a href="../index.html" class="text-brand hover:underline">← Back to Home</a></p></footer>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>document.addEventListener('DOMContentLoaded', () => AOS.init({ duration: 600, once: true }));</script>
+</body>
+</html>

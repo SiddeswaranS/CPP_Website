@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CPP for Elevator Manufacturers — Eliminate BOM Errors | EN81 Constraint Automation</title>
+  <meta name="description" content="CPP reduces elevator BOM rework by 94%. Configure shaft dimensions, load ratings, drive types, and safety systems in real time. EN81 and NBC constraints enforced at selection — not after production.">
+  <link rel="canonical" href="https://cpplatform.in/industries/elevators.html">
+  <meta property="og:title" content="CPP for Elevator Manufacturers — BOM Automation">
+  <meta property="og:description" content="Eliminate configuration errors before they reach the shop floor. CPP encodes EN81/NBC rules as constraints — configured in real time, BOM derived deterministically.">
+  <meta property="og:url" content="https://cpplatform.in/industries/elevators.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: { brand: { DEFAULT:'#0EA5E9', dark:'#0284C7', light:'#BAE6FD' }, surface:'#F1F5F9', ink:'#0F172A' },
+        fontFamily: { mono:['"JetBrains Mono"','monospace'], sans:['Inter','sans-serif'] }
+      }}
+    }
+  </script>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/custom.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body class="font-sans bg-surface text-ink antialiased">
+
+<!-- Nav -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-slate-100 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+    <a href="../index.html" class="flex items-center gap-2.5">
+      <div class="w-8 h-8 bg-brand rounded-lg flex items-center justify-center">
+        <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h10M4 18h6"/></svg>
+      </div>
+      <span class="font-mono font-bold text-xl text-ink">CPP</span>
+    </a>
+    <a href="../index.html#demo" class="inline-flex items-center gap-1.5 bg-brand hover:bg-brand-dark text-white font-semibold text-sm px-4 py-2 rounded-lg transition-colors">Request Demo →</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="pt-24 pb-16 bg-ink">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-xs font-mono text-brand font-semibold uppercase tracking-wider mb-4">Elevators &amp; Escalators</div>
+    <h1 class="font-mono font-bold text-4xl lg:text-5xl text-white leading-tight mb-6">
+      No elevator is standard.<br><span class="text-brand">Neither is its BOM.</span>
+    </h1>
+    <p class="text-slate-400 text-xl leading-relaxed max-w-3xl mb-8">
+      Shaft dimensions, load ratings, drive types, safety systems, door configurations — every combination creates a unique BOM. CPP encodes EN81 and NBC elevator code constraints so your sales engineers configure door-to-door without waiting for engineering approval.
+    </p>
+    <div class="flex flex-wrap gap-3">
+      <a href="../index.html#demo" class="inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white font-semibold px-6 py-3 rounded-lg transition-colors">Request Elevator Demo →</a>
+      <a href="../index.html#demo-interactive" class="inline-flex items-center gap-2 border border-slate-600 text-slate-300 hover:border-brand hover:text-brand px-6 py-3 rounded-lg transition-colors">See Live Demo ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="py-14 bg-white">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="text-center p-5 bg-surface rounded-xl border border-slate-100" data-aos="fade-up" data-aos-delay="0">
+        <div class="font-mono font-bold text-2xl text-brand mb-1">18d → 4h</div>
+        <div class="text-xs text-slate-500">Quote cycle time</div>
+      </div>
+      <div class="text-center p-5 bg-surface rounded-xl border border-slate-100" data-aos="fade-up" data-aos-delay="80">
+        <div class="font-mono font-bold text-2xl text-brand mb-1">12% → 0.3%</div>
+        <div class="text-xs text-slate-500">BOM error rate</div>
+      </div>
+      <div class="text-center p-5 bg-surface rounded-xl border border-slate-100" data-aos="fade-up" data-aos-delay="160">
+        <div class="font-mono font-bold text-2xl text-brand mb-1">₹1.2 Cr</div>
+        <div class="text-xs text-slate-500">Re-engineering saved / year</div>
+      </div>
+      <div class="text-center p-5 bg-surface rounded-xl border border-slate-100" data-aos="fade-up" data-aos-delay="240">
+        <div class="font-mono font-bold text-2xl text-brand mb-1">92%</div>
+        <div class="text-xs text-slate-500">Fewer engineering sign-offs</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Detail -->
+<section class="py-16 bg-surface">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12">
+      <div>
+        <h2 class="font-mono font-bold text-2xl text-ink mb-4">The problem CPP solves for elevator OEMs</h2>
+        <div class="space-y-4 text-slate-600 leading-relaxed">
+          <p>Elevator configuration involves hundreds of interdependent choices: shaft pit depth and headroom constrain car dimensions; car dimensions constrain load rating; load rating constrains drive type; drive type constrains machine room requirements; machine room requirements constrain speed; speed constrains safety gear type.</p>
+          <p>A sales engineer holding all of this in their head — while referencing EN81-20, EN81-50, and the NBC — is a recipe for error. A wrong drive selection creates a rework incident that costs ₹3–8 lakh and delays commissioning by 4–8 weeks.</p>
+          <p>CPP encodes every one of these interdependencies as constraint rules. The engine enforces them at the moment of selection — not after the order is placed.</p>
+        </div>
+      </div>
+      <div>
+        <h2 class="font-mono font-bold text-2xl text-ink mb-4">Three elevator sub-use-cases</h2>
+        <div class="space-y-4">
+          <div class="bg-white rounded-xl p-5 border border-slate-100">
+            <h3 class="font-semibold text-ink mb-1">Residential &amp; Commercial Lifts</h3>
+            <p class="text-slate-500 text-sm">Standard shaft dimensions with BIS-mandated safety constraints. Dealer-configurable without engineering review. BOM derives in seconds.</p>
+          </div>
+          <div class="bg-white rounded-xl p-5 border border-slate-100">
+            <h3 class="font-semibold text-ink mb-1">High-Speed / High-Rise</h3>
+            <p class="text-slate-500 text-sm">Speed ≥ 2.5 m/s triggers progressive safety gear, buffer type, and machine room constraints automatically. No manual cross-reference required.</p>
+          </div>
+          <div class="bg-white rounded-xl p-5 border border-slate-100">
+            <h3 class="font-semibold text-ink mb-1">Goods &amp; Freight Elevators</h3>
+            <p class="text-slate-500 text-sm">Rated load up to 5,000 kg with special platform and door configurations. CPP enforces structural and drive interdependencies specific to freight applications.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-16 bg-brand">
+  <div class="max-w-3xl mx-auto px-4 text-center">
+    <h2 class="font-mono font-bold text-3xl text-white mb-4">Ready to eliminate elevator BOM errors?</h2>
+    <p class="text-white/80 mb-8">Book a 45-minute demo. We'll configure one of your real elevator models in CPP and show you constraint propagation on your actual product family.</p>
+    <a href="../index.html#demo" class="inline-flex items-center gap-2 bg-white text-brand hover:bg-brand-light font-bold px-8 py-3.5 rounded-xl transition-colors shadow-lg">Book Elevator Demo →</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-ink py-8 text-center">
+  <p class="text-slate-400 text-sm font-mono">© 2026 CPP Platform Pvt. Ltd. · <a href="../index.html" class="text-brand hover:underline">← Back to Home</a></p>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>document.addEventListener('DOMContentLoaded', () => AOS.init({ duration: 600, once: true }));</script>
+</body>
+</html>

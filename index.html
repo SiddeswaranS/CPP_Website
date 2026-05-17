@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CPP — Configurable Product Platform for Indian B2B Manufacturers</title>
+  <meta name="description" content="CPP eliminates BOM errors and cuts quote-to-order cycles from weeks to hours. Real-time constraint propagation, deterministic BOM derivation, and ERP-ready integration for elevators, switchgear, HVAC, and industrial machinery manufacturers in India.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://cpplatform.in/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CPP — Stop Losing Orders to Excel BOM Errors">
+  <meta property="og:description" content="Your engineers are spending 3 days validating configurations that a constraint engine can solve in 50ms. CPP is the product knowledge platform built for Indian B2B manufacturers.">
+  <meta property="og:image" content="/assets/images/og-image.jpg">
+  <meta property="og:url" content="https://cpplatform.in/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CPP — Configurable Product Platform">
+  <meta name="twitter:image" content="/assets/images/og-image.jpg">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"CPP — Configurable Product Platform","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","priceCurrency":"INR","price":"0","description":"Free trial available"},"description":"Deterministic product knowledge and inference engine for Indian B2B manufacturers. Real-time constraint propagation, BOM derivation, and ERP integration.","url":"https://cpplatform.in"}
+  </script>
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand:   { DEFAULT: '#0EA5E9', dark: '#0284C7', light: '#BAE6FD', faint: '#F0F9FF' },
+            surface: '#F1F5F9',
+            ink:     '#0F172A',
+          },
+          fontFamily: {
+            mono: ['"JetBrains Mono"', 'monospace'],
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/custom.css">
+
+  <!-- Alpine (deferred — must come before body content) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+
+<body class="font-sans bg-surface text-ink antialiased" x-cloak>
+
+<!-- ═══════════════════════════════════════════════════════
+     §1 NAVIGATION
+═══════════════════════════════════════════════════════ -->
+<nav
+  class="fixed top-0 left-0 right-0 z-50 bg-white transition-all duration-200"
+  x-data="{ scrolled: false, menuOpen: false }"
+  @scroll.window="scrolled = window.pageYOffset > 20"
+  :class="scrolled ? 'shadow-md bg-white/98 backdrop-blur-sm' : 'bg-white border-b border-slate-100'"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2.5 group">
+        <div class="w-8 h-8 bg-brand rounded-lg flex items-center justify-center shadow-sm">
+          <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h10M4 18h6"/>
+          </svg>
+        </div>
+        <span class="font-mono font-bold text-xl text-ink group-hover:text-brand transition-colors">CPP</span>
+        <span class="hidden sm:block text-xs text-slate-400 font-sans mt-0.5">Platform</span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#features"    class="nav-link">Features</a>
+        <a href="#how-it-works" class="nav-link">How It Works</a>
+        <a href="#industries"  class="nav-link">Industries</a>
+        <a href="#pricing"     class="nav-link">Pricing</a>
+      </div>
+
+      <!-- CTA + Hamburger -->
+      <div class="flex items-center gap-3">
+        <a href="#demo" class="hidden sm:inline-flex items-center gap-1.5 bg-brand hover:bg-brand-dark text-white font-semibold text-sm px-4 py-2 rounded-lg transition-colors duration-150 shadow-sm">
+          Request Demo <span aria-hidden="true">→</span>
+        </a>
+        <!-- Hamburger -->
+        <button class="md:hidden p-2 rounded-lg hover:bg-slate-100" @click="menuOpen = !menuOpen" aria-label="Toggle menu">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path x-show="!menuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            <path x-show="menuOpen"  stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu md:hidden" :class="menuOpen ? 'open' : ''">
+    <a href="#features"     class="text-slate-600 hover:text-brand font-medium py-1" @click="menuOpen=false">Features</a>
+    <a href="#how-it-works" class="text-slate-600 hover:text-brand font-medium py-1" @click="menuOpen=false">How It Works</a>
+    <a href="#industries"   class="text-slate-600 hover:text-brand font-medium py-1" @click="menuOpen=false">Industries</a>
+    <a href="#pricing"      class="text-slate-600 hover:text-brand font-medium py-1" @click="menuOpen=false">Pricing</a>
+    <a href="#demo" class="inline-flex items-center gap-1.5 bg-brand text-white font-semibold text-sm px-4 py-2 rounded-lg mt-1 w-fit" @click="menuOpen=false">Request Demo →</a>
+  </div>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     §2 HERO
+═══════════════════════════════════════════════════════ -->
+<section class="pt-16 bg-grid-pattern min-h-screen flex items-center">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Left: Copy -->
+      <div>
+        <div class="inline-flex items-center gap-2 bg-brand/10 text-brand text-xs font-mono font-semibold px-3 py-1.5 rounded-full mb-6" data-aos="fade-down">
+          <span class="w-1.5 h-1.5 bg-brand rounded-full animate-pulse"></span>
+          Built for Indian B2B Manufacturing
+        </div>
+
+        <h1 class="font-mono font-bold text-4xl lg:text-5xl xl:text-6xl text-ink leading-[1.08] mb-6" data-aos="fade-up" data-aos-delay="50">
+          Your engineers are building BOMs in Excel.<br>
+          <span class="text-brand">Your competitors aren't.</span>
+        </h1>
+
+        <p class="text-lg text-slate-500 leading-relaxed mb-8 max-w-xl" data-aos="fade-up" data-aos-delay="100">
+          CPP is the constraint engine built for Indian B2B manufacturers — real-time configuration validation, deterministic BOM derivation, and direct ERP push. <strong class="text-slate-700 font-semibold">Quote in hours, not weeks.</strong>
+        </p>
+
+        <div class="flex flex-wrap gap-3 mb-12" data-aos="fade-up" data-aos-delay="150">
+          <a href="#demo" class="inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-150 shadow-sm text-base">
+            Request a Live Demo <span aria-hidden="true">→</span>
+          </a>
+          <a href="#how-it-works" class="inline-flex items-center gap-2 border border-brand text-brand hover:bg-brand/5 font-semibold px-6 py-3 rounded-lg transition-colors duration-150 text-base">
+            See How It Works <span aria-hidden="true">↓</span>
+          </a>
+        </div>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-3 gap-6 pt-8 border-t border-slate-200" data-aos="fade-up" data-aos-delay="200">
+          <div>
+            <div id="stat-boms" class="stat-number">0</div>
+            <div class="text-xs text-slate-500 mt-1 font-medium">BOMs derived to date</div>
+          </div>
+          <div>
+            <div id="stat-errors" class="stat-number">0</div>
+            <div class="text-xs text-slate-500 mt-1 font-medium">Errors caught before ERP</div>
+          </div>
+          <div>
+            <div id="stat-latency" class="stat-number">0</div>
+            <div class="text-xs text-slate-500 mt-1 font-medium">Propagation p95 latency</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Constraint Graph SVG -->
+      <div class="hidden lg:block" data-aos="fade-left" data-aos-delay="150">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-xl p-8 relative overflow-hidden">
+          <div class="absolute top-3 left-4 text-xs font-mono text-slate-400">constraint-graph.live</div>
+          <div class="absolute top-3 right-4 flex gap-1.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-red-400"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-green-400"></span>
+          </div>
+          <svg viewBox="0 0 380 280" class="w-full mt-4" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Active nodes -->
+            <circle cx="60"  cy="60"  r="28" fill="#F0F9FF" stroke="#0EA5E9" stroke-width="2"/>
+            <circle cx="190" cy="40"  r="28" fill="#F0F9FF" stroke="#0EA5E9" stroke-width="2"/>
+            <circle cx="320" cy="60"  r="28" fill="#F0F9FF" stroke="#0EA5E9" stroke-width="2"/>
+            <circle cx="60"  cy="160" r="28" fill="#F0F9FF" stroke="#0EA5E9" stroke-width="2"/>
+            <circle cx="190" cy="150" r="28" fill="#0EA5E9" stroke="#0284C7" stroke-width="2"/>
+            <circle cx="320" cy="160" r="28" fill="#F0F9FF" stroke="#0EA5E9" stroke-width="2"/>
+            <circle cx="130" cy="240" r="28" fill="#F0F9FF" stroke="#0EA5E9" stroke-width="2"/>
+            <circle cx="260" cy="240" r="28" fill="#F0F9FF" stroke="#0EA5E9" stroke-width="2"/>
+            <!-- Eliminated nodes (greyed) -->
+            <circle cx="60"  cy="260" r="22" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <circle cx="320" cy="240" r="22" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <circle cx="190" cy="260" r="22" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+            <!-- Edges — active -->
+            <line x1="88"  y1="60"  x2="162" y2="43"  stroke="#0EA5E9" stroke-width="1.5" opacity="0.6"/>
+            <line x1="218" y1="47"  x2="292" y2="58"  stroke="#0EA5E9" stroke-width="1.5" opacity="0.6"/>
+            <line x1="60"  y1="88"  x2="60"  y2="132" stroke="#0EA5E9" stroke-width="1.5" opacity="0.6"/>
+            <line x1="320" y1="88"  x2="320" y2="132" stroke="#0EA5E9" stroke-width="1.5" opacity="0.6"/>
+            <line x1="80"  y1="178" x2="162" y2="155" stroke="#0EA5E9" stroke-width="1.5" opacity="0.6"/>
+            <line x1="218" y1="155" x2="292" y2="158" stroke="#0EA5E9" stroke-width="1.5" opacity="0.6"/>
+            <line x1="148" y1="226" x2="168" y2="175" stroke="#0EA5E9" stroke-width="1.5" opacity="0.6"/>
+            <line x1="242" y1="226" x2="212" y2="175" stroke="#0EA5E9" stroke-width="1.5" opacity="0.6"/>
+
+            <!-- Edges — to eliminated (dashed) -->
+            <line x1="76"  y1="185" x2="62"  y2="238" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="4 3"/>
+            <line x1="306" y1="184" x2="318" y2="218" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="4 3"/>
+            <line x1="190" y1="178" x2="190" y2="238" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="4 3"/>
+
+            <!-- Labels -->
+            <text x="60"  y="64"  text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#0EA5E9" font-weight="600">Motor</text>
+            <text x="190" y="44"  text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#0EA5E9" font-weight="600">Cooling</text>
+            <text x="320" y="64"  text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#0EA5E9" font-weight="600">Drive</text>
+            <text x="60"  y="164" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#0EA5E9" font-weight="600">Voltage</text>
+            <text x="190" y="150" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="white"   font-weight="700">SELECT</text>
+            <text x="190" y="161" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#BAE6FD">10 kW</text>
+            <text x="320" y="164" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#0EA5E9" font-weight="600">Mount</text>
+            <text x="130" y="244" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#0EA5E9" font-weight="600">Frame</text>
+            <text x="260" y="244" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#0EA5E9" font-weight="600">Cable</text>
+            <text x="60"  y="263" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#94A3B8">Air Cool</text>
+            <text x="320" y="243" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#94A3B8">DOL</text>
+            <text x="190" y="263" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#94A3B8">2 kW</text>
+
+            <!-- Eliminated X marks -->
+            <line x1="50" y1="252" x2="70" y2="270" stroke="#CBD5E1" stroke-width="1.5"/>
+            <line x1="70" y1="252" x2="50" y2="270" stroke="#CBD5E1" stroke-width="1.5"/>
+            <line x1="310" y1="234" x2="330" y2="252" stroke="#CBD5E1" stroke-width="1.5"/>
+            <line x1="330" y1="234" x2="310" y2="252" stroke="#CBD5E1" stroke-width="1.5"/>
+            <line x1="180" y1="252" x2="200" y2="270" stroke="#CBD5E1" stroke-width="1.5"/>
+            <line x1="200" y1="252" x2="180" y2="270" stroke="#CBD5E1" stroke-width="1.5"/>
+
+            <!-- Legend -->
+            <circle cx="16" cy="16" r="6" fill="#F0F9FF" stroke="#0EA5E9" stroke-width="1.5"/>
+            <text x="26" y="20" font-family="Inter" font-size="9" fill="#64748B">Valid option</text>
+            <circle cx="16" cy="34" r="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="3 2"/>
+            <text x="26" y="38" font-family="Inter" font-size="9" fill="#94A3B8">Eliminated</text>
+          </svg>
+
+          <div class="mt-4 bg-brand/5 rounded-lg px-4 py-3 text-xs font-mono text-brand">
+            ⚡ Rule fired: Power ≥ 10 kW → Air Cooled eliminated · 2 kW eliminated
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     §3 PROBLEM STRIP
+═══════════════════════════════════════════════════════ -->
+<section class="bg-white py-20 bg-excel-ghost" id="problems">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14" data-aos="fade-up">
+      <h2 class="font-mono font-bold text-3xl lg:text-4xl text-ink mb-3">Recognize any of these?</h2>
+      <p class="text-slate-500 text-lg max-w-2xl mx-auto">Every Indian B2B manufacturer with 100+ configurable SKUs is running the same broken process.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Card 1 -->
+      <div class="bg-surface rounded-2xl p-6 border border-slate-100 hover:border-amber-200 hover:shadow-md transition-all duration-200" data-aos="fade-up" data-aos-delay="0">
+        <div class="w-10 h-10 bg-amber-50 rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-ink mb-2">3 Days to Validate One Quote</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">Your sales engineers cross-reference Excel sheets, call product managers, and email plant teams — for every configuration. Meanwhile, the customer is talking to your competition.</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-surface rounded-2xl p-6 border border-slate-100 hover:border-red-200 hover:shadow-md transition-all duration-200" data-aos="fade-up" data-aos-delay="80">
+        <div class="w-10 h-10 bg-red-50 rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-ink mb-2">BOM Errors Reach the Shop Floor</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">A missed constraint means a wrong part gets ordered. Production halts. Rework costs ₹2–8 lakh per incident. And it happens because humans cannot hold 50,000 rules in their heads.</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-surface rounded-2xl p-6 border border-slate-100 hover:border-slate-300 hover:shadow-md transition-all duration-200" data-aos="fade-up" data-aos-delay="160">
+        <div class="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-ink mb-2">Engineering Approvals Add Weeks</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">Every non-standard configuration requires sign-off from a product engineer. Your quote-to-order cycle stretches to 3–6 weeks because the rules live only in expert brains.</p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="bg-surface rounded-2xl p-6 border border-slate-100 hover:border-purple-200 hover:shadow-md transition-all duration-200" data-aos="fade-up" data-aos-delay="0">
+        <div class="w-10 h-10 bg-purple-50 rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-ink mb-2">Five ERP Re-Entries Per Order</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">Sales enters in CRM. Order management enters in SAP. Plant enters in MES. Each re-keying is a chance to corrupt a part number or a quantity. And no one knows which copy is canonical.</p>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="bg-surface rounded-2xl p-6 border border-slate-100 hover:border-orange-200 hover:shadow-md transition-all duration-200" data-aos="fade-up" data-aos-delay="80">
+        <div class="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-ink mb-2">No Single Source of Rule Truth</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">Plant A has v12 of the cable schedule. Plant B is running v9. Regional offices maintain their own local variants. No one knows which is authoritative — until a production error reveals it.</p>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="bg-surface rounded-2xl p-6 border border-slate-100 hover:border-teal-200 hover:shadow-md transition-all duration-200" data-aos="fade-up" data-aos-delay="160">
+        <div class="w-10 h-10 bg-teal-50 rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-ink mb-2">New Engineers Take 18 Months</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">Your product knowledge lives in the heads of 3 senior engineers who've been here 15 years. Onboarding a new sales engineer is a year of shadowing — not a training program.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     §4 SOLUTION OVERVIEW
+═══════════════════════════════════════════════════════ -->
+<section class="py-20 bg-ink" id="solution">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14" data-aos="fade-up">
+      <h2 class="font-mono font-bold text-3xl lg:text-4xl text-white mb-4">One engine. One source of truth. Zero configuration errors.</h2>
+      <p class="text-slate-400 text-lg max-w-3xl mx-auto">CPP compiles your product knowledge into a deterministic constraint graph — then enforces it on every configuration, every time, in under 50ms.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white/5 border border-white/10 rounded-2xl p-7 hover:bg-white/8 transition-colors" data-aos="fade-up" data-aos-delay="0">
+        <div class="w-10 h-10 bg-brand/20 rounded-xl flex items-center justify-center mb-5">
+          <svg class="w-5 h-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+          </svg>
+        </div>
+        <h3 class="font-mono font-bold text-white text-lg mb-3">Author Once</h3>
+        <p class="text-slate-400 text-sm leading-relaxed mb-4">Write it once. Enforce it everywhere. Your product engineers encode rules in a typed DSL. CPP compiles these into an immutable, versioned constraint graph. One change cascades to every plant, region, and team simultaneously.</p>
+        <div class="terminal-block text-xs">
+          <span class="kw">rule</span> <span class="str">"Liquid cooling required"</span><br>
+          &nbsp;&nbsp;<span class="kw">when</span> Motor.power <span class="op">≥</span> <span class="num">10</span> kW<br>
+          &nbsp;&nbsp;<span class="kw">then</span> <span class="fn">require</span> Cooling <span class="op">=</span> Liquid
+        </div>
+      </div>
+
+      <div class="bg-white/5 border border-white/10 rounded-2xl p-7 hover:bg-white/8 transition-colors" data-aos="fade-up" data-aos-delay="100">
+        <div class="w-10 h-10 bg-brand/20 rounded-xl flex items-center justify-center mb-5">
+          <svg class="w-5 h-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <h3 class="font-mono font-bold text-white text-lg mb-3">Configure with Confidence</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">Selections propagate. Errors don't. When a user picks an option, the engine eliminates every incompatible choice across 100,000+ parts in under 50ms. Sales engineers configure without engineering approval. Dealers self-serve without training.</p>
+      </div>
+
+      <div class="bg-white/5 border border-white/10 rounded-2xl p-7 hover:bg-white/8 transition-colors" data-aos="fade-up" data-aos-delay="200">
+        <div class="w-10 h-10 bg-brand/20 rounded-xl flex items-center justify-center mb-5">
+          <svg class="w-5 h-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <h3 class="font-mono font-bold text-white text-lg mb-3">Derive and Integrate</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">Deterministic BOM. Every time. Given the same configuration and rule version, CPP produces byte-identical output — a legally and technically reproducible BOM pushed directly to SAP, Oracle, or your MES. No re-keying. No interpretation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     §5 HOW IT WORKS
+═══════════════════════════════════════════════════════ -->
+<section class="py-20 bg-surface" id="how-it-works">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16" data-aos="fade-up">
+      <h2 class="font-mono font-bold text-3xl lg:text-4xl text-ink mb-3">From product rule to production order — automated.</h2>
+      <p class="text-slate-500 text-lg">Three steps. Zero Excel. No re-keying.</p>
+    </div>
+
+    <div class="relative">
+      <!-- Connector lines (desktop only, revealed on scroll) -->
+      <div class="step-connector" style="left: calc(16.66% + 2rem); width: calc(16.66% - 1rem);"></div>
+      <div class="step-connector" style="left: calc(50% + 2rem); width: calc(16.66% - 1rem);"></div>
+
+      <div class="grid md:grid-cols-3 gap-8 relative">
+
+        <!-- Step 1 -->
+        <div data-aos="fade-up" data-aos-delay="0">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 bg-brand rounded-full flex items-center justify-center text-white font-mono font-bold text-sm shadow-md">1</div>
+            <h3 class="font-mono font-semibold text-ink text-lg">Author Rules</h3>
+          </div>
+          <p class="text-slate-500 text-sm leading-relaxed mb-5">Product engineers encode your configuration knowledge in a typed DSL. Rules are compiled into an immutable, versioned, fingerprinted constraint graph — never mutated after release.</p>
+          <div class="terminal-block">
+            <span class="cmt">// Motor constraint rule</span><br>
+            <span class="kw">rule</span> <span class="str">"high-power-cooling"</span> {<br>
+            &nbsp;&nbsp;<span class="kw">when</span> Motor.power <span class="op">>=</span> <span class="num">10</span> kW<br>
+            &nbsp;&nbsp;<span class="kw">then</span> <span class="fn">require</span>(Cooling, Liquid)<br>
+            &nbsp;&nbsp;<span class="kw">and</span>  <span class="fn">exclude</span>(Cooling, Air)<br>
+            }<br>
+            <span class="cmt">// Compiled → v3.14.2 · SHA: a8f2c1</span>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div data-aos="fade-up" data-aos-delay="150">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 bg-brand rounded-full flex items-center justify-center text-white font-mono font-bold text-sm shadow-md">2</div>
+            <h3 class="font-mono font-semibold text-ink text-lg">Configure Live</h3>
+          </div>
+          <p class="text-slate-500 text-sm leading-relaxed mb-5">The compiled constraint graph runs in the session. Selecting one option instantly eliminates incompatible choices. Conflicts surface immediately — with a plain-English explanation of which rule fired.</p>
+          <div class="bg-white rounded-xl border border-slate-200 p-4 text-sm">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-slate-500 text-xs font-mono">Motor Power</span>
+              <span class="bg-brand text-white text-xs font-mono px-2 py-0.5 rounded">10 kW ✓</span>
+            </div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-slate-500 text-xs font-mono">Cooling</span>
+              <div class="flex gap-1.5">
+                <span class="bg-brand text-white text-xs font-mono px-2 py-0.5 rounded">Liquid ✓</span>
+                <span class="line-through text-xs font-mono text-slate-300 px-2 py-0.5">Air</span>
+              </div>
+            </div>
+            <div class="bg-brand/5 rounded-lg px-3 py-2 text-xs font-mono text-brand border border-brand/10">
+              ⚡ Rule fired: Power ≥ 10 kW → require Liquid Cooling
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div data-aos="fade-up" data-aos-delay="300">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 bg-brand rounded-full flex items-center justify-center text-white font-mono font-bold text-sm shadow-md">3</div>
+            <h3 class="font-mono font-semibold text-ink text-lg">Derive BOM → ERP</h3>
+          </div>
+          <p class="text-slate-500 text-sm leading-relaxed mb-5">A valid configuration triggers deterministic BOM derivation. The resulting BOM pushes to SAP or Oracle through the anti-corruption layer. Same inputs, same output, always. SHA-256 fingerprinted.</p>
+          <div class="bg-white rounded-xl border border-slate-200 p-4 text-xs font-mono">
+            <div class="text-slate-400 mb-2">BOM · v3.14.2 · Plant: Pune</div>
+            <div class="border-t border-slate-100 pt-2 space-y-1.5">
+              <div class="flex justify-between"><span class="text-slate-600">MTRFR-010</span><span class="text-brand">1 EA</span></div>
+              <div class="flex justify-between"><span class="text-slate-600">CLG-LIQ-02</span><span class="text-brand">1 EA</span></div>
+              <div class="flex justify-between"><span class="text-slate-600">DRV-VFD-03</span><span class="text-brand">1 EA</span></div>
+            </div>
+            <div class="mt-3 flex items-center gap-2 text-green-600 text-xs">
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              Pushed to SAP · SHA: a8f2c1d9
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     §6 INTERACTIVE DEMO
+═══════════════════════════════════════════════════════ -->
+<section class="py-20 bg-white" id="demo-interactive">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12" data-aos="fade-up">
+      <div class="inline-flex items-center gap-2 bg-brand/10 text-brand text-xs font-mono font-semibold px-3 py-1.5 rounded-full mb-4">
+        <span class="w-1.5 h-1.5 bg-brand rounded-full animate-pulse"></span>
+        Live Simulation
+      </div>
+      <h2 class="font-mono font-bold text-3xl lg:text-4xl text-ink mb-3">See constraint propagation live.</h2>
+      <p class="text-slate-500 text-lg">Click any option below. Watch incompatible choices disappear — exactly as it works in production.</p>
+    </div>
+
+    <div x-data="motorDemo()" class="bg-surface rounded-2xl border border-slate-200 shadow-lg overflow-hidden">
+
+      <!-- Demo header -->
+      <div class="bg-ink px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="flex gap-1.5">
+            <span class="w-3 h-3 rounded-full bg-red-400"></span>
+            <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+            <span class="w-3 h-3 rounded-full bg-green-400"></span>
+          </div>
+          <span class="font-mono text-slate-400 text-sm">motor-configurator.cpp · rule-version: v3.14.2</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-slate-400 text-xs font-mono" x-text="selectedCount + '/5 selected'"></span>
+          <button @click="reset()" class="text-slate-400 hover:text-white text-xs font-mono transition-colors">↺ Reset</button>
+        </div>
+      </div>
+
+      <div class="p-6 md:p-8">
+
+        <!-- Feature rows -->
+        <template x-for="(feature, idx) in ['power','cooling','voltage','drive','mounting']" :key="feature">
+          <div class="mb-6 last:mb-0">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="font-mono text-xs font-semibold text-slate-400 uppercase tracking-wider w-36" x-text="featureLabels[feature]"></span>
+              <span x-show="selections[feature]" class="text-xs bg-green-50 text-green-600 font-mono px-2 py-0.5 rounded border border-green-100" x-text="'✓ ' + selections[feature]"></span>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <template x-for="option in catalog[feature]" :key="option">
+                <button
+                  @click="select(feature, option)"
+                  :disabled="isEliminated(feature, option)"
+                  :class="{
+                    'eliminated': isEliminated(feature, option),
+                    'selected': selections[feature] === option,
+                  }"
+                  class="demo-chip"
+                  x-text="option">
+                </button>
+              </template>
+            </div>
+          </div>
+        </template>
+
+        <!-- Constraint message -->
+        <div class="mt-8 constraint-badge rounded-xl px-5 py-4 text-sm font-mono border"
+          :class="{
+            'bg-brand/5 border-brand/20 text-brand': constraintMessage.type === 'rule',
+            'bg-green-50 border-green-200 text-green-700': constraintMessage.type === 'ok',
+            'bg-slate-50 border-slate-200 text-slate-500': constraintMessage.type === 'idle',
+          }"
+          x-text="constraintMessage.text">
+        </div>
+
+        <!-- BOM generate button -->
+        <div class="mt-6 flex items-center gap-4">
+          <button
+            x-show="configComplete && !showBom"
+            @click="generateBom()"
+            class="inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white font-semibold px-6 py-2.5 rounded-lg transition-colors text-sm">
+            Generate BOM Preview →
+          </button>
+          <div x-show="!configComplete" class="text-xs text-slate-400 font-mono">
+            Select all 5 options to generate BOM preview
+          </div>
+        </div>
+
+        <!-- BOM Preview — x-if so Alpine never evaluates bomRows until showBom is true -->
+        <template x-if="showBom">
+          <div id="bom-preview" class="mt-6" x-transition>
+            <div class="text-xs font-mono text-slate-400 mb-2">Generated BOM · Deterministic · SHA-256: a8f2c1d9e3b7…</div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm">
+                <thead>
+                  <tr class="bg-ink text-white">
+                    <th class="text-left font-mono font-semibold px-4 py-2.5 rounded-tl-lg text-xs">Part No.</th>
+                    <th class="text-left font-mono font-semibold px-4 py-2.5 text-xs">Description</th>
+                    <th class="text-right font-mono font-semibold px-4 py-2.5 text-xs">Qty</th>
+                    <th class="text-right font-mono font-semibold px-4 py-2.5 rounded-tr-lg text-xs">UoM</th>
+                  </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-slate-100">
+                  <template x-for="(row, idx) in bomRows" :key="idx">
+                    <tr class="hover:bg-brand/3 transition-colors">
+                      <td class="px-4 py-2.5 font-mono text-xs text-brand font-semibold" x-text="row.partNo"></td>
+                      <td class="px-4 py-2.5 text-xs text-slate-600" x-text="row.desc"></td>
+                      <td class="px-4 py-2.5 text-xs text-right text-slate-700 font-mono" x-text="row.qty"></td>
+                      <td class="px-4 py-2.5 text-xs text-right text-slate-400 font-mono" x-text="row.uom"></td>
+                    </tr>
+                  </template>
+                </tbody>
+              </table>
+            </div>
+            <div class="mt-3 flex items-center gap-2 text-green-600 text-xs font-mono">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              Ready to push to ERP · 0 re-keying entries required
+            </div>
+          </div>
+        </template>
+
+      </div>
+    </div>
+
+    <p class="text-center text-xs text-slate-400 mt-4 font-mono">Simulated demo — same constraint logic as the production engine. <a href="#demo" class="text-brand hover:underline">See it on your product family →</a></p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     §7 FEATURES GRID
+═══════════════════════════════════════════════════════ -->
+<section class="py-20 bg-surface" id="features">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14" data-aos="fade-up">
+      <h2 class="font-mono font-bold text-3xl lg:text-4xl text-ink mb-3">Enterprise-grade. Indian-market-ready.</h2>
+      <p class="text-slate-500 text-lg">Not another CPQ tool. A purpose-built inference engine that happens to have a UI.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md hover:border-brand/20 transition-all duration-200 group" data-aos="fade-up" data-aos-delay="0">
+        <div class="w-10 h-10 bg-brand/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-brand/15 transition-colors">
+          <svg class="w-5 h-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+          </svg>
+        </div>
+        <h3 class="font-mono font-semibold text-ink mb-2">Constraint Engine</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">AC-3 arc-consistency at 50ms p95 across 100,000 nodes. Watch lists, topological layering, and memoization — not a sequential rule evaluator.</p>
+        <div class="mt-3 text-xs font-mono text-brand">< 50 ms · 100k nodes</div>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md hover:border-brand/20 transition-all duration-200 group" data-aos="fade-up" data-aos-delay="80">
+        <div class="w-10 h-10 bg-brand/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-brand/15 transition-colors">
+          <svg class="w-5 h-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+          </svg>
+        </div>
+        <h3 class="font-mono font-semibold text-ink mb-2">BOM Derivation</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">Deterministic. Fingerprinted. Byte-identical. SHA-256 every output. Replay any historical order to get an identical BOM years later.</p>
+        <div class="mt-3 text-xs font-mono text-brand">SHA-256 · 100% reproducible</div>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md hover:border-brand/20 transition-all duration-200 group" data-aos="fade-up" data-aos-delay="160">
+        <div class="w-10 h-10 bg-brand/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-brand/15 transition-colors">
+          <svg class="w-5 h-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
+          </svg>
+        </div>
+        <h3 class="font-mono font-semibold text-ink mb-2">ERP Integration</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">Push to SAP, Oracle, or any MES via anti-corruption layer. Events flow through Kafka with schema registry enforcement. No adapter scripts.</p>
+        <div class="mt-3 text-xs font-mono text-brand">SAP · Oracle · MES · Kafka</div>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md hover:border-brand/20 transition-all duration-200 group" data-aos="fade-up" data-aos-delay="0">
+        <div class="w-10 h-10 bg-brand/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-brand/15 transition-colors">
+          <svg class="w-5 h-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+          </svg>
+        </div>
+        <h3 class="font-mono font-semibold text-ink mb-2">Multi-Tenancy</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">Pooled for SMBs, schema-isolated for mid-market, dedicated Kubernetes namespace for enterprise. Rules and sessions are always tenant-isolated at the database layer.</p>
+        <div class="mt-3 text-xs font-mono text-brand">RLS · Schema · Namespace</div>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md hover:border-brand/20 transition-all duration-200 group" data-aos="fade-up" data-aos-delay="80">
+        <div class="w-10 h-10 bg-brand/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-brand/15 transition-colors">
+          <svg class="w-5 h-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <h3 class="font-mono font-semibold text-ink mb-2">Immutable Versioning</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">Rules are immutable. History is auditable. Releasing a new version never mutates the old one. Roll back to any prior version and re-derive any historical BOM.</p>
+        <div class="mt-3 text-xs font-mono text-brand">Immutable · Rollback · Audit</div>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md hover:border-brand/20 transition-all duration-200 group" data-aos="fade-up" data-aos-delay="160">
+        <div class="w-10 h-10 bg-brand/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-brand/15 transition-colors">
+          <svg class="w-5 h-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+          </svg>
+        </div>
+        <h3 class="font-mono font-semibold text-ink mb-2">Rule DSL</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">Product knowledge as typed, auditable code. Rules are written in a human-readable DSL, compiled to a typed constraint graph, and diff-able like source code. AI-ready at the AST level.</p>
+        <div class="mt-3 text-xs font-mono text-brand">DSL · Compiler · AST</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     §8 INDUSTRY USE CASES
+═══════════════════════════════════════════════════════ -->
+<section class="py-20 bg-white" id="industries">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12" data-aos="fade-up">
+      <h2 class="font-mono font-bold text-3xl lg:text-4xl text-ink mb-3">Built for the industries that build India.</h2>
+      <p class="text-slate-500 text-lg">Five industries. One constraint engine. Specific results.</p>
+    </div>
+
+    <div x-data="{ tab: 'elevators' }">
+
+      <!-- Tab bar -->
+      <div class="flex overflow-x-auto gap-0 border-b border-slate-200 mb-10 -mx-4 px-4 sm:mx-0 sm:px-0" data-aos="fade-up">
+        <button @click="tab='elevators'"   :class="tab==='elevators'   ? 'ind-tab-active' : 'ind-tab-inactive'" class="px-5 py-3 text-sm font-medium whitespace-nowrap transition-all">Elevators</button>
+        <button @click="tab='switchgear'"  :class="tab==='switchgear'  ? 'ind-tab-active' : 'ind-tab-inactive'" class="px-5 py-3 text-sm font-medium whitespace-nowrap transition-all">Switchgear</button>
+        <button @click="tab='hvac'"        :class="tab==='hvac'        ? 'ind-tab-active' : 'ind-tab-inactive'" class="px-5 py-3 text-sm font-medium whitespace-nowrap transition-all">HVAC</button>
+        <button @click="tab='machinery'"   :class="tab==='machinery'   ? 'ind-tab-active' : 'ind-tab-inactive'" class="px-5 py-3 text-sm font-medium whitespace-nowrap transition-all">Industrial Machinery</button>
+        <button @click="tab='transformers'" :class="tab==='transformers' ? 'ind-tab-active' : 'ind-tab-inactive'" class="px-5 py-3 text-sm font-medium whitespace-nowrap transition-all">Power Transformers</button>
+      </div>
+
+      <!-- Elevators -->
+      <div x-show="tab==='elevators'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0">
+        <div class="grid lg:grid-cols-2 gap-12 items-start">
+          <div>
+            <div class="text-xs font-mono text-brand font-semibold mb-3 uppercase tracking-wider">Elevators &amp; Escalators</div>
+            <h3 class="font-mono font-bold text-2xl text-ink mb-4">No elevator is standard. Neither is its BOM.</h3>
+            <p class="text-slate-500 leading-relaxed mb-6">Shaft dimensions, load ratings, drive types, safety systems, door configurations — every combination creates a unique BOM. Engineers spend 3+ days per quote validating compatibility manually against EN81 and NBC code requirements.</p>
+            <p class="text-slate-500 leading-relaxed mb-8">CPP encodes elevator code constraints directly. Sales engineers configure door-to-door — the engine eliminates incompatible drive and safety combinations in real time. Engineering sign-off required only for genuine edge cases.</p>
+            <a href="industries/elevators.html" class="inline-flex items-center gap-2 text-brand font-semibold text-sm hover:gap-3 transition-all">Read the elevator use case →</a>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-surface rounded-xl p-5 border border-slate-100">
+              <div class="font-mono font-bold text-2xl text-brand mb-1">18d → 4h</div>
+              <div class="text-xs text-slate-500">Quote cycle time</div>
+            </div>
+            <div class="bg-surface rounded-xl p-5 border border-slate-100">
+              <div class="font-mono font-bold text-2xl text-brand mb-1">12% → 0.3%</div>
+              <div class="text-xs text-slate-500">BOM error rate</div>
+            </div>
+            <div class="bg-surface rounded-xl p-5 border border-slate-100">
+              <div class="font-mono font-bold text-2xl text-brand mb-1">₹1.2Cr</div>
+              <div class="text-xs text-slate-500">Re-engineering savings / year</div>
+            </div>
+            <div class="bg-surface rounded-xl p-5 border border-slate-100">
+              <div class="font-mono font-bold text-2xl text-brand mb-1">92%</div>
+              <div class="text-xs text-slate-500">Fewer engineering sign-offs</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Switchgear -->
+      <div x-show="tab==='switchgear'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0">
+        <div class="grid lg:grid-cols-2 gap-12 items-start">
+          <div>
+            <div class="text-xs font-mono text-brand font-semibold mb-3 uppercase tracking-wider">Switchgear &amp; Electrical Panels</div>
+            <h3 class="font-mono font-bold text-2xl text-ink mb-4">Wrong busbar rating. Wrong breaker. Wrong order. Dead deal.</h3>
+            <p class="text-slate-500 leading-relaxed mb-6">ABB and Schneider-class switchgear involves interdependent ratings across current, voltage, breaking capacity, and enclosure class. A single incompatible selection triggers rework at ₹4–12 lakh per panel.</p>
+            <p class="text-slate-500 leading-relaxed mb-8">CPP enforces IEC 60947 compliance constraints at selection time. Impossible combinations are never offered. Valid configurations derive directly to a copper schedule and full panel BOM — ready for the shop floor.</p>
+            <a href="industries/switchgear.html" class="inline-flex items-center gap-2 text-brand font-semibold text-sm hover:gap-3 transition-all">Read the switchgear use case →</a>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-surface rounded-xl p-5 border border-slate-100">
+              <div class="font-mono font-bold text-2xl text-brand mb-1">23 → 1–2</div>
+              <div class="text-xs text-slate-500">Rework incidents per quarter</div>
+            </div>
+            <div class="bg-surface rounded-xl p-5 border border-slate-100">
+              <div class="font-mono font-bold text-2xl text-brand mb-1">5d → 6h</div>
+              <div class="text-xs text-slate-500">Quote turnaround</div>
+            </div>
+            <div class="bg-surface rounded-xl p-5 border border-slate-100">
+              <div class="font-mono font-bold text-2xl text-brand mb-1">IEC 60947</div>
+              <div class="text-xs text-slate-500">Compliance enforced at selection</div>
+            </div>
+            <div class="bg-surface rounded-xl p-5 border border-slate-100">
+              <div class="font-mono font-bold text-2xl text-brand mb-1">1 day</div>
+              <div class="text-xs text-slate-500">Catalogue update → live (was 3 weeks)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HVAC -->
+      <div x-show="tab==='hvac'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0">
+        <div class="grid lg:grid-cols-2 gap-12 items-start">
+          <div>
+            <div class="text-xs font-mono text-brand font-semibold mb-3 uppercase tracking-wider">HVAC &amp; Cooling Systems</div>
+            <h3 class="font-mono font-bold text-2xl text-ink mb-4">Tonnage, refrigerant, duct spec, electrical supply — 40,000 combinations per model family.</h3>
+            <p class="text-slate-500 leading-relaxed mb-6">Blue Star and Voltas sales teams manually filter product matrices. Regional engineers approve each non-standard combination. Customer projects slip because HVAC quotes take 2 weeks to finalize.</p>
+            <p class="text-slate-500 leading-relaxed mb-8">CPP models tonnage-to-compressor compatibility, refrigerant selection constraints, and regional energy rating requirements. A dealer configures a complete system in a browser in 20 minutes.</p>
+            <a href="industries/hvac.html" class="inline-flex items-center gap-2 text-brand font-semibold text-sm hover:gap-3 transition-all">Read the HVAC use case →</a>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-surface rounded-xl p-5 border border-slate-100">
+              <div class="font-mono font-bold text-2xl text-brand mb-1">2wk → 20min</div>
+              <div class="text-xs text-slate-500">Dealer configuration time</div>
+            </div>
+            <div class="bg-surface rounded-xl p-5 border border-slate-100">
+              <div class="font-mono font-bold text-2xl text-brand mb-1">78%</div>
+              <div class="text-xs text-slate-500">Fewer escalations to engineering</div>
+            </div>
+            <div class="bg-surface rounded-xl p-5 border border-slate-100">
+              <div class="font-mono font-bold text-2xl text-brand mb-1">40,000+</div>
+              <div class="text-xs text-slate-500">Valid combinations per family</div>
+            </div>
+            <div class="bg-surface rounded-xl p-5 border border-slate-100">
+              <div class="font-mono font-bold text-2xl text-brand mb-1">99.98%</div>
+              <div class="text-xs text-slate-500">BOM accuracy rate</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Machinery -->
+      <div x-show="tab==='machinery'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0">
+        <div class="grid lg:grid-cols-2 gap-12 items-start">
+          <div>
+            <div class="text-xs font-mono text-brand font-semibold mb-3 uppercase tracking-wider">Industrial Machinery</div>
+            <h3 class="font-mono font-bold text-2xl text-ink mb-4">Each Kirloskar pump is a one-of-one. Your BOM process shouldn't be.</h3>
+            <p class="text-slate-500 leading-relaxed mb-6">Ace Micromatic and Kirloskar machines are configured from hundreds of spindle, feed, coolant, tooling, and electrical options. Each combination produces a unique BOM that must be validated against plant capacity and regional sourcing rules.</p>
+            <p class="text-slate-500 leading-relaxed mb-8">CPP encodes machine family constraints, plant-specific substitution rules, and capacity limits. Configured machines derive routing plans alongside the BOM — passed directly to the MES without re-keying.</p>
+            <a href="industries/industrial-machinery.html" class="inline-flex items-center gap-2 text-brand font-semibold text-sm hover:gap-3 transition-all">Read the machinery use case →</a>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-surface rounded-xl p-5 border border-slate-100">
+              <div class="font-mono font-bold text-2xl text-brand mb-1">6wk → 4d</div>
+              <div class="text-xs text-slate-500">Customer spec to MES order</div>
+            </div>
+            <div class="bg-surface rounded-xl p-5 border border-slate-100">
+              <div class="font-mono font-bold text-2xl text-brand mb-1">15% → 0.8%</div>
+              <div class="text-xs text-slate-500">Plant re-routing incidents</div>
+            </div>
+            <div class="bg-surface rounded-xl p-5 border border-slate-100">
+              <div class="font-mono font-bold text-2xl text-brand mb-1">80,000+</div>
+              <div class="text-xs text-slate-500">Part numbers handled</div>
+            </div>
+            <div class="bg-surface rounded-xl p-5 border border-slate-100">
+              <div class="font-mono font-bold text-2xl text-brand mb-1">0</div>
+              <div class="text-xs text-slate-500">ERP re-keying entries</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Transformers -->
+      <div x-show="tab==='transformers'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0">
+        <div class="grid lg:grid-cols-2 gap-12 items-start">
+          <div>
+            <div class="text-xs font-mono text-brand font-semibold mb-3 uppercase tracking-wider">Power Transformers</div>
+            <h3 class="font-mono font-bold text-2xl text-ink mb-4">BHEL doesn't build standard transformers. They build exactly what's ordered.</h3>
+            <p class="text-slate-500 leading-relaxed mb-6">Transformer configuration — core design, winding type, insulation class, cooling method, tap changer spec — requires weeks of engineering validation. Each invalid combination caught late means ₹20–50 lakh in scrap.</p>
+            <p class="text-slate-500 leading-relaxed mb-8">CPP enforces IEC 60076 and BIS standards as constraint rules. Engineers derive the magnetic circuit specification alongside the BOM — deterministically, with full traceability from customer spec to transformer serial number.</p>
+            <a href="industries/power-transformers.html" class="inline-flex items-center gap-2 text-brand font-semibold text-sm hover:gap-3 transition-all">Read the transformer use case →</a>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-surface rounded-xl p-5 border border-slate-100">
+              <div class="font-mono font-bold text-2xl text-brand mb-1">3wk → 2d</div>
+              <div class="text-xs text-slate-500">Engineering validation time</div>
+            </div>
+            <div class="bg-surface rounded-xl p-5 border border-slate-100">
+              <div class="font-mono font-bold text-2xl text-brand mb-1">~Zero</div>
+              <div class="text-xs text-slate-500">Scrap from invalid configs</div>
+            </div>
+            <div class="bg-surface rounded-xl p-5 border border-slate-100">
+              <div class="font-mono font-bold text-2xl text-brand mb-1">IEC 60076</div>
+              <div class="text-xs text-slate-500">+ BIS standards enforced at selection</div>
+            </div>
+            <div class="bg-surface rounded-xl p-5 border border-slate-100">
+              <div class="font-mono font-bold text-2xl text-brand mb-1">Full</div>
+              <div class="text-xs text-slate-500">Audit trail — spec to serial number</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     §9 ROI CALCULATOR
+═══════════════════════════════════════════════════════ -->
+<section class="py-20 bg-surface" id="roi">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12" data-aos="fade-up">
+      <h2 class="font-mono font-bold text-3xl lg:text-4xl text-ink mb-3">What would you save?</h2>
+      <p class="text-slate-500 text-lg">Adjust the sliders for your operation. This model uses actual customer benchmarks.</p>
+    </div>
+
+    <div x-data="roiCalc()" class="grid lg:grid-cols-2 gap-10 items-start" data-aos="fade-up">
+
+      <!-- Sliders -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-7 shadow-sm">
+        <h3 class="font-mono font-semibold text-ink mb-6">Your Operation</h3>
+
+        <div class="space-y-7">
+          <div>
+            <div class="flex justify-between mb-2">
+              <label class="text-sm font-medium text-slate-600">Configurations per month</label>
+              <span class="font-mono font-bold text-brand text-sm" x-text="configsPerMonth"></span>
+            </div>
+            <input type="range" min="10" max="500" step="10" x-model="configsPerMonth" class="w-full">
+            <div class="flex justify-between text-xs text-slate-400 mt-1"><span>10</span><span>500</span></div>
+          </div>
+
+          <div>
+            <div class="flex justify-between mb-2">
+              <label class="text-sm font-medium text-slate-600">Engineers per configuration</label>
+              <span class="font-mono font-bold text-brand text-sm" x-text="engineersPerConfig"></span>
+            </div>
+            <input type="range" min="1" max="5" step="1" x-model="engineersPerConfig" class="w-full">
+            <div class="flex justify-between text-xs text-slate-400 mt-1"><span>1</span><span>5</span></div>
+          </div>
+
+          <div>
+            <div class="flex justify-between mb-2">
+              <label class="text-sm font-medium text-slate-600">Hours per config validation</label>
+              <span class="font-mono font-bold text-brand text-sm" x-text="hoursPerConfig + ' hrs'"></span>
+            </div>
+            <input type="range" min="2" max="40" step="1" x-model="hoursPerConfig" class="w-full">
+            <div class="flex justify-between text-xs text-slate-400 mt-1"><span>2 hrs</span><span>40 hrs</span></div>
+          </div>
+
+          <div>
+            <div class="flex justify-between mb-2">
+              <label class="text-sm font-medium text-slate-600">BOM error rate</label>
+              <span class="font-mono font-bold text-brand text-sm" x-text="errorRatePercent + '%'"></span>
+            </div>
+            <input type="range" min="2" max="30" step="1" x-model="errorRatePercent" class="w-full">
+            <div class="flex justify-between text-xs text-slate-400 mt-1"><span>2%</span><span>30%</span></div>
+          </div>
+
+          <div>
+            <div class="flex justify-between mb-2">
+              <label class="text-sm font-medium text-slate-600">Avg rework cost per incident</label>
+              <span class="font-mono font-bold text-brand text-sm" x-text="'₹' + reworkCostLakh + 'L'"></span>
+            </div>
+            <input type="range" min="0.5" max="20" step="0.5" x-model="reworkCostLakh" class="w-full">
+            <div class="flex justify-between text-xs text-slate-400 mt-1"><span>₹0.5L</span><span>₹20L</span></div>
+          </div>
+        </div>
+
+        <p class="text-xs text-slate-400 mt-6">Engineer cost baseline: ₹80/hr (₹15L CTC ÷ 1,800 working hours). CPP reduces validation to ~15 min per configuration.</p>
+      </div>
+
+      <!-- Outputs -->
+      <div class="space-y-4">
+        <div class="bg-ink rounded-2xl p-6 text-white" data-aos="fade-left" data-aos-delay="0">
+          <div class="font-mono text-3xl font-bold text-brand mb-1" x-text="hoursSavedPerMonth.toLocaleString()"></div>
+          <div class="text-slate-400 text-sm">Engineer hours saved per month</div>
+        </div>
+        <div class="bg-ink rounded-2xl p-6 text-white" data-aos="fade-left" data-aos-delay="80">
+          <div class="font-mono text-3xl font-bold text-brand mb-1" x-text="errorsPreventedPerMonth"></div>
+          <div class="text-slate-400 text-sm">BOM errors prevented per month</div>
+        </div>
+        <div class="bg-ink rounded-2xl p-6 text-white" data-aos="fade-left" data-aos-delay="160">
+          <div class="font-mono text-3xl font-bold text-brand mb-1" x-text="'₹' + reworkSavedLakhMonth + 'L'"></div>
+          <div class="text-slate-400 text-sm">Rework cost avoided per month</div>
+        </div>
+        <div class="bg-brand rounded-2xl p-6 text-white" data-aos="fade-left" data-aos-delay="240">
+          <div class="text-xs font-mono font-semibold text-white/70 mb-1 uppercase tracking-wider">Total Annual Value</div>
+          <div class="font-mono text-4xl font-bold text-white mb-1" x-text="'₹' + totalSavedLakhYear + 'L'"></div>
+          <div class="text-white/70 text-sm">Conservative estimate based on customer benchmarks</div>
+        </div>
+
+        <a href="#demo" class="block text-center bg-white border-2 border-brand text-brand hover:bg-brand hover:text-white font-semibold px-6 py-3 rounded-xl transition-all duration-150 text-sm">
+          Request a detailed ROI analysis for your product family →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     §10 COMPARISON TABLE
+═══════════════════════════════════════════════════════ -->
+<section class="py-20 bg-white" id="compare">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12" data-aos="fade-up">
+      <h2 class="font-mono font-bold text-3xl lg:text-4xl text-ink mb-3">CPP vs. the alternatives</h2>
+      <p class="text-slate-500 text-lg">Every competitor is a spreadsheet or a 6-month IT project. CPP ships in weeks.</p>
+    </div>
+
+    <div class="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm" data-aos="fade-up">
+      <table class="w-full text-sm">
+        <thead>
+          <tr>
+            <th class="bg-ink text-slate-400 text-left font-mono font-semibold px-6 py-4 text-xs w-52 rounded-tl-2xl">Capability</th>
+            <th class="bg-brand text-white text-center font-mono font-bold px-6 py-4 text-sm">CPP</th>
+            <th class="bg-ink text-slate-400 text-center font-mono font-semibold px-6 py-4 text-xs">Excel + Email</th>
+            <th class="bg-ink text-slate-400 text-center font-mono font-semibold px-6 py-4 text-xs rounded-tr-2xl">ERP Custom</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-slate-100">
+          <tr class="hover:bg-surface transition-colors">
+            <td class="px-6 py-3.5 text-slate-700 font-medium">Real-time constraint propagation</td>
+            <td class="px-6 py-3.5 text-center tbl-yes">✓ &lt;50ms</td>
+            <td class="px-6 py-3.5 text-center tbl-no">✗</td>
+            <td class="px-6 py-3.5 text-center tbl-partial">~ Slow</td>
+          </tr>
+          <tr class="hover:bg-surface transition-colors bg-slate-50/50">
+            <td class="px-6 py-3.5 text-slate-700 font-medium">Deterministic, auditable BOM</td>
+            <td class="px-6 py-3.5 text-center tbl-yes">✓ SHA-256</td>
+            <td class="px-6 py-3.5 text-center tbl-no">✗</td>
+            <td class="px-6 py-3.5 text-center tbl-no">✗</td>
+          </tr>
+          <tr class="hover:bg-surface transition-colors">
+            <td class="px-6 py-3.5 text-slate-700 font-medium">Rule changes without IT</td>
+            <td class="px-6 py-3.5 text-center tbl-yes">✓ DSL + compile</td>
+            <td class="px-6 py-3.5 text-center tbl-partial">~ Manual</td>
+            <td class="px-6 py-3.5 text-center tbl-no">✗ Months</td>
+          </tr>
+          <tr class="hover:bg-surface transition-colors bg-slate-50/50">
+            <td class="px-6 py-3.5 text-slate-700 font-medium">ERP push (zero re-keying)</td>
+            <td class="px-6 py-3.5 text-center tbl-yes">✓ SAP / Oracle</td>
+            <td class="px-6 py-3.5 text-center tbl-no">✗</td>
+            <td class="px-6 py-3.5 text-center tbl-partial">~ Once built</td>
+          </tr>
+          <tr class="hover:bg-surface transition-colors">
+            <td class="px-6 py-3.5 text-slate-700 font-medium">Multi-plant / multi-region</td>
+            <td class="px-6 py-3.5 text-center tbl-yes">✓</td>
+            <td class="px-6 py-3.5 text-center tbl-no">✗</td>
+            <td class="px-6 py-3.5 text-center tbl-partial">~ Varies</td>
+          </tr>
+          <tr class="hover:bg-surface transition-colors bg-slate-50/50">
+            <td class="px-6 py-3.5 text-slate-700 font-medium">Version history + rollback</td>
+            <td class="px-6 py-3.5 text-center tbl-yes">✓ Immutable</td>
+            <td class="px-6 py-3.5 text-center tbl-no">✗</td>
+            <td class="px-6 py-3.5 text-center tbl-no">✗</td>
+          </tr>
+          <tr class="hover:bg-surface transition-colors">
+            <td class="px-6 py-3.5 text-slate-700 font-medium">Explainable constraint violations</td>
+            <td class="px-6 py-3.5 text-center tbl-yes">✓ Causal chain</td>
+            <td class="px-6 py-3.5 text-center tbl-no">✗</td>
+            <td class="px-6 py-3.5 text-center tbl-no">✗</td>
+          </tr>
+          <tr class="hover:bg-surface transition-colors bg-slate-50/50">
+            <td class="px-6 py-3.5 text-slate-700 font-medium">100k+ part families</td>
+            <td class="px-6 py-3.5 text-center tbl-yes">✓</td>
+            <td class="px-6 py-3.5 text-center tbl-no">✗</td>
+            <td class="px-6 py-3.5 text-center tbl-partial">~ Rarely</td>
+          </tr>
+          <tr class="hover:bg-surface transition-colors">
+            <td class="px-6 py-3.5 text-slate-700 font-medium">Setup time</td>
+            <td class="px-6 py-3.5 text-center tbl-yes">Weeks</td>
+            <td class="px-6 py-3.5 text-center text-slate-500">Immediate</td>
+            <td class="px-6 py-3.5 text-center tbl-no">6–18 months</td>
+          </tr>
+          <tr class="hover:bg-surface transition-colors bg-slate-50/50 rounded-b-2xl">
+            <td class="px-6 py-3.5 text-slate-700 font-medium rounded-bl-2xl">Ongoing cost</td>
+            <td class="px-6 py-3.5 text-center tbl-yes">Subscription</td>
+            <td class="px-6 py-3.5 text-center text-slate-400 text-xs">Invisible (engineer time)</td>
+            <td class="px-6 py-3.5 text-center text-slate-400 text-xs rounded-br-2xl">IT + consultants</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     §11 TRUST / STATS STRIP
+═══════════════════════════════════════════════════════ -->
+<section class="py-16 bg-ink" id="trust-strip">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+      <div data-aos="fade-up" data-aos-delay="0">
+        <div class="flex items-baseline justify-center gap-0.5">
+          <span class="text-slate-400 font-mono text-2xl">&lt;</span>
+          <span id="trust-latency-val" class="stat-number">0</span>
+        </div>
+        <div class="text-slate-400 text-sm mt-2">Propagation p95 latency</div>
+      </div>
+      <div data-aos="fade-up" data-aos-delay="80">
+        <div id="trust-parts" class="stat-number">0</div>
+        <div class="text-slate-400 text-sm mt-2">Parts per product family</div>
+      </div>
+      <div data-aos="fade-up" data-aos-delay="160">
+        <div id="trust-det" class="stat-number">0</div>
+        <div class="text-slate-400 text-sm mt-2">BOM determinism guarantee</div>
+      </div>
+      <div data-aos="fade-up" data-aos-delay="240">
+        <div id="trust-rekey" class="stat-number">0</div>
+        <div class="text-slate-400 text-sm mt-2">Re-keying entries to ERP</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     §12 PRICING
+═══════════════════════════════════════════════════════ -->
+<section class="py-20 bg-surface" id="pricing">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12" data-aos="fade-up">
+      <h2 class="font-mono font-bold text-3xl lg:text-4xl text-ink mb-3">Transparent pricing. Enterprise flexibility.</h2>
+      <p class="text-slate-500 text-lg mb-6">All tiers include the constraint engine, BOM derivation, and ERP integration.</p>
+
+      <!-- Annual/Monthly toggle -->
+      <div x-data="{ annual: true }" class="inline-flex items-center gap-3 bg-white border border-slate-200 rounded-full p-1">
+        <button @click="annual=true"  :class="annual ? 'bg-brand text-white' : 'text-slate-500 hover:text-ink'" class="px-4 py-1.5 rounded-full text-sm font-semibold transition-all">Annual <span class="text-xs opacity-70">save 17%</span></button>
+        <button @click="annual=false" :class="!annual ? 'bg-brand text-white' : 'text-slate-500 hover:text-ink'" class="px-4 py-1.5 rounded-full text-sm font-semibold transition-all">Monthly</button>
+
+        <!-- Pricing cards inside toggle scope -->
+        <span class="hidden" id="annual-toggle-host" :data-annual="annual"></span>
+      </div>
+    </div>
+
+    <!-- Pricing cards -->
+    <div x-data="{ annual: true }" class="grid md:grid-cols-3 gap-6 items-center" data-aos="fade-up">
+
+      <!-- Starter -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-7 shadow-sm">
+        <div class="text-xs font-mono font-semibold text-slate-400 uppercase tracking-wider mb-3">Starter</div>
+        <div class="mb-1">
+          <span class="font-mono font-bold text-3xl text-ink" x-text="annual ? '₹2.8L' : '₹27,000'"></span>
+          <span class="text-slate-400 text-sm" x-text="annual ? '/year' : '/month'"></span>
+        </div>
+        <div class="text-xs text-slate-400 mb-6">Single product family, single plant</div>
+        <ul class="space-y-2.5 mb-8 text-sm text-slate-600">
+          <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span> 1 product family</li>
+          <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span> Up to 10,000 parts</li>
+          <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span> 1 ERP integration endpoint</li>
+          <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span> Email support + 99.5% SLA</li>
+          <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span> Pooled tenancy (RLS)</li>
+        </ul>
+        <a href="#demo" class="block text-center border border-brand text-brand hover:bg-brand hover:text-white font-semibold px-5 py-2.5 rounded-lg transition-all text-sm">Start Free Trial</a>
+      </div>
+
+      <!-- Professional (elevated) -->
+      <div class="bg-white rounded-2xl border-2 border-brand p-7 shadow-xl pricing-popular">
+        <div class="flex items-center justify-between mb-3">
+          <div class="text-xs font-mono font-semibold text-brand uppercase tracking-wider">Professional</div>
+          <span class="bg-brand text-white text-xs font-mono font-semibold px-2.5 py-1 rounded-full">Most Popular</span>
+        </div>
+        <div class="mb-1">
+          <span class="font-mono font-bold text-3xl text-ink" x-text="annual ? '₹8.4L' : '₹83,000'"></span>
+          <span class="text-slate-400 text-sm" x-text="annual ? '/year' : '/month'"></span>
+        </div>
+        <div class="text-xs text-slate-400 mb-6">Multi-family, multi-plant manufacturers</div>
+        <ul class="space-y-2.5 mb-8 text-sm text-slate-600">
+          <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span> Up to 10 product families</li>
+          <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span> Up to 100,000 parts</li>
+          <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span> 3 ERP / MES endpoints</li>
+          <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span> Visual rule sandbox + simulation</li>
+          <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span> Dedicated success manager</li>
+          <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span> 99.9% SLA + 4hr response</li>
+          <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span> Schema-per-tenant isolation</li>
+        </ul>
+        <a href="#demo" class="block text-center bg-brand hover:bg-brand-dark text-white font-semibold px-5 py-2.5 rounded-lg transition-colors text-sm shadow-sm">Request Demo</a>
+      </div>
+
+      <!-- Enterprise -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-7 shadow-sm">
+        <div class="text-xs font-mono font-semibold text-slate-400 uppercase tracking-wider mb-3">Enterprise</div>
+        <div class="mb-1">
+          <span class="font-mono font-bold text-3xl text-ink">Custom</span>
+        </div>
+        <div class="text-xs text-slate-400 mb-6">Regulated industries, multi-region</div>
+        <ul class="space-y-2.5 mb-8 text-sm text-slate-600">
+          <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span> Unlimited families + parts</li>
+          <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span> Unlimited ERP integrations</li>
+          <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span> Dedicated Kubernetes namespace</li>
+          <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span> PLM connector (Teamcenter/Windchill)</li>
+          <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span> SOC 2 + VAPT report on request</li>
+          <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span> DPDP / ISO 27001 compliance pack</li>
+          <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span> 99.99% SLA + 1hr response + SRE</li>
+        </ul>
+        <a href="#demo" class="block text-center border border-slate-300 text-slate-700 hover:border-brand hover:text-brand font-semibold px-5 py-2.5 rounded-lg transition-all text-sm">Contact Sales</a>
+      </div>
+    </div>
+
+    <p class="text-center text-xs text-slate-400 mt-8">All pricing in INR. GST @18% applicable. Annual billing. Monthly available at +20%. Prices exclude implementation services.</p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     §13 LEAD CAPTURE / DEMO FORM
+═══════════════════════════════════════════════════════ -->
+<section class="py-20 bg-ink" id="demo">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12" data-aos="fade-up">
+      <h2 class="font-mono font-bold text-3xl lg:text-4xl text-white mb-3">See CPP configured for your product family.</h2>
+      <p class="text-slate-400 text-lg mb-2">Book a 45-minute live demo. We'll model one of your real product families and show you constraint propagation on your actual data.</p>
+      <p class="text-brand font-semibold text-sm">No commitment. No sales pressure. Just your product, our engine.</p>
+    </div>
+
+    <div x-data="demoForm()" class="bg-white rounded-2xl p-8 shadow-2xl" data-aos="fade-up" data-aos-delay="100">
+
+      <!-- Thank you state -->
+      <div x-show="submitted" class="text-center py-8">
+        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+          </svg>
+        </div>
+        <h3 class="font-mono font-bold text-xl text-ink mb-2">Demo request received.</h3>
+        <p class="text-slate-500">Our team will reach out within 24 hours to schedule your session. Check your email for a calendar invite.</p>
+      </div>
+
+      <!-- Form -->
+      <form x-show="!submitted" @submit.prevent="submit()">
+        <div class="grid sm:grid-cols-2 gap-5 mb-5">
+
+          <div class="flex flex-col gap-1">
+            <label class="text-sm font-medium text-ink">Your Name <span class="text-red-500">*</span></label>
+            <input type="text" x-model="form.name" :class="errors.name ? 'input-error' : ''"
+              class="border border-slate-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand transition-all"
+              placeholder="Rajesh Kumar">
+            <span x-show="errors.name" x-text="errors.name" class="text-xs text-red-500"></span>
+          </div>
+
+          <div class="flex flex-col gap-1">
+            <label class="text-sm font-medium text-ink">Company <span class="text-red-500">*</span></label>
+            <input type="text" x-model="form.company" :class="errors.company ? 'input-error' : ''"
+              class="border border-slate-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand transition-all"
+              placeholder="Ace Micromatic Ltd.">
+            <span x-show="errors.company" x-text="errors.company" class="text-xs text-red-500"></span>
+          </div>
+
+          <div class="flex flex-col gap-1">
+            <label class="text-sm font-medium text-ink">Industry <span class="text-red-500">*</span></label>
+            <select x-model="form.industry" :class="errors.industry ? 'input-error' : ''"
+              class="border border-slate-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand transition-all bg-white">
+              <option value="">Select your industry</option>
+              <option>Elevators &amp; Escalators</option>
+              <option>Switchgear &amp; Electrical Panels</option>
+              <option>HVAC &amp; Cooling Systems</option>
+              <option>Industrial Machinery</option>
+              <option>Power Transformers</option>
+              <option>Other Manufacturing</option>
+            </select>
+            <span x-show="errors.industry" x-text="errors.industry" class="text-xs text-red-500"></span>
+          </div>
+
+          <div class="flex flex-col gap-1">
+            <label class="text-sm font-medium text-ink">Number of Configurable SKUs</label>
+            <select x-model="form.skus"
+              class="border border-slate-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand transition-all bg-white">
+              <option value="">Select approximate range</option>
+              <option>Less than 1,000</option>
+              <option>1,000 – 10,000</option>
+              <option>10,000 – 100,000</option>
+              <option>100,000+</option>
+            </select>
+          </div>
+
+          <div class="flex flex-col gap-1">
+            <label class="text-sm font-medium text-ink">Work Email <span class="text-red-500">*</span></label>
+            <input type="email" x-model="form.email" :class="errors.email ? 'input-error' : ''"
+              class="border border-slate-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand transition-all"
+              placeholder="rajesh@acemc.com">
+            <span x-show="errors.email" x-text="errors.email" class="text-xs text-red-500"></span>
+          </div>
+
+          <div class="flex flex-col gap-1">
+            <label class="text-sm font-medium text-ink">Phone <span class="text-slate-400 font-normal">(optional)</span></label>
+            <input type="tel" x-model="form.phone"
+              class="border border-slate-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand transition-all"
+              placeholder="+91 98765 43210">
+          </div>
+        </div>
+
+        <button type="submit" :disabled="submitting"
+          class="w-full bg-brand hover:bg-brand-dark disabled:opacity-60 text-white font-bold py-3.5 rounded-xl transition-colors text-base shadow-sm"
+          x-text="submitting ? 'Sending...' : 'Book My Demo →'">
+        </button>
+      </form>
+
+      <!-- Trust signals -->
+      <div x-show="!submitted" class="flex flex-wrap justify-center gap-6 mt-6 pt-6 border-t border-slate-100">
+        <div class="flex items-center gap-1.5 text-xs text-slate-400">
+          <svg class="w-3.5 h-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          No spam. Unsubscribe anytime.
+        </div>
+        <div class="flex items-center gap-1.5 text-xs text-slate-400">
+          <svg class="w-3.5 h-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          Demo booked within 24 hours.
+        </div>
+        <div class="flex items-center gap-1.5 text-xs text-slate-400">
+          <svg class="w-3.5 h-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          SOC 2 in progress. Your data stays yours.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     §14 FOOTER
+═══════════════════════════════════════════════════════ -->
+<footer class="bg-white border-t border-slate-100 pt-14 pb-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+
+      <!-- Brand -->
+      <div class="lg:col-span-1">
+        <div class="flex items-center gap-2.5 mb-4">
+          <div class="w-8 h-8 bg-brand rounded-lg flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h10M4 18h6"/></svg>
+          </div>
+          <span class="font-mono font-bold text-xl text-ink">CPP</span>
+        </div>
+        <p class="text-slate-500 text-sm leading-relaxed">Deterministic product knowledge and inference engine for Indian B2B manufacturers. Author once. Configure with confidence. Derive and integrate.</p>
+      </div>
+
+      <!-- Product -->
+      <div>
+        <h4 class="font-mono font-semibold text-ink text-sm mb-4">Product</h4>
+        <ul class="space-y-2.5">
+          <li><a href="#features"     class="text-slate-500 hover:text-brand text-sm transition-colors">Features</a></li>
+          <li><a href="#how-it-works" class="text-slate-500 hover:text-brand text-sm transition-colors">How It Works</a></li>
+          <li><a href="#pricing"      class="text-slate-500 hover:text-brand text-sm transition-colors">Pricing</a></li>
+          <li><a href="#demo"         class="text-slate-500 hover:text-brand text-sm transition-colors">Request Demo</a></li>
+          <li><a href="#roi"          class="text-slate-500 hover:text-brand text-sm transition-colors">ROI Calculator</a></li>
+        </ul>
+      </div>
+
+      <!-- Industries -->
+      <div>
+        <h4 class="font-mono font-semibold text-ink text-sm mb-4">Industries</h4>
+        <ul class="space-y-2.5">
+          <li><a href="industries/elevators.html"           class="text-slate-500 hover:text-brand text-sm transition-colors">Elevators</a></li>
+          <li><a href="industries/switchgear.html"          class="text-slate-500 hover:text-brand text-sm transition-colors">Switchgear</a></li>
+          <li><a href="industries/hvac.html"                class="text-slate-500 hover:text-brand text-sm transition-colors">HVAC</a></li>
+          <li><a href="industries/industrial-machinery.html" class="text-slate-500 hover:text-brand text-sm transition-colors">Industrial Machinery</a></li>
+          <li><a href="industries/power-transformers.html"  class="text-slate-500 hover:text-brand text-sm transition-colors">Power Transformers</a></li>
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <h4 class="font-mono font-semibold text-ink text-sm mb-4">Company</h4>
+        <ul class="space-y-2.5">
+          <li><a href="#" class="text-slate-500 hover:text-brand text-sm transition-colors">About</a></li>
+          <li><a href="#demo" class="text-slate-500 hover:text-brand text-sm transition-colors">Contact</a></li>
+          <li><a href="#" class="text-slate-500 hover:text-brand text-sm transition-colors">Privacy Policy</a></li>
+          <li><a href="#" class="text-slate-500 hover:text-brand text-sm transition-colors">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-slate-100 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="text-xs text-slate-400 font-mono">© 2026 CPP Platform Pvt. Ltd. · GST: XX-XXXXXXXXX · Made in India 🇮🇳</p>
+      <p class="text-xs text-slate-400">Built on .NET 9 · PostgreSQL · Redis · Kafka · Kubernetes</p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Scripts -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/countup.js@2.8.0/dist/countUp.umd.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>

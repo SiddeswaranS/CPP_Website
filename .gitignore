@@ -1,0 +1,9 @@
+node_modules/
+package.json
+package-lock.json
+test-pages.js
+C:\Temp\cpp-screenshots\
+screenshots/
+*.log
+.DS_Store
+Thumbs.db
