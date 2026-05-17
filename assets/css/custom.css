@@ -149,10 +149,10 @@ input[type="range"]::-moz-range-thumb {
 /* ── Smooth scroll + fixed-header anchor offset ── */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 4rem; /* matches nav h-16 (64px) so anchor jumps land below header */
+  scroll-padding-top: 4.5rem; /* 72px — matches JS HEADER_OFFSET exactly */
 }
 /* Sections also get scroll-margin so deep-linked URLs land correctly */
-section[id] { scroll-margin-top: 4rem; }
+section[id] { scroll-margin-top: 4.5rem; }
 
 /* ── Hero stat number accent ── */
 .stat-number {
@@ -166,6 +166,7 @@ section[id] { scroll-margin-top: 4rem; }
 /* ── Terminal code block ── */
 .terminal-block {
   background: #0F172A;
+  color: #E2E8F0; /* default text color — without this, unspanned tokens inherit dark page text and become invisible */
   border-radius: 0.75rem;
   padding: 1.25rem 1.5rem;
   font-family: 'JetBrains Mono', monospace;
