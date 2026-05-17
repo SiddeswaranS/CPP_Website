@@ -141,7 +141,7 @@
         </h1>
 
         <p class="text-lg text-slate-500 leading-relaxed mb-8 mx-auto" data-aos="fade-up" data-aos-delay="100">
-          CPP is the constraint engine built for Indian B2B manufacturers — real-time configuration validation, deterministic BOM derivation, and direct ERP push. <strong class="text-slate-700 font-semibold">Quote in hours, not weeks.</strong>
+          CPP is the constraint engine built for Indian B2B manufacturers — real-time configuration validation, deterministic BOM derivation, rule-driven pricing, and direct ERP push. Let your <strong class="text-slate-700 font-semibold">customers self-configure and quote</strong> without waiting for a sales engineer.
         </p>
 
         <div class="flex flex-wrap justify-center gap-3 mb-12" data-aos="fade-up" data-aos-delay="150">
@@ -532,6 +532,121 @@
 
 
 <!-- ═══════════════════════════════════════════════════════
+     §4B BEYOND BOM — PRICING + CUSTOMER SELF-SERVICE
+═══════════════════════════════════════════════════════ -->
+<section class="py-20 bg-white" id="pricing-selfservice">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14" data-aos="fade-up">
+      <div class="inline-flex items-center gap-2 bg-brand/10 text-brand text-xs font-mono font-semibold px-3 py-1.5 rounded-full mb-4">
+        <span class="w-1.5 h-1.5 bg-brand rounded-full"></span>
+        More than a BOM tool
+      </div>
+      <h2 class="font-mono font-bold text-3xl lg:text-4xl text-ink mb-3">A complete quote-to-order engine — pricing built in.</h2>
+      <p class="text-slate-500 text-lg max-w-3xl mx-auto">Every valid configuration carries a deterministic price. Every customer can self-serve a quote without picking up the phone.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-6">
+
+      <!-- Pricing Engine -->
+      <div class="bg-surface rounded-2xl p-8 border border-slate-200 hover:shadow-lg hover:border-brand/30 transition-all duration-200" data-aos="fade-up">
+        <div class="flex items-start gap-4 mb-5">
+          <div class="w-12 h-12 bg-brand/10 rounded-xl flex items-center justify-center flex-shrink-0">
+            <svg class="w-6 h-6 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="text-xs font-mono text-brand font-semibold uppercase tracking-wider mb-1">01 · Pricing Engine</div>
+            <h3 class="font-mono font-bold text-xl text-ink">Quote-perfect pricing on every valid configuration.</h3>
+          </div>
+        </div>
+
+        <p class="text-slate-600 leading-relaxed mb-6">A second engine sits alongside the constraint solver — same DSL, same versioning, same determinism. Rules can express tiered discounts, GST treatment, region-specific surcharges, customer-class margins, and bundle pricing. Extensible hooks let you plug in custom logic for special deals or contract pricing.</p>
+
+        <ul class="space-y-3 mb-6">
+          <li class="flex items-start gap-3 text-sm text-slate-700">
+            <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span><strong class="text-ink">Accurate rule handling</strong> — tiered pricing, volume discounts, currency conversion, GST/freight, all auditable</span>
+          </li>
+          <li class="flex items-start gap-3 text-sm text-slate-700">
+            <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span><strong class="text-ink">Extensible pricing hooks</strong> — plug in contract pricing, channel partner margins, or seasonal logic without touching core rules</span>
+          </li>
+          <li class="flex items-start gap-3 text-sm text-slate-700">
+            <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span><strong class="text-ink">No revenue leakage</strong> — every line item priced from the same source-of-truth rules, eliminating manual mistakes that erode margin</span>
+          </li>
+          <li class="flex items-start gap-3 text-sm text-slate-700">
+            <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span><strong class="text-ink">Quotes in minutes</strong> — formal quotation PDF generated from the same engine that priced it, with full traceability</span>
+          </li>
+        </ul>
+
+        <div class="terminal-block text-xs">
+          <span class="kw">price</span> <span class="str">"VFD surcharge for 690V"</span><br>
+          &nbsp;&nbsp;<span class="kw">when</span> Motor.voltage <span class="op">=</span> <span class="num">690</span>V <span class="op">&amp;&amp;</span> Drive <span class="op">=</span> VFD<br>
+          &nbsp;&nbsp;<span class="kw">add</span> <span class="num">8.5</span><span class="op">%</span> <span class="kw">to</span> Drive.line_total<br>
+          &nbsp;&nbsp;<span class="kw">tag</span> <span class="str">"high-voltage VFD premium"</span>
+        </div>
+      </div>
+
+      <!-- Customer Self-Service -->
+      <div class="bg-surface rounded-2xl p-8 border border-slate-200 hover:shadow-lg hover:border-brand/30 transition-all duration-200" data-aos="fade-up" data-aos-delay="100">
+        <div class="flex items-start gap-4 mb-5">
+          <div class="w-12 h-12 bg-brand/10 rounded-xl flex items-center justify-center flex-shrink-0">
+            <svg class="w-6 h-6 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="text-xs font-mono text-brand font-semibold uppercase tracking-wider mb-1">02 · Customer Self-Service</div>
+            <h3 class="font-mono font-bold text-xl text-ink">Your customers configure and order. Your engineers stay focused.</h3>
+          </div>
+        </div>
+
+        <p class="text-slate-600 leading-relaxed mb-6">Expose the same constraint engine to your dealers, distributors, and end customers via a branded portal. They self-configure within the boundaries you've defined — invalid combinations are simply not offered. Quotes are instant, accurate, and binding. Orders flow straight into your ERP.</p>
+
+        <ul class="space-y-3 mb-6">
+          <li class="flex items-start gap-3 text-sm text-slate-700">
+            <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span><strong class="text-ink">No sales-engineer bottleneck</strong> — dealers configure 24/7 without waiting for back-office validation</span>
+          </li>
+          <li class="flex items-start gap-3 text-sm text-slate-700">
+            <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span><strong class="text-ink">Branded portal per channel</strong> — different catalogues, pricing, and approval workflows for direct customers, dealers, and distributors</span>
+          </li>
+          <li class="flex items-start gap-3 text-sm text-slate-700">
+            <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span><strong class="text-ink">Quote → Order in one click</strong> — accepted quotes convert to ERP sales orders automatically, no double entry</span>
+          </li>
+          <li class="flex items-start gap-3 text-sm text-slate-700">
+            <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span><strong class="text-ink">Embed anywhere</strong> — ship as a portal, iframe in your website, or expose as JSON API for partner integrations</span>
+          </li>
+        </ul>
+
+        <div class="grid grid-cols-3 gap-3">
+          <div class="bg-white rounded-lg p-3 border border-slate-200 text-center">
+            <div class="font-mono font-bold text-lg text-brand">24/7</div>
+            <div class="text-[10px] text-slate-500 mt-0.5 uppercase tracking-wider">Always available</div>
+          </div>
+          <div class="bg-white rounded-lg p-3 border border-slate-200 text-center">
+            <div class="font-mono font-bold text-lg text-brand">−68%</div>
+            <div class="text-[10px] text-slate-500 mt-0.5 uppercase tracking-wider">Sales engineer load</div>
+          </div>
+          <div class="bg-white rounded-lg p-3 border border-slate-200 text-center">
+            <div class="font-mono font-bold text-lg text-brand">3.2×</div>
+            <div class="text-[10px] text-slate-500 mt-0.5 uppercase tracking-wider">Quote throughput</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
      §5 HOW IT WORKS
 ═══════════════════════════════════════════════════════ -->
 <section class="py-20 bg-surface" id="how-it-works">
@@ -815,6 +930,28 @@
         <h3 class="font-mono font-semibold text-ink mb-2">Rule DSL</h3>
         <p class="text-slate-500 text-sm leading-relaxed">Product knowledge as typed, auditable code. Rules are written in a human-readable DSL, compiled to a typed constraint graph, and diff-able like source code. AI-ready at the AST level.</p>
         <div class="mt-3 text-xs font-mono text-brand">DSL · Compiler · AST</div>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md hover:border-brand/20 transition-all duration-200 group" data-aos="fade-up" data-aos-delay="0">
+        <div class="w-10 h-10 bg-brand/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-brand/15 transition-colors">
+          <svg class="w-5 h-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <h3 class="font-mono font-semibold text-ink mb-2">Pricing Engine</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">Rule-driven pricing with extensible hooks for contract margins, channel partners, GST, and seasonal logic. Every quote priced deterministically from the same source of truth.</p>
+        <div class="mt-3 text-xs font-mono text-brand">Tiered · Hooks · GST-ready</div>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md hover:border-brand/20 transition-all duration-200 group" data-aos="fade-up" data-aos-delay="80">
+        <div class="w-10 h-10 bg-brand/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-brand/15 transition-colors">
+          <svg class="w-5 h-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+          </svg>
+        </div>
+        <h3 class="font-mono font-semibold text-ink mb-2">Customer Self-Service</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">Branded portals for dealers, distributors, and end customers. They configure within your rules, get instant quotes, and convert to ERP orders in one click — no sales engineer required.</p>
+        <div class="mt-3 text-xs font-mono text-brand">Portal · API · 24/7</div>
       </div>
 
     </div>
@@ -1284,6 +1421,18 @@
             <td class="px-6 py-3.5 text-center tbl-yes">✓ SAP / Oracle</td>
             <td class="px-6 py-3.5 text-center tbl-no">✗</td>
             <td class="px-6 py-3.5 text-center tbl-partial">~ Once built</td>
+          </tr>
+          <tr class="hover:bg-surface transition-colors">
+            <td class="px-6 py-3.5 text-slate-700 font-medium">Rule-driven pricing engine</td>
+            <td class="px-6 py-3.5 text-center tbl-yes">✓ DSL + hooks</td>
+            <td class="px-6 py-3.5 text-center tbl-no">✗ Manual</td>
+            <td class="px-6 py-3.5 text-center tbl-partial">~ Hardcoded</td>
+          </tr>
+          <tr class="hover:bg-surface transition-colors bg-slate-50/50">
+            <td class="px-6 py-3.5 text-slate-700 font-medium">Customer self-service quoting</td>
+            <td class="px-6 py-3.5 text-center tbl-yes">✓ 24/7 portal</td>
+            <td class="px-6 py-3.5 text-center tbl-no">✗</td>
+            <td class="px-6 py-3.5 text-center tbl-no">✗</td>
           </tr>
           <tr class="hover:bg-surface transition-colors">
             <td class="px-6 py-3.5 text-slate-700 font-medium">Multi-plant / multi-region</td>
