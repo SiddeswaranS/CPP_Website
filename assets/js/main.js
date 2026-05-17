@@ -8,6 +8,32 @@ document.addEventListener('DOMContentLoaded', () => {
   /* AOS — scroll animations */
   AOS.init({ duration: 600, once: true, easing: 'ease-out-cubic', offset: 60 });
 
+  /* Anchor scroll — fires AOS first, then scrolls with proper header offset.
+     Replaces both browser-default and CSS scroll-padding (which races AOS layout). */
+  const HEADER_OFFSET = 72; // 64px nav + 8px breathing room
+  function scrollToAnchor(hash, updateUrl = true) {
+    const el = document.querySelector(hash);
+    if (!el) return;
+    // Force AOS to refresh layout so element positions are accurate
+    if (window.AOS) AOS.refreshHard();
+    const y = el.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+    if (updateUrl) history.pushState(null, '', hash);
+  }
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    const href = a.getAttribute('href');
+    if (!href || href === '#' || href.length < 2) return;
+    if (!document.querySelector(href)) return;
+    e.preventDefault();
+    scrollToAnchor(href);
+  });
+  /* If page loads with a hash, scroll to it after AOS has measured */
+  if (window.location.hash) {
+    setTimeout(() => scrollToAnchor(window.location.hash, false), 300);
+  }
+
   /* Hero CountUp — fires 800ms after load */
   setTimeout(() => {
     safeCountUp('stat-boms',    2400000, { separator: ',', duration: 2.5 });

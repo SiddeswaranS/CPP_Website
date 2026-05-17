@@ -194,6 +194,49 @@ section[id] { scroll-margin-top: 4rem; }
   box-shadow: 0 0 0 3px #FEE2E2 !important;
 }
 
+/* ── Unified form controls: text/email/tel/select all match ── */
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+form input[type="number"],
+form select,
+form textarea {
+  background-color: #F8FAFC;
+  color: #0F172A;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  height: 2.75rem; /* keep all controls same height */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+form input::placeholder,
+form textarea::placeholder { color: #94A3B8; }
+
+/* Select: custom chevron arrow so it stops looking like a 1995 dropdown */
+form select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%2364748B' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  background-size: 12px 8px;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+form select:focus {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%230EA5E9' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+/* Options inside the select dropdown — best-effort cross-browser */
+form select option {
+  background-color: #fff;
+  color: #0F172A;
+  padding: 0.5rem;
+}
+form select option:checked {
+  background-color: #0EA5E9;
+  color: #fff;
+}
+
 /* ── Fade-in transition for Alpine x-show ── */
 [x-cloak] { display: none !important; }
 

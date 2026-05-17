@@ -3,7 +3,9 @@ package.json
 package-lock.json
 test-pages.js
 whitespace-audit.js
+verify-fixes.js
 audit-*.png
+verify-*.png
 whitespace-audit.png
 C:\Temp\cpp-screenshots\
 screenshots/
