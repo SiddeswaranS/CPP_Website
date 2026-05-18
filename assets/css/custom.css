@@ -263,6 +263,10 @@ form select option:checked {
 /* ── Fade-in transition for Alpine x-show ── */
 [x-cloak] { display: none !important; }
 
+/* ── Hide scrollbar but keep functionality (mobile-friendly horizontal scroll) ── */
+.scrollbar-hide { scrollbar-width: none; -ms-overflow-style: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
 /* ── Industry tab active underline ── */
 .ind-tab-active {
   border-bottom: 2px solid #0EA5E9;

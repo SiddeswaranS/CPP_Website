@@ -1005,13 +1005,13 @@
 
     <div x-data="{ tab: 'elevators' }">
 
-      <!-- Tab bar -->
-      <div class="flex overflow-x-auto gap-0 border-b border-slate-200 mb-10 -mx-4 px-4 sm:mx-0 sm:px-0" data-aos="fade-up">
-        <button @click="tab='elevators'"   :class="tab==='elevators'   ? 'ind-tab-active' : 'ind-tab-inactive'" class="px-5 py-3 text-sm font-medium whitespace-nowrap transition-all">Elevators</button>
-        <button @click="tab='switchgear'"  :class="tab==='switchgear'  ? 'ind-tab-active' : 'ind-tab-inactive'" class="px-5 py-3 text-sm font-medium whitespace-nowrap transition-all">Switchgear</button>
-        <button @click="tab='hvac'"        :class="tab==='hvac'        ? 'ind-tab-active' : 'ind-tab-inactive'" class="px-5 py-3 text-sm font-medium whitespace-nowrap transition-all">HVAC</button>
-        <button @click="tab='machinery'"   :class="tab==='machinery'   ? 'ind-tab-active' : 'ind-tab-inactive'" class="px-5 py-3 text-sm font-medium whitespace-nowrap transition-all">Industrial Machinery</button>
-        <button @click="tab='transformers'" :class="tab==='transformers' ? 'ind-tab-active' : 'ind-tab-inactive'" class="px-5 py-3 text-sm font-medium whitespace-nowrap transition-all">Power Transformers</button>
+      <!-- Tab bar — scrollable on mobile with hidden scrollbar; touch-swipeable -->
+      <div class="flex overflow-x-auto scrollbar-hide gap-0 border-b border-slate-200 mb-10 -mx-4 px-4 sm:mx-0 sm:px-0" data-aos="fade-up" style="scroll-snap-type: x mandatory;">
+        <button @click="tab='elevators'"   :class="tab==='elevators'   ? 'ind-tab-active' : 'ind-tab-inactive'" class="px-3 sm:px-5 py-2.5 sm:py-3 text-xs sm:text-sm font-medium whitespace-nowrap transition-all" style="scroll-snap-align: start;">Elevators</button>
+        <button @click="tab='switchgear'"  :class="tab==='switchgear'  ? 'ind-tab-active' : 'ind-tab-inactive'" class="px-3 sm:px-5 py-2.5 sm:py-3 text-xs sm:text-sm font-medium whitespace-nowrap transition-all" style="scroll-snap-align: start;">Switchgear</button>
+        <button @click="tab='hvac'"        :class="tab==='hvac'        ? 'ind-tab-active' : 'ind-tab-inactive'" class="px-3 sm:px-5 py-2.5 sm:py-3 text-xs sm:text-sm font-medium whitespace-nowrap transition-all" style="scroll-snap-align: start;">HVAC</button>
+        <button @click="tab='machinery'"   :class="tab==='machinery'   ? 'ind-tab-active' : 'ind-tab-inactive'" class="px-3 sm:px-5 py-2.5 sm:py-3 text-xs sm:text-sm font-medium whitespace-nowrap transition-all" style="scroll-snap-align: start;">Industrial Machinery</button>
+        <button @click="tab='transformers'" :class="tab==='transformers' ? 'ind-tab-active' : 'ind-tab-inactive'" class="px-3 sm:px-5 py-2.5 sm:py-3 text-xs sm:text-sm font-medium whitespace-nowrap transition-all" style="scroll-snap-align: start;">Power Transformers</button>
       </div>
 
       <!-- Elevators -->
