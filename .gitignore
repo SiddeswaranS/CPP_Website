@@ -4,9 +4,13 @@ package-lock.json
 test-pages.js
 whitespace-audit.js
 verify-fixes.js
+mobile-audit.js
+mobile-quick.js
 audit-*.png
 verify-*.png
 whitespace-audit.png
+mobile-audit/
+mobile-quick/
 C:\Temp\cpp-screenshots\
 screenshots/
 *.log

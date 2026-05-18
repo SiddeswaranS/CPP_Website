@@ -153,13 +153,26 @@ html {
 /* Sections also get scroll-margin so deep-linked URLs land correctly */
 section[id] { scroll-margin-top: 4.5rem; }
 
+/* ── Mobile safety net: prevent any rogue element from causing horizontal page scroll ── */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+/* Ensure all images and SVGs scale within their containers */
+img, svg, video, iframe { max-width: 100%; height: auto; }
+/* Tables wrap or scroll inside their own container, not the whole page */
+table { max-width: 100%; }
+
 /* ── Hero stat number accent ── */
 .stat-number {
   font-family: 'JetBrains Mono', monospace;
   font-weight: 700;
-  font-size: 2.25rem;
+  font-size: 1.75rem;
   color: #0EA5E9;
   line-height: 1;
+}
+@media (min-width: 640px) {
+  .stat-number { font-size: 2.25rem; }
 }
 
 /* ── Terminal code block ── */
