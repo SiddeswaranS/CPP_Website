@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CPP Blog — Engineering Insights for Indian Manufacturers</title>
+  <meta name="description" content="Product configuration best practices, BOM automation insights, and case studies from Indian B2B manufacturing. By the CPP Platform team.">
+  <link rel="canonical" href="https://cpplatform.in/blog/index.html">
+  <meta name="theme-color" content="#0EA5E9">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CPP Platform">
+  <meta property="og:title" content="CPP Blog — Engineering Insights for Indian Manufacturers">
+  <meta property="og:description" content="Product configuration best practices, BOM automation insights, and case studies from Indian B2B manufacturing.">
+  <meta property="og:image" content="https://cpplatform.in/assets/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://cpplatform.in/blog/index.html">
+  <meta property="og:locale" content="en_IN">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CPP Blog — Engineering Insights for Indian Manufacturers">
+  <meta name="twitter:description" content="Product configuration best practices, BOM automation insights, and case studies from Indian B2B manufacturing.">
+  <meta name="twitter:image" content="https://cpplatform.in/assets/images/og-image.jpg">
+
+  <!-- JSON-LD: Blog + BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "CPP Blog",
+    "description": "Engineering insights, product configuration best practices, and case studies from Indian manufacturing.",
+    "url": "https://cpplatform.in/blog/index.html",
+    "publisher": {
+      "@type": "Organization",
+      "name": "CPP Platform",
+      "url": "https://cpplatform.in/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://cpplatform.in/assets/images/og-image.jpg"
+      }
+    },
+    "inLanguage": "en-IN"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cpplatform.in/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://cpplatform.in/blog/index.html" }
+    ]
+  }
+  </script>
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: {
+          brand:   { DEFAULT: '#0EA5E9', dark: '#0284C7', light: '#BAE6FD', faint: '#F0F9FF' },
+          surface: '#F1F5F9',
+          ink:     '#0F172A',
+        },
+        fontFamily: {
+          mono: ['"JetBrains Mono"', 'monospace'],
+          sans: ['Inter', 'sans-serif'],
+        }
+      }}
+    }
+  </script>
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../assets/css/custom.min.css?v=1.1.0">
+
+  <!-- Alpine -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body class="font-sans bg-surface text-ink antialiased">
+
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-brand focus:text-white focus:font-semibold focus:px-4 focus:py-2 focus:rounded-lg">Skip to main content</a>
+
+<!-- Nav -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-slate-100 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+    <a href="../index.html" class="flex items-center gap-2.5">
+      <div class="w-8 h-8 bg-brand rounded-lg flex items-center justify-center">
+        <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h10M4 18h6"/></svg>
+      </div>
+      <span class="font-mono font-bold text-xl text-ink">CPP</span>
+    </a>
+    <div class="flex items-center gap-4">
+      <a href="index.html" class="text-sm font-medium text-brand border-b-2 border-brand pb-0.5">Blog</a>
+      <a href="../index.html#demo" class="inline-flex items-center gap-1.5 bg-brand hover:bg-brand-dark text-white font-semibold text-sm px-4 py-2 rounded-lg transition-colors">Request Demo →</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- Hero -->
+<section class="pt-24 pb-16 bg-ink">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="inline-block bg-brand/20 text-brand text-xs font-mono font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-6" data-aos="fade-up">CPP Blog</div>
+    <h1 class="font-mono font-bold text-4xl lg:text-5xl text-white leading-tight mb-6" data-aos="fade-up" data-aos-delay="60">
+      The CPP Blog
+    </h1>
+    <p class="text-slate-400 text-xl leading-relaxed max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="120">
+      Engineering insights, product configuration best practices, and case studies from Indian manufacturing.
+    </p>
+  </div>
+</section>
+
+<!-- Category filter strip -->
+<section class="bg-white border-b border-slate-100 sticky top-16 z-40" data-aos="fade-down">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center gap-1 overflow-x-auto py-3 scrollbar-none">
+      <button class="flex-shrink-0 px-4 py-1.5 rounded-full bg-brand text-white text-sm font-medium font-mono transition-colors">All</button>
+      <button class="flex-shrink-0 px-4 py-1.5 rounded-full bg-surface text-slate-600 hover:bg-brand/10 hover:text-brand text-sm font-medium font-mono transition-colors">Process</button>
+      <button class="flex-shrink-0 px-4 py-1.5 rounded-full bg-surface text-slate-600 hover:bg-brand/10 hover:text-brand text-sm font-medium font-mono transition-colors">Technical</button>
+      <button class="flex-shrink-0 px-4 py-1.5 rounded-full bg-surface text-slate-600 hover:bg-brand/10 hover:text-brand text-sm font-medium font-mono transition-colors">Cost Analysis</button>
+      <button class="flex-shrink-0 px-4 py-1.5 rounded-full bg-surface text-slate-600 hover:bg-brand/10 hover:text-brand text-sm font-medium font-mono transition-colors">Case Studies</button>
+    </div>
+  </div>
+</section>
+
+<!-- Featured post (first article, larger card) -->
+<section class="py-12 bg-white">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-xs font-mono font-semibold text-slate-400 uppercase tracking-wider mb-5">Featured</div>
+
+    <a href="excel-killing-cpq.html" class="group block bg-surface border border-slate-200 rounded-2xl overflow-hidden hover:border-brand hover:shadow-xl transition-all" data-aos="fade-up">
+      <div class="grid lg:grid-cols-5 gap-0">
+        <!-- Visual accent panel -->
+        <div class="lg:col-span-2 bg-ink flex items-center justify-center p-10 min-h-[200px]">
+          <div class="text-center">
+            <div class="font-mono font-bold text-5xl text-brand mb-2">18d</div>
+            <div class="text-slate-400 text-sm">avg Excel quote cycle</div>
+            <div class="mt-4 flex items-center justify-center gap-2 text-slate-500 text-xs font-mono">
+              <span class="w-8 h-px bg-slate-600"></span>
+              vs 4 hours with CPP
+              <span class="w-8 h-px bg-slate-600"></span>
+            </div>
+          </div>
+        </div>
+        <!-- Content -->
+        <div class="lg:col-span-3 p-7 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <span class="bg-brand/10 text-brand text-xs font-mono font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full">Process Excellence</span>
+              <span class="text-slate-400 text-xs">6 min read · May 17, 2026</span>
+            </div>
+            <h2 class="font-mono font-bold text-2xl text-ink mb-3 group-hover:text-brand transition-colors">
+              Why Excel Is Killing Your Configure-Price-Quote Process
+            </h2>
+            <p class="text-slate-600 leading-relaxed mb-5">
+              Indian manufacturers using spreadsheets for product configuration lose an average of 18 days per quote cycle, face 12–18% BOM error rates, and routinely miss orders. Here's the anatomy of that failure — and the three specific Excel failure modes you cannot patch your way out of.
+            </p>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-slate-100 text-slate-600 text-xs font-mono px-2 py-0.5 rounded">CPQ</span>
+              <span class="bg-slate-100 text-slate-600 text-xs font-mono px-2 py-0.5 rounded">BOM</span>
+              <span class="bg-slate-100 text-slate-600 text-xs font-mono px-2 py-0.5 rounded">Manufacturing</span>
+            </div>
+            <span class="text-brand font-semibold text-sm group-hover:gap-2 transition-all flex items-center gap-1">Read →</span>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- Blog grid -->
+<section class="pb-16 bg-white">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-xs font-mono font-semibold text-slate-400 uppercase tracking-wider mb-5">All Posts</div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Card 1: BOM Errors Cost -->
+      <a href="bom-errors-cost.html" class="group block bg-surface border border-slate-200 rounded-xl overflow-hidden hover:border-brand hover:shadow-lg transition-all" data-aos="fade-up" data-aos-delay="0">
+        <div class="bg-ink/90 px-5 py-8 flex items-center justify-center">
+          <div class="text-center">
+            <div class="font-mono font-bold text-3xl text-brand">₹50L</div>
+            <div class="text-slate-500 text-xs mt-1 font-mono">max per BOM incident</div>
+          </div>
+        </div>
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="bg-red-50 text-red-600 text-xs font-mono font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full">Cost Analysis</span>
+            <span class="text-slate-400 text-xs">8 min read</span>
+          </div>
+          <h3 class="font-semibold text-ink text-base mb-2 group-hover:text-brand transition-colors leading-snug">
+            BOM Errors Cost ₹2–50 Lakh per Incident
+          </h3>
+          <p class="text-slate-500 text-sm leading-relaxed mb-4">
+            A data-driven breakdown of rework costs across elevator, switchgear, and transformer manufacturing. The numbers will change how you think about "good enough" BOM accuracy.
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-slate-400 text-xs">May 12, 2026</span>
+            <span class="text-brand text-sm font-medium group-hover:underline">Read →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 2: Constraint vs Rules Engine -->
+      <a href="constraint-configurator-vs-rules-engine.html" class="group block bg-surface border border-slate-200 rounded-xl overflow-hidden hover:border-brand hover:shadow-lg transition-all" data-aos="fade-up" data-aos-delay="80">
+        <div class="bg-brand/10 px-5 py-8 flex items-center justify-center">
+          <div class="text-center">
+            <div class="font-mono font-bold text-xl text-brand leading-snug">Constraint<br>Engine</div>
+            <div class="text-slate-500 text-xs mt-2 font-mono">vs Rules Engine</div>
+          </div>
+        </div>
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="bg-blue-50 text-blue-600 text-xs font-mono font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full">Technical</span>
+            <span class="text-slate-400 text-xs">10 min read</span>
+          </div>
+          <h3 class="font-semibold text-ink text-base mb-2 group-hover:text-brand transition-colors leading-snug">
+            Constraint Configurator vs Rules Engine: What's the Difference?
+          </h3>
+          <p class="text-slate-500 text-sm leading-relaxed mb-4">
+            Both enforce product rules — but they do it differently, and the difference matters enormously for products with hundreds of interdependent options. Here's how to choose.
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-slate-400 text-xs">May 8, 2026</span>
+            <span class="text-brand text-sm font-medium group-hover:underline">Read →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 3: excel-killing-cpq (repeat as standard card) -->
+      <a href="excel-killing-cpq.html" class="group block bg-surface border border-slate-200 rounded-xl overflow-hidden hover:border-brand hover:shadow-lg transition-all" data-aos="fade-up" data-aos-delay="160">
+        <div class="bg-slate-800 px-5 py-8 flex items-center justify-center">
+          <div class="text-center font-mono text-slate-500 text-sm">
+            <span class="text-red-400 font-bold">v47_final</span><br>
+            <span class="text-slate-600 text-xs">_REVISED_USE_THIS.xlsx</span>
+          </div>
+        </div>
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="bg-brand/10 text-brand text-xs font-mono font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full">Process</span>
+            <span class="text-slate-400 text-xs">6 min read</span>
+          </div>
+          <h3 class="font-semibold text-ink text-base mb-2 group-hover:text-brand transition-colors leading-snug">
+            Why Excel Is Killing Your Configure-Price-Quote Process
+          </h3>
+          <p class="text-slate-500 text-sm leading-relaxed mb-4">
+            The three specific failure modes that make Excel a liability for configurable product quoting — and why patching it with more IF statements makes things worse.
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-slate-400 text-xs">May 17, 2026</span>
+            <span class="text-brand text-sm font-medium group-hover:underline">Read →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 4: Case Study — Elevator Manufacturer -->
+      <a href="../case-studies/elevator-manufacturer.html" class="group block bg-surface border border-slate-200 rounded-xl overflow-hidden hover:border-brand hover:shadow-lg transition-all" data-aos="fade-up" data-aos-delay="0">
+        <div class="bg-amber-50 border-b border-amber-100 px-5 py-8 flex items-center justify-center">
+          <div class="text-center">
+            <div class="font-mono font-bold text-3xl text-amber-700">95%</div>
+            <div class="text-amber-600 text-xs mt-1 font-mono">quote cycle reduction</div>
+          </div>
+        </div>
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="bg-amber-50 text-amber-700 text-xs font-mono font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full border border-amber-200">Case Study</span>
+            <span class="text-slate-400 text-xs">5 min read</span>
+          </div>
+          <h3 class="font-semibold text-ink text-base mb-2 group-hover:text-brand transition-colors leading-snug">
+            Case Study: Elevator OEM — 18 Days to 4 Hours
+          </h3>
+          <p class="text-slate-500 text-sm leading-relaxed mb-4">
+            How a mid-sized Indian elevator manufacturer eliminated BOM errors and cut their quote cycle by 95% after deploying CPP for one product family.
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-slate-400 text-xs">May 2026</span>
+            <span class="text-brand text-sm font-medium group-hover:underline">Read case study →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 5: Case Study — Switchgear Manufacturer -->
+      <a href="../case-studies/switchgear-manufacturer.html" class="group block bg-surface border border-slate-200 rounded-xl overflow-hidden hover:border-brand hover:shadow-lg transition-all" data-aos="fade-up" data-aos-delay="80">
+        <div class="bg-sky-50 border-b border-sky-100 px-5 py-8 flex items-center justify-center">
+          <div class="text-center">
+            <div class="font-mono font-bold text-3xl text-sky-700">₹1.4Cr</div>
+            <div class="text-sky-600 text-xs mt-1 font-mono">saved in year one</div>
+          </div>
+        </div>
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="bg-amber-50 text-amber-700 text-xs font-mono font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full border border-amber-200">Case Study</span>
+            <span class="text-slate-400 text-xs">6 min read</span>
+          </div>
+          <h3 class="font-semibold text-ink text-base mb-2 group-hover:text-brand transition-colors leading-snug">
+            Case Study: Switchgear OEM — IEC 60947 at the Point of Selection
+          </h3>
+          <p class="text-slate-500 text-sm leading-relaxed mb-4">
+            A switchgear manufacturer encoding 340 IEC 60947 compliance rules into CPP — and the impact on quote accuracy, engineer headcount, and annual savings.
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-slate-400 text-xs">May 2026</span>
+            <span class="text-brand text-sm font-medium group-hover:underline">Read case study →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 6: How Indian Manufacturers Win Tenders Faster -->
+      <a href="how-manufacturers-win-tenders-faster.html" class="group block bg-surface border border-slate-200 rounded-xl overflow-hidden hover:border-brand hover:shadow-lg transition-all" data-aos="fade-up" data-aos-delay="160">
+        <div class="bg-emerald-50 border-b border-emerald-100 px-5 py-8 flex items-center justify-center">
+          <div class="text-center">
+            <div class="font-mono font-bold text-3xl text-emerald-700">3wk→4h</div>
+            <div class="text-emerald-600 text-xs mt-1 font-mono">quote-to-submission</div>
+          </div>
+        </div>
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="bg-emerald-50 text-emerald-700 text-xs font-mono font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full border border-emerald-200">Tenders & CPQ</span>
+            <span class="text-slate-400 text-xs">7 min read</span>
+          </div>
+          <h3 class="font-semibold text-ink text-base mb-2 group-hover:text-brand transition-colors leading-snug">
+            How Indian Manufacturers Win Government Tenders Faster with CPQ
+          </h3>
+          <p class="text-slate-500 text-sm leading-relaxed mb-4">
+            Indian manufacturers lose tenders not on price but on quote speed. A bid submitted 4 hours after a competitor's goes to the faster team. CPQ closes that gap in weeks.
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-slate-400 text-xs">May 17, 2026</span>
+            <span class="text-brand text-sm font-medium group-hover:underline">Read →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 7: ERP Integration -->
+      <a href="erp-integration-product-configurator.html" class="group block bg-surface border border-slate-200 rounded-xl overflow-hidden hover:border-brand hover:shadow-lg transition-all" data-aos="fade-up" data-aos-delay="0">
+        <div class="bg-violet-50 border-b border-violet-100 px-5 py-8 flex items-center justify-center">
+          <div class="text-center">
+            <div class="font-mono font-bold text-xl text-violet-700 leading-snug">CPP→SAP</div>
+            <div class="text-violet-600 text-xs mt-1 font-mono">&lt;30 sec push</div>
+          </div>
+        </div>
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="bg-violet-50 text-violet-700 text-xs font-mono font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full border border-violet-200">Integration & ERP</span>
+            <span class="text-slate-400 text-xs">7 min read</span>
+          </div>
+          <h3 class="font-semibold text-ink text-base mb-2 group-hover:text-brand transition-colors leading-snug">
+            How to Connect Your Product Configurator to SAP, Oracle, and Dynamics
+          </h3>
+          <p class="text-slate-500 text-sm leading-relaxed mb-4">
+            Manual BOM re-entry between CPQ and ERP costs 3–5 hours per order. Here's how real-time ERP integration eliminates the gap — and the errors.
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-slate-400 text-xs">May 17, 2026</span>
+            <span class="text-brand text-sm font-medium group-hover:underline">Read →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 8: Multi-Plant BOM -->
+      <a href="multi-plant-bom-management.html" class="group block bg-surface border border-slate-200 rounded-xl overflow-hidden hover:border-brand hover:shadow-lg transition-all" data-aos="fade-up" data-aos-delay="80">
+        <div class="bg-orange-50 border-b border-orange-100 px-5 py-8 flex items-center justify-center">
+          <div class="text-center">
+            <div class="font-mono font-bold text-3xl text-orange-700">3</div>
+            <div class="text-orange-600 text-xs mt-1 font-mono">plants · 1 source BOM</div>
+          </div>
+        </div>
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="bg-orange-50 text-orange-700 text-xs font-mono font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full border border-orange-200">Operations & BOM</span>
+            <span class="text-slate-400 text-xs">8 min read</span>
+          </div>
+          <h3 class="font-semibold text-ink text-base mb-2 group-hover:text-brand transition-colors leading-snug">
+            Multi-Plant BOM Management: Handle Regional Variants Without Chaos
+          </h3>
+          <p class="text-slate-500 text-sm leading-relaxed mb-4">
+            Managing BOMs across 3+ plants with regional variants and different compliance standards is the hardest scaling problem in Indian manufacturing. Here's how to solve it.
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-slate-400 text-xs">May 17, 2026</span>
+            <span class="text-brand text-sm font-medium group-hover:underline">Read →</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter / CTA -->
+<section class="py-16 bg-ink">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-10 items-center">
+      <div data-aos="fade-right">
+        <div class="text-xs font-mono font-semibold text-brand uppercase tracking-wider mb-4">Stay current</div>
+        <h2 class="font-mono font-bold text-3xl text-white mb-4 leading-tight">
+          Insights for Indian manufacturing engineers
+        </h2>
+        <p class="text-slate-400 leading-relaxed">
+          New articles every two weeks on product configuration, BOM automation, constraint modelling, and CPQ implementation — written specifically for Indian B2B manufacturers.
+        </p>
+      </div>
+      <div data-aos="fade-left" data-aos-delay="100">
+        <form class="bg-white rounded-2xl p-7 shadow-2xl">
+          <div class="space-y-4">
+            <div class="flex flex-col gap-1">
+              <label class="text-sm font-medium text-ink">Work Email <span class="text-red-500">*</span></label>
+              <input type="email" placeholder="you@company.in"
+                class="border border-slate-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand transition-all">
+            </div>
+            <div class="flex flex-col gap-1">
+              <label class="text-sm font-medium text-ink">Industry <span class="text-slate-400 font-normal">(optional)</span></label>
+              <select class="border border-slate-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand transition-all bg-white">
+                <option value="">Select your industry</option>
+                <option>Elevators &amp; Escalators</option>
+                <option>Switchgear &amp; Electrical Panels</option>
+                <option>HVAC &amp; Cooling Systems</option>
+                <option>Industrial Machinery</option>
+                <option>Power Transformers</option>
+                <option>Other Manufacturing</option>
+              </select>
+            </div>
+            <a href="../index.html#demo" class="block w-full text-center bg-brand hover:bg-brand-dark text-white font-semibold py-3 rounded-lg transition-colors text-sm shadow-sm">
+              Request Demo + Subscribe →
+            </a>
+            <p class="text-slate-400 text-xs text-center">No spam. Unsubscribe any time.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Topics / Industries link strip -->
+<section class="bg-surface border-t border-slate-200 py-12">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="font-mono text-sm font-semibold text-slate-500 uppercase tracking-wider mb-5">Explore by industry</h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+      <a href="../industries/elevators.html" class="block bg-white border border-slate-200 rounded-xl p-4 hover:border-brand hover:shadow-md transition-all group">
+        <div class="font-semibold text-ink text-sm mb-1 group-hover:text-brand transition-colors">Elevators &amp; Escalators</div>
+        <div class="text-xs text-slate-500">EN81/NBC compliance at selection</div>
+      </a>
+      <a href="../industries/switchgear.html" class="block bg-white border border-slate-200 rounded-xl p-4 hover:border-brand hover:shadow-md transition-all group">
+        <div class="font-semibold text-ink text-sm mb-1 group-hover:text-brand transition-colors">Switchgear &amp; Electrical Panels</div>
+        <div class="text-xs text-slate-500">IEC 60947 constraint enforcement</div>
+      </a>
+      <a href="../industries/hvac.html" class="block bg-white border border-slate-200 rounded-xl p-4 hover:border-brand hover:shadow-md transition-all group">
+        <div class="font-semibold text-ink text-sm mb-1 group-hover:text-brand transition-colors">HVAC &amp; Cooling Systems</div>
+        <div class="text-xs text-slate-500">40,000+ combinations automated</div>
+      </a>
+      <a href="../industries/power-transformers.html" class="block bg-white border border-slate-200 rounded-xl p-4 hover:border-brand hover:shadow-md transition-all group">
+        <div class="font-semibold text-ink text-sm mb-1 group-hover:text-brand transition-colors">Power Transformers</div>
+        <div class="text-xs text-slate-500">IEC 60076 + BIS enforced</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-ink py-8 text-center">
+  <p class="text-slate-400 text-sm font-mono">© 2026 CPP Platform Pvt. Ltd. · <a href="../index.html" class="text-brand hover:underline">← Back to Home</a></p>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>document.addEventListener('DOMContentLoaded', () => AOS.init({ duration: 600, once: true }));</script>
+</body>
+</html>
