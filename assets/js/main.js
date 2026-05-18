@@ -68,26 +68,25 @@ document.addEventListener('DOMContentLoaded', () => {
     connObs.observe(howItWorks);
   }
 
-  /* Active nav link — highlight the section currently in view */
+  /* Active nav link — scroll-position based (matches HEADER_OFFSET exactly) */
   const NAV_SECTIONS = ['features', 'how-it-works', 'industries', 'pricing'];
   const navLinkMap = {};
   NAV_SECTIONS.forEach(id => {
     const link = document.querySelector(`a[href="#${id}"].nav-link`);
     if (link) navLinkMap[id] = link;
   });
-  const setActive = (id) => {
-    Object.values(navLinkMap).forEach(l => l.classList.remove('active'));
-    if (navLinkMap[id]) navLinkMap[id].classList.add('active');
-  };
-  const secObs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) setActive(entry.target.id);
+  function updateActiveNav() {
+    const trigger = window.scrollY + HEADER_OFFSET + 1;
+    let activeId = null;
+    NAV_SECTIONS.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && el.offsetTop <= trigger) activeId = id;
     });
-  }, { rootMargin: '-64px 0px -45% 0px', threshold: 0 });
-  NAV_SECTIONS.forEach(id => {
-    const el = document.getElementById(id);
-    if (el) secObs.observe(el);
-  });
+    Object.values(navLinkMap).forEach(l => l.classList.remove('active'));
+    if (activeId && navLinkMap[activeId]) navLinkMap[activeId].classList.add('active');
+  }
+  window.addEventListener('scroll', updateActiveNav, { passive: true });
+  updateActiveNav();
 
 });
 

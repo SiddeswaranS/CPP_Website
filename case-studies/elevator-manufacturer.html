@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0EA5E9">
+  <title>How a Leading Elevator OEM Cut Quote Cycle from 18 Days to 4 Hours | CPP Case Study</title>
+  <meta name="description" content="An elevator manufacturer with 40+ product variants eliminated BOM errors and reduced quote cycle from 18 days to 4 hours using CPP's constraint-based configurator.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://cpplatform.in/case-studies/elevator-manufacturer.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="CPP Platform">
+  <meta property="og:title" content="18 Days to 4 Hours: How an Elevator OEM Eliminated Configuration Errors | CPP Case Study">
+  <meta property="og:description" content="An elevator manufacturer with 40+ product variants eliminated BOM errors and reduced quote cycle from 18 days to 4 hours using CPP's constraint-based configurator.">
+  <meta property="og:image" content="https://cpplatform.in/assets/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://cpplatform.in/case-studies/elevator-manufacturer.html">
+  <meta property="og:locale" content="en_IN">
+  <meta property="article:published_time" content="2026-05-17">
+  <meta property="article:author" content="CPP Platform">
+  <meta property="article:tag" content="Elevator CPQ BOM Automation India">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="18 Days to 4 Hours: Elevator OEM Eliminates BOM Errors | CPP Case Study">
+  <meta name="twitter:description" content="40+ elevator variants, 200+ configuration rules. How a mid-sized Indian OEM went from 18-day quote cycles to 4 hours using CPP.">
+  <meta name="twitter:image" content="https://cpplatform.in/assets/images/og-image.jpg">
+
+  <!-- JSON-LD: Article (CaseStudy) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "18 Days to 4 Hours: How an Elevator OEM Eliminated Configuration Errors",
+    "description": "An elevator manufacturer with 40+ product variants eliminated BOM errors and reduced quote cycle from 18 days to 4 hours using CPP's constraint-based configurator.",
+    "datePublished": "2026-05-17",
+    "dateModified": "2026-05-17",
+    "author": {
+      "@type": "Organization",
+      "name": "Softwaller Technologies Private Limited",
+      "url": "https://cpplatform.in/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Softwaller Technologies Private Limited",
+      "url": "https://cpplatform.in/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://cpplatform.in/assets/images/og-image.jpg"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://cpplatform.in/case-studies/elevator-manufacturer.html"
+    },
+    "image": "https://cpplatform.in/assets/images/og-image.jpg",
+    "articleSection": "Case Studies",
+    "keywords": "elevator manufacturer CPQ BOM automation India, EN81 NBC elevator configuration, elevator BOM error reduction, CPQ elevator OEM India",
+    "about": {
+      "@type": "Thing",
+      "name": "Configure Price Quote for Elevator Manufacturers"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://cpplatform.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Case Studies",
+        "item": "https://cpplatform.in/case-studies/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Elevator OEM Case Study",
+        "item": "https://cpplatform.in/case-studies/elevator-manufacturer.html"
+      }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How long does it take to deploy CPP for an elevator manufacturer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For a product family with 40–60 variants and 200+ configuration rules, CPP deployment typically takes 6–8 weeks from kickoff to first live quote. The constraint mapping phase (2 weeks) is the most intensive, requiring collaboration between CPP engineers and the customer's head of engineering."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does CPP support EN81 and NBC elevator safety codes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. EN81-20, EN81-50, and NBC 2016 constraints are encoded as hard constraints in the CPP rule engine. Invalid combinations — such as a single-speed door with an EN81-50 safety specification — are eliminated at the moment of selection and can never produce a valid BOM."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can CPP integrate with our existing ERP system?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CPP pushes BOMs directly to SAP, Oracle, Microsoft Dynamics, and custom ERP systems via REST API. The BOM reaches the ERP within seconds of configuration completion — no manual re-keying."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if we add a new elevator variant?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "New variants are added as new branches in the constraint graph. Existing constraints remain unchanged. A new 40-person variant, for example, would add new capacity-to-drive constraints without modifying the rules for existing variants."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand:   { DEFAULT: '#0EA5E9', dark: '#0284C7', light: '#BAE6FD', faint: '#F0F9FF' },
+            surface: '#F1F5F9',
+            ink:     '#0F172A',
+          },
+          fontFamily: {
+            mono: ['"JetBrains Mono"', 'monospace'],
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../assets/css/custom.min.css?v=1.1.0">
+
+  <!-- Alpine -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+
+<body class="font-sans bg-surface text-ink antialiased">
+
+<!-- Skip to main -->
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-brand focus:text-white focus:font-semibold focus:px-4 focus:py-2 focus:rounded-lg">Skip to main content</a>
+
+<!-- Nav -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-slate-100 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+    <a href="../index.html" class="flex items-center gap-2.5">
+      <div class="w-8 h-8 bg-brand rounded-lg flex items-center justify-center">
+        <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h10M4 18h6"/></svg>
+      </div>
+      <span class="font-mono font-bold text-xl text-ink">CPP</span>
+    </a>
+    <div class="flex items-center gap-4">
+      <a href="../blog/index.html" class="text-sm font-medium text-slate-600 hover:text-brand transition-colors">Blog</a>
+      <a href="../index.html#demo" class="inline-flex items-center gap-1.5 bg-brand hover:bg-brand-dark text-white font-semibold text-sm px-4 py-2 rounded-lg transition-colors">Request Demo →</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+  <!-- =========================================================
+       HERO
+       ========================================================= -->
+  <section class="pt-24 pb-16 bg-ink">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Breadcrumb -->
+      <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-xs font-mono text-slate-500 mb-6">
+        <a href="../index.html" class="hover:text-brand transition-colors">Home</a>
+        <span class="text-slate-700">/</span>
+        <span class="text-slate-400">Case Studies</span>
+      </nav>
+
+      <!-- Category chip -->
+      <div class="inline-flex items-center gap-2 mb-5">
+        <span class="text-xs font-mono font-semibold text-brand uppercase tracking-widest bg-brand/10 border border-brand/20 px-3 py-1 rounded-full">Case Study · Elevators &amp; Escalators</span>
+      </div>
+
+      <!-- H1 -->
+      <h1 class="font-mono font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-6">
+        18 Days to 4 Hours:<br>
+        <span class="text-brand">How an Elevator OEM Eliminated<br class="hidden sm:block"> Configuration Errors</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-slate-400 text-lg sm:text-xl leading-relaxed max-w-3xl mb-8">
+        A mid-sized Indian elevator manufacturer with 40+ configurable variants was losing 2–3 orders per quarter to slow quotes and BOM rework. Here's how they fixed it.
+      </p>
+
+      <!-- Tags -->
+      <div class="flex flex-wrap gap-2">
+        <span class="text-xs font-medium text-slate-400 bg-white/5 border border-white/10 px-3 py-1 rounded-full">Elevator</span>
+        <span class="text-xs font-medium text-slate-400 bg-white/5 border border-white/10 px-3 py-1 rounded-full">CPQ</span>
+        <span class="text-xs font-medium text-slate-400 bg-white/5 border border-white/10 px-3 py-1 rounded-full">BOM Automation</span>
+        <span class="text-xs font-medium text-slate-400 bg-white/5 border border-white/10 px-3 py-1 rounded-full">EN81</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       RESULTS DASHBOARD
+       ========================================================= -->
+  <section class="py-14 bg-white border-b border-slate-100">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <p class="text-xs font-mono font-semibold text-slate-400 uppercase tracking-wider text-center mb-8">Results — 90 days after go-live</p>
+
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-5">
+
+        <div class="relative bg-surface rounded-2xl border border-slate-100 p-6 text-center overflow-hidden group hover:border-brand/40 hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="0">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand to-brand-dark opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl"></div>
+          <div class="font-mono font-bold text-3xl text-brand mb-2">18d → 4h</div>
+          <div class="text-sm font-semibold text-ink mb-1">Quote cycle reduction</div>
+          <div class="text-xs text-slate-500">Constraint engine eliminates<br>engineering review bottleneck</div>
+        </div>
+
+        <div class="relative bg-surface rounded-2xl border border-slate-100 p-6 text-center overflow-hidden group hover:border-brand/40 hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="80">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand to-brand-dark opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl"></div>
+          <div class="font-mono font-bold text-3xl text-brand mb-2">12% → 0.3%</div>
+          <div class="text-sm font-semibold text-ink mb-1">BOM error rate</div>
+          <div class="text-xs text-slate-500">Residual 0.3% from part master<br>data quality, not config logic</div>
+        </div>
+
+        <div class="relative bg-surface rounded-2xl border border-slate-100 p-6 text-center overflow-hidden group hover:border-brand/40 hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="160">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand to-brand-dark opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl"></div>
+          <div class="font-mono font-bold text-3xl text-brand mb-2">₹1.2 Cr</div>
+          <div class="text-sm font-semibold text-ink mb-1">Re-engineering cost saved</div>
+          <div class="text-xs text-slate-500">Rework incidents: 14 → 1<br>in first year post go-live</div>
+        </div>
+
+        <div class="relative bg-surface rounded-2xl border border-slate-100 p-6 text-center overflow-hidden group hover:border-brand/40 hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="240">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand to-brand-dark opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl"></div>
+          <div class="font-mono font-bold text-3xl text-brand mb-2">92%</div>
+          <div class="text-sm font-semibold text-ink mb-1">Fewer engineering sign-offs</div>
+          <div class="text-xs text-slate-500">Senior engineer now focused<br>on new product development</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       THE CHALLENGE
+       ========================================================= -->
+  <section class="py-16 bg-surface">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="max-w-3xl" data-aos="fade-up">
+        <div class="text-xs font-mono font-semibold text-brand uppercase tracking-wider mb-3">The Challenge</div>
+        <h2 class="font-mono font-bold text-2xl sm:text-3xl text-ink mb-8">
+          40 product variants, one overloaded engineer
+        </h2>
+      </div>
+
+      <div class="grid lg:grid-cols-5 gap-10 items-start">
+
+        <!-- Narrative -->
+        <div class="lg:col-span-3 space-y-5 text-slate-600 leading-relaxed" data-aos="fade-up" data-aos-delay="60">
+          <p>
+            The company manufactures passenger elevators across six load classes (6, 8, 10, 13, 20, and 26 person), goods lifts, and escalators for commercial and residential projects across India. Their installations span high-rise towers in Mumbai to IT campuses in Bengaluru — each project with its own shaft dimensions, regulatory environment, and fire-safety specification.
+          </p>
+          <p>
+            Their configuration process had one fatal dependency: a single senior engineer maintained a 52-tab Excel workbook containing every interdependency — shaft dimensions vs. car size vs. drive type vs. safety code (EN81-20, EN81-50, NBC 2016). This workbook was the company's de facto product knowledge system. When a sales engineer needed a quote, this workbook had to be opened, interrogated, and signed off by its owner. Average wait: 18 days.
+          </p>
+          <p>
+            When this engineer went on leave, quotes stopped. When junior engineers attempted quotes, errors happened. In Q3 2025 alone, three BOM errors reached the shop floor: two incorrect drive assemblies and one wrong door mechanism. Combined rework cost: <strong class="text-ink">₹18.4 lakh</strong>. One customer escalated and the order had to be re-negotiated at a margin loss of ₹6.2 lakh.
+          </p>
+        </div>
+
+        <!-- Pull quote + sidebar stat -->
+        <div class="lg:col-span-2 space-y-5" data-aos="fade-up" data-aos-delay="120">
+
+          <!-- Pull quote -->
+          <blockquote class="relative bg-white rounded-2xl border-l-4 border-brand p-6 shadow-sm">
+            <svg class="w-8 h-8 text-brand/20 mb-3" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+            <p class="text-slate-700 text-sm leading-relaxed italic mb-4">
+              "We had 40 variants, 200+ configuration rules, and one person who understood all of them. That's not a process — that's a single point of failure."
+            </p>
+            <footer class="text-xs text-slate-500 font-medium">
+              — Head of Engineering, Elevator OEM<br>
+              <span class="text-slate-400">(name withheld at customer request)</span>
+            </footer>
+          </blockquote>
+
+          <!-- Key risk callout -->
+          <div class="bg-red-50 border border-red-100 rounded-2xl p-5">
+            <div class="text-xs font-mono font-semibold text-red-500 uppercase tracking-wider mb-3">Q3 2025 — Shop floor incidents</div>
+            <div class="space-y-2">
+              <div class="flex items-start gap-2.5">
+                <div class="w-1.5 h-1.5 rounded-full bg-red-400 mt-2 flex-shrink-0"></div>
+                <span class="text-sm text-slate-700">2 incorrect drive assemblies</span>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <div class="w-1.5 h-1.5 rounded-full bg-red-400 mt-2 flex-shrink-0"></div>
+                <span class="text-sm text-slate-700">1 wrong door mechanism</span>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <div class="w-1.5 h-1.5 rounded-full bg-red-400 mt-2 flex-shrink-0"></div>
+                <span class="text-sm text-slate-700">Combined rework cost: ₹18.4 lakh</span>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <div class="w-1.5 h-1.5 rounded-full bg-red-400 mt-2 flex-shrink-0"></div>
+                <span class="text-sm text-slate-700">1 customer escalation; ₹6.2 lakh margin loss on re-negotiation</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       THE SOLUTION
+       ========================================================= -->
+  <section class="py-16 bg-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="max-w-3xl mb-10" data-aos="fade-up">
+        <div class="text-xs font-mono font-semibold text-brand uppercase tracking-wider mb-3">The Solution</div>
+        <h2 class="font-mono font-bold text-2xl sm:text-3xl text-ink mb-3">
+          Constraint graph over 8 dependency relationships
+        </h2>
+        <p class="text-slate-500 leading-relaxed">
+          CPP deployed in 6 weeks from kickoff to first live quote. Three phases — constraint mapping, BOM template mapping, and user acceptance testing — each delivered a tangible handoff.
+        </p>
+      </div>
+
+      <!-- Phase cards -->
+      <div class="space-y-6">
+
+        <!-- Phase 1 -->
+        <div class="grid lg:grid-cols-12 gap-0 bg-surface rounded-2xl border border-slate-100 overflow-hidden" data-aos="fade-up" data-aos-delay="40">
+          <div class="lg:col-span-3 bg-brand p-6 flex flex-col justify-center">
+            <div class="font-mono text-xs text-white/60 uppercase tracking-wider mb-1">Phase 1</div>
+            <div class="font-mono font-bold text-white text-lg">Week 1–2</div>
+            <div class="text-white/80 text-sm mt-1">Discovery &amp; constraint mapping</div>
+          </div>
+          <div class="lg:col-span-9 p-6">
+            <h3 class="font-semibold text-ink text-base mb-3">Encoding 200+ rules into 8 core constraint relationships</h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+              CPP's solution engineers worked with the company's head of engineering to map every rule in the 52-tab workbook into 8 core constraint relationships within CPP's typed constraint graph. Each relationship was encoded as a formal constraint — hard constraints for safety codes, soft constraints for commercial defaults.
+            </p>
+            <!-- Constraint example -->
+            <div class="bg-ink rounded-xl p-4 font-mono text-xs overflow-x-auto">
+              <div class="text-slate-500 mb-2">// Example — capacity constraint chain (EN81-20)</div>
+              <div class="text-green-400">Capacity <span class="text-yellow-300">≥ 13-person</span></div>
+              <div class="text-slate-400 pl-4">→ Drive = <span class="text-brand">Gearless VVVF</span></div>
+              <div class="text-slate-500 pl-4">→ <span class="text-red-400">eliminates</span> [Geared VVVF, Hydraulic]</div>
+              <div class="text-slate-500 pl-4">→ <span class="text-purple-400">requires</span> MachineRoom = [MRL, Overhead]</div>
+              <div class="text-slate-500 pl-4">→ <span class="text-orange-400">triggers</span> EN81-20.SafetyGear.Progressive</div>
+            </div>
+            <p class="text-slate-500 text-xs mt-3">EN81-20 and NBC 2016 constraints encoded as hard constraints — they cannot be overridden by a sales engineer during quoting.</p>
+          </div>
+        </div>
+
+        <!-- Phase 2 -->
+        <div class="grid lg:grid-cols-12 gap-0 bg-surface rounded-2xl border border-slate-100 overflow-hidden" data-aos="fade-up" data-aos-delay="80">
+          <div class="lg:col-span-3 bg-brand-dark p-6 flex flex-col justify-center">
+            <div class="font-mono text-xs text-white/60 uppercase tracking-wider mb-1">Phase 2</div>
+            <div class="font-mono font-bold text-white text-lg">Week 3–4</div>
+            <div class="text-white/80 text-sm mt-1">BOM template mapping</div>
+          </div>
+          <div class="lg:col-span-9 p-6">
+            <h3 class="font-semibold text-ink text-base mb-3">Every valid configuration path mapped to a deterministic BOM template</h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+              Each valid configuration path through the constraint graph was mapped to a BOM template in CPP's derivation engine. CPP's deterministic derivation guarantee means the same input always produces byte-identical output — no engineer judgment required, no interpretation drift between sales and engineering.
+            </p>
+            <div class="grid sm:grid-cols-3 gap-3">
+              <div class="bg-white rounded-xl p-4 border border-slate-100">
+                <div class="font-mono text-xs text-brand font-semibold mb-1.5">40 variants</div>
+                <div class="text-xs text-slate-500">Product configurations mapped across passenger, goods, and escalator product lines</div>
+              </div>
+              <div class="bg-white rounded-xl p-4 border border-slate-100">
+                <div class="font-mono text-xs text-brand font-semibold mb-1.5">200+ rules</div>
+                <div class="text-xs text-slate-500">Configuration rules encoded across 8 dependency relationship types</div>
+              </div>
+              <div class="bg-white rounded-xl p-4 border border-slate-100">
+                <div class="font-mono text-xs text-brand font-semibold mb-1.5">Same input, same BOM</div>
+                <div class="text-xs text-slate-500">Deterministic derivation — no engineer review required for standard configurations</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phase 3 -->
+        <div class="grid lg:grid-cols-12 gap-0 bg-surface rounded-2xl border border-slate-100 overflow-hidden" data-aos="fade-up" data-aos-delay="120">
+          <div class="lg:col-span-3 bg-slate-700 p-6 flex flex-col justify-center">
+            <div class="font-mono text-xs text-white/60 uppercase tracking-wider mb-1">Phase 3</div>
+            <div class="font-mono font-bold text-white text-lg">Week 5–6</div>
+            <div class="text-white/80 text-sm mt-1">UAT &amp; go-live</div>
+          </div>
+          <div class="lg:col-span-9 p-6">
+            <h3 class="font-semibold text-ink text-base mb-3">Sales team trained in 2 days. First live quote on Day 37.</h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+              The CPP interface was designed for sales engineers, not software engineers. After a 2-day training session, the entire sales team was quoting independently. The first real customer quote generated inside CPP was delivered on Day 37 of the engagement — a 13-person passenger elevator for a commercial office project in Pune. Quote-to-customer in under 4 hours.
+            </p>
+            <div class="flex items-center gap-3 bg-brand/5 border border-brand/20 rounded-xl p-3">
+              <div class="w-2.5 h-2.5 rounded-full bg-brand flex-shrink-0"></div>
+              <p class="text-xs text-slate-600"><strong class="text-ink">Day 37:</strong> First live CPP quote — 13-person passenger elevator, Pune. Quote delivered to customer in 3 hours 47 minutes.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       THE RESULTS
+       ========================================================= -->
+  <section class="py-16 bg-surface">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="max-w-3xl mb-10" data-aos="fade-up">
+        <div class="text-xs font-mono font-semibold text-brand uppercase tracking-wider mb-3">The Results</div>
+        <h2 class="font-mono font-bold text-2xl sm:text-3xl text-ink mb-3">
+          90 days after go-live
+        </h2>
+        <p class="text-slate-500 leading-relaxed">
+          Every metric moved in the right direction within the first quarter. By the 6-month mark, the finance team had validated the full-year savings projection.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-8 mb-10">
+
+        <!-- Outcome narrative -->
+        <div class="space-y-5 text-slate-600 leading-relaxed text-sm" data-aos="fade-up" data-aos-delay="40">
+
+          <div class="bg-white rounded-xl p-5 border border-slate-100">
+            <div class="font-semibold text-ink mb-2 flex items-center gap-2">
+              <div class="w-2 h-2 rounded-full bg-brand"></div>
+              Quote cycle: 18 days → 4 hours
+            </div>
+            <p class="text-slate-500">The 18-day wait was entirely driven by one engineer's review queue. With the constraint engine preventing invalid configurations, no engineering review is required for standard variants. The quote is generated, priced, and dispatched within a single sales call.</p>
+          </div>
+
+          <div class="bg-white rounded-xl p-5 border border-slate-100">
+            <div class="font-semibold text-ink mb-2 flex items-center gap-2">
+              <div class="w-2 h-2 rounded-full bg-brand"></div>
+              BOM error rate: 12% → 0.3%
+            </div>
+            <p class="text-slate-500">The residual 0.3% is not a configuration logic error — it traces to part master data quality issues (incorrect unit-of-measure entries in the ERP). The configuration engine itself has produced zero invalid BOMs since go-live.</p>
+          </div>
+
+          <div class="bg-white rounded-xl p-5 border border-slate-100">
+            <div class="font-semibold text-ink mb-2 flex items-center gap-2">
+              <div class="w-2 h-2 rounded-full bg-brand"></div>
+              Engineering bandwidth liberated
+            </div>
+            <p class="text-slate-500">The senior engineer who maintained the 52-tab workbook now leads the company's new product development initiative — a 3.5 m/s high-speed variant for premium residential high-rises. The workbook is archived. It is no longer opened.</p>
+          </div>
+
+          <div class="bg-white rounded-xl p-5 border border-slate-100">
+            <div class="font-semibold text-ink mb-2 flex items-center gap-2">
+              <div class="w-2 h-2 rounded-full bg-brand"></div>
+              Order win rate: +22% in 6 months post-deployment
+            </div>
+            <p class="text-slate-500">In competitive tenders with a 48-hour submission window, the company previously lost 3 out of every 10 opportunities due to quote turnaround time. With CPP, they now submit within hours. The 22% uplift in win rate is attributed directly to speed of response.</p>
+          </div>
+
+        </div>
+
+        <!-- Timeline -->
+        <div data-aos="fade-up" data-aos-delay="100">
+          <div class="font-mono text-xs font-semibold text-slate-400 uppercase tracking-wider mb-5">Deployment timeline</div>
+
+          <div class="relative">
+            <!-- Vertical line -->
+            <div class="absolute left-4 top-3 bottom-3 w-px bg-slate-200"></div>
+
+            <div class="space-y-0">
+
+              <div class="relative flex items-start gap-5 pb-6">
+                <div class="relative z-10 w-8 h-8 rounded-full bg-brand flex items-center justify-center flex-shrink-0 shadow-sm">
+                  <div class="w-2.5 h-2.5 rounded-full bg-white"></div>
+                </div>
+                <div class="pt-1">
+                  <div class="font-mono text-xs font-semibold text-brand mb-0.5">Day 0</div>
+                  <div class="font-semibold text-ink text-sm">Kickoff</div>
+                  <div class="text-xs text-slate-500 mt-0.5">Scope confirmed. Constraint mapping workshops scheduled.</div>
+                </div>
+              </div>
+
+              <div class="relative flex items-start gap-5 pb-6">
+                <div class="relative z-10 w-8 h-8 rounded-full bg-brand flex items-center justify-center flex-shrink-0 shadow-sm">
+                  <div class="w-2.5 h-2.5 rounded-full bg-white"></div>
+                </div>
+                <div class="pt-1">
+                  <div class="font-mono text-xs font-semibold text-brand mb-0.5">Day 14</div>
+                  <div class="font-semibold text-ink text-sm">Constraint graph complete</div>
+                  <div class="text-xs text-slate-500 mt-0.5">8 dependency relationships, 200+ rules encoded and reviewed by head of engineering.</div>
+                </div>
+              </div>
+
+              <div class="relative flex items-start gap-5 pb-6">
+                <div class="relative z-10 w-8 h-8 rounded-full bg-brand flex items-center justify-center flex-shrink-0 shadow-sm">
+                  <div class="w-2.5 h-2.5 rounded-full bg-white"></div>
+                </div>
+                <div class="pt-1">
+                  <div class="font-mono text-xs font-semibold text-brand mb-0.5">Day 28</div>
+                  <div class="font-semibold text-ink text-sm">BOM templates mapped</div>
+                  <div class="text-xs text-slate-500 mt-0.5">All 40 variant paths mapped. Deterministic derivation verified against existing BOMs.</div>
+                </div>
+              </div>
+
+              <div class="relative flex items-start gap-5 pb-6">
+                <div class="relative z-10 w-8 h-8 rounded-full bg-white border-2 border-brand flex items-center justify-center flex-shrink-0 shadow-sm">
+                  <div class="w-2 h-2 rounded-full bg-brand"></div>
+                </div>
+                <div class="pt-1">
+                  <div class="font-mono text-xs font-semibold text-brand mb-0.5">Day 37</div>
+                  <div class="font-semibold text-ink text-sm">First live CPP quote</div>
+                  <div class="text-xs text-slate-500 mt-0.5">13-person passenger elevator, Pune. Quote-to-customer: 3 hours 47 minutes.</div>
+                </div>
+              </div>
+
+              <div class="relative flex items-start gap-5 pb-6">
+                <div class="relative z-10 w-8 h-8 rounded-full bg-surface border-2 border-brand/40 flex items-center justify-center flex-shrink-0">
+                  <div class="w-2 h-2 rounded-full bg-brand/50"></div>
+                </div>
+                <div class="pt-1">
+                  <div class="font-mono text-xs font-semibold text-slate-400 mb-0.5">Day 90</div>
+                  <div class="font-semibold text-ink text-sm">BOM error rate confirmed</div>
+                  <div class="text-xs text-slate-500 mt-0.5">12% → 0.3%. Reduction validated by QA review of all quotes since go-live.</div>
+                </div>
+              </div>
+
+              <div class="relative flex items-start gap-5">
+                <div class="relative z-10 w-8 h-8 rounded-full bg-surface border-2 border-slate-200 flex items-center justify-center flex-shrink-0">
+                  <div class="w-2 h-2 rounded-full bg-slate-300"></div>
+                </div>
+                <div class="pt-1">
+                  <div class="font-mono text-xs font-semibold text-slate-400 mb-0.5">Day 180</div>
+                  <div class="font-semibold text-ink text-sm">₹1.2 Cr annual savings validated</div>
+                  <div class="text-xs text-slate-500 mt-0.5">Finance sign-off on full-year savings. Win rate up 22%. New product development begun.</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Re-engineering cost callout -->
+      <div class="bg-white rounded-2xl border border-slate-100 p-6 grid sm:grid-cols-3 gap-6 text-center" data-aos="fade-up">
+        <div>
+          <div class="font-mono font-bold text-2xl text-ink mb-1">₹18.4 lakh</div>
+          <div class="text-xs text-slate-500">Q3 2025 rework cost<br>(3 incidents, pre-CPP)</div>
+        </div>
+        <div class="flex items-center justify-center">
+          <div class="flex items-center gap-2 text-brand font-mono font-bold text-lg">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            CPP deployed
+          </div>
+        </div>
+        <div>
+          <div class="font-mono font-bold text-2xl text-brand mb-1">₹1.4 lakh</div>
+          <div class="text-xs text-slate-500">Year 1 rework cost<br>(1 incident, part master issue)</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================
+       FAQ
+       ========================================================= -->
+  <section class="py-16 bg-white" x-data="{ open: null }">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="mb-10" data-aos="fade-up">
+        <div class="text-xs font-mono font-semibold text-brand uppercase tracking-wider mb-3">FAQ</div>
+        <h2 class="font-mono font-bold text-2xl sm:text-3xl text-ink">
+          Frequently asked questions
+        </h2>
+      </div>
+
+      <div class="space-y-3" data-aos="fade-up" data-aos-delay="40">
+
+        <!-- Q1 -->
+        <div class="bg-surface rounded-xl border border-slate-100 overflow-hidden">
+          <button
+            class="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors"
+            @click="open = open === 1 ? null : 1"
+            :aria-expanded="open === 1"
+          >
+            <span class="font-semibold text-ink text-sm pr-4">How long does it take to deploy CPP for an elevator manufacturer?</span>
+            <svg class="w-5 h-5 text-brand flex-shrink-0 transition-transform duration-200" :class="{ 'rotate-45': open === 1 }" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          </button>
+          <div x-show="open === 1" x-transition:enter="transition-all ease-out duration-200" x-transition:enter-start="opacity-0 max-h-0" x-transition:enter-end="opacity-100 max-h-96" x-transition:leave="transition-all ease-in duration-150" x-transition:leave-start="opacity-100 max-h-96" x-transition:leave-end="opacity-0 max-h-0" class="overflow-hidden">
+            <div class="px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+              For a product family with 40–60 variants and 200+ configuration rules, CPP deployment typically takes <strong class="text-ink">6–8 weeks</strong> from kickoff to first live quote. The constraint mapping phase (2 weeks) is the most intensive, requiring collaboration between CPP engineers and the customer's head of engineering. BOM template mapping and UAT typically run in parallel during weeks 3–6.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="bg-surface rounded-xl border border-slate-100 overflow-hidden">
+          <button
+            class="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors"
+            @click="open = open === 2 ? null : 2"
+            :aria-expanded="open === 2"
+          >
+            <span class="font-semibold text-ink text-sm pr-4">Does CPP support EN81 and NBC elevator safety codes?</span>
+            <svg class="w-5 h-5 text-brand flex-shrink-0 transition-transform duration-200" :class="{ 'rotate-45': open === 2 }" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          </button>
+          <div x-show="open === 2" x-transition:enter="transition-all ease-out duration-200" x-transition:enter-start="opacity-0 max-h-0" x-transition:enter-end="opacity-100 max-h-96" x-transition:leave="transition-all ease-in duration-150" x-transition:leave-start="opacity-100 max-h-96" x-transition:leave-end="opacity-0 max-h-0" class="overflow-hidden">
+            <div class="px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+              Yes. EN81-20, EN81-50, and NBC 2016 constraints are encoded as <strong class="text-ink">hard constraints</strong> in the CPP rule engine. Invalid combinations — such as a single-speed door with an EN81-50 safety specification — are eliminated at the moment of selection and can never produce a valid BOM. Safety constraints cannot be overridden by a sales engineer during quoting.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="bg-surface rounded-xl border border-slate-100 overflow-hidden">
+          <button
+            class="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors"
+            @click="open = open === 3 ? null : 3"
+            :aria-expanded="open === 3"
+          >
+            <span class="font-semibold text-ink text-sm pr-4">Can CPP integrate with our existing ERP system?</span>
+            <svg class="w-5 h-5 text-brand flex-shrink-0 transition-transform duration-200" :class="{ 'rotate-45': open === 3 }" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          </button>
+          <div x-show="open === 3" x-transition:enter="transition-all ease-out duration-200" x-transition:enter-start="opacity-0 max-h-0" x-transition:enter-end="opacity-100 max-h-96" x-transition:leave="transition-all ease-in duration-150" x-transition:leave-start="opacity-100 max-h-96" x-transition:leave-end="opacity-0 max-h-0" class="overflow-hidden">
+            <div class="px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+              CPP pushes BOMs directly to <strong class="text-ink">SAP, Oracle, Microsoft Dynamics</strong>, and custom ERP systems via REST API. The BOM reaches the ERP within seconds of configuration completion — no manual re-keying. For ERPs not natively supported, CPP exposes a standard BOM webhook that can be consumed by any middleware or iPaaS layer.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="bg-surface rounded-xl border border-slate-100 overflow-hidden">
+          <button
+            class="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors"
+            @click="open = open === 4 ? null : 4"
+            :aria-expanded="open === 4"
+          >
+            <span class="font-semibold text-ink text-sm pr-4">What happens if we add a new elevator variant?</span>
+            <svg class="w-5 h-5 text-brand flex-shrink-0 transition-transform duration-200" :class="{ 'rotate-45': open === 4 }" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          </button>
+          <div x-show="open === 4" x-transition:enter="transition-all ease-out duration-200" x-transition:enter-start="opacity-0 max-h-0" x-transition:enter-end="opacity-100 max-h-96" x-transition:leave="transition-all ease-in duration-150" x-transition:leave-start="opacity-100 max-h-96" x-transition:leave-end="opacity-0 max-h-0" class="overflow-hidden">
+            <div class="px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+              New variants are added as new branches in the constraint graph. <strong class="text-ink">Existing constraints remain unchanged.</strong> A new 40-person variant, for example, would add new capacity-to-drive constraints without modifying the rules for existing variants. CPP's immutable versioning means every previously released rule set is preserved — new additions never break existing configurations.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       CTA
+       ========================================================= -->
+  <section class="py-20 bg-brand">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
+      <div class="font-mono text-xs font-semibold text-white/60 uppercase tracking-wider mb-4">Ready to see it live?</div>
+      <h2 class="font-mono font-bold text-3xl sm:text-4xl text-white mb-5 leading-tight">
+        See CPP configured for your<br>elevator product family
+      </h2>
+      <p class="text-white/80 text-lg leading-relaxed mb-8 max-w-xl mx-auto">
+        Book a 45-minute demo. We'll map your actual elevator variants into CPP's constraint engine and run a live configuration in front of your engineering team.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="../index.html#demo" class="inline-flex items-center gap-2 bg-white text-brand hover:bg-brand-light font-bold px-8 py-3.5 rounded-xl transition-colors shadow-lg text-sm">
+          Book Elevator Demo →
+        </a>
+        <a href="../industries/elevators.html" class="inline-flex items-center gap-2 border border-white/30 text-white hover:border-white/60 font-medium px-8 py-3.5 rounded-xl transition-colors text-sm">
+          Elevators industry page
+        </a>
+      </div>
+      <p class="text-white/50 text-xs mt-6">No commitment. 45 minutes. Your actual product family.</p>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       RELATED CONTENT
+       ========================================================= -->
+  <section class="py-14 bg-slate-50 border-t border-slate-200">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="font-mono text-xs font-semibold text-slate-500 uppercase tracking-wider mb-6">Related reading</div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
+        <a href="../blog/excel-killing-cpq.html" class="group block bg-white border border-slate-200 rounded-xl p-5 hover:border-brand hover:shadow-md transition-all">
+          <div class="text-xs font-mono font-semibold text-slate-400 uppercase tracking-wider mb-2">Blog</div>
+          <div class="font-semibold text-ink text-sm group-hover:text-brand transition-colors mb-1.5 leading-snug">Why Excel Is Killing Your CPQ Process</div>
+          <div class="text-xs text-slate-500">The hidden cost of spreadsheet-based configuration management</div>
+        </a>
+
+        <a href="../blog/bom-errors-cost.html" class="group block bg-white border border-slate-200 rounded-xl p-5 hover:border-brand hover:shadow-md transition-all">
+          <div class="text-xs font-mono font-semibold text-slate-400 uppercase tracking-wider mb-2">Blog</div>
+          <div class="font-semibold text-ink text-sm group-hover:text-brand transition-colors mb-1.5 leading-snug">What BOM Errors Really Cost Indian Manufacturers</div>
+          <div class="text-xs text-slate-500">Rework, margin loss, and customer trust — the full picture</div>
+        </a>
+
+        <a href="../case-studies/switchgear-manufacturer.html" class="group block bg-white border border-slate-200 rounded-xl p-5 hover:border-brand hover:shadow-md transition-all">
+          <div class="text-xs font-mono font-semibold text-slate-400 uppercase tracking-wider mb-2">Case Study</div>
+          <div class="font-semibold text-ink text-sm group-hover:text-brand transition-colors mb-1.5 leading-snug">Switchgear Manufacturer: IEC 60947 Compliance at Selection</div>
+          <div class="text-xs text-slate-500">How a panel builder eliminated compliance rejections</div>
+        </a>
+
+        <a href="../industries/elevators.html" class="group block bg-white border border-slate-200 rounded-xl p-5 hover:border-brand hover:shadow-md transition-all">
+          <div class="text-xs font-mono font-semibold text-slate-400 uppercase tracking-wider mb-2">Industry</div>
+          <div class="font-semibold text-ink text-sm group-hover:text-brand transition-colors mb-1.5 leading-snug">Elevators &amp; Escalators — CPP Platform</div>
+          <div class="text-xs text-slate-500">Full EN81/NBC constraint coverage for elevator OEMs</div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-ink py-8 text-center">
+  <p class="text-slate-400 text-sm font-mono">© 2026 Softwaller Technologies Private Limited · CPP & CPQ are products of Softwaller Technologies · <a href="../index.html" class="text-brand hover:underline">← Back to Home</a></p>
+</footer>
+
+<!-- AOS init -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    AOS.init({
+      duration: 600,
+      once: true,
+      easing: 'ease-out-cubic',
+      offset: 60
+    });
+  });
+</script>
+
+</body>
+</html>

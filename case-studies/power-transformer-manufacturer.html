@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0EA5E9">
+  <title>₹1.8 Crore in Scrap Eliminated: How a Power Transformer OEM Encoded IEC 60076 Into Every Quote | CPP Case Study</title>
+  <meta name="description" content="A power transformer OEM was scrapping ₹1.8 Cr in core and winding material annually due to design errors at the quoting stage. CPP encoded IEC 60076 and IS 1180 as constraints and eliminated the problem.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://cpplatform.in/case-studies/power-transformer-manufacturer.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="CPP Platform">
+  <meta property="og:title" content="₹1.8 Crore in Scrap Eliminated: How a Power Transformer OEM Encoded IEC 60076 Into Every Quote | CPP Case Study">
+  <meta property="og:description" content="A power transformer OEM was scrapping ₹1.8 Cr in core and winding material annually due to design errors at the quoting stage. CPP encoded IEC 60076 and IS 1180 as constraints and eliminated the problem.">
+  <meta property="og:image" content="https://cpplatform.in/assets/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://cpplatform.in/case-studies/power-transformer-manufacturer.html">
+  <meta property="og:locale" content="en_IN">
+  <meta property="article:published_time" content="2026-05-17">
+  <meta property="article:author" content="CPP Platform">
+  <meta property="article:section" content="Power Transformers">
+  <meta property="article:tag" content="Power Transformers IEC 60076 IS 1180 BOM Automation Core Design">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="₹1.8 Cr in Transformer Scrap Eliminated: IEC 60076 &amp; IS 1180 at Selection Time | CPP Case Study">
+  <meta name="twitter:description" content="6.5 days to 45 minutes. 96% BOM error reduction. Zero scrap in 12 months. How a transformer OEM encoded IEC 60076 and IS 1180 as hard constraints in CPP.">
+  <meta name="twitter:image" content="https://cpplatform.in/assets/images/og-image.jpg">
+
+  <!-- JSON-LD: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "₹1.8 Crore in Scrap Eliminated: How a Power Transformer OEM Encoded IEC 60076 Into Every Quote",
+    "description": "A power transformer OEM was scrapping ₹1.8 Cr in core and winding material annually due to design errors at the quoting stage. CPP encoded IEC 60076 and IS 1180 as constraints and eliminated the problem.",
+    "datePublished": "2026-05-17",
+    "dateModified": "2026-05-17",
+    "author": {
+      "@type": "Organization",
+      "name": "Softwaller Technologies Private Limited",
+      "url": "https://cpplatform.in/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Softwaller Technologies Private Limited",
+      "url": "https://cpplatform.in/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://cpplatform.in/assets/images/og-image.jpg"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://cpplatform.in/case-studies/power-transformer-manufacturer.html"
+    },
+    "image": "https://cpplatform.in/assets/images/og-image.jpg",
+    "articleSection": "Power Transformers",
+    "keywords": "power transformer manufacturer CPQ BOM India, IEC 60076 compliance constraint engine, IS 1180 BEE star rating automation, transformer core design BOM derivation, OLTC DETC configuration"
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://cpplatform.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Case Studies",
+        "item": "https://cpplatform.in/case-studies/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Power Transformer Manufacturer Case Study",
+        "item": "https://cpplatform.in/case-studies/power-transformer-manufacturer.html"
+      }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can CPP handle both IEC 60076 and IS 1180 / IS 2026 requirements simultaneously?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. CPP supports multiple constraint sets on a single product family. IEC 60076 and IS 1180 constraints coexist in the same constraint graph. When an IS 1180 requirement is stricter than IEC 60076 for a given parameter, CPP applies the more restrictive constraint automatically."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does CPP derive core and winding weights for the BOM?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Core silicon steel weight and winding copper weight are calculated from the transformer specification (kVA, voltage, frequency, flux density) using standard electromagnetic design relationships. The results appear as BOM line items with quantities in kg or tonnes. Manufacturers typically verify the first few CPP-generated designs against their existing design sheets during onboarding."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does CPP support OLTC (On-Load Tap Changer) and DETC configurations?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Tap changer type is a first-class feature in CPP's transformer product model. OLTC and DETC have different BOM implications (additional relays, controls, oil expansion volume) — all derived automatically when the tap changer type is selected."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can CPP produce transformer test reports or type test certificates?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CPP produces the BOM and specification sheet. Type test certificates and routine test reports are produced by the manufacturer's test lab. However, CPP's specification sheet can be pre-formatted to match the test report template, so test data is filled in against a CPP-generated spec rather than a manually prepared one."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: {
+          brand:   { DEFAULT: '#0EA5E9', dark: '#0284C7', light: '#BAE6FD', faint: '#F0F9FF' },
+          surface: '#F1F5F9',
+          ink:     '#0F172A',
+        },
+        fontFamily: {
+          mono: ['"JetBrains Mono"', 'monospace'],
+          sans: ['Inter', 'sans-serif'],
+        }
+      }}
+    }
+  </script>
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../assets/css/custom.min.css?v=1.1.0">
+
+  <!-- Alpine -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+
+<body class="font-sans bg-surface text-ink antialiased">
+
+<!-- Skip link -->
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-brand focus:text-white focus:font-semibold focus:px-4 focus:py-2 focus:rounded-lg">Skip to main content</a>
+
+<!-- Nav -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-slate-100 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+    <a href="../index.html" class="flex items-center gap-2.5">
+      <div class="w-8 h-8 bg-brand rounded-lg flex items-center justify-center">
+        <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h10M4 18h6"/></svg>
+      </div>
+      <span class="font-mono font-bold text-xl text-ink">CPP</span>
+    </a>
+    <div class="flex items-center gap-4">
+      <a href="../blog/index.html" class="text-sm font-medium text-slate-600 hover:text-brand transition-colors">Blog</a>
+      <a href="../case-studies/index.html" class="text-sm font-medium text-slate-600 hover:text-brand transition-colors">Case Studies</a>
+      <a href="../index.html#demo" class="inline-flex items-center gap-1.5 bg-brand hover:bg-brand-dark text-white font-semibold text-sm px-4 py-2 rounded-lg transition-colors">Request Demo →</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+  <!-- =========================================================
+       HERO
+       ========================================================= -->
+  <section class="pt-24 pb-16 bg-ink">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Breadcrumb -->
+      <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-xs font-mono text-slate-500 mb-6">
+        <a href="../index.html" class="hover:text-brand transition-colors">Home</a>
+        <span class="text-slate-700">/</span>
+        <a href="../case-studies/index.html" class="hover:text-brand transition-colors">Case Studies</a>
+        <span class="text-slate-700">/</span>
+        <span class="text-slate-400">Power Transformer Manufacturer</span>
+      </nav>
+
+      <!-- Category chip -->
+      <div class="inline-flex items-center gap-2 mb-5">
+        <span class="text-xs font-mono font-semibold text-brand uppercase tracking-widest bg-brand/10 border border-brand/20 px-3 py-1 rounded-full">Case Study · Power Transformers</span>
+      </div>
+
+      <!-- H1 -->
+      <h1 class="font-mono font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-6">
+        ₹1.8 Crore in Scrap Eliminated: How a<br>
+        <span class="text-brand">Power Transformer OEM Encoded IEC 60076<br class="hidden sm:block">Into Every Quote</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-slate-400 text-lg sm:text-xl leading-relaxed max-w-3xl mb-8">
+        An Indian power transformer OEM was scrapping ₹1.8 Cr in core and winding material annually because design errors at the quoting stage — wrong core cross-section, wrong impedance specification — were surviving three engineering reviews and reaching the shop floor. CPP encoded IEC 60076 and IS 1180 as constraints that make these errors structurally impossible.
+      </p>
+
+      <!-- Tags -->
+      <div class="flex flex-wrap gap-2">
+        <span class="text-xs font-medium text-slate-400 bg-white/5 border border-white/10 px-3 py-1 rounded-full">Power Transformers</span>
+        <span class="text-xs font-medium text-slate-400 bg-white/5 border border-white/10 px-3 py-1 rounded-full">IEC 60076</span>
+        <span class="text-xs font-medium text-slate-400 bg-white/5 border border-white/10 px-3 py-1 rounded-full">IS 1180</span>
+        <span class="text-xs font-medium text-slate-400 bg-white/5 border border-white/10 px-3 py-1 rounded-full">BOM Automation</span>
+        <span class="text-xs font-medium text-slate-400 bg-white/5 border border-white/10 px-3 py-1 rounded-full">Core Design</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       RESULTS DASHBOARD
+       ========================================================= -->
+  <section class="bg-white py-14 border-b border-slate-100">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-xs font-mono font-semibold text-slate-400 uppercase tracking-widest mb-8 text-center">Results — 12 months post go-live</p>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-5">
+
+        <div class="flex flex-col items-center text-center p-6 bg-surface rounded-2xl border border-slate-100 shadow-sm relative overflow-hidden group hover:border-brand/40 hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="0">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand to-brand-dark opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl"></div>
+          <div class="font-mono font-bold text-3xl text-brand mb-1.5">₹1.8Cr</div>
+          <div class="text-sm font-medium text-ink mb-0.5">Annual scrap cost</div>
+          <div class="text-xs text-slate-500">eliminated</div>
+        </div>
+
+        <div class="flex flex-col items-center text-center p-6 bg-surface rounded-2xl border border-slate-100 shadow-sm relative overflow-hidden group hover:border-brand/40 hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="80">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand to-brand-dark opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl"></div>
+          <div class="font-mono font-bold text-3xl text-brand mb-1.5">96%</div>
+          <div class="text-sm font-medium text-ink mb-0.5">BOM error rate</div>
+          <div class="text-xs text-slate-500">reduction</div>
+        </div>
+
+        <div class="flex flex-col items-center text-center p-6 bg-surface rounded-2xl border border-slate-100 shadow-sm relative overflow-hidden group hover:border-brand/40 hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="160">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand to-brand-dark opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl"></div>
+          <div class="font-mono font-bold text-3xl text-brand mb-1.5">6.5d → 45 min</div>
+          <div class="text-sm font-medium text-ink mb-0.5">Quote-to-spec cycle</div>
+          <div class="text-xs text-slate-500">reduction</div>
+        </div>
+
+        <div class="flex flex-col items-center text-center p-6 bg-surface rounded-2xl border border-slate-100 shadow-sm relative overflow-hidden group hover:border-brand/40 hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="240">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand to-brand-dark opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl"></div>
+          <div class="font-mono font-bold text-3xl text-brand mb-1.5">IS 1180</div>
+          <div class="text-sm font-medium text-ink mb-0.5">BIS certification</div>
+          <div class="text-xs text-slate-500">maintained without manual checks</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       THE CHALLENGE
+       ========================================================= -->
+  <section class="bg-surface py-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="max-w-3xl" data-aos="fade-up">
+        <div class="text-xs font-mono font-semibold text-brand uppercase tracking-wider mb-3">The Challenge</div>
+        <h2 class="font-mono font-bold text-2xl sm:text-3xl text-ink mb-8">
+          A wrong impedance isn't caught until the short-circuit test. By then, the transformer is complete.
+        </h2>
+      </div>
+
+      <div class="grid lg:grid-cols-5 gap-10 items-start">
+
+        <!-- Narrative -->
+        <div class="lg:col-span-3 space-y-5 text-slate-600 leading-relaxed" data-aos="fade-up" data-aos-delay="60">
+          <p>
+            The company is an Indian power transformer OEM manufacturing distribution transformers (25 kVA to 2,500 kVA) and power transformers (10 MVA to 100 MVA) for utility, industrial, and renewable energy customers. Their products must comply with IEC 60076 (international standard) and IS 1180 / IS 2026 (Bureau of Indian Standards) — a dual compliance requirement that adds significant complexity to every quote.
+          </p>
+          <p>
+            The configuration problem is multi-dimensional. kVA rating crossed with voltage ratio, impedance, vector group, cooling class, and tap changer type produces thousands of valid transformer configurations. IEC 60076-1 mandates specific impedance voltage tolerances by kVA and voltage class. IS 1180 specifies efficiency levels (BEE star ratings) and no-load loss limits. Vector group determines downstream protection relay coordination — the wrong vector group on a grid-connected transformer can cause protection miscoordination at the substation level.
+          </p>
+          <p>
+            Their quoting process: an application engineer created a transformer specification sheet manually, a design engineer validated the core design and winding calculation against standards, and the BOM was generated from the design sheet. Total time per quote: 6.5 days. In FY2024-25, four transformers were manufactured with the wrong core cross-section — impedance was out of tolerance by more than 10%. All four had to be rewound. Average scrap cost per incident: <strong class="text-ink">₹45 lakh</strong> (core silicon steel + winding copper). Total: <strong class="text-ink">₹1.8 crore</strong> in a single financial year.
+          </p>
+        </div>
+
+        <!-- Pull quote + incident log -->
+        <div class="lg:col-span-2 space-y-5" data-aos="fade-up" data-aos-delay="120">
+
+          <blockquote class="relative bg-white rounded-2xl border-l-4 border-brand p-6 shadow-sm">
+            <svg class="w-8 h-8 text-brand/20 mb-3" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+            <p class="text-slate-700 text-sm leading-relaxed italic mb-4">
+              "A wrong impedance isn't caught until the short-circuit test after assembly. The transformer is complete. The copper is wound. The core is built. Rewinding costs more than building a new one from scratch."
+            </p>
+            <footer class="text-xs text-slate-500 font-medium">
+              — Technical Director, Power Transformer OEM<br>
+              <span class="text-slate-400">(name withheld at customer request)</span>
+            </footer>
+          </blockquote>
+
+          <!-- FY24-25 incident log -->
+          <div class="bg-red-50 border border-red-100 rounded-2xl p-5">
+            <div class="text-xs font-mono font-semibold text-red-500 uppercase tracking-wider mb-3">FY2024-25 — Scrap and rework incidents</div>
+            <div class="space-y-2">
+              <div class="flex items-start gap-2.5">
+                <div class="w-1.5 h-1.5 rounded-full bg-red-400 mt-2 flex-shrink-0"></div>
+                <span class="text-sm text-slate-700">4 transformers scrapped — wrong core cross-section, impedance &gt;10% out of tolerance</span>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <div class="w-1.5 h-1.5 rounded-full bg-red-400 mt-2 flex-shrink-0"></div>
+                <span class="text-sm text-slate-700">₹45L average scrap cost per unit (silicon steel core + copper winding)</span>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <div class="w-1.5 h-1.5 rounded-full bg-red-400 mt-2 flex-shrink-0"></div>
+                <span class="text-sm text-slate-700">6.5-day average quote-to-spec cycle per order</span>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <div class="w-1.5 h-1.5 rounded-full bg-red-400 mt-2 flex-shrink-0"></div>
+                <span class="text-sm text-slate-700">Total FY24-25 loss: ₹1.8 Cr — all tracing to configuration errors at the quote stage</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       THE SOLUTION
+       ========================================================= -->
+  <section class="bg-white py-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="max-w-3xl mb-10" data-aos="fade-up">
+        <div class="text-xs font-mono font-semibold text-brand uppercase tracking-wider mb-3">The Solution</div>
+        <h2 class="font-mono font-bold text-2xl sm:text-3xl text-ink mb-3">
+          IEC 60076 and IS 1180 encoded as constraints. Core and winding weights derived. Dynamics 365 integrated. Seven weeks.
+        </h2>
+        <p class="text-slate-500 leading-relaxed">
+          CPP deployed across three phases — IEC 60076 and IS 1180 constraint modelling, core and winding BOM derivation, and Dynamics 365 integration — each delivering a working handoff before the next began.
+        </p>
+      </div>
+
+      <!-- Phase 1 -->
+      <div class="mb-12" data-aos="fade-up">
+        <div class="flex items-start gap-4 mb-4">
+          <div class="flex-shrink-0 w-8 h-8 rounded-full bg-brand/10 border border-brand/20 flex items-center justify-center">
+            <span class="font-mono font-bold text-brand text-sm">1</span>
+          </div>
+          <div>
+            <h3 class="font-semibold text-ink text-lg mb-1">IEC 60076 and IS 1180 constraint modelling — Week 1–3</h3>
+            <p class="text-slate-500 text-sm font-mono">Day 0 → Day 21</p>
+          </div>
+        </div>
+        <div class="pl-12 space-y-4 text-slate-600 leading-relaxed text-base">
+          <p>
+            CPP's solution engineers worked with the Technical Director and chief design engineer through three weeks of intensive constraint mapping workshops. Every design rule and standards table in IEC 60076 and IS 1180 was encoded as a typed constraint.
+          </p>
+          <p>
+            IEC 60076-1 impedance voltage requirements were mapped by kVA class and HV winding voltage. IEC 60076-2 (temperature rise) cooling class constraints were encoded separately. IS 1180 Part 1 BEE star rating requirements were layered on top as additional hard constraints — when IS 1180 is stricter than IEC 60076 for a given parameter, CPP applies the more restrictive requirement automatically.
+          </p>
+
+          <!-- Constraint table -->
+          <div class="mt-5 overflow-x-auto rounded-xl border border-slate-200">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="bg-surface border-b border-slate-200">
+                  <th class="text-left px-4 py-3 font-mono font-semibold text-slate-500 text-xs uppercase tracking-wide">Constraint</th>
+                  <th class="text-left px-4 py-3 font-mono font-semibold text-slate-500 text-xs uppercase tracking-wide">Effect</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100">
+                <tr class="hover:bg-surface/60 transition-colors">
+                  <td class="px-4 py-3 font-mono text-xs text-ink whitespace-nowrap"><code class="bg-brand/5 text-brand px-1.5 py-0.5 rounded">kVA ≥ 1000 AND VoltageRatio ≥ 11kV → ImpedanceVoltage ≥ 5%</code></td>
+                  <td class="px-4 py-3 text-slate-600 text-xs">IEC 60076-1 minimum impedance voltage requirement; eliminates under-specified core cross-sections for large high-voltage units</td>
+                </tr>
+                <tr class="hover:bg-surface/60 transition-colors">
+                  <td class="px-4 py-3 font-mono text-xs text-ink whitespace-nowrap"><code class="bg-brand/5 text-brand px-1.5 py-0.5 rounded">kVA ≥ 2500 → CoolingClass = ONAN OR ONAF</code></td>
+                  <td class="px-4 py-3 text-slate-600 text-xs">Prevents inadequate cooling selection for large transformers; eliminates dry-type cooling for high kVA ratings</td>
+                </tr>
+                <tr class="hover:bg-surface/60 transition-colors">
+                  <td class="px-4 py-3 font-mono text-xs text-ink whitespace-nowrap"><code class="bg-brand/5 text-brand px-1.5 py-0.5 rounded">BEEStarRating ≥ 4 AND kVA ≤ 250 → NoLoadLoss ≤ IS1180Table3Value(kVA)</code></td>
+                  <td class="px-4 py-3 text-slate-600 text-xs">IS 1180 BEE efficiency floor; automatically enforces no-load loss ceiling from the IS 1180 Part 1 Table 3 lookup</td>
+                </tr>
+                <tr class="hover:bg-surface/60 transition-colors">
+                  <td class="px-4 py-3 font-mono text-xs text-ink whitespace-nowrap"><code class="bg-brand/5 text-brand px-1.5 py-0.5 rounded">VectorGroup = Dyn11 → NeutralEarthing = Required</code></td>
+                  <td class="px-4 py-3 text-slate-600 text-xs">Distribution transformer earthing requirement; ensures neutral earthing is included in BOM and specification sheet</td>
+                </tr>
+                <tr class="hover:bg-surface/60 transition-colors">
+                  <td class="px-4 py-3 font-mono text-xs text-ink whitespace-nowrap"><code class="bg-brand/5 text-brand px-1.5 py-0.5 rounded">TapChangerType = OLTC AND kVA &lt; 500 → WARNING</code></td>
+                  <td class="px-4 py-3 text-slate-600 text-xs">Guidance constraint (not hard block): surfaces advisory that OLTC is uncommon below 500 kVA and prompts engineer to confirm intent</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="mb-12" data-aos="fade-up">
+        <div class="flex items-start gap-4 mb-4">
+          <div class="flex-shrink-0 w-8 h-8 rounded-full bg-brand/10 border border-brand/20 flex items-center justify-center">
+            <span class="font-mono font-bold text-brand text-sm">2</span>
+          </div>
+          <div>
+            <h3 class="font-semibold text-ink text-lg mb-1">Core and winding BOM derivation — Week 3–5</h3>
+            <p class="text-slate-500 text-sm font-mono">Day 22 → Day 35</p>
+          </div>
+        </div>
+        <div class="pl-12 space-y-4 text-slate-600 leading-relaxed text-base">
+          <p>
+            Transformer BOMs are among the most calculation-intensive in manufacturing. Core cross-section, number of turns, winding conductor cross-section, copper weight, and silicon steel weight are all derived from electromagnetic design relationships — not lookup tables. CPP encoded these relationships as BOM derivation rules using the company's design tables and material specifications.
+          </p>
+          <div class="grid sm:grid-cols-3 gap-3 mt-4">
+            <div class="bg-surface rounded-xl p-4 border border-slate-100">
+              <div class="font-mono text-xs text-brand font-semibold mb-1.5">Core cross-section</div>
+              <div class="text-xs text-slate-500">Derived from flux density, kVA, and operating frequency (50 Hz). Directly determines core silicon steel weight BOM line.</div>
+            </div>
+            <div class="bg-surface rounded-xl p-4 border border-slate-100">
+              <div class="font-mono text-xs text-brand font-semibold mb-1.5">Winding weight</div>
+              <div class="text-xs text-slate-500">Conductor cross-section derived from current density and kVA. Copper weight (tonnes) becomes a BOM line item with part number.</div>
+            </div>
+            <div class="bg-surface rounded-xl p-4 border border-slate-100">
+              <div class="font-mono text-xs text-brand font-semibold mb-1.5">Silicon steel weight</div>
+              <div class="text-xs text-slate-500">CRGO silicon steel weight derived from core cross-section and stack dimensions. Direct BOM line with quantity in tonnes.</div>
+            </div>
+          </div>
+          <p>
+            Every BOM derivation was verified against 40 historical transformer designs spanning the full kVA range. The derivation engine matched the design team's manually calculated values within 1.8% on average — within acceptable tolerance for early-stage BOM costing. Larger deviations triggered a review of the design table encoding, not the BOM logic.
+          </p>
+          <div class="bg-ink rounded-xl p-4 font-mono text-xs overflow-x-auto mt-2">
+            <div class="text-slate-500 mb-2">// BOM derivation — 1000 kVA, 11kV/433V, Dyn11, ONAN</div>
+            <div class="text-green-400">kVA = <span class="text-yellow-300">1000</span>, VoltageHV = <span class="text-yellow-300">"11kV"</span>, VectorGroup = <span class="text-yellow-300">"Dyn11"</span></div>
+            <div class="text-slate-400 pl-4">→ ImpedanceVoltage ≥ <span class="text-brand">5%</span> (IEC 60076-1 enforced)</div>
+            <div class="text-slate-400 pl-4">→ CoreWeight = <span class="text-green-400">1.24 tonnes</span> CRGO silicon steel</div>
+            <div class="text-slate-400 pl-4">→ WindingWeight = <span class="text-green-400">0.82 tonnes</span> copper conductor</div>
+            <div class="text-slate-400 pl-4">→ NeutralEarthing = <span class="text-brand">Required</span> (Dyn11 constraint)</div>
+            <div class="text-slate-400 pl-4">→ <span class="text-purple-400">14 BOM lines generated</span> → pushed to Dynamics 365</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 3 -->
+      <div class="mb-12" data-aos="fade-up">
+        <div class="flex items-start gap-4 mb-4">
+          <div class="flex-shrink-0 w-8 h-8 rounded-full bg-brand/10 border border-brand/20 flex items-center justify-center">
+            <span class="font-mono font-bold text-brand text-sm">3</span>
+          </div>
+          <div>
+            <h3 class="font-semibold text-ink text-lg mb-1">Dynamics 365 integration and go-live — Week 6–7</h3>
+            <p class="text-slate-500 text-sm font-mono">Day 36 → Day 49</p>
+          </div>
+        </div>
+        <div class="pl-12 space-y-4 text-slate-600 leading-relaxed text-base">
+          <p>
+            CPP was connected to Microsoft Dynamics 365 Business Central for automatic BOM push on configuration confirmation. The legacy design calculation sheet was preserved as a reference document — CPP output became the authoritative BOM used for manufacturing and procurement from go-live.
+          </p>
+          <p>
+            The first CPP-generated transformer order — a 1,600 kVA, 11kV/433V, Dyn11, ONAN unit for an industrial customer in Pune — was confirmed on Week 9 of the engagement. The BOM pushed to Dynamics 365 within 14 seconds. The silicon steel purchase order was raised automatically from the BOM line item. The winding copper was drawn from stock on the Dynamics 365 WIP reservation.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================
+       THE RESULTS
+       ========================================================= -->
+  <section class="bg-surface py-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="max-w-3xl mb-10" data-aos="fade-up">
+        <div class="text-xs font-mono font-semibold text-brand uppercase tracking-wider mb-3">The Results</div>
+        <h2 class="font-mono font-bold text-2xl sm:text-3xl text-ink mb-3">
+          Twelve months after go-live
+        </h2>
+        <p class="text-slate-500 leading-relaxed">
+          Every metric moved decisively within the first quarter. By the 12-month mark, the finance team confirmed zero scrapped units and zero rework incidents attributable to configuration errors — the first clean year in at least four.
+        </p>
+      </div>
+
+      <!-- Metric cards -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
+
+        <div class="bg-white rounded-xl p-5 border border-slate-100 shadow-sm" data-aos="fade-up" data-aos-delay="0">
+          <div class="font-mono text-xs font-semibold text-brand uppercase tracking-wider mb-3">Quote-to-spec cycle</div>
+          <div class="font-mono font-bold text-2xl text-ink mb-2">6.5 days → 45 min</div>
+          <p class="text-slate-500 text-sm leading-relaxed">The 6.5-day cycle was driven by a queue of orders awaiting manual IEC 60076 and IS 1180 validation by design engineers. With constraints enforced at selection time, no post-selection validation is required for standard transformer families. The 45 minutes remaining covers commercial review and documentation.</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-5 border border-slate-100 shadow-sm" data-aos="fade-up" data-aos-delay="60">
+          <div class="font-mono text-xs font-semibold text-brand uppercase tracking-wider mb-3">BOM error rate</div>
+          <div class="font-mono font-bold text-2xl text-ink mb-2">8% → 0.3%</div>
+          <p class="text-slate-500 text-sm leading-relaxed">A 96% reduction. The residual 0.3% traces to part master data issues — incorrect material grades in the Dynamics 365 item master. The constraint engine itself has produced zero invalid impedance specifications or IS 1180 non-compliant configurations since go-live.</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-5 border border-slate-100 shadow-sm" data-aos="fade-up" data-aos-delay="120">
+          <div class="font-mono text-xs font-semibold text-brand uppercase tracking-wider mb-3">Annual scrap cost</div>
+          <div class="font-mono font-bold text-2xl text-ink mb-2">₹1.8 Cr → ₹0</div>
+          <p class="text-slate-500 text-sm leading-relaxed">Zero scrapped units in the 12 months post go-live. The impedance constraint eliminates non-compliant core cross-section selections before they can reach a purchase order. In the prior financial year, four units were scrapped at ₹45L each.</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-5 border border-slate-100 shadow-sm" data-aos="fade-up" data-aos-delay="0">
+          <div class="font-mono text-xs font-semibold text-brand uppercase tracking-wider mb-3">Engineering capacity freed</div>
+          <div class="font-mono font-bold text-2xl text-ink mb-2">2.5 FTE</div>
+          <p class="text-slate-500 text-sm leading-relaxed">Design engineers previously spent the majority of their time on specification validation — verifying impedance tolerances, IS 1180 no-load loss limits, and BEE star ratings for every incoming order. That bandwidth is now redirected to new product development.</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-5 border border-slate-100 shadow-sm" data-aos="fade-up" data-aos-delay="60">
+          <div class="font-mono text-xs font-semibold text-brand uppercase tracking-wider mb-3">New product launched</div>
+          <div class="font-mono font-bold text-2xl text-ink mb-2">Dry-type line</div>
+          <p class="text-slate-500 text-sm leading-relaxed">The freed engineering capacity was deployed to develop a new dry-type transformer product line targeting data centres and metro rail infrastructure. The product line launched 8 months after CPP go-live — a product that had been stalled for two years due to engineering bandwidth constraints.</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-5 border border-slate-100 shadow-sm" data-aos="fade-up" data-aos-delay="120">
+          <div class="font-mono text-xs font-semibold text-brand uppercase tracking-wider mb-3">IS 1180 compliance</div>
+          <div class="font-mono font-bold text-2xl text-ink mb-2">100% automated</div>
+          <p class="text-slate-500 text-sm leading-relaxed">Every quote now includes automatic IS 1180 BEE star rating validation. Previously, the BEE star rating was checked manually by the design engineering team — and only for utility orders where the customer explicitly requested BIS documentation. CPP enforces it on every order regardless of customer type.</p>
+        </div>
+
+      </div>
+
+      <!-- Insight callout -->
+      <div class="bg-brand/10 border-l-4 border-brand p-6 rounded-xl" data-aos="fade-up">
+        <div class="font-mono text-xs font-semibold text-brand uppercase tracking-wider mb-2">Key insight</div>
+        <p class="text-slate-700 text-sm leading-relaxed">
+          The most significant finding from this deployment was how long the impedance errors had been occurring before anyone connected them systematically to the configuration process. The company had attributed the scrap incidents to "manufacturing variation." Only after encoding the constraint graph in CPP did the Technical Director realise that in all four scrapped-unit cases, the wrong core cross-section had been specified at the quote stage — and had propagated undetected through three engineering reviews because no single reviewer held the full IEC 60076-1 impedance lookup table and the core geometry calculation in memory simultaneously. The constraint engine did not catch a new class of error. It made a well-established class of error structurally impossible for the first time.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================
+       FAQ
+       ========================================================= -->
+  <section class="bg-surface py-16" x-data="{ open: null }">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="font-mono font-bold text-2xl sm:text-3xl text-ink mb-8">Frequently asked questions</h2>
+      <div class="space-y-3 max-w-3xl">
+
+        <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+          <button @click="open === 0 ? open = null : open = 0" class="w-full flex items-center justify-between p-5 text-left">
+            <span class="font-semibold text-ink text-sm pr-4">Can CPP handle both IEC 60076 and IS 1180 / IS 2026 requirements simultaneously?</span>
+            <svg class="flex-shrink-0 w-5 h-5 text-brand transition-transform duration-200" :class="open === 0 ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div x-show="open === 0" x-transition:enter="transition-all ease-out duration-200" x-transition:enter-start="opacity-0 max-h-0" x-transition:enter-end="opacity-100 max-h-96" x-transition:leave="transition-all ease-in duration-150" x-transition:leave-start="opacity-100 max-h-96" x-transition:leave-end="opacity-0 max-h-0" class="overflow-hidden">
+            <div class="px-5 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4">
+              Yes. CPP supports multiple constraint sets on a single product family. IEC 60076 and IS 1180 constraints coexist in the same constraint graph. When an IS 1180 requirement is stricter than IEC 60076 for a given parameter, <strong class="text-ink">CPP applies the more restrictive constraint automatically</strong> — there is no need to manually determine which standard governs for each parameter.
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+          <button @click="open === 1 ? open = null : open = 1" class="w-full flex items-center justify-between p-5 text-left">
+            <span class="font-semibold text-ink text-sm pr-4">How does CPP derive core and winding weights for the BOM?</span>
+            <svg class="flex-shrink-0 w-5 h-5 text-brand transition-transform duration-200" :class="open === 1 ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div x-show="open === 1" x-transition:enter="transition-all ease-out duration-200" x-transition:enter-start="opacity-0 max-h-0" x-transition:enter-end="opacity-100 max-h-96" x-transition:leave="transition-all ease-in duration-150" x-transition:leave-start="opacity-100 max-h-96" x-transition:leave-end="opacity-0 max-h-0" class="overflow-hidden">
+            <div class="px-5 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4">
+              Core silicon steel weight and winding copper weight are calculated from the transformer specification (kVA, voltage, frequency, flux density) using standard electromagnetic design relationships. The results appear as <strong class="text-ink">BOM line items with quantities in kg or tonnes</strong>. Manufacturers typically verify the first few CPP-generated designs against their existing design sheets during onboarding — this deployment achieved 1.8% average deviation across 40 historical designs.
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+          <button @click="open === 2 ? open = null : open = 2" class="w-full flex items-center justify-between p-5 text-left">
+            <span class="font-semibold text-ink text-sm pr-4">Does CPP support OLTC (On-Load Tap Changer) and DETC configurations?</span>
+            <svg class="flex-shrink-0 w-5 h-5 text-brand transition-transform duration-200" :class="open === 2 ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div x-show="open === 2" x-transition:enter="transition-all ease-out duration-200" x-transition:enter-start="opacity-0 max-h-0" x-transition:enter-end="opacity-100 max-h-96" x-transition:leave="transition-all ease-in duration-150" x-transition:leave-start="opacity-100 max-h-96" x-transition:leave-end="opacity-0 max-h-0" class="overflow-hidden">
+            <div class="px-5 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4">
+              Yes. Tap changer type is a <strong class="text-ink">first-class feature</strong> in CPP's transformer product model. OLTC and DETC have different BOM implications — additional relays, motor drive units, oil expansion volume, and control wiring — all derived automatically when the tap changer type is selected. The OLTC below 500 kVA guidance constraint surfaces an advisory but does not block the selection for applications where OLTC is genuinely required at that rating.
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+          <button @click="open === 3 ? open = null : open = 3" class="w-full flex items-center justify-between p-5 text-left">
+            <span class="font-semibold text-ink text-sm pr-4">Can CPP produce transformer test reports or type test certificates?</span>
+            <svg class="flex-shrink-0 w-5 h-5 text-brand transition-transform duration-200" :class="open === 3 ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div x-show="open === 3" x-transition:enter="transition-all ease-out duration-200" x-transition:enter-start="opacity-0 max-h-0" x-transition:enter-end="opacity-100 max-h-96" x-transition:leave="transition-all ease-in duration-150" x-transition:leave-start="opacity-100 max-h-96" x-transition:leave-end="opacity-0 max-h-0" class="overflow-hidden">
+            <div class="px-5 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4">
+              CPP produces the BOM and specification sheet. Type test certificates and routine test reports are produced by the manufacturer's test lab. However, <strong class="text-ink">CPP's specification sheet can be pre-formatted to match the test report template</strong>, so test data is filled in against a CPP-generated spec rather than a manually prepared one — eliminating the transcription step between specification and test documentation.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       CTA
+       ========================================================= -->
+  <section class="py-16 bg-brand">
+    <div class="max-w-3xl mx-auto px-4 text-center" data-aos="fade-up">
+      <h2 class="font-mono font-bold text-3xl text-white mb-4">Your product family. Your numbers.</h2>
+      <p class="text-white/80 mb-8 text-lg">Book a 45-minute demo. We'll configure one of your actual transformer families in CPP and show you what your quote cycle and BOM error rate could look like.</p>
+      <a href="../index.html#demo" class="inline-flex items-center gap-2 bg-white text-brand hover:bg-brand-light font-bold px-8 py-3.5 rounded-xl transition-colors shadow-lg text-base">Request Your Demo →</a>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       BLOG CROSS-LINKS
+       ========================================================= -->
+  <section class="py-14 bg-surface border-t border-slate-200">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="font-mono text-sm font-semibold text-slate-500 uppercase tracking-wider">From the CPP blog</h2>
+        <a href="../blog/index.html" class="text-sm text-brand font-medium hover:underline">All articles →</a>
+      </div>
+      <div class="grid sm:grid-cols-3 gap-5">
+
+        <a href="../blog/bom-errors-cost.html" class="group block bg-white border border-slate-200 rounded-xl p-5 hover:border-brand hover:shadow-md transition-all">
+          <div class="text-xs font-mono font-semibold text-slate-400 uppercase tracking-wider mb-2">Blog</div>
+          <div class="font-semibold text-ink text-sm group-hover:text-brand transition-colors mb-1.5 leading-snug">BOM Errors Cost Indian Manufacturers ₹2–50 Lakh Per Incident</div>
+          <div class="text-xs text-slate-500">Rework, scrap, and the hidden cost of configuration errors at scale</div>
+        </a>
+
+        <a href="../blog/constraint-configurator-vs-rules-engine.html" class="group block bg-white border border-slate-200 rounded-xl p-5 hover:border-brand hover:shadow-md transition-all">
+          <div class="text-xs font-mono font-semibold text-slate-400 uppercase tracking-wider mb-2">Blog</div>
+          <div class="font-semibold text-ink text-sm group-hover:text-brand transition-colors mb-1.5 leading-snug">Constraint Configurator vs Rules Engine: What's the Difference?</div>
+          <div class="text-xs text-slate-500">Why constraint propagation catches errors a rules engine never will</div>
+        </a>
+
+        <a href="../blog/multi-plant-bom-management.html" class="group block bg-white border border-slate-200 rounded-xl p-5 hover:border-brand hover:shadow-md transition-all">
+          <div class="text-xs font-mono font-semibold text-slate-400 uppercase tracking-wider mb-2">Blog</div>
+          <div class="font-semibold text-ink text-sm group-hover:text-brand transition-colors mb-1.5 leading-snug">Multi-Plant BOM Management: How Indian Manufacturers Handle Regional Variants</div>
+          <div class="text-xs text-slate-500">Managing BOM variance across plants, standards, and regulatory jurisdictions</div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-ink py-8 text-center">
+  <p class="text-slate-400 text-sm font-mono">© 2026 Softwaller Technologies Private Limited · CPP & CPQ are products of Softwaller Technologies · <a href="../index.html" class="text-brand hover:underline">← Back to Home</a></p>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>document.addEventListener('DOMContentLoaded', () => AOS.init({ duration: 600, once: true, easing: 'ease-out-cubic', offset: 60 }));</script>
+
+</body>
+</html>

@@ -36,7 +36,7 @@
     "url": "https://cpplatform.in/blog/index.html",
     "publisher": {
       "@type": "Organization",
-      "name": "CPP Platform",
+      "name": "Softwaller Technologies Private Limited",
       "url": "https://cpplatform.in/",
       "logo": {
         "@type": "ImageObject",
@@ -129,21 +129,23 @@
   </div>
 </section>
 
+<div x-data="{ filter: 'all' }" x-init="$watch('filter', () => setTimeout(() => { if(window.AOS) AOS.refresh(); }, 20))">
+
 <!-- Category filter strip -->
 <section class="bg-white border-b border-slate-100 sticky top-16 z-40" data-aos="fade-down">
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center gap-1 overflow-x-auto py-3 scrollbar-none">
-      <button class="flex-shrink-0 px-4 py-1.5 rounded-full bg-brand text-white text-sm font-medium font-mono transition-colors">All</button>
-      <button class="flex-shrink-0 px-4 py-1.5 rounded-full bg-surface text-slate-600 hover:bg-brand/10 hover:text-brand text-sm font-medium font-mono transition-colors">Process</button>
-      <button class="flex-shrink-0 px-4 py-1.5 rounded-full bg-surface text-slate-600 hover:bg-brand/10 hover:text-brand text-sm font-medium font-mono transition-colors">Technical</button>
-      <button class="flex-shrink-0 px-4 py-1.5 rounded-full bg-surface text-slate-600 hover:bg-brand/10 hover:text-brand text-sm font-medium font-mono transition-colors">Cost Analysis</button>
-      <button class="flex-shrink-0 px-4 py-1.5 rounded-full bg-surface text-slate-600 hover:bg-brand/10 hover:text-brand text-sm font-medium font-mono transition-colors">Case Studies</button>
+      <button @click="filter='all'" :class="filter==='all' ? 'bg-brand text-white' : 'bg-surface text-slate-600 hover:bg-brand/10 hover:text-brand'" class="flex-shrink-0 px-4 py-1.5 rounded-full text-sm font-medium font-mono transition-colors">All</button>
+      <button @click="filter='process'" :class="filter==='process' ? 'bg-brand text-white' : 'bg-surface text-slate-600 hover:bg-brand/10 hover:text-brand'" class="flex-shrink-0 px-4 py-1.5 rounded-full text-sm font-medium font-mono transition-colors">Process</button>
+      <button @click="filter='technical'" :class="filter==='technical' ? 'bg-brand text-white' : 'bg-surface text-slate-600 hover:bg-brand/10 hover:text-brand'" class="flex-shrink-0 px-4 py-1.5 rounded-full text-sm font-medium font-mono transition-colors">Technical</button>
+      <button @click="filter='cost'" :class="filter==='cost' ? 'bg-brand text-white' : 'bg-surface text-slate-600 hover:bg-brand/10 hover:text-brand'" class="flex-shrink-0 px-4 py-1.5 rounded-full text-sm font-medium font-mono transition-colors">Cost Analysis</button>
+      <button @click="filter='casestudy'" :class="filter==='casestudy' ? 'bg-brand text-white' : 'bg-surface text-slate-600 hover:bg-brand/10 hover:text-brand'" class="flex-shrink-0 px-4 py-1.5 rounded-full text-sm font-medium font-mono transition-colors">Case Studies</button>
     </div>
   </div>
 </section>
 
 <!-- Featured post (first article, larger card) -->
-<section class="py-12 bg-white">
+<section class="pt-12 pb-4 bg-white" x-show="filter === 'all' || filter === 'process'">
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-xs font-mono font-semibold text-slate-400 uppercase tracking-wider mb-5">Featured</div>
 
@@ -190,14 +192,14 @@
 </section>
 
 <!-- Blog grid -->
-<section class="pb-16 bg-white">
+<section class="pt-8 pb-16 bg-white">
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-xs font-mono font-semibold text-slate-400 uppercase tracking-wider mb-5">All Posts</div>
+    <div class="text-xs font-mono font-semibold text-slate-400 uppercase tracking-wider mb-5" x-text="filter === 'all' ? 'All Posts' : (filter === 'casestudy' ? 'Case Studies' : filter.charAt(0).toUpperCase() + filter.slice(1) + ' Posts')"></div>
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
       <!-- Card 1: BOM Errors Cost -->
-      <a href="bom-errors-cost.html" class="group block bg-surface border border-slate-200 rounded-xl overflow-hidden hover:border-brand hover:shadow-lg transition-all" data-aos="fade-up" data-aos-delay="0">
+      <a href="bom-errors-cost.html" x-show="filter === 'all' || filter === 'cost'" class="group block bg-surface border border-slate-200 rounded-xl overflow-hidden hover:border-brand hover:shadow-lg transition-all">
         <div class="bg-ink/90 px-5 py-8 flex items-center justify-center">
           <div class="text-center">
             <div class="font-mono font-bold text-3xl text-brand">₹50L</div>
@@ -223,7 +225,7 @@
       </a>
 
       <!-- Card 2: Constraint vs Rules Engine -->
-      <a href="constraint-configurator-vs-rules-engine.html" class="group block bg-surface border border-slate-200 rounded-xl overflow-hidden hover:border-brand hover:shadow-lg transition-all" data-aos="fade-up" data-aos-delay="80">
+      <a href="constraint-configurator-vs-rules-engine.html" x-show="filter === 'all' || filter === 'technical'" class="group block bg-surface border border-slate-200 rounded-xl overflow-hidden hover:border-brand hover:shadow-lg transition-all">
         <div class="bg-brand/10 px-5 py-8 flex items-center justify-center">
           <div class="text-center">
             <div class="font-mono font-bold text-xl text-brand leading-snug">Constraint<br>Engine</div>
@@ -249,7 +251,7 @@
       </a>
 
       <!-- Card 3: excel-killing-cpq (repeat as standard card) -->
-      <a href="excel-killing-cpq.html" class="group block bg-surface border border-slate-200 rounded-xl overflow-hidden hover:border-brand hover:shadow-lg transition-all" data-aos="fade-up" data-aos-delay="160">
+      <a href="excel-killing-cpq.html" x-show="filter === 'all' || filter === 'process'" class="group block bg-surface border border-slate-200 rounded-xl overflow-hidden hover:border-brand hover:shadow-lg transition-all">
         <div class="bg-slate-800 px-5 py-8 flex items-center justify-center">
           <div class="text-center font-mono text-slate-500 text-sm">
             <span class="text-red-400 font-bold">v47_final</span><br>
@@ -275,7 +277,7 @@
       </a>
 
       <!-- Card 4: Case Study — Elevator Manufacturer -->
-      <a href="../case-studies/elevator-manufacturer.html" class="group block bg-surface border border-slate-200 rounded-xl overflow-hidden hover:border-brand hover:shadow-lg transition-all" data-aos="fade-up" data-aos-delay="0">
+      <a href="../case-studies/elevator-manufacturer.html" x-show="filter === 'all' || filter === 'casestudy'" class="group block bg-surface border border-slate-200 rounded-xl overflow-hidden hover:border-brand hover:shadow-lg transition-all">
         <div class="bg-amber-50 border-b border-amber-100 px-5 py-8 flex items-center justify-center">
           <div class="text-center">
             <div class="font-mono font-bold text-3xl text-amber-700">95%</div>
@@ -301,7 +303,7 @@
       </a>
 
       <!-- Card 5: Case Study — Switchgear Manufacturer -->
-      <a href="../case-studies/switchgear-manufacturer.html" class="group block bg-surface border border-slate-200 rounded-xl overflow-hidden hover:border-brand hover:shadow-lg transition-all" data-aos="fade-up" data-aos-delay="80">
+      <a href="../case-studies/switchgear-manufacturer.html" x-show="filter === 'all' || filter === 'casestudy'" class="group block bg-surface border border-slate-200 rounded-xl overflow-hidden hover:border-brand hover:shadow-lg transition-all">
         <div class="bg-sky-50 border-b border-sky-100 px-5 py-8 flex items-center justify-center">
           <div class="text-center">
             <div class="font-mono font-bold text-3xl text-sky-700">₹1.4Cr</div>
@@ -327,7 +329,7 @@
       </a>
 
       <!-- Card 6: How Indian Manufacturers Win Tenders Faster -->
-      <a href="how-manufacturers-win-tenders-faster.html" class="group block bg-surface border border-slate-200 rounded-xl overflow-hidden hover:border-brand hover:shadow-lg transition-all" data-aos="fade-up" data-aos-delay="160">
+      <a href="how-manufacturers-win-tenders-faster.html" x-show="filter === 'all' || filter === 'process'" class="group block bg-surface border border-slate-200 rounded-xl overflow-hidden hover:border-brand hover:shadow-lg transition-all">
         <div class="bg-emerald-50 border-b border-emerald-100 px-5 py-8 flex items-center justify-center">
           <div class="text-center">
             <div class="font-mono font-bold text-3xl text-emerald-700">3wk→4h</div>
@@ -353,7 +355,7 @@
       </a>
 
       <!-- Card 7: ERP Integration -->
-      <a href="erp-integration-product-configurator.html" class="group block bg-surface border border-slate-200 rounded-xl overflow-hidden hover:border-brand hover:shadow-lg transition-all" data-aos="fade-up" data-aos-delay="0">
+      <a href="erp-integration-product-configurator.html" x-show="filter === 'all' || filter === 'technical'" class="group block bg-surface border border-slate-200 rounded-xl overflow-hidden hover:border-brand hover:shadow-lg transition-all">
         <div class="bg-violet-50 border-b border-violet-100 px-5 py-8 flex items-center justify-center">
           <div class="text-center">
             <div class="font-mono font-bold text-xl text-violet-700 leading-snug">CPP→SAP</div>
@@ -379,7 +381,7 @@
       </a>
 
       <!-- Card 8: Multi-Plant BOM -->
-      <a href="multi-plant-bom-management.html" class="group block bg-surface border border-slate-200 rounded-xl overflow-hidden hover:border-brand hover:shadow-lg transition-all" data-aos="fade-up" data-aos-delay="80">
+      <a href="multi-plant-bom-management.html" x-show="filter === 'all' || filter === 'process'" class="group block bg-surface border border-slate-200 rounded-xl overflow-hidden hover:border-brand hover:shadow-lg transition-all">
         <div class="bg-orange-50 border-b border-orange-100 px-5 py-8 flex items-center justify-center">
           <div class="text-center">
             <div class="font-mono font-bold text-3xl text-orange-700">3</div>
@@ -404,9 +406,89 @@
         </div>
       </a>
 
+      <!-- Card 9: Case Study — HVAC Manufacturer -->
+      <a href="../case-studies/hvac-manufacturer.html" x-show="filter === 'all' || filter === 'casestudy'" class="group block bg-surface border border-slate-200 rounded-xl overflow-hidden hover:border-brand hover:shadow-lg transition-all">
+        <div class="bg-teal-50 border-b border-teal-100 px-5 py-8 flex items-center justify-center">
+          <div class="text-center">
+            <div class="font-mono font-bold text-3xl text-teal-700">₹92L</div>
+            <div class="text-teal-600 text-xs mt-1 font-mono">saved in rework costs</div>
+          </div>
+        </div>
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="bg-amber-50 text-amber-700 text-xs font-mono font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full border border-amber-200">Case Study</span>
+            <span class="text-slate-400 text-xs">5 min read</span>
+          </div>
+          <h3 class="font-semibold text-ink text-base mb-2 group-hover:text-brand transition-colors leading-snug">
+            Case Study: HVAC OEM — ECBC Compliance Encoded at Selection
+          </h3>
+          <p class="text-slate-500 text-sm leading-relaxed mb-4">
+            How an HVAC manufacturer encoded 40,000+ chiller variants and ECBC climate-zone COP requirements into CPP — eliminating ₹92 lakh in annual rework.
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-slate-400 text-xs">May 2026</span>
+            <span class="text-brand text-sm font-medium group-hover:underline">Read case study →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 10: Case Study — Power Transformer Manufacturer -->
+      <a href="../case-studies/power-transformer-manufacturer.html" x-show="filter === 'all' || filter === 'casestudy'" class="group block bg-surface border border-slate-200 rounded-xl overflow-hidden hover:border-brand hover:shadow-lg transition-all">
+        <div class="bg-yellow-50 border-b border-yellow-100 px-5 py-8 flex items-center justify-center">
+          <div class="text-center">
+            <div class="font-mono font-bold text-3xl text-yellow-700">₹1.8Cr</div>
+            <div class="text-yellow-600 text-xs mt-1 font-mono">scrap eliminated / yr</div>
+          </div>
+        </div>
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="bg-amber-50 text-amber-700 text-xs font-mono font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full border border-amber-200">Case Study</span>
+            <span class="text-slate-400 text-xs">6 min read</span>
+          </div>
+          <h3 class="font-semibold text-ink text-base mb-2 group-hover:text-brand transition-colors leading-snug">
+            Case Study: Power Transformer OEM — IEC 60076 at Every Selection
+          </h3>
+          <p class="text-slate-500 text-sm leading-relaxed mb-4">
+            A transformer manufacturer eliminating ₹1.8 Cr in annual scrap by encoding IEC 60076, IS 1180, and BEE star-rating constraints directly into CPP.
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-slate-400 text-xs">May 2026</span>
+            <span class="text-brand text-sm font-medium group-hover:underline">Read case study →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 11: Case Study — Industrial Machinery Manufacturer -->
+      <a href="../case-studies/industrial-machinery-manufacturer.html" x-show="filter === 'all' || filter === 'casestudy'" class="group block bg-surface border border-slate-200 rounded-xl overflow-hidden hover:border-brand hover:shadow-lg transition-all">
+        <div class="bg-rose-50 border-b border-rose-100 px-5 py-8 flex items-center justify-center">
+          <div class="text-center">
+            <div class="font-mono font-bold text-3xl text-rose-700">₹2.1Cr</div>
+            <div class="text-rose-600 text-xs mt-1 font-mono">saved across 3 plants</div>
+          </div>
+        </div>
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="bg-amber-50 text-amber-700 text-xs font-mono font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full border border-amber-200">Case Study</span>
+            <span class="text-slate-400 text-xs">7 min read</span>
+          </div>
+          <h3 class="font-semibold text-ink text-base mb-2 group-hover:text-brand transition-colors leading-snug">
+            Case Study: Industrial Machinery OEM — 80,000 Parts, 3 Plants, Zero BOM Drift
+          </h3>
+          <p class="text-slate-500 text-sm leading-relaxed mb-4">
+            How an industrial machinery manufacturer resolved 23% BOM mismatch across three plants — dropping to 1.8% — by deploying CPP's source BOM + plant overlay architecture.
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-slate-400 text-xs">May 2026</span>
+            <span class="text-brand text-sm font-medium group-hover:underline">Read case study →</span>
+          </div>
+        </div>
+      </a>
+
     </div>
   </div>
 </section>
+
+</div>
 
 <!-- Newsletter / CTA -->
 <section class="py-16 bg-ink">
@@ -431,15 +513,32 @@
             </div>
             <div class="flex flex-col gap-1">
               <label class="text-sm font-medium text-ink">Industry <span class="text-slate-400 font-normal">(optional)</span></label>
-              <select class="border border-slate-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand transition-all bg-white">
-                <option value="">Select your industry</option>
-                <option>Elevators &amp; Escalators</option>
-                <option>Switchgear &amp; Electrical Panels</option>
-                <option>HVAC &amp; Cooling Systems</option>
-                <option>Industrial Machinery</option>
-                <option>Power Transformers</option>
-                <option>Other Manufacturing</option>
-              </select>
+              <div x-data="{ open: false, selected: '' }" class="relative">
+                <button type="button" @click="open = !open" @keydown.escape="open = false"
+                  class="w-full flex items-center justify-between border border-slate-300 rounded-lg px-4 py-2.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand transition-all text-left">
+                  <span :class="selected ? 'text-ink' : 'text-slate-400'" x-text="selected || 'Select your industry'"></span>
+                  <svg class="w-4 h-4 text-brand flex-shrink-0 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                  </svg>
+                </button>
+                <div x-show="open" @click.outside="open = false"
+                  x-transition:enter="transition ease-out duration-100" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0"
+                  x-transition:leave="transition ease-in duration-75" x-transition:leave-end="opacity-0"
+                  class="absolute z-50 w-full mt-1 bg-white border border-slate-200 rounded-lg shadow-lg overflow-hidden">
+                  <div class="py-1">
+                    <template x-for="opt in ['Elevators & Escalators','Switchgear & Electrical Panels','HVAC & Cooling Systems','Industrial Machinery','Power Transformers','Other Manufacturing']" :key="opt">
+                      <button type="button" @click="selected = opt; open = false"
+                        class="w-full text-left px-4 py-2.5 text-sm flex items-center justify-between gap-2 transition-colors duration-100"
+                        :class="selected === opt ? 'bg-brand text-white font-medium' : 'text-ink hover:bg-sky-50 hover:text-brand'">
+                        <span x-text="opt"></span>
+                        <svg x-show="selected === opt" class="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                        </svg>
+                      </button>
+                    </template>
+                  </div>
+                </div>
+              </div>
             </div>
             <a href="../index.html#demo" class="block w-full text-center bg-brand hover:bg-brand-dark text-white font-semibold py-3 rounded-lg transition-colors text-sm shadow-sm">
               Request Demo + Subscribe →
@@ -481,7 +580,7 @@
 
 <!-- Footer -->
 <footer class="bg-ink py-8 text-center">
-  <p class="text-slate-400 text-sm font-mono">© 2026 CPP Platform Pvt. Ltd. · <a href="../index.html" class="text-brand hover:underline">← Back to Home</a></p>
+  <p class="text-slate-400 text-sm font-mono">© 2026 Softwaller Technologies Private Limited · CPP & CPQ are products of Softwaller Technologies · <a href="../index.html" class="text-brand hover:underline">← Back to Home</a></p>
 </footer>
 
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>

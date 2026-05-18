@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0EA5E9">
+  <title>From 80,000 Parts to One Source of Truth: How an Industrial Machinery OEM Saved ₹2.1 Crore | CPP Case Study</title>
+  <meta name="description" content="An Indian industrial machinery manufacturer managing 80,000+ parts across 3 plants was losing ₹2.1 Cr annually to BOM inconsistency. CPP unified their product knowledge into a single deterministic source of truth.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://cpplatform.in/case-studies/industrial-machinery-manufacturer.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="CPP Platform">
+  <meta property="og:title" content="From 80,000 Parts to One Source of Truth: How an Industrial Machinery OEM Saved ₹2.1 Crore">
+  <meta property="og:description" content="An Indian industrial machinery manufacturer managing 80,000+ parts across 3 plants was losing ₹2.1 Cr annually to BOM inconsistency. CPP unified their product knowledge into a single deterministic source of truth.">
+  <meta property="og:image" content="https://cpplatform.in/assets/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://cpplatform.in/case-studies/industrial-machinery-manufacturer.html">
+  <meta property="og:locale" content="en_IN">
+  <meta property="article:published_time" content="2026-05-17">
+  <meta property="article:author" content="CPP Platform">
+  <meta property="article:tag" content="industrial machinery BOM management India CPQ">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="From 80,000 Parts to One Source of Truth: Industrial Machinery OEM Case Study | CPP Platform">
+  <meta name="twitter:description" content="₹2.1 Crore cost reduction. 67% faster quote-to-BOM. 80,000+ parts unified. How CPP replaced 6 divergent BOM files with one deterministic source of truth.">
+  <meta name="twitter:image" content="https://cpplatform.in/assets/images/og-image.jpg">
+
+  <!-- JSON-LD: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "From 80,000 Parts to One Source of Truth: How an Industrial Machinery OEM Saved ₹2.1 Crore",
+    "description": "An Indian industrial machinery manufacturer managing 80,000+ parts across 3 plants was losing ₹2.1 Cr annually to BOM inconsistency. CPP unified their product knowledge into a single deterministic source of truth.",
+    "datePublished": "2026-05-17",
+    "dateModified": "2026-05-17",
+    "author": {
+      "@type": "Organization",
+      "name": "Softwaller Technologies Private Limited",
+      "url": "https://cpplatform.in/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Softwaller Technologies Private Limited",
+      "url": "https://cpplatform.in/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://cpplatform.in/assets/images/og-image.jpg"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://cpplatform.in/case-studies/industrial-machinery-manufacturer.html"
+    },
+    "image": "https://cpplatform.in/assets/images/og-image.jpg",
+    "articleSection": "Case Studies",
+    "keywords": "industrial machinery BOM management India, multi-plant BOM consistency, hydraulic press CPQ, ERP BOM integration SAP India"
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cpplatform.in/" },
+      { "@type": "ListItem", "position": 2, "name": "Case Studies", "item": "https://cpplatform.in/case-studies/" },
+      { "@type": "ListItem", "position": 3, "name": "Industrial Machinery Manufacturer Case Study", "item": "https://cpplatform.in/case-studies/industrial-machinery-manufacturer.html" }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How did CPP handle the 340 BOM discrepancies during implementation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CPP's implementation team facilitated a structured BOM reconciliation workshop with the customer's chief engineers. For each discrepancy, the engineering decision was documented — which version is correct, and why the others diverged. CPP then authored the authoritative version as the source BOM. The legacy BOM files were archived, not deleted, so historical orders can be traced."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can CPP manage custom machine builds where every order is unique?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. CPP models the range of configurability — the features and options that vary by order — as a constraint graph. For truly custom dimensions or one-off requirements, CPP can flag them as requiring engineering review before the BOM is released. This preserves the benefit of constraint enforcement while accommodating genuine customisation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does CPP handle engineering change orders (ECOs) to the source BOM?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CPP versions every BOM release. An ECO results in a new source BOM version. Historical orders retain their original BOM version — they do not change retroactively. New orders automatically use the latest released version. This means ECOs are traceable: you can always answer which orders used the pre-ECO BOM."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "We have 4 product lines and 3 plants. What is the realistic go-live timeline?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "First product line (one plant): 8–10 weeks. Each additional product line: 4–6 weeks (constraint framework reused). Each additional plant: 2–3 weeks (plant overlay configuration). For 4 product lines across 3 plants, full rollout typically takes 12–18 months on a prioritised schedule, with ROI positive from the first product line go-live."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand:   { DEFAULT: '#0EA5E9', dark: '#0284C7', light: '#BAE6FD', faint: '#F0F9FF' },
+            surface: '#F1F5F9',
+            ink:     '#0F172A',
+          },
+          fontFamily: {
+            mono: ['"JetBrains Mono"', 'monospace'],
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../assets/css/custom.min.css?v=1.1.0">
+
+  <!-- Alpine -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+
+<body class="font-sans bg-surface text-ink antialiased">
+
+<!-- Skip to main -->
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-brand focus:text-white focus:font-semibold focus:px-4 focus:py-2 focus:rounded-lg">Skip to main content</a>
+
+<!-- Nav -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-slate-100 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+    <a href="../index.html" class="flex items-center gap-2.5">
+      <div class="w-8 h-8 bg-brand rounded-lg flex items-center justify-center">
+        <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h10M4 18h6"/></svg>
+      </div>
+      <span class="font-mono font-bold text-xl text-ink">CPP</span>
+    </a>
+    <div class="flex items-center gap-4">
+      <a href="../blog/index.html" class="text-sm font-medium text-slate-600 hover:text-brand transition-colors">Blog</a>
+      <a href="../index.html#demo" class="inline-flex items-center gap-1.5 bg-brand hover:bg-brand-dark text-white font-semibold text-sm px-4 py-2 rounded-lg transition-colors">Request Demo →</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+  <!-- =========================================================
+       HERO
+       ========================================================= -->
+  <section class="pt-24 pb-16 bg-ink">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Breadcrumb -->
+      <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-xs font-mono text-slate-500 mb-6">
+        <a href="../index.html" class="hover:text-brand transition-colors">Home</a>
+        <span class="text-slate-700">/</span>
+        <a href="../case-studies/index.html" class="hover:text-brand transition-colors">Case Studies</a>
+        <span class="text-slate-700">/</span>
+        <span class="text-slate-400">Industrial Machinery Manufacturer</span>
+      </nav>
+
+      <!-- Category chip -->
+      <div class="inline-flex items-center gap-2 mb-5">
+        <span class="text-xs font-mono font-semibold text-brand uppercase tracking-widest bg-brand/10 border border-brand/20 px-3 py-1 rounded-full">Case Study · Industrial Machinery</span>
+      </div>
+
+      <!-- H1 -->
+      <h1 class="font-mono font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-6">
+        From 80,000 Parts × 3 Plants to One Source of Truth:<br>
+        <span class="text-brand">How an Industrial Machinery OEM Achieved ₹2.1 Crore Cost Reduction</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-slate-400 text-lg sm:text-xl leading-relaxed max-w-3xl mb-8">
+        Three plants. Eighty thousand parts. Four product lines. And a different "master BOM" in each plant, maintained by different engineers, diverging a little more every month. Here's how they fixed it.
+      </p>
+
+      <!-- Tags -->
+      <div class="flex flex-wrap gap-2">
+        <span class="text-xs font-medium text-slate-400 bg-white/5 border border-white/10 px-3 py-1 rounded-full">Industrial Machinery</span>
+        <span class="text-xs font-medium text-slate-400 bg-white/5 border border-white/10 px-3 py-1 rounded-full">Multi-Plant BOM</span>
+        <span class="text-xs font-medium text-slate-400 bg-white/5 border border-white/10 px-3 py-1 rounded-full">Product Configuration</span>
+        <span class="text-xs font-medium text-slate-400 bg-white/5 border border-white/10 px-3 py-1 rounded-full">ERP Integration</span>
+        <span class="text-xs font-medium text-slate-400 bg-white/5 border border-white/10 px-3 py-1 rounded-full">Cost Reduction</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       RESULTS DASHBOARD
+       ========================================================= -->
+  <section class="py-14 bg-white border-b border-slate-100">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <p class="text-xs font-mono font-semibold text-slate-400 uppercase tracking-wider text-center mb-8">Results — 12 months after go-live</p>
+
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-5">
+
+        <div class="relative bg-surface rounded-2xl border border-slate-100 p-6 text-center overflow-hidden group hover:border-brand/40 hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="0">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand to-brand-dark opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl"></div>
+          <div class="font-mono font-bold text-3xl text-brand mb-2">₹2.1Cr</div>
+          <div class="text-sm font-semibold text-ink mb-1">Annual cost reduction</div>
+          <div class="text-xs text-slate-500">rework + scrap + delays</div>
+        </div>
+
+        <div class="relative bg-surface rounded-2xl border border-slate-100 p-6 text-center overflow-hidden group hover:border-brand/40 hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="80">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand to-brand-dark opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl"></div>
+          <div class="font-mono font-bold text-3xl text-brand mb-2">67%</div>
+          <div class="text-sm font-semibold text-ink mb-1">Faster quote-to-BOM</div>
+          <div class="text-xs text-slate-500">14 days → 4.7 days</div>
+        </div>
+
+        <div class="relative bg-surface rounded-2xl border border-slate-100 p-6 text-center overflow-hidden group hover:border-brand/40 hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="160">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand to-brand-dark opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl"></div>
+          <div class="font-mono font-bold text-3xl text-brand mb-2">80,000+</div>
+          <div class="text-sm font-semibold text-ink mb-1">Parts in catalogue</div>
+          <div class="text-xs text-slate-500">unified across 3 plants</div>
+        </div>
+
+        <div class="relative bg-surface rounded-2xl border border-slate-100 p-6 text-center overflow-hidden group hover:border-brand/40 hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="240">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand to-brand-dark opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl"></div>
+          <div class="font-mono font-bold text-3xl text-brand mb-2">1</div>
+          <div class="text-sm font-semibold text-ink mb-1">Source of truth</div>
+          <div class="text-xs text-slate-500">replacing 6 divergent BOM files</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       THE CHALLENGE
+       ========================================================= -->
+  <section class="py-16 bg-surface">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="max-w-3xl" data-aos="fade-up">
+        <div class="text-xs font-mono font-semibold text-brand uppercase tracking-wider mb-3">The Challenge</div>
+        <h2 class="font-mono font-bold text-2xl sm:text-3xl text-ink mb-8">
+          Six "master BOMs" for one product line. A 23% mismatch rate between quoted and produced.
+        </h2>
+      </div>
+
+      <div class="grid lg:grid-cols-5 gap-10 items-start">
+
+        <!-- Narrative -->
+        <div class="lg:col-span-3 space-y-5 text-slate-600 leading-relaxed" data-aos="fade-up" data-aos-delay="60">
+          <p>
+            The company manufactures custom industrial machinery: hydraulic presses (50T to 5000T), CNC machining centres, conveyor systems, and material handling equipment. Their customers span the automotive components, steel, cement, and heavy engineering sectors. Operations run across three plants: Pune (press tooling and headquarters), Coimbatore (CNC and machining), and Rajkot (conveyors and material handling).
+          </p>
+          <p>
+            Each product line evolved in a different plant, owned by a different engineering team. By FY 2024-25, the hydraulic press product line alone had four "master BOMs" in circulation: the original Pune design, a "Coimbatore variant" created when the press line expanded there, an "export variant" for overseas customers, and a "recent update" that lived only on the chief design engineer's laptop. No one could definitively state which BOM was authoritative for a given customer order.
+          </p>
+          <p>
+            The quoting process had evolved accordingly. Sales managers would pull the "closest" BOM from SharePoint, modify it manually in Excel, and send it to the customer. Engineering reviewed the quote sometimes — not always — before production began. The mismatch rate between the BOM quoted to the customer and the BOM used in production reached <strong class="text-ink">23% of orders</strong>. Of every four hydraulic press orders, nearly one had a material difference between what was quoted and what was built.
+          </p>
+          <p>
+            The annual cost of those mismatches, itemised by the finance team, came to <strong class="text-ink">₹2.1 Crore</strong>: ₹80 lakh in rework (wrong parts ordered and fabricated), ₹65 lakh in expedited freight (correct parts air-freighted when wrong parts arrived at the line), ₹45 lakh in customer penalties for delivery delays, ₹40 lakh in engineer time for BOM reconciliation, and ₹30 lakh in scrap.
+          </p>
+        </div>
+
+        <!-- Pull quote + risk callout -->
+        <div class="lg:col-span-2 space-y-5" data-aos="fade-up" data-aos-delay="120">
+
+          <blockquote class="relative bg-white rounded-2xl border-l-4 border-brand p-6 shadow-sm">
+            <svg class="w-8 h-8 text-brand/20 mb-3" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+            <p class="text-slate-700 text-sm leading-relaxed italic mb-4">
+              "We had six master BOMs for one product line. My best engineer spent 30% of his time reconciling them. That's not an engineering problem. That's a knowledge management problem. CPP gave us one BOM, one truth, and one version."
+            </p>
+            <footer class="text-xs text-slate-500 font-medium">
+              — Head of Engineering, Industrial Machinery OEM<br>
+              <span class="text-slate-400">(name withheld at customer request)</span>
+            </footer>
+          </blockquote>
+
+          <!-- Cost breakdown -->
+          <div class="bg-red-50 border border-red-100 rounded-2xl p-5">
+            <div class="text-xs font-mono font-semibold text-red-500 uppercase tracking-wider mb-3">Annual cost of BOM inconsistency — ₹2.1 Cr breakdown</div>
+            <div class="space-y-2.5">
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-slate-600">Rework (wrong parts)</span>
+                <span class="text-sm font-semibold text-ink font-mono">₹80L</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-slate-600">Expedited freight</span>
+                <span class="text-sm font-semibold text-ink font-mono">₹65L</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-slate-600">Customer penalties</span>
+                <span class="text-sm font-semibold text-ink font-mono">₹45L</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-slate-600">Engineer reconciliation time</span>
+                <span class="text-sm font-semibold text-ink font-mono">₹40L</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-slate-600">Scrap</span>
+                <span class="text-sm font-semibold text-ink font-mono">₹30L</span>
+              </div>
+              <div class="border-t border-red-200 pt-2 flex items-center justify-between">
+                <span class="text-sm font-bold text-ink">Total annual</span>
+                <span class="text-sm font-bold text-red-600 font-mono">₹2.60 Cr</span>
+              </div>
+            </div>
+            <p class="text-xs text-slate-400 mt-3">*₹2.1 Cr = post-recovery net cost after partial rework recoup</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       THE SOLUTION
+       ========================================================= -->
+  <section class="py-16 bg-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="max-w-3xl mb-10" data-aos="fade-up">
+        <div class="text-xs font-mono font-semibold text-brand uppercase tracking-wider mb-3">The Solution</div>
+        <h2 class="font-mono font-bold text-2xl sm:text-3xl text-ink mb-3">
+          BOM archaeology → constraint-driven source BOM → plant overlays → ERP integration. Nine weeks.
+        </h2>
+        <p class="text-slate-500 leading-relaxed">
+          CPP's implementation was structured as three sequential phases: establishing the authoritative source BOM through structured reconciliation, adding plant-specific overlays, and connecting to the ERP systems at each site.
+        </p>
+      </div>
+
+      <!-- Phase cards -->
+      <div class="space-y-6">
+
+        <!-- Phase 1 -->
+        <div class="grid lg:grid-cols-12 gap-0 bg-surface rounded-2xl border border-slate-100 overflow-hidden" data-aos="fade-up" data-aos-delay="40">
+          <div class="lg:col-span-3 bg-brand p-6 flex flex-col justify-center">
+            <div class="font-mono text-xs text-white/60 uppercase tracking-wider mb-1">Phase 1</div>
+            <div class="font-mono font-bold text-white text-lg">Week 1–4</div>
+            <div class="text-white/80 text-sm mt-1">BOM archaeology &amp; source BOM authoring</div>
+          </div>
+          <div class="lg:col-span-9 p-6">
+            <h3 class="font-semibold text-ink text-base mb-3">340 discrepancies found, resolved, and documented. One authoritative BOM authored in CPP.</h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+              CPP's implementation team facilitated a BOM reconciliation workshop. All six "master BOM" variants for the hydraulic press line were compared line-by-line. Three hundred and forty discrepancies were identified — conflicting part numbers, quantity differences, and missing assemblies. For each discrepancy, the chief design engineer made and documented the authoritative call. The winning version became the source BOM in CPP, authored across four configuration dimensions.
+            </p>
+
+            <!-- Constraint table -->
+            <div class="overflow-x-auto rounded-xl border border-slate-200 mb-3">
+              <table class="w-full text-xs">
+                <thead>
+                  <tr class="bg-ink text-white">
+                    <th class="text-left px-4 py-3 font-mono font-semibold">Constraint</th>
+                    <th class="text-left px-4 py-3 font-mono font-semibold">Rationale</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                  <tr class="hover:bg-slate-50">
+                    <td class="px-4 py-3 font-mono text-slate-700 text-[11px]">PressCapacity ≥ 1000T → FrameType = Tie-Rod (not C-Frame)</td>
+                    <td class="px-4 py-3 text-slate-500">Structural rigidity constraint above 1000T</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50">
+                    <td class="px-4 py-3 font-mono text-slate-700 text-[11px]">ControlType = CNC → HydraulicUnit = Servo (not Standard)</td>
+                    <td class="px-4 py-3 text-slate-500">CNC control requires servo hydraulics</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50">
+                    <td class="px-4 py-3 font-mono text-slate-700 text-[11px]">BedSize = Custom → RequiresEngineeringReview = true</td>
+                    <td class="px-4 py-3 text-slate-500">Custom bed dimensions flag for design review</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50">
+                    <td class="px-4 py-3 font-mono text-slate-700 text-[11px]">CustomerLocation = Export → ElectricalStandard = IEC (not IS)</td>
+                    <td class="px-4 py-3 text-slate-500">Export orders use IEC electrical standard</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="text-slate-500 text-xs">Four configuration dimensions: tonnage, stroke, bed size, control type. Constraints derived from existing engineering knowledge — no new rules invented, only existing knowledge captured.</p>
+          </div>
+        </div>
+
+        <!-- Phase 2 -->
+        <div class="grid lg:grid-cols-12 gap-0 bg-surface rounded-2xl border border-slate-100 overflow-hidden" data-aos="fade-up" data-aos-delay="80">
+          <div class="lg:col-span-3 bg-brand-dark p-6 flex flex-col justify-center">
+            <div class="font-mono text-xs text-white/60 uppercase tracking-wider mb-1">Phase 2</div>
+            <div class="font-mono font-bold text-white text-lg">Week 5–7</div>
+            <div class="text-white/80 text-sm mt-1">Plant overlay configuration</div>
+          </div>
+          <div class="lg:col-span-9 p-6">
+            <h3 class="font-semibold text-ink text-base mb-3">Three plant overlays applied to the same constraint graph — plant-specific vendors, part numbers, and compliance rules.</h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+              Once the source BOM was established, each plant's overlay was configured: approved steel vendors, local part numbers, regional freight carriers, and statutory compliance requirements. The constraint graph is shared across all three plants. The overlay is what makes the BOM plant-specific at derivation time.
+            </p>
+            <div class="grid sm:grid-cols-3 gap-3">
+              <div class="bg-white rounded-xl p-4 border border-slate-100">
+                <div class="font-mono text-xs text-brand font-semibold mb-2">Pune overlay</div>
+                <ul class="text-xs text-slate-500 space-y-1">
+                  <li>Approved steel: SAIL, Tata Steel</li>
+                  <li>Local hydraulic component part numbers</li>
+                  <li>SAP S/4HANA plant code: PL01</li>
+                </ul>
+              </div>
+              <div class="bg-white rounded-xl p-4 border border-slate-100">
+                <div class="font-mono text-xs text-brand font-semibold mb-2">Coimbatore overlay</div>
+                <ul class="text-xs text-slate-500 space-y-1">
+                  <li>CNC spindle vendors: TIDCO-approved list</li>
+                  <li>Regional freight carriers</li>
+                  <li>SAP S/4HANA plant code: PL02</li>
+                </ul>
+              </div>
+              <div class="bg-white rounded-xl p-4 border border-slate-100">
+                <div class="font-mono text-xs text-brand font-semibold mb-2">Rajkot overlay</div>
+                <ul class="text-xs text-slate-500 space-y-1">
+                  <li>Conveyor motor vendors</li>
+                  <li>GST HSN codes for Gujarat compliance</li>
+                  <li>REST webhook → standalone ERP</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phase 3 -->
+        <div class="grid lg:grid-cols-12 gap-0 bg-surface rounded-2xl border border-slate-100 overflow-hidden" data-aos="fade-up" data-aos-delay="120">
+          <div class="lg:col-span-3 bg-slate-700 p-6 flex flex-col justify-center">
+            <div class="font-mono text-xs text-white/60 uppercase tracking-wider mb-1">Phase 3</div>
+            <div class="font-mono font-bold text-white text-lg">Week 8–9</div>
+            <div class="text-white/80 text-sm mt-1">ERP integration &amp; go-live</div>
+          </div>
+          <div class="lg:col-span-9 p-6">
+            <h3 class="font-semibold text-ink text-base mb-3">SAP S/4HANA at Pune and Coimbatore. REST webhook at Rajkot. First cross-plant order on Day 63.</h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+              CPP was connected to SAP S/4HANA for BOM push at Pune and Coimbatore. Rajkot uses a standalone ERP and receives BOM data via a REST webhook. On configuration confirmation, CPP derives the BOM, applies the plant overlay, and pushes to the plant's ERP — the process completes in under 90 seconds from confirmation to ERP receipt.
+            </p>
+            <div class="flex items-center gap-3 bg-brand/5 border border-brand/20 rounded-xl p-3">
+              <div class="w-2.5 h-2.5 rounded-full bg-brand flex-shrink-0"></div>
+              <p class="text-xs text-slate-600"><strong class="text-ink">Day 63:</strong> First cross-plant order configured in CPP — hydraulic press manufactured at Pune, assembled at Rajkot. Pune BOM and Rajkot assembly BOM derived simultaneously using respective plant overlays and pushed to each ERP. Zero manual intervention.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       THE RESULTS
+       ========================================================= -->
+  <section class="py-16 bg-surface">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="max-w-3xl mb-10" data-aos="fade-up">
+        <div class="text-xs font-mono font-semibold text-brand uppercase tracking-wider mb-3">The Results</div>
+        <h2 class="font-mono font-bold text-2xl sm:text-3xl text-ink mb-3">
+          12 months after go-live
+        </h2>
+        <p class="text-slate-500 leading-relaxed">
+          The 23% BOM mismatch rate fell to 1.8% in the first full quarter after go-live — and continued declining. By the 12-month mark, the cost savings were validated by the finance team and an unexpected downstream benefit had emerged.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-8 mb-10">
+
+        <!-- Outcome bullets -->
+        <div class="space-y-5 text-slate-600 leading-relaxed text-sm" data-aos="fade-up" data-aos-delay="40">
+
+          <div class="bg-white rounded-xl p-5 border border-slate-100">
+            <div class="font-semibold text-ink mb-2 flex items-center gap-2">
+              <div class="w-2 h-2 rounded-full bg-brand"></div>
+              BOM mismatch rate: 23% → 1.8%
+            </div>
+            <p class="text-slate-500">Residual mismatches at 1.8% are genuine engineering change requests — not BOM errors. The 21.2 percentage point reduction represents orders where the quoted BOM and production BOM now match exactly, because both are derived from the same constraint-enforced source.</p>
+          </div>
+
+          <div class="bg-white rounded-xl p-5 border border-slate-100">
+            <div class="font-semibold text-ink mb-2 flex items-center gap-2">
+              <div class="w-2 h-2 rounded-full bg-brand"></div>
+              Quote-to-BOM cycle: 14 days → 4.7 days (67% reduction)
+            </div>
+            <p class="text-slate-500">The 14-day cycle existed because BOM preparation required serial engineering sign-off to validate that the quote BOM was actually buildable. With constraint enforcement at selection time, the sign-off queue for standard configurations was eliminated. Engineering reviews are now reserved for genuine custom requests.</p>
+          </div>
+
+          <div class="bg-white rounded-xl p-5 border border-slate-100">
+            <div class="font-semibold text-ink mb-2 flex items-center gap-2">
+              <div class="w-2 h-2 rounded-full bg-brand"></div>
+              Engineer time on BOM reconciliation: 30% FTE → 0
+            </div>
+            <p class="text-slate-500">The 1.5 FTE freed from BOM reconciliation was redirected to designing a new 5000T hydraulic press — which used CPP for its BOM from day one. The new press line was modelled in CPP before a single piece of steel was ordered.</p>
+          </div>
+
+          <div class="bg-white rounded-xl p-5 border border-slate-100">
+            <div class="font-semibold text-ink mb-2 flex items-center gap-2">
+              <div class="w-2 h-2 rounded-full bg-brand"></div>
+              Annual cost reduction: ₹2.1 Crore validated
+            </div>
+            <p class="text-slate-500">Finance sign-off at 12 months confirmed the full ₹2.1 Cr net saving across rework, expedited freight, customer penalties, engineer reconciliation time, and scrap. The gross saving was ₹2.6 Cr; ₹50L in implementation and first-year licence costs bring the net to ₹2.1 Cr.</p>
+          </div>
+
+        </div>
+
+        <!-- Timeline -->
+        <div data-aos="fade-up" data-aos-delay="100">
+          <div class="font-mono text-xs font-semibold text-slate-400 uppercase tracking-wider mb-5">Deployment timeline</div>
+
+          <div class="relative">
+            <div class="absolute left-4 top-3 bottom-3 w-px bg-slate-200"></div>
+
+            <div class="space-y-0">
+
+              <div class="relative flex items-start gap-5 pb-6">
+                <div class="relative z-10 w-8 h-8 rounded-full bg-brand flex items-center justify-center flex-shrink-0 shadow-sm">
+                  <div class="w-2.5 h-2.5 rounded-full bg-white"></div>
+                </div>
+                <div class="pt-1">
+                  <div class="font-mono text-xs font-semibold text-brand mb-0.5">Day 0</div>
+                  <div class="font-semibold text-ink text-sm">Kickoff — BOM reconciliation workshop</div>
+                  <div class="text-xs text-slate-500 mt-0.5">All six master BOM variants assembled. Chief design engineers from all three plants present.</div>
+                </div>
+              </div>
+
+              <div class="relative flex items-start gap-5 pb-6">
+                <div class="relative z-10 w-8 h-8 rounded-full bg-brand flex items-center justify-center flex-shrink-0 shadow-sm">
+                  <div class="w-2.5 h-2.5 rounded-full bg-white"></div>
+                </div>
+                <div class="pt-1">
+                  <div class="font-mono text-xs font-semibold text-brand mb-0.5">Day 28</div>
+                  <div class="font-semibold text-ink text-sm">Source BOM authored in CPP</div>
+                  <div class="text-xs text-slate-500 mt-0.5">340 discrepancies resolved. Authoritative source BOM with 4 configuration dimensions live in CPP.</div>
+                </div>
+              </div>
+
+              <div class="relative flex items-start gap-5 pb-6">
+                <div class="relative z-10 w-8 h-8 rounded-full bg-brand flex items-center justify-center flex-shrink-0 shadow-sm">
+                  <div class="w-2.5 h-2.5 rounded-full bg-white"></div>
+                </div>
+                <div class="pt-1">
+                  <div class="font-mono text-xs font-semibold text-brand mb-0.5">Day 49</div>
+                  <div class="font-semibold text-ink text-sm">Three plant overlays configured</div>
+                  <div class="text-xs text-slate-500 mt-0.5">Pune, Coimbatore, Rajkot overlays verified against each plant's purchase history and vendor master.</div>
+                </div>
+              </div>
+
+              <div class="relative flex items-start gap-5 pb-6">
+                <div class="relative z-10 w-8 h-8 rounded-full bg-white border-2 border-brand flex items-center justify-center flex-shrink-0 shadow-sm">
+                  <div class="w-2 h-2 rounded-full bg-brand"></div>
+                </div>
+                <div class="pt-1">
+                  <div class="font-mono text-xs font-semibold text-brand mb-0.5">Day 63</div>
+                  <div class="font-semibold text-ink text-sm">Go-live — first cross-plant order</div>
+                  <div class="text-xs text-slate-500 mt-0.5">SAP S/4HANA live at Pune and Coimbatore. REST webhook live at Rajkot. First cross-plant order processed.</div>
+                </div>
+              </div>
+
+              <div class="relative flex items-start gap-5 pb-6">
+                <div class="relative z-10 w-8 h-8 rounded-full bg-surface border-2 border-brand/40 flex items-center justify-center flex-shrink-0">
+                  <div class="w-2 h-2 rounded-full bg-brand/50"></div>
+                </div>
+                <div class="pt-1">
+                  <div class="font-mono text-xs font-semibold text-slate-400 mb-0.5">Day 90</div>
+                  <div class="font-semibold text-ink text-sm">BOM mismatch rate: 23% → 1.8%</div>
+                  <div class="text-xs text-slate-500 mt-0.5">First full quarter post-go-live. Quote-to-BOM cycle confirmed at 4.7 days average.</div>
+                </div>
+              </div>
+
+              <div class="relative flex items-start gap-5">
+                <div class="relative z-10 w-8 h-8 rounded-full bg-surface border-2 border-slate-200 flex items-center justify-center flex-shrink-0">
+                  <div class="w-2 h-2 rounded-full bg-slate-300"></div>
+                </div>
+                <div class="pt-1">
+                  <div class="font-mono text-xs font-semibold text-slate-400 mb-0.5">Day 365</div>
+                  <div class="font-semibold text-ink text-sm">₹2.1 Cr annual savings validated by finance</div>
+                  <div class="text-xs text-slate-500 mt-0.5">Full itemised saving confirmed. New 5000T press line modelled in CPP from day one.</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Key insight -->
+      <div class="bg-brand/10 border-l-4 border-brand p-6 rounded-xl" data-aos="fade-up">
+        <div class="font-mono text-xs font-semibold text-brand uppercase tracking-wider mb-2">Key insight</div>
+        <p class="text-slate-700 text-sm leading-relaxed">
+          The BOM reconciliation workshop revealed something the engineering team had suspected but never quantified: the six "master BOM" variants had diverged over time not because engineers were careless, but because there was no single system of record that was both authoritative and accessible. Engineers at each plant made local adjustments to their local copy, with no mechanism to propagate those changes back to a shared source. CPP solved the problem not by adding workflow controls on top of the old files, but by replacing the files with a constraint-driven source of truth that all three plants read from simultaneously.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================
+       FAQ
+       ========================================================= -->
+  <section class="py-16 bg-white" x-data="{ open: null }">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="mb-10" data-aos="fade-up">
+        <div class="text-xs font-mono font-semibold text-brand uppercase tracking-wider mb-3">FAQ</div>
+        <h2 class="font-mono font-bold text-2xl sm:text-3xl text-ink">
+          Frequently asked questions
+        </h2>
+      </div>
+
+      <div class="space-y-3" data-aos="fade-up" data-aos-delay="40">
+
+        <!-- Q1 -->
+        <div class="bg-surface rounded-xl border border-slate-100 overflow-hidden">
+          <button
+            class="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors"
+            @click="open = open === 1 ? null : 1"
+            :aria-expanded="open === 1"
+          >
+            <span class="font-semibold text-ink text-sm pr-4">How did CPP handle the 340 BOM discrepancies during implementation?</span>
+            <svg class="w-5 h-5 text-brand flex-shrink-0 transition-transform duration-200" :class="{ 'rotate-45': open === 1 }" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          </button>
+          <div x-show="open === 1" x-transition:enter="transition-all ease-out duration-200" x-transition:enter-start="opacity-0 max-h-0" x-transition:enter-end="opacity-100 max-h-96" x-transition:leave="transition-all ease-in duration-150" x-transition:leave-start="opacity-100 max-h-96" x-transition:leave-end="opacity-0 max-h-0" class="overflow-hidden">
+            <div class="px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+              CPP's implementation team facilitated a structured BOM reconciliation workshop with the customer's chief engineers. For each discrepancy, the engineering decision was documented — which version is correct, and why the others diverged. CPP then authored the authoritative version as the source BOM. The legacy BOM files were <strong class="text-ink">archived, not deleted</strong> — so historical orders can be traced back to whichever BOM version was in use when they were placed.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="bg-surface rounded-xl border border-slate-100 overflow-hidden">
+          <button
+            class="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors"
+            @click="open = open === 2 ? null : 2"
+            :aria-expanded="open === 2"
+          >
+            <span class="font-semibold text-ink text-sm pr-4">Can CPP manage custom machine builds where every order is unique?</span>
+            <svg class="w-5 h-5 text-brand flex-shrink-0 transition-transform duration-200" :class="{ 'rotate-45': open === 2 }" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          </button>
+          <div x-show="open === 2" x-transition:enter="transition-all ease-out duration-200" x-transition:enter-start="opacity-0 max-h-0" x-transition:enter-end="opacity-100 max-h-96" x-transition:leave="transition-all ease-in duration-150" x-transition:leave-start="opacity-100 max-h-96" x-transition:leave-end="opacity-0 max-h-0" class="overflow-hidden">
+            <div class="px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+              Yes. CPP models the range of configurability — the features and options that vary by order — as a constraint graph. For truly custom dimensions or one-off requirements, CPP can <strong class="text-ink">flag them as requiring engineering review</strong> before the BOM is released. This preserves the benefit of constraint enforcement while accommodating genuine customisation. The flag appears in the quote document and the ERP BOM, so production planning knows which BOM lines are standard-derived and which require design confirmation.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="bg-surface rounded-xl border border-slate-100 overflow-hidden">
+          <button
+            class="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors"
+            @click="open = open === 3 ? null : 3"
+            :aria-expanded="open === 3"
+          >
+            <span class="font-semibold text-ink text-sm pr-4">How does CPP handle engineering change orders (ECOs) to the source BOM?</span>
+            <svg class="w-5 h-5 text-brand flex-shrink-0 transition-transform duration-200" :class="{ 'rotate-45': open === 3 }" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          </button>
+          <div x-show="open === 3" x-transition:enter="transition-all ease-out duration-200" x-transition:enter-start="opacity-0 max-h-0" x-transition:enter-end="opacity-100 max-h-96" x-transition:leave="transition-all ease-in duration-150" x-transition:leave-start="opacity-100 max-h-96" x-transition:leave-end="opacity-0 max-h-0" class="overflow-hidden">
+            <div class="px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+              CPP <strong class="text-ink">versions every BOM release</strong>. An ECO results in a new source BOM version. Historical orders retain their original BOM version — they do not change retroactively. New orders automatically use the latest released version. This means ECOs are traceable: you can always answer "which orders used the pre-ECO BOM?" — critical for warranty claims, service parts, and regulatory audits.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="bg-surface rounded-xl border border-slate-100 overflow-hidden">
+          <button
+            class="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors"
+            @click="open = open === 4 ? null : 4"
+            :aria-expanded="open === 4"
+          >
+            <span class="font-semibold text-ink text-sm pr-4">We have 4 product lines and 3 plants. What is the realistic go-live timeline?</span>
+            <svg class="w-5 h-5 text-brand flex-shrink-0 transition-transform duration-200" :class="{ 'rotate-45': open === 4 }" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          </button>
+          <div x-show="open === 4" x-transition:enter="transition-all ease-out duration-200" x-transition:enter-start="opacity-0 max-h-0" x-transition:enter-end="opacity-100 max-h-96" x-transition:leave="transition-all ease-in duration-150" x-transition:leave-start="opacity-100 max-h-96" x-transition:leave-end="opacity-0 max-h-0" class="overflow-hidden">
+            <div class="px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+              First product line (one plant): <strong class="text-ink">8–10 weeks</strong>. Each additional product line: 4–6 weeks (the constraint framework is reused; only product-specific rules need to be authored). Each additional plant: 2–3 weeks (plant overlay configuration). For 4 product lines across 3 plants, full rollout typically takes <strong class="text-ink">12–18 months</strong> on a prioritised schedule — with ROI positive from the first product line go-live, which funds the rest of the rollout.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       CTA
+       ========================================================= -->
+  <section class="py-20 bg-brand">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
+      <div class="font-mono text-xs font-semibold text-white/60 uppercase tracking-wider mb-4">Ready to see it live?</div>
+      <h2 class="font-mono font-bold text-3xl sm:text-4xl text-white mb-5 leading-tight">
+        Replace your divergent BOM files<br>with one source of truth
+      </h2>
+      <p class="text-white/80 text-lg leading-relaxed mb-8 max-w-xl mx-auto">
+        Book a 45-minute demo. We'll take one of your actual product lines, map its configuration dimensions and constraints into CPP, and show you what a constraint-derived BOM looks like for a real order.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="../index.html#demo" class="inline-flex items-center gap-2 bg-white text-brand hover:bg-brand-light font-bold px-8 py-3.5 rounded-xl transition-colors shadow-lg text-sm">
+          Book Demo →
+        </a>
+        <a href="../cpq-guide.html" class="inline-flex items-center gap-2 border border-white/30 text-white hover:border-white/60 font-medium px-8 py-3.5 rounded-xl transition-colors text-sm">
+          Read the CPQ Guide
+        </a>
+      </div>
+      <p class="text-white/50 text-xs mt-6">No commitment. 45 minutes. Your actual product family.</p>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       RELATED CONTENT
+       ========================================================= -->
+  <section class="py-14 bg-slate-50 border-t border-slate-200">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="font-mono text-xs font-semibold text-slate-500 uppercase tracking-wider mb-6">Related reading</div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+        <a href="../blog/multi-plant-bom-management.html" class="group block bg-white border border-slate-200 rounded-xl p-5 hover:border-brand hover:shadow-md transition-all">
+          <div class="text-xs font-mono font-semibold text-slate-400 uppercase tracking-wider mb-2">Blog</div>
+          <div class="font-semibold text-ink text-sm group-hover:text-brand transition-colors mb-1.5 leading-snug">Multi-Plant BOM Management: How Indian Manufacturers Handle Regional Variants</div>
+          <div class="text-xs text-slate-500">Plant overlays, vendor masters, and the architecture that makes it work</div>
+        </a>
+
+        <a href="../blog/bom-errors-cost.html" class="group block bg-white border border-slate-200 rounded-xl p-5 hover:border-brand hover:shadow-md transition-all">
+          <div class="text-xs font-mono font-semibold text-slate-400 uppercase tracking-wider mb-2">Blog</div>
+          <div class="font-semibold text-ink text-sm group-hover:text-brand transition-colors mb-1.5 leading-snug">BOM Errors Cost Indian Manufacturers ₹2–50 Lakh Per Incident</div>
+          <div class="text-xs text-slate-500">Rework, freight, penalties — the full picture with real numbers</div>
+        </a>
+
+        <a href="../blog/erp-integration-product-configurator.html" class="group block bg-white border border-slate-200 rounded-xl p-5 hover:border-brand hover:shadow-md transition-all">
+          <div class="text-xs font-mono font-semibold text-slate-400 uppercase tracking-wider mb-2">Blog</div>
+          <div class="font-semibold text-ink text-sm group-hover:text-brand transition-colors mb-1.5 leading-snug">How to Connect Your Product Configurator to SAP, Oracle, and Dynamics</div>
+          <div class="text-xs text-slate-500">Real-time BOM push, webhook patterns, and ERP integration architecture</div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-ink py-8 text-center">
+  <p class="text-slate-400 text-sm font-mono">© 2026 Softwaller Technologies Private Limited · CPP & CPQ are products of Softwaller Technologies · <a href="../index.html" class="text-brand hover:underline">← Back to Home</a></p>
+</footer>
+
+<!-- AOS init -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    AOS.init({
+      duration: 600,
+      once: true,
+      easing: 'ease-out-cubic',
+      offset: 60
+    });
+  });
+</script>
+
+</body>
+</html>

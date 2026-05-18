@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0EA5E9">
+  <title>The Complete Guide to CPQ for Indian Manufacturers (2026) | CPP Platform</title>
+  <meta name="description" content="Everything Indian manufacturers need to know about Configure-Price-Quote (CPQ) software: what it is, how it works, what it costs, and how to choose the right platform for your product complexity.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://cpplatform.in/cpq-guide.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="CPP Platform">
+  <meta property="og:title" content="The Complete Guide to CPQ for Indian Manufacturers (2026)">
+  <meta property="og:description" content="Everything Indian manufacturers need to know about Configure-Price-Quote (CPQ) software: what it is, how it works, what it costs, and how to choose the right platform for your product complexity.">
+  <meta property="og:image" content="https://cpplatform.in/assets/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://cpplatform.in/cpq-guide.html">
+  <meta property="og:locale" content="en_IN">
+  <meta property="article:published_time" content="2026-05-17T00:00:00+05:30">
+  <meta property="article:author" content="CPP Platform">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Complete Guide to CPQ for Indian Manufacturers (2026)">
+  <meta name="twitter:description" content="Everything Indian manufacturers need to know about CPQ software: what it is, how it works, what it costs, and how to choose the right platform.">
+  <meta name="twitter:image" content="https://cpplatform.in/assets/images/og-image.jpg">
+
+  <!-- JSON-LD: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The Complete Guide to CPQ Software for Indian Manufacturers (2026)",
+    "description": "Everything Indian manufacturers need to know about Configure-Price-Quote (CPQ) software: what it is, how it works, what it costs, and how to choose the right platform for your product complexity.",
+    "author": {
+      "@type": "Organization",
+      "name": "Softwaller Technologies Private Limited",
+      "url": "https://cpplatform.in/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Softwaller Technologies Private Limited",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://cpplatform.in/assets/images/og-image.jpg"
+      }
+    },
+    "datePublished": "2026-05-17",
+    "dateModified": "2026-05-17",
+    "url": "https://cpplatform.in/cpq-guide.html",
+    "image": "https://cpplatform.in/assets/images/og-image.jpg",
+    "wordCount": "3800",
+    "inLanguage": "en-IN",
+    "keywords": "CPQ software India manufacturers, configure price quote, BOM automation India, product configurator manufacturing"
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cpplatform.in/" },
+      { "@type": "ListItem", "position": 2, "name": "CPQ Guide", "item": "https://cpplatform.in/cpq-guide.html" }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: HowTo -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Choose CPQ Software for Indian Manufacturers",
+    "description": "A 5-step guide to evaluating and selecting the right CPQ platform for Indian manufacturing companies.",
+    "totalTime": "PT30M",
+    "step": [
+      { "@type": "HowToStep", "name": "Map your product complexity", "text": "Count your features, options, and valid combinations. More than 500 configurations requires constraint-based CPQ.", "position": 1 },
+      { "@type": "HowToStep", "name": "Define your BOM requirements", "text": "Engineering-grade BOM (part numbers, quantities, routing) requires CPQ with BOM derivation, not just pricing rules.", "position": 2 },
+      { "@type": "HowToStep", "name": "Assess your ERP integration needs", "text": "Confirm that the CPQ supports real-time BOM push to your ERP (SAP, Oracle, Dynamics). Verify explicitly before buying.", "position": 3 },
+      { "@type": "HowToStep", "name": "Evaluate for compliance standards", "text": "Verify that your CPQ can encode IEC, BIS, or ECBC constraints natively — not as post-implementation customisations.", "position": 4 },
+      { "@type": "HowToStep", "name": "Run a real product family pilot", "text": "Before full deployment, run a 4-week pilot with one actual product family. Decline vendors who won't pilot.", "position": 5 }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does CPQ stand for?",
+        "acceptedAnswer": { "@type": "Answer", "text": "CPQ stands for Configure, Price, Quote. It refers to software that automates the three steps of turning a customer requirement into a saleable offer: product configuration, pricing, and quote document generation." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is CPQ only for large manufacturers?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. CPQ is particularly valuable for mid-size manufacturers (₹50Cr–₹500Cr revenue) with configurable products. Companies in this range are typically too complex for Excel but haven't yet invested in CPQ — and carry the highest BOM error rates as a result." }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does CPQ implementation take?",
+        "acceptedAnswer": { "@type": "Answer", "text": "For a first product family, 6–10 weeks. For each additional product family, 3–5 weeks. Full enterprise rollout (5+ families, 3+ plants) typically takes 12–18 months on a staggered schedule." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does CPQ replace our ERP?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. CPQ and ERP serve different purposes. CPQ handles product knowledge and quote generation. ERP handles procurement, production, inventory, and accounting. They work together: CPQ generates the BOM, ERP consumes it." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can CPQ handle engineer-to-order (ETO) products?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes, with qualifications. ETO products where every dimension is custom are not fully automatable. But most ETO manufacturers have a configurable range — CPP handles the 80% automatically and flags the 20% for engineering review." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between CPQ and a product configurator?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A product configurator handles only the configuration step. CPQ extends this to pricing and quote document generation. A BOM-generating CPQ like CPP also handles BOM derivation — making it a complete quote-to-production pipeline." }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does CPQ software cost in India?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Generic CPQ (Salesforce, SAP CPQ, Oracle CPQ) costs ₹15–50L/year for a mid-size deployment, plus ₹20–80L in implementation. CPP is designed for Indian manufacturers and starts at ₹2.8L/year with implementation in 6–10 weeks." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I know if my company needs CPQ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "If you answer yes to 3 or more of these: quotes take more than 3 days, BOM error rate above 2%, more than one engineer owns the product configuration spreadsheet, you've lost a tender due to late submission, you have 2+ plants with different BOM versions — CPQ will pay back within 90 days." }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand:   { DEFAULT: '#0EA5E9', dark: '#0284C7', light: '#BAE6FD', faint: '#F0F9FF' },
+            surface: '#F1F5F9',
+            ink:     '#0F172A',
+          },
+          fontFamily: {
+            mono: ['"JetBrains Mono"', 'monospace'],
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/custom.min.css?v=1.1.0">
+
+  <!-- Alpine -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+
+  <style>
+    /* Smooth scroll for TOC links */
+    html { scroll-behavior: smooth; }
+    /* Active TOC link highlight */
+    .toc-active { color: #0EA5E9; border-left-color: #0EA5E9 !important; font-weight: 600; }
+    /* Article prose spacing */
+    .article-prose h2 { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1.5rem; color: #0F172A; margin-top: 3rem; margin-bottom: 1rem; padding-top: 1rem; border-top: 1px solid #E2E8F0; }
+    .article-prose h3 { font-weight: 600; font-size: 1.125rem; color: #0F172A; margin-top: 2rem; margin-bottom: 0.75rem; }
+    .article-prose p { color: #475569; line-height: 1.75; margin-bottom: 1rem; }
+    .article-prose ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .article-prose ul li { color: #475569; line-height: 1.75; margin-bottom: 0.25rem; }
+    .article-prose ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .article-prose ol li { color: #475569; line-height: 1.75; margin-bottom: 0.5rem; }
+    .article-prose strong { color: #0F172A; font-weight: 600; }
+    .article-prose a { color: #0EA5E9; text-decoration: underline; text-decoration-color: #BAE6FD; }
+    .article-prose a:hover { color: #0284C7; }
+  </style>
+</head>
+
+<body class="font-sans bg-white text-ink antialiased">
+
+<!-- Skip to main -->
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-brand focus:text-white focus:font-semibold focus:px-4 focus:py-2 focus:rounded-lg">Skip to main content</a>
+
+<!-- Nav -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-slate-100 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+    <a href="index.html" class="flex items-center gap-2.5">
+      <div class="w-8 h-8 bg-brand rounded-lg flex items-center justify-center">
+        <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h10M4 18h6"/></svg>
+      </div>
+      <span class="font-mono font-bold text-xl text-ink">CPP</span>
+    </a>
+    <div class="flex items-center gap-4">
+      <a href="blog/index.html" class="text-sm font-medium text-slate-600 hover:text-brand transition-colors">Blog</a>
+      <a href="case-studies/index.html" class="text-sm font-medium text-slate-600 hover:text-brand transition-colors">Case Studies</a>
+      <a href="index.html#demo" class="inline-flex items-center gap-1.5 bg-brand hover:bg-brand-dark text-white font-semibold text-sm px-4 py-2 rounded-lg transition-colors">Request Demo →</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+  <!-- =========================================================
+       HERO — full width, bg-ink
+       ========================================================= -->
+  <section class="pt-24 pb-14 bg-ink">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Breadcrumb -->
+      <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-xs font-mono text-slate-500 mb-6">
+        <a href="index.html" class="hover:text-brand transition-colors">Home</a>
+        <span class="text-slate-700">/</span>
+        <span class="text-slate-400">CPQ Guide</span>
+      </nav>
+
+      <!-- Pillar chip -->
+      <div class="inline-flex items-center gap-2 mb-5">
+        <span class="text-xs font-mono font-semibold text-brand uppercase tracking-widest bg-brand/10 border border-brand/20 px-3 py-1 rounded-full">Pillar Guide · CPQ for Manufacturing</span>
+      </div>
+
+      <h1 class="font-mono font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-5">
+        The Complete Guide to CPQ<br>for Indian Manufacturers (2026)
+      </h1>
+
+      <p class="text-slate-400 text-lg sm:text-xl leading-relaxed max-w-3xl mb-8">
+        Configure-Price-Quote software is not a CRM add-on or a pricing calculator. For Indian manufacturers, it's the difference between a 4-hour quote and a 3-week one — and between a 0.3% BOM error rate and a 12% one. This guide explains everything.
+      </p>
+
+      <!-- Meta bar -->
+      <div class="flex flex-wrap items-center gap-4 text-xs font-mono text-slate-500 border-t border-white/10 pt-6">
+        <span>3,800 words</span>
+        <span class="text-slate-700">·</span>
+        <span>18 min read</span>
+        <span class="text-slate-700">·</span>
+        <span>Updated May 2026</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       TWO-COLUMN LAYOUT: TOC + ARTICLE
+       ========================================================= -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="lg:grid lg:grid-cols-[280px_1fr] lg:gap-12">
+
+      <!-- =====================================================
+           STICKY TOC SIDEBAR
+           ===================================================== -->
+      <aside class="hidden lg:block">
+        <div class="sticky top-24 bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+          <p class="text-xs font-mono font-semibold text-slate-400 uppercase tracking-widest mb-4">Table of Contents</p>
+          <nav class="space-y-1" id="toc-nav">
+            <a href="#what-is-cpq" class="block text-sm text-slate-600 hover:text-brand transition-colors py-1.5 border-l-2 border-transparent hover:border-brand pl-3">What Is CPQ?</a>
+            <a href="#how-cpq-works" class="block text-sm text-slate-600 hover:text-brand transition-colors py-1.5 border-l-2 border-transparent hover:border-brand pl-3">How CPQ Works</a>
+            <a href="#cpq-vs-spreadsheets" class="block text-sm text-slate-600 hover:text-brand transition-colors py-1.5 border-l-2 border-transparent hover:border-brand pl-3">CPQ vs Spreadsheets</a>
+            <a href="#types-of-cpq" class="block text-sm text-slate-600 hover:text-brand transition-colors py-1.5 border-l-2 border-transparent hover:border-brand pl-3">Types of CPQ Systems</a>
+            <a href="#how-to-choose" class="block text-sm text-slate-600 hover:text-brand transition-colors py-1.5 border-l-2 border-transparent hover:border-brand pl-3">How to Choose CPQ</a>
+            <a href="#india-specific" class="block text-sm text-slate-600 hover:text-brand transition-colors py-1.5 border-l-2 border-transparent hover:border-brand pl-3">India-Specific Considerations</a>
+            <a href="#cpq-roi" class="block text-sm text-slate-600 hover:text-brand transition-colors py-1.5 border-l-2 border-transparent hover:border-brand pl-3">CPQ ROI</a>
+            <a href="#faq" class="block text-sm text-slate-600 hover:text-brand transition-colors py-1.5 border-l-2 border-transparent hover:border-brand pl-3">FAQ</a>
+          </nav>
+
+          <!-- Quick CTA in sidebar -->
+          <div class="mt-6 pt-6 border-t border-slate-100">
+            <p class="text-xs text-slate-500 mb-3">See CPP live with your product family.</p>
+            <a href="index.html#demo" class="block w-full text-center bg-brand hover:bg-brand-dark text-white font-semibold text-sm px-4 py-2.5 rounded-lg transition-colors">Request Demo →</a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- =====================================================
+           MAIN ARTICLE
+           ===================================================== -->
+      <article class="min-w-0 article-prose">
+
+        <!-- ===================================================
+             SECTION 1: WHAT IS CPQ
+             =================================================== -->
+        <section id="what-is-cpq">
+          <h2>What is CPQ software?</h2>
+
+          <p>
+            CPQ stands for <strong>Configure, Price, Quote</strong>. CPQ software automates the three steps of turning a customer requirement into a saleable offer: (1) <strong>configuration</strong> — selecting the right product variant from your catalogue, (2) <strong>pricing</strong> — applying the correct price for that configuration, and (3) <strong>quoting</strong> — generating the customer-facing document along with a production-ready BOM.
+          </p>
+
+          <p>
+            CPQ is not a general-purpose CRM feature or a pricing table lookup. It is a <strong>product knowledge engine</strong> — it knows your products, their valid combinations, their constraints, and their pricing logic. When a salesperson selects a 1250T hydraulic press with CNC control, the CPQ knows that CNC control requires servo hydraulics (not standard), that a press above 1000T requires a tie-rod frame (not C-frame), and that export customers need IEC electrical standards. It enforces all of this automatically, at selection time, without the salesperson needing to know any of it.
+          </p>
+
+          <p>
+            <strong>Indian manufacturing context:</strong> most mid-size Indian manufacturers (₹50 Cr to ₹500 Cr revenue) use Excel for CPQ. A product engineer maintains a master Excel file with product options. Sales managers copy the file, modify it for each quote, and send it to the customer. Engineering reviews the quote sometimes — when they have bandwidth. The consequences are predictable: <a href="blog/excel-killing-cpq.html">slow quotes (3–4 weeks)</a>, high BOM error rates (5–15%), and engineering teams spending 60–70% of their time on validation and reconciliation rather than design and innovation.
+          </p>
+
+          <div class="bg-brand/5 border border-brand/20 rounded-xl p-5 my-6">
+            <p class="text-sm text-slate-700 leading-relaxed m-0">
+              <strong>The core problem with Excel CPQ:</strong> the product knowledge — which combinations are valid, which constraints apply, which price rules hold — lives in the engineer's head, not in the system. When that engineer is unavailable, on leave, or leaves the company, the knowledge leaves with them. CPQ externalises that knowledge into a system that can be queried, audited, and updated without depending on any individual.
+            </p>
+          </div>
+        </section>
+
+        <!-- ===================================================
+             SECTION 2: HOW CPQ WORKS
+             =================================================== -->
+        <section id="how-cpq-works">
+          <h2>How CPQ works</h2>
+
+          <h3>The configuration step</h3>
+          <p>
+            The user selects product features from a constrained choice set. A constraint-based CPQ shows only valid options at each step — invalid combinations are never offered to the user, so they cannot be selected.
+          </p>
+          <p>
+            For example: for a power transformer, selecting 33 kV primary voltage automatically restricts the available vector groups and insulation classes to those valid at 33 kV. If the user then selects ONAN cooling, the CPQ knows that certain tank dimensions become available and certain protection relay options become mandatory. These constraints propagate through the configuration automatically — the user sees only what is valid at each step, not the full unfiltered catalogue.
+          </p>
+          <p>
+            This is how constraint-based CPQ differs from a simple product catalogue with filters: filters remove items but don't propagate effects. Constraint propagation changes what's available downstream based on upstream selections. See our <a href="blog/constraint-configurator-vs-rules-engine.html">deep dive on constraint vs rules engine</a> for a detailed comparison.
+          </p>
+
+          <h3>The pricing step</h3>
+          <p>
+            Price is calculated from the configured BOM, applying pricing rules: cost-plus margin, list price minus channel discount, regional freight bands, GST by HSN code, and customer-specific pricing agreements. CPQ does not require the salesperson to know any of these pricing rules — they are applied automatically based on the configuration, the customer's region, the channel, and any active pricing agreements.
+          </p>
+          <p>
+            For Indian manufacturers, the pricing step typically includes: base cost from BOM (material + conversion), margin by product line, GST at the correct rate for each line item's HSN code, freight by delivery distance band, and installation or commissioning charges if applicable. A well-configured CPQ handles all of this without manual calculation.
+          </p>
+
+          <h3>The quoting step</h3>
+          <p>
+            The configured product and pricing produces two outputs: a <strong>customer quote document</strong> (commercial terms, delivery timeline, payment schedule) and a <strong>production BOM</strong> (part numbers, quantities, routing, plant-specific part numbers if multi-plant). In advanced CPQ like CPP, the BOM is derived deterministically from the configuration — it is not manually assembled. The same configuration, given the same rule version and the same plant, will always produce byte-identical output. This determinism is what makes the BOM trustworthy enough to send directly to the ERP for procurement.
+          </p>
+        </section>
+
+        <!-- ===================================================
+             SECTION 3: CPQ VS SPREADSHEETS
+             =================================================== -->
+        <section id="cpq-vs-spreadsheets">
+          <h2>CPQ vs spreadsheets — the real comparison</h2>
+
+          <p>
+            The comparison is not just about features. It's about what happens at scale — when your product range grows, your team grows, or your plants multiply. <a href="blog/excel-killing-cpq.html">Excel fails for CPQ</a> not because it's a bad tool, but because it's the wrong tool for product knowledge management. Here's the full picture:
+          </p>
+
+          <!-- Comparison table -->
+          <div class="overflow-x-auto rounded-xl border border-slate-200 my-6">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="bg-ink text-white">
+                  <th class="text-left px-4 py-3 font-semibold">Dimension</th>
+                  <th class="text-left px-4 py-3 font-semibold">Excel / Spreadsheet</th>
+                  <th class="text-left px-4 py-3 font-semibold">CPQ Software</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100">
+                <tr class="hover:bg-slate-50">
+                  <td class="px-4 py-3 font-medium text-ink">Configuration enforcement</td>
+                  <td class="px-4 py-3 text-slate-500">None — any combination possible</td>
+                  <td class="px-4 py-3 text-slate-700">Constraint-enforced — invalid combos impossible</td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="px-4 py-3 font-medium text-ink">BOM error rate</td>
+                  <td class="px-4 py-3 text-red-600 font-medium">5–15%</td>
+                  <td class="px-4 py-3 text-green-700 font-medium">&lt; 1%</td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="px-4 py-3 font-medium text-ink">Quote turnaround</td>
+                  <td class="px-4 py-3 text-slate-500">3–21 days</td>
+                  <td class="px-4 py-3 text-slate-700">45 min – 4 hrs</td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="px-4 py-3 font-medium text-ink">Pricing accuracy</td>
+                  <td class="px-4 py-3 text-slate-500">Manual, error-prone</td>
+                  <td class="px-4 py-3 text-slate-700">Automated rules, always consistent</td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="px-4 py-3 font-medium text-ink">Audit trail</td>
+                  <td class="px-4 py-3 text-slate-500">None</td>
+                  <td class="px-4 py-3 text-slate-700">Full event log — who configured what, when</td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="px-4 py-3 font-medium text-ink">Multi-plant support</td>
+                  <td class="px-4 py-3 text-slate-500">Separate files per plant</td>
+                  <td class="px-4 py-3 text-slate-700">Unified, plant-specific overlays auto-applied</td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="px-4 py-3 font-medium text-ink">ERP integration</td>
+                  <td class="px-4 py-3 text-slate-500">Manual re-entry</td>
+                  <td class="px-4 py-3 text-slate-700">Real-time API push to SAP, Oracle, Dynamics</td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="px-4 py-3 font-medium text-ink">Version control</td>
+                  <td class="px-4 py-3 text-slate-500">Filename-based ("v2_FINAL_FINAL")</td>
+                  <td class="px-4 py-3 text-slate-700">Immutable versioned releases with effective dating</td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="px-4 py-3 font-medium text-ink">Scale (SKUs / variants)</td>
+                  <td class="px-4 py-3 text-slate-500">Breaks at ~200 variants</td>
+                  <td class="px-4 py-3 text-slate-700">Handles 100,000+ variants without performance degradation</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            The <a href="blog/bom-errors-cost.html">real cost of BOM errors</a> for Indian manufacturers runs to ₹2–50 lakh per incident depending on the product value and the nature of the error. An <a href="case-studies/industrial-machinery-manufacturer.html">industrial machinery OEM</a> we worked with was carrying ₹2.1 Crore in annual BOM error costs — rework, expedited freight, customer penalties, and scrap — all traceable to the fact that they had six divergent "master BOM" files for a single product line, maintained by different teams across three plants.
+          </p>
+        </section>
+
+        <!-- ===================================================
+             SECTION 4: TYPES OF CPQ
+             =================================================== -->
+        <section id="types-of-cpq">
+          <h2>Types of CPQ systems</h2>
+
+          <p>
+            Not all CPQ software works the same way. The architecture matters enormously for Indian manufacturers with complex, high-variant product lines. There are three principal approaches:
+          </p>
+
+          <h3>Rule-based CPQ</h3>
+          <p>
+            Works by checking conditions: IF feature A is selected THEN show feature B; IF feature C is selected THEN hide option D. Simple to implement, breaks at scale. Works reasonably well for products with fewer than 100 variants. The core problem: <strong>rules don't propagate</strong>. Selecting feature A activates the rule for feature B, but if feature B now restricts feature C, a separate rule must exist for that relationship. As products grow, the number of rules grows exponentially. At 1,000+ combinations, the rule set becomes unmaintainable — and undebuggable. Rule-based CPQ also doesn't automatically narrow remaining choices; the user must navigate the invalidation manually.
+          </p>
+
+          <h3>Constraint-based CPQ</h3>
+          <p>
+            Models the valid state space of your product as a <strong>constraint satisfaction problem</strong>. When a selection is made, the constraint solver propagates effects throughout the entire configuration — narrowing choices downstream automatically, without any explicit rules for each dependency. Selecting "5-axis" automatically removes all spindle options that don't support 5-axis, narrows the available control systems, and adjusts the tool magazine minimum — in a single propagation pass. This is CPP's approach. It handles 10,000+ constraints without performance degradation, and every constraint is independently testable. See the technical explanation in our <a href="blog/constraint-configurator-vs-rules-engine.html">constraint vs rules engine comparison</a>.
+          </p>
+
+          <h3>Guided selling CPQ</h3>
+          <p>
+            Interview-style CPQ: asks the customer a series of questions and selects a product variant from the answers. Good for sales-led processes where the customer describes their need and the CPQ maps it to a product. Not suitable for made-to-order or engineer-to-order manufacturers, because guided selling doesn't generate an engineering-grade BOM — it maps to a pre-defined product SKU. If your product is configured to order rather than selected from a catalogue, guided selling won't get you to a production BOM.
+          </p>
+
+          <div class="bg-brand/5 border border-brand/20 rounded-xl p-5 my-6">
+            <p class="text-sm font-semibold text-ink mb-1">Which type do Indian manufacturers need?</p>
+            <p class="text-sm text-slate-600 m-0">
+              If your product has more than 500 valid configurations, or if your sales team can generate an invalid product combination in Excel that engineering then has to catch — you need constraint-based CPQ. Rule-based CPQ will slow you down as much as Excel once your product range matures. Guided selling is appropriate if you sell from a fixed catalogue; it is not appropriate if you configure to order.
+            </p>
+          </div>
+        </section>
+
+        <!-- ===================================================
+             SECTION 5: HOW TO CHOOSE
+             =================================================== -->
+        <section id="how-to-choose">
+          <h2>How to choose CPQ software for your manufacturing company</h2>
+
+          <p>
+            The CPQ market has dozens of products, ranging from CRM add-ons to purpose-built manufacturing platforms. The wrong choice costs more than staying with Excel — because you pay for implementation, carry the operational overhead of the new system, and still don't solve the problem. Here is a five-step evaluation framework:
+          </p>
+
+          <!-- Steps -->
+          <div class="space-y-5 my-6">
+
+            <div class="flex gap-5 bg-surface rounded-xl p-5 border border-slate-100">
+              <div class="w-8 h-8 rounded-full bg-brand text-white font-mono font-bold text-sm flex items-center justify-center flex-shrink-0 mt-0.5">1</div>
+              <div>
+                <h3 class="text-base font-semibold text-ink mt-0 mb-2">Map your product complexity</h3>
+                <p class="text-sm text-slate-600 m-0">Count your features, options, and valid combinations. If you have more than 500 valid configurations, you need constraint-based CPQ — not rule-based. To count: multiply your product dimensions (e.g., 5 capacities × 4 control types × 6 options = 120 base combinations; add optional extras and the number grows fast). If your engineers constantly field the question "can we build X with Y?" from sales, your combination space is large enough to justify constraint-based CPQ.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-5 bg-surface rounded-xl p-5 border border-slate-100">
+              <div class="w-8 h-8 rounded-full bg-brand text-white font-mono font-bold text-sm flex items-center justify-center flex-shrink-0 mt-0.5">2</div>
+              <div>
+                <h3 class="text-base font-semibold text-ink mt-0 mb-2">Define your BOM requirements</h3>
+                <p class="text-sm text-slate-600 m-0">Do you need an engineering-grade BOM — part numbers, quantities, routing, plant-specific part numbers — or just a pricing summary? Engineering-grade BOM requires CPQ with BOM derivation, not just pricing rules. Ask any vendor: "Given this configuration, show me the complete BOM with part numbers that I can send to my ERP for a production order." If they can't demo this, they don't have BOM derivation — they have a pricing calculator.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-5 bg-surface rounded-xl p-5 border border-slate-100">
+              <div class="w-8 h-8 rounded-full bg-brand text-white font-mono font-bold text-sm flex items-center justify-center flex-shrink-0 mt-0.5">3</div>
+              <div>
+                <h3 class="text-base font-semibold text-ink mt-0 mb-2">Assess your ERP integration needs</h3>
+                <p class="text-sm text-slate-600 m-0">Does your CPQ need to push BOMs to SAP, Oracle, or Dynamics in real time? Not all CPQ products support real-time BOM push. Some generate a PDF quote and leave it to your team to re-enter the BOM in the ERP. Confirm explicitly before buying: "Does your system push the BOM to our ERP via API, in real time, when I confirm a configuration?" Get the answer in writing. <a href="blog/erp-integration-product-configurator.html">ERP integration</a> is the step that eliminates manual re-entry and the errors that come with it.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-5 bg-surface rounded-xl p-5 border border-slate-100">
+              <div class="w-8 h-8 rounded-full bg-brand text-white font-mono font-bold text-sm flex items-center justify-center flex-shrink-0 mt-0.5">4</div>
+              <div>
+                <h3 class="text-base font-semibold text-ink mt-0 mb-2">Evaluate for your compliance standards</h3>
+                <p class="text-sm text-slate-600 m-0">If your products must comply with IEC, BIS, IS standards, or ECBC energy standards, verify that the CPQ can encode those constraints natively — not as post-implementation customisations. A constraint that says "for export orders, electrical standard must be IEC, not IS" must be enforced at configuration time, not validated by an engineer after the fact. "We'll add it as a customisation" is a red flag; it means the constraint isn't natively supported and will require ongoing maintenance.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-5 bg-surface rounded-xl p-5 border border-slate-100">
+              <div class="w-8 h-8 rounded-full bg-brand text-white font-mono font-bold text-sm flex items-center justify-center flex-shrink-0 mt-0.5">5</div>
+              <div>
+                <h3 class="text-base font-semibold text-ink mt-0 mb-2">Validate with a real product family pilot</h3>
+                <p class="text-sm text-slate-600 m-0">Before committing to full deployment, run a 4-week pilot with one of your actual product families. Take your most complex product line — the one where your engineers spend the most time validating quotes — and ask the CPQ vendor to model it in their platform. A vendor that won't do a bounded pilot with real product data isn't confident in their own product. The pilot will surface integration gaps, constraint modelling limitations, and ease-of-use issues that no demo environment will show you.</p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ===================================================
+             SECTION 6: INDIA-SPECIFIC
+             =================================================== -->
+        <section id="india-specific">
+          <h2>CPQ for Indian manufacturers — specific considerations</h2>
+
+          <p>
+            Global CPQ platforms are built for Western markets with Western assumptions. Indian manufacturers face a distinct set of requirements that many global platforms handle poorly or not at all.
+          </p>
+
+          <h3>GST and regional pricing</h3>
+          <p>
+            Indian CPQ must handle GST by product category (HSN code), freight by distance band (inter-state vs intra-state, distance-based freight slabs), and regional margin differences. A switchgear manufacturer selling into Rajasthan, Maharashtra, and Tamil Nadu has different logistics costs, different state-level compliance requirements, and potentially different channel margins in each region. CPP's pricing rules handle all three natively — GST is applied at the line-item level by HSN code, freight is calculated by delivery distance band, and regional margin adjustments are applied at quote time.
+          </p>
+
+          <h3>Multi-plant BOM management</h3>
+          <p>
+            Indian manufacturers with two or more plants need plant-specific BOM overlays — not separate BOM files maintained by separate teams. The <a href="case-studies/industrial-machinery-manufacturer.html">industrial machinery OEM case study</a> is the canonical example: six divergent BOM files for a single product line, maintained by different engineers at three plants, diverging further with every engineering change. The solution is a shared constraint graph with plant-specific overlays for vendors, part numbers, and statutory compliance — so there is one source of truth and three plant-specific views of it. See our full guide on <a href="blog/multi-plant-bom-management.html">multi-plant BOM management</a>.
+          </p>
+
+          <h3>Government tender compliance (GeM, CPWD, Railways)</h3>
+          <p>
+            Government tenders — GeM, CPWD, Railways, Defence — require rapid quote turnaround and BOM accuracy. A tender that requires a quote in 48 hours cannot wait three weeks for engineering to validate a manually assembled BOM. CPQ reduces quote preparation time from weeks to hours, enabling Indian manufacturers to respond to tenders they previously had to decline due to time constraints. Learn more about <a href="blog/how-manufacturers-win-tenders-faster.html">winning tenders faster with CPQ</a>.
+          </p>
+
+          <h3>BIS and IS certification encoding</h3>
+          <p>
+            IS 1180 (transformers), IS 2026 (power transformers), IS 3043 (earthing), and other BIS standards carry specific material and design requirements that can be encoded as constraints. When a customer order triggers an IS 2026 requirement, the constraint engine automatically applies the relevant material specifications to the BOM — preventing certification violations at the quoting stage rather than discovering them during inspection. The <a href="case-studies/power-transformer-manufacturer.html">power transformer OEM</a> case study covers this in detail.
+          </p>
+
+          <h3>Vendor master integration</h3>
+          <p>
+            Indian manufacturers typically maintain a vendor master in their ERP with approved vendors, MSME/NSIC status, and GST registration. A CPQ that integrates with the vendor master can ensure that BOM line items are automatically mapped to the correct approved vendor at each plant — not just the generic part number. This is particularly important for manufacturers with MSME sourcing obligations or defence offset requirements.
+          </p>
+        </section>
+
+        <!-- ===================================================
+             SECTION 7: CPQ ROI
+             =================================================== -->
+        <section id="cpq-roi">
+          <h2>CPQ ROI for Indian manufacturers</h2>
+
+          <p>
+            The ROI from CPQ comes from three levers that activate at different stages of deployment. Understanding the timeline helps set realistic expectations with finance and board stakeholders.
+          </p>
+
+          <!-- ROI levers -->
+          <div class="grid sm:grid-cols-3 gap-4 my-6">
+            <div class="bg-brand/5 border border-brand/20 rounded-xl p-5">
+              <div class="font-mono text-xs font-semibold text-brand uppercase tracking-wider mb-2">Lever 1 — Month 1–3</div>
+              <div class="font-semibold text-ink text-sm mb-2">Rework cost reduction</div>
+              <p class="text-xs text-slate-600 m-0">Median ₹48L–₹1.8Cr per year depending on product value and BOM complexity. This lever activates immediately at go-live — the first order configured in CPP cannot produce an invalid BOM, so rework from BOM errors stops.</p>
+            </div>
+            <div class="bg-brand/5 border border-brand/20 rounded-xl p-5">
+              <div class="font-mono text-xs font-semibold text-brand uppercase tracking-wider mb-2">Lever 2 — Month 2–4</div>
+              <div class="font-semibold text-ink text-sm mb-2">Quote capacity increase</div>
+              <p class="text-xs text-slate-600 m-0">3–5× more quotes per engineer per month. Engineering bandwidth previously consumed by BOM validation and quote preparation is freed for product development and technical selling.</p>
+            </div>
+            <div class="bg-brand/5 border border-brand/20 rounded-xl p-5">
+              <div class="font-mono text-xs font-semibold text-brand uppercase tracking-wider mb-2">Lever 3 — Month 3–6</div>
+              <div class="font-semibold text-ink text-sm mb-2">Revenue from won tenders</div>
+              <p class="text-xs text-slate-600 m-0">Quotes submitted in 4 hours vs 3 weeks. Typically 1–3 additional tenders won per month that were previously declined or submitted too late. Each worth ₹25L–₹5Cr depending on product and customer.</p>
+            </div>
+          </div>
+
+          <h3>Real numbers from CPP customers</h3>
+          <p>
+            Across CPP deployments at Indian manufacturers in FY 2025-26:
+          </p>
+          <ul>
+            <li>Median quote turnaround reduction: from 14 days to 3.5 days (75% reduction)</li>
+            <li>Median BOM error rate reduction: from 8.3% to 0.9% (89% reduction)</li>
+            <li>Median annual cost saving (rework + scrap + freight + penalties): ₹1.4 Crore per product line</li>
+            <li>Median payback period: 67 days from go-live</li>
+          </ul>
+          <p>
+            Case studies: <a href="case-studies/elevator-manufacturer.html">elevator manufacturer</a> (18-day quote cycle to 4 hours, ₹1.2 Cr saved), <a href="case-studies/switchgear-manufacturer.html">switchgear OEM</a> (IEC/IS constraint enforcement, 91% BOM error reduction), <a href="case-studies/hvac-manufacturer.html">HVAC manufacturer</a> (ECBC compliance encoding, multi-region pricing), <a href="case-studies/power-transformer-manufacturer.html">power transformer OEM</a> (IS 2026 constraints, GeM tender response time halved).
+          </p>
+
+          <h3>CPP pricing</h3>
+          <p>
+            CPP is designed for Indian manufacturers and priced to deliver ROI in under 90 days. Starter plan: <strong>₹2.8L/year</strong> (1 product family, 2 plants, unlimited users). Growth plan: <strong>₹6.5L/year</strong> (up to 4 product families, 5 plants). Enterprise: custom pricing for unlimited product families and plants. Implementation: 6–10 weeks for a first product family. No additional per-user fees.
+          </p>
+          <p>
+            For comparison: global CPQ platforms (Salesforce CPQ, SAP CPQ, Oracle CPQ Configurator) cost ₹15–50L/year for a mid-size Indian deployment, plus ₹20–80L in implementation and ₹5–15L/year in ongoing customisation. The total 3-year cost of ownership for a global platform at an Indian mid-size manufacturer is typically ₹1.5–3.5 Crore. CPP's 3-year cost for an equivalent deployment is ₹12–25L.
+          </p>
+        </section>
+
+        <!-- ===================================================
+             SECTION 8: FAQ
+             =================================================== -->
+        <section id="faq" x-data="{ open: null }">
+          <h2>Frequently asked questions</h2>
+
+          <div class="space-y-3 not-prose">
+
+            <div class="bg-surface rounded-xl border border-slate-100 overflow-hidden">
+              <button class="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors" @click="open = open === 1 ? null : 1" :aria-expanded="open === 1">
+                <span class="font-semibold text-ink text-sm pr-4">What does CPQ stand for?</span>
+                <svg class="w-5 h-5 text-brand flex-shrink-0 transition-transform duration-200" :class="{ 'rotate-45': open === 1 }" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+              </button>
+              <div x-show="open === 1" x-transition:enter="transition-all ease-out duration-200" x-transition:enter-start="opacity-0 max-h-0" x-transition:enter-end="opacity-100 max-h-96" x-transition:leave="transition-all ease-in duration-150" x-transition:leave-start="opacity-100 max-h-96" x-transition:leave-end="opacity-0 max-h-0" class="overflow-hidden">
+                <div class="px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+                  CPQ stands for <strong class="text-ink">Configure, Price, Quote</strong> — the three steps of turning a customer requirement into a saleable offer: product configuration (selecting the right variant), pricing (applying the correct price rules), and quote document generation (customer-facing document plus production BOM).
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-surface rounded-xl border border-slate-100 overflow-hidden">
+              <button class="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors" @click="open = open === 2 ? null : 2" :aria-expanded="open === 2">
+                <span class="font-semibold text-ink text-sm pr-4">Is CPQ only for large manufacturers?</span>
+                <svg class="w-5 h-5 text-brand flex-shrink-0 transition-transform duration-200" :class="{ 'rotate-45': open === 2 }" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+              </button>
+              <div x-show="open === 2" x-transition:enter="transition-all ease-out duration-200" x-transition:enter-start="opacity-0 max-h-0" x-transition:enter-end="opacity-100 max-h-96" x-transition:leave="transition-all ease-in duration-150" x-transition:leave-start="opacity-100 max-h-96" x-transition:leave-end="opacity-0 max-h-0" class="overflow-hidden">
+                <div class="px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+                  No. CPQ is particularly valuable for <strong class="text-ink">mid-size manufacturers (₹50Cr–₹500Cr revenue)</strong> with configurable products. Companies in this range are typically too complex for Excel — they have hundreds or thousands of valid product combinations — but haven't yet invested in CPQ. They carry the highest BOM error rates as a result, because their product complexity has grown faster than their process infrastructure.
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-surface rounded-xl border border-slate-100 overflow-hidden">
+              <button class="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors" @click="open = open === 3 ? null : 3" :aria-expanded="open === 3">
+                <span class="font-semibold text-ink text-sm pr-4">How long does CPQ implementation take?</span>
+                <svg class="w-5 h-5 text-brand flex-shrink-0 transition-transform duration-200" :class="{ 'rotate-45': open === 3 }" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+              </button>
+              <div x-show="open === 3" x-transition:enter="transition-all ease-out duration-200" x-transition:enter-start="opacity-0 max-h-0" x-transition:enter-end="opacity-100 max-h-96" x-transition:leave="transition-all ease-in duration-150" x-transition:leave-start="opacity-100 max-h-96" x-transition:leave-end="opacity-0 max-h-0" class="overflow-hidden">
+                <div class="px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+                  For a first product family: <strong class="text-ink">6–10 weeks</strong>. For each additional product family: 3–5 weeks (the constraint framework is reused; only product-specific rules need to be authored). Full enterprise rollout (5+ families, 3+ plants) typically takes 12–18 months on a staggered schedule — with ROI positive from the first product line go-live, which funds the rest of the rollout.
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-surface rounded-xl border border-slate-100 overflow-hidden">
+              <button class="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors" @click="open = open === 4 ? null : 4" :aria-expanded="open === 4">
+                <span class="font-semibold text-ink text-sm pr-4">Does CPQ replace our ERP?</span>
+                <svg class="w-5 h-5 text-brand flex-shrink-0 transition-transform duration-200" :class="{ 'rotate-45': open === 4 }" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+              </button>
+              <div x-show="open === 4" x-transition:enter="transition-all ease-out duration-200" x-transition:enter-start="opacity-0 max-h-0" x-transition:enter-end="opacity-100 max-h-96" x-transition:leave="transition-all ease-in duration-150" x-transition:leave-start="opacity-100 max-h-96" x-transition:leave-end="opacity-0 max-h-0" class="overflow-hidden">
+                <div class="px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+                  No. CPQ and ERP are complementary, not competing. <strong class="text-ink">CPQ handles product knowledge and quote generation.</strong> ERP handles procurement, production scheduling, inventory, and accounting. They work together: CPQ generates the BOM from the configuration, and pushes it to the ERP for a production order. The ERP never needs to know anything about configuration logic; it receives a clean, validated BOM and processes it. See our <a href="blog/erp-integration-product-configurator.html" class="text-brand underline">ERP integration guide</a>.
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-surface rounded-xl border border-slate-100 overflow-hidden">
+              <button class="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors" @click="open = open === 5 ? null : 5" :aria-expanded="open === 5">
+                <span class="font-semibold text-ink text-sm pr-4">Can CPQ handle engineer-to-order (ETO) products?</span>
+                <svg class="w-5 h-5 text-brand flex-shrink-0 transition-transform duration-200" :class="{ 'rotate-45': open === 5 }" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+              </button>
+              <div x-show="open === 5" x-transition:enter="transition-all ease-out duration-200" x-transition:enter-start="opacity-0 max-h-0" x-transition:enter-end="opacity-100 max-h-96" x-transition:leave="transition-all ease-in duration-150" x-transition:leave-start="opacity-100 max-h-96" x-transition:leave-end="opacity-0 max-h-0" class="overflow-hidden">
+                <div class="px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+                  Yes, with qualifications. ETO products where every dimension is custom are not fully automatable. But most ETO manufacturers have a <strong class="text-ink">configurable range</strong> — approximately 80% of orders fit within defined parameters (standard tonnage, standard stroke, standard bed sizes, standard options). CPP handles the 80% automatically and flags the remaining 20% for engineering review, so engineering attention is concentrated where it genuinely adds value rather than diffused across every order.
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-surface rounded-xl border border-slate-100 overflow-hidden">
+              <button class="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors" @click="open = open === 6 ? null : 6" :aria-expanded="open === 6">
+                <span class="font-semibold text-ink text-sm pr-4">What is the difference between CPQ and a product configurator?</span>
+                <svg class="w-5 h-5 text-brand flex-shrink-0 transition-transform duration-200" :class="{ 'rotate-45': open === 6 }" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+              </button>
+              <div x-show="open === 6" x-transition:enter="transition-all ease-out duration-200" x-transition:enter-start="opacity-0 max-h-0" x-transition:enter-end="opacity-100 max-h-96" x-transition:leave="transition-all ease-in duration-150" x-transition:leave-start="opacity-100 max-h-96" x-transition:leave-end="opacity-0 max-h-0" class="overflow-hidden">
+                <div class="px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+                  A product configurator handles only the <strong class="text-ink">configuration step</strong> — selecting a valid product variant. CPQ extends this to pricing and quote document generation. A BOM-generating CPQ like CPP also handles BOM derivation — making it a complete quote-to-production pipeline: configuration → validated BOM → pricing → customer quote → ERP push → production order. A configurator alone stops before pricing and BOM derivation.
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-surface rounded-xl border border-slate-100 overflow-hidden">
+              <button class="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors" @click="open = open === 7 ? null : 7" :aria-expanded="open === 7">
+                <span class="font-semibold text-ink text-sm pr-4">How much does CPQ software cost in India?</span>
+                <svg class="w-5 h-5 text-brand flex-shrink-0 transition-transform duration-200" :class="{ 'rotate-45': open === 7 }" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+              </button>
+              <div x-show="open === 7" x-transition:enter="transition-all ease-out duration-200" x-transition:enter-start="opacity-0 max-h-0" x-transition:enter-end="opacity-100 max-h-96" x-transition:leave="transition-all ease-in duration-150" x-transition:leave-start="opacity-100 max-h-96" x-transition:leave-end="opacity-0 max-h-0" class="overflow-hidden">
+                <div class="px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+                  CPQ pricing varies widely. Generic global CPQ (Salesforce CPQ, SAP CPQ, Oracle CPQ) costs <strong class="text-ink">₹15–50L/year</strong> for a mid-size Indian deployment, plus ₹20–80L in implementation. CPP is designed specifically for Indian manufacturers and starts at <strong class="text-ink">₹2.8L/year</strong> with implementation in 6–10 weeks — a fraction of the cost of global platforms. Most CPP customers achieve payback in under 90 days.
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-surface rounded-xl border border-slate-100 overflow-hidden">
+              <button class="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors" @click="open = open === 8 ? null : 8" :aria-expanded="open === 8">
+                <span class="font-semibold text-ink text-sm pr-4">How do I know if my company needs CPQ?</span>
+                <svg class="w-5 h-5 text-brand flex-shrink-0 transition-transform duration-200" :class="{ 'rotate-45': open === 8 }" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+              </button>
+              <div x-show="open === 8" x-transition:enter="transition-all ease-out duration-200" x-transition:enter-start="opacity-0 max-h-0" x-transition:enter-end="opacity-100 max-h-96" x-transition:leave="transition-all ease-in duration-150" x-transition:leave-start="opacity-100 max-h-96" x-transition:leave-end="opacity-0 max-h-0" class="overflow-hidden">
+                <div class="px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+                  If you answer yes to <strong class="text-ink">3 or more</strong> of these, CPQ will pay back within 90 days:
+                  <ol class="mt-2 space-y-1 list-decimal pl-4">
+                    <li>Quotes take more than 3 days to prepare</li>
+                    <li>Your BOM error rate is above 2% (one in 50 orders has a material BOM difference)</li>
+                    <li>More than one engineer owns the product configuration spreadsheet</li>
+                    <li>You have lost a tender due to late submission</li>
+                    <li>You have 2+ plants with different BOM versions for the same product line</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </article>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       CTA SECTION — full width bg-brand
+       ========================================================= -->
+  <section class="py-20 bg-brand mt-12">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="font-mono font-bold text-3xl text-white mb-4">See CPP live with your own product family</h2>
+      <p class="text-white/80 mb-8 text-lg max-w-2xl mx-auto">Book a 45-minute demo. We'll configure one of your actual product families in CPP, derive the BOM, and show you what your quote cycle could look like.</p>
+      <a href="index.html#demo" class="inline-flex items-center gap-2 bg-white text-brand hover:bg-brand-light font-bold px-10 py-4 rounded-xl transition-colors shadow-lg text-base">Request a Demo →</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-ink py-8 text-center">
+  <p class="text-slate-400 text-sm font-mono">© 2026 Softwaller Technologies Private Limited · CPP & CPQ are products of Softwaller Technologies · <a href="index.html" class="text-brand hover:underline">← Back to Home</a></p>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    AOS.init({ duration: 600, once: true, easing: 'ease-out-cubic', offset: 60 });
+
+    // Active TOC highlight on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const tocLinks = document.querySelectorAll('#toc-nav a');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(link => {
+            link.classList.remove('toc-active');
+            if (link.getAttribute('href') === '#' + entry.target.id) {
+              link.classList.add('toc-active');
+            }
+          });
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    sections.forEach(section => observer.observe(section));
+  });
+</script>
+
+</body>
+</html>

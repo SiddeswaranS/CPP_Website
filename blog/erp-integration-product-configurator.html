@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0EA5E9">
+  <title>How to Connect Your Product Configurator to SAP, Oracle, and Microsoft Dynamics | CPP Blog</title>
+  <meta name="description" content="Manual BOM re-entry between CPQ and ERP costs Indian manufacturers 3–5 hours per order. Here's how real-time ERP integration eliminates the gap and eliminates errors.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://cpplatform.in/blog/erp-integration-product-configurator.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="CPP Platform">
+  <meta property="og:title" content="How to Connect Your Product Configurator to SAP, Oracle, and Microsoft Dynamics | CPP Blog">
+  <meta property="og:description" content="Manual BOM re-entry between CPQ and ERP costs Indian manufacturers 3–5 hours per order. Here's how real-time ERP integration eliminates the gap and eliminates errors.">
+  <meta property="og:image" content="https://cpplatform.in/assets/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://cpplatform.in/blog/erp-integration-product-configurator.html">
+  <meta property="og:locale" content="en_IN">
+  <meta property="article:published_time" content="2026-05-17T00:00:00+05:30">
+  <meta property="article:author" content="CPP Platform">
+  <meta property="article:section" content="Integration &amp; ERP">
+  <meta property="article:tag" content="product configurator ERP integration India">
+  <meta property="article:tag" content="CPQ SAP integration">
+  <meta property="article:tag" content="ERP BOM push">
+  <meta property="article:tag" content="configure price quote ERP">
+  <meta property="article:tag" content="SAP B1 CPQ">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to Connect Your Product Configurator to SAP, Oracle, and Microsoft Dynamics">
+  <meta name="twitter:description" content="Manual BOM re-entry between CPQ and ERP costs Indian manufacturers 3–5 hours per order. Here's how real-time ERP integration eliminates the gap and eliminates errors.">
+  <meta name="twitter:image" content="https://cpplatform.in/assets/images/og-image.jpg">
+
+  <!-- JSON-LD: BlogPosting -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "How to Connect Your Product Configurator to SAP, Oracle, and Microsoft Dynamics",
+    "description": "Manual BOM re-entry between CPQ and ERP costs Indian manufacturers 3–5 hours per order. Here's how real-time ERP integration eliminates the gap and eliminates errors.",
+    "datePublished": "2026-05-17",
+    "dateModified": "2026-05-17",
+    "author": {
+      "@type": "Organization",
+      "name": "Softwaller Technologies Private Limited",
+      "url": "https://cpplatform.in"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Softwaller Technologies Private Limited",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://cpplatform.in/assets/images/og-image.jpg"
+      }
+    },
+    "url": "https://cpplatform.in/blog/erp-integration-product-configurator.html",
+    "image": "https://cpplatform.in/assets/images/og-image.jpg",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://cpplatform.in/blog/erp-integration-product-configurator.html"
+    },
+    "keywords": ["product configurator ERP integration India", "CPQ SAP integration", "ERP BOM push", "configure price quote ERP", "SAP B1 CPQ"],
+    "articleSection": "Integration & ERP",
+    "timeRequired": "PT7M",
+    "inLanguage": "en-IN",
+    "about": {
+      "@type": "Thing",
+      "name": "ERP Integration for Product Configurators"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://cpplatform.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://cpplatform.in/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "How to Connect Your Product Configurator to SAP, Oracle, and Microsoft Dynamics",
+        "item": "https://cpplatform.in/blog/erp-integration-product-configurator.html"
+      }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does CPP support SAP B1 integration out of the box?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. CPP has a pre-built SAP Business One connector that uses the DI API for BOM push and material creation. Setup takes 1–2 days during onboarding."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can CPP push BOMs to multiple ERP instances for multi-plant manufacturers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. CPP routes each BOM to the plant-specific ERP instance based on the plant assignment in the configuration. A single configured order for a multi-plant BOM can trigger pushes to 2–3 ERP instances simultaneously."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if the ERP API is unavailable when CPP tries to push?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CPP queues failed pushes with automatic retry (3 attempts, exponential backoff). All push attempts are logged with timestamps and error codes. Manual retry is available from the admin console."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the BOM push one-way or can ERP update CPP?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The primary flow is CPP to ERP. ERP can optionally publish inventory availability events back to CPP, which CPP uses to surface stock-out warnings during configuration. This is configured optionally during integration setup."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does ERP integration take to set up?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For supported ERPs (SAP B1, S/4HANA, Oracle NetSuite, Dynamics 365 Business Central), integration setup takes 3–5 business days including master data mapping and test order validation. Custom ERP integration via REST webhook takes 1–2 weeks."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand:   { DEFAULT: '#0EA5E9', dark: '#0284C7', light: '#BAE6FD', faint: '#F0F9FF' },
+            surface: '#F1F5F9',
+            ink:     '#0F172A',
+          },
+          fontFamily: {
+            mono: ['"JetBrains Mono"', 'monospace'],
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../assets/css/custom.min.css?v=1.1.0">
+
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+
+<body class="font-sans bg-surface text-ink antialiased">
+
+<!-- Skip to content -->
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-brand focus:text-white focus:font-semibold focus:px-4 focus:py-2 focus:rounded-lg">Skip to main content</a>
+
+<!-- ═══════════════════════════════════════════
+     NAV
+═══════════════════════════════════════════ -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-slate-100 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+    <a href="../index.html" class="flex items-center gap-2.5">
+      <div class="w-8 h-8 bg-brand rounded-lg flex items-center justify-center">
+        <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h10M4 18h6"/></svg>
+      </div>
+      <span class="font-mono font-bold text-xl text-ink">CPP</span>
+    </a>
+    <div class="flex items-center gap-4">
+      <a href="../blog/index.html" class="text-sm font-medium text-slate-600 hover:text-brand transition-colors">Blog</a>
+      <a href="../case-studies/index.html" class="text-sm font-medium text-slate-600 hover:text-brand transition-colors">Case Studies</a>
+      <a href="../index.html#demo" class="inline-flex items-center gap-1.5 bg-brand hover:bg-brand-dark text-white font-semibold text-sm px-4 py-2 rounded-lg transition-colors">Request Demo →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════ -->
+<main id="main">
+<header class="bg-ink pt-24 pb-16">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="mb-6">
+      <ol class="flex items-center gap-2 text-sm text-slate-400 font-mono">
+        <li><a href="../index.html" class="hover:text-brand transition-colors">Home</a></li>
+        <li aria-hidden="true" class="text-slate-600">/</li>
+        <li><a href="../blog/index.html" class="hover:text-brand transition-colors">Blog</a></li>
+      </ol>
+    </nav>
+
+    <!-- Category badge -->
+    <div class="mb-5">
+      <span class="inline-flex items-center gap-1.5 bg-brand/20 text-brand text-xs font-mono font-semibold px-3 py-1.5 rounded-full uppercase tracking-widest">
+        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg>
+        Integration &amp; ERP
+      </span>
+    </div>
+
+    <!-- H1 -->
+    <h1 class="font-mono font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-6">
+      How to Connect Your Product Configurator to SAP, Oracle, and Microsoft Dynamics
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="text-slate-300 text-lg sm:text-xl leading-relaxed mb-8 max-w-3xl">
+      Manual BOM re-entry between your CPQ tool and your ERP doesn't just waste time — it introduces errors that surface 8–16 weeks later as rework. Here's what real-time integration looks like and how to get there.
+    </p>
+
+    <!-- Meta -->
+    <div class="flex flex-wrap items-center gap-4 text-sm text-slate-400 font-mono">
+      <span class="flex items-center gap-1.5">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        7 min read
+      </span>
+      <span class="text-slate-600">·</span>
+      <time datetime="2026-05-17" class="flex items-center gap-1.5">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        May 17, 2026
+      </time>
+      <span class="text-slate-600">·</span>
+      <span>CPP Platform</span>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════
+     STATS BAR
+═══════════════════════════════════════════ -->
+<section class="bg-white border-b border-slate-100" aria-label="Key statistics">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 sm:grid-cols-4 divide-x divide-y sm:divide-y-0 divide-slate-100">
+
+      <div class="flex flex-col items-center py-8 px-4 text-center" data-aos="fade-up" data-aos-delay="0">
+        <span class="font-mono font-bold text-3xl text-brand mb-1">3–5 hrs</span>
+        <span class="text-xs text-slate-500 font-medium leading-snug">Avg time lost per order to manual BOM re-entry</span>
+      </div>
+
+      <div class="flex flex-col items-center py-8 px-4 text-center" data-aos="fade-up" data-aos-delay="80">
+        <span class="font-mono font-bold text-3xl text-brand mb-1">23%</span>
+        <span class="text-xs text-slate-500 font-medium leading-snug">Of ERP data errors traced to manual CPQ handoff (Aberdeen Group)</span>
+      </div>
+
+      <div class="flex flex-col items-center py-8 px-4 text-center" data-aos="fade-up" data-aos-delay="160">
+        <span class="font-mono font-bold text-3xl text-brand mb-1">₹0</span>
+        <span class="text-xs text-slate-500 font-medium leading-snug">Manual re-entry cost with real-time CPP→ERP push</span>
+      </div>
+
+      <div class="flex flex-col items-center py-8 px-4 text-center" data-aos="fade-up" data-aos-delay="240">
+        <span class="font-mono font-bold text-3xl text-brand mb-1">&lt;30 sec</span>
+        <span class="text-xs text-slate-500 font-medium leading-snug">CPP BOM push to SAP/Oracle after configuration</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     ARTICLE BODY
+═══════════════════════════════════════════ -->
+<article class="py-14">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="prose-blog max-w-none">
+
+      <!-- ── Section 1 ── -->
+      <section data-aos="fade-up" class="mb-14">
+        <h2 class="font-mono font-bold text-2xl sm:text-3xl text-ink mb-6 pb-3 border-b border-slate-200">
+          The gap between your configurator and your ERP is costing you more than you think
+        </h2>
+        <p class="text-slate-700 text-lg leading-relaxed mb-6">
+          The standard workflow at most Indian manufacturers goes like this: a sales or application engineer configures a product, generates a BOM from the CPQ tool or Excel template, then manually re-keys that BOM into SAP, Oracle, or Tally before procurement can begin. That re-keying step is where things quietly go wrong — and where engineering time disappears.
+        </p>
+        <p class="text-slate-700 text-lg leading-relaxed mb-6">
+          Aberdeen Group research found that 23% of ERP data errors originate at the CPQ-to-ERP handoff point. That single number understates the problem: the errors that make it through to procurement are the ones that survive because they look plausible. An engineer who transposes a part number during manual entry creates a BOM that is structurally valid but materially wrong. No system flags it. The wrong part gets ordered. The error surfaces 8–12 weeks later at assembly.
+        </p>
+        <p class="text-slate-700 text-lg leading-relaxed mb-8">
+          For mid-size Indian manufacturers processing 50 configured orders per month, manual re-entry runs to 150–250 engineer-hours monthly. That is the equivalent of a full-time technical employee spending their entire working month doing data entry — not engineering work.
+        </p>
+
+        <blockquote class="border-l-4 border-brand bg-brand/5 rounded-r-xl px-7 py-5 my-8">
+          <p class="text-slate-700 text-lg italic leading-relaxed">"The engineer who configured the product spends 4 hours entering it into SAP. That is not an integration problem. That is a cost-of-complexity problem that compounds with every new SKU."</p>
+        </blockquote>
+      </section>
+
+      <!-- ── Section 2 ── -->
+      <section data-aos="fade-up" class="mb-14">
+        <h2 class="font-mono font-bold text-2xl sm:text-3xl text-ink mb-6 pb-3 border-b border-slate-200">
+          Three integration patterns — and why two of them fail
+        </h2>
+        <p class="text-slate-700 text-lg leading-relaxed mb-8">
+          Not all CPQ-to-ERP integration is created equal. Most manufacturers sit in one of three patterns, and only one of them is actually working.
+        </p>
+
+        <div class="space-y-5">
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-7 shadow-sm">
+            <h3 class="font-mono font-semibold text-lg text-ink mb-3 flex items-center gap-2.5">
+              <span class="flex-shrink-0 w-7 h-7 bg-red-100 text-red-600 rounded-lg flex items-center justify-center text-sm font-bold">1</span>
+              No integration (manual re-entry)
+            </h3>
+            <p class="text-slate-600 leading-relaxed">Copy-paste from CPQ output or Excel into ERP. Error rate of 5–15% on individual line items. Scales linearly with order volume — at 50 orders per month, you need a dedicated data-entry resource. Unacceptable beyond 20 configured orders per month at any complexity level.</p>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-7 shadow-sm">
+            <h3 class="font-mono font-semibold text-lg text-ink mb-3 flex items-center gap-2.5">
+              <span class="flex-shrink-0 w-7 h-7 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center text-sm font-bold">2</span>
+              Batch file export
+            </h3>
+            <p class="text-slate-600 leading-relaxed">Daily or weekly CSV/XML push from CPQ to ERP. Error rate improves to 3–8% because transcription is eliminated. But a 24-hour lag means procurement cannot start until the next batch run. When order volume spikes or ERP schema changes, the batch breaks and someone notices two days later. Works until it doesn't.</p>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-7 shadow-sm">
+            <h3 class="font-mono font-semibold text-lg text-ink mb-3 flex items-center gap-2.5">
+              <span class="flex-shrink-0 w-7 h-7 bg-brand/10 text-brand rounded-lg flex items-center justify-center text-sm font-bold">3</span>
+              Real-time API push (the right way)
+            </h3>
+            <p class="text-slate-600 leading-relaxed">Configuration completion triggers an immediate, validated BOM push to the ERP via REST API. SAP Business One, SAP S/4HANA, Oracle NetSuite, and Microsoft Dynamics 365 Business Central all support REST or OData APIs for this purpose. Error rate drops below 0.5% because there is no human in the loop between configuration and ERP record creation. CPP uses this pattern exclusively.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── Section 3 ── -->
+      <section data-aos="fade-up" class="mb-14">
+        <h2 class="font-mono font-bold text-2xl sm:text-3xl text-ink mb-6 pb-3 border-b border-slate-200">
+          What real-time CPP→ERP integration looks like
+        </h2>
+        <p class="text-slate-700 text-lg leading-relaxed mb-6">
+          When a sales engineer completes a configuration in CPP, the constraint solver confirms that every selected feature combination is valid. The BOM is then derived deterministically — same inputs, same output, every time. Within 30 seconds, CPP pushes the full BOM via REST API to the connected ERP instance.
+        </p>
+        <p class="text-slate-700 text-lg leading-relaxed mb-8">
+          On the ERP side, a draft sales order or material requisition is created automatically. Part numbers, quantities, plant assignment, cost centre, and warehouse location — all populated from the configuration context. Procurement can begin within minutes of the configuration being finalised, not days.
+        </p>
+
+        <!-- Comparison table -->
+        <div class="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm mb-6">
+          <table class="w-full text-sm" aria-label="Integration pattern comparison">
+            <thead>
+              <tr class="bg-ink text-white">
+                <th class="text-left font-mono font-semibold px-5 py-4">Step</th>
+                <th class="text-left font-mono font-semibold px-5 py-4">Manual</th>
+                <th class="text-left font-mono font-semibold px-5 py-4">Batch Export</th>
+                <th class="text-left font-mono font-semibold px-5 py-4">Real-time API</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 bg-white">
+              <tr class="hover:bg-brand-faint transition-colors">
+                <td class="px-5 py-4 font-semibold text-ink">BOM available in ERP</td>
+                <td class="px-5 py-4 text-slate-600">3–5 hrs after config</td>
+                <td class="px-5 py-4 text-slate-600">Next day batch</td>
+                <td class="px-5 py-4 font-mono font-semibold text-brand">&lt; 30 sec</td>
+              </tr>
+              <tr class="hover:bg-brand-faint transition-colors">
+                <td class="px-5 py-4 font-semibold text-ink">Error rate</td>
+                <td class="px-5 py-4 text-slate-600">5–15%</td>
+                <td class="px-5 py-4 text-slate-600">3–8%</td>
+                <td class="px-5 py-4 font-mono font-semibold text-brand">&lt; 0.5%</td>
+              </tr>
+              <tr class="hover:bg-brand-faint transition-colors">
+                <td class="px-5 py-4 font-semibold text-ink">Procurement trigger</td>
+                <td class="px-5 py-4 text-slate-600">Manual</td>
+                <td class="px-5 py-4 text-slate-600">Manual</td>
+                <td class="px-5 py-4 font-mono font-semibold text-brand">Automatic</td>
+              </tr>
+              <tr class="hover:bg-brand-faint transition-colors">
+                <td class="px-5 py-4 font-semibold text-ink">Audit trail</td>
+                <td class="px-5 py-4 text-slate-600">None</td>
+                <td class="px-5 py-4 text-slate-600">Log file</td>
+                <td class="px-5 py-4 font-mono font-semibold text-brand">Full event log</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ── Section 4 ── -->
+      <section data-aos="fade-up" class="mb-14">
+        <h2 class="font-mono font-bold text-2xl sm:text-3xl text-ink mb-6 pb-3 border-b border-slate-200">
+          Which ERP systems does CPP connect to?
+        </h2>
+        <p class="text-slate-700 text-lg leading-relaxed mb-8">
+          CPP ships with pre-built connectors for the ERP systems most commonly used by Indian mid-market manufacturers. Integration is configured during onboarding — no development work is required from the customer for supported systems.
+        </p>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-8">
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm flex items-start gap-4">
+            <div class="flex-shrink-0 w-10 h-10 bg-brand/10 rounded-xl flex items-center justify-center">
+              <svg class="w-5 h-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-ink text-sm mb-1">SAP Business One</h3>
+              <p class="text-slate-500 text-sm leading-relaxed">REST API and DI API connector. BOM push and material creation. Most common ERP among Indian SME manufacturers.</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm flex items-start gap-4">
+            <div class="flex-shrink-0 w-10 h-10 bg-brand/10 rounded-xl flex items-center justify-center">
+              <svg class="w-5 h-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-ink text-sm mb-1">SAP S/4HANA</h3>
+              <p class="text-slate-500 text-sm leading-relaxed">OData API v4. Full BOM push with plant assignment, production order creation, and cost centre mapping.</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm flex items-start gap-4">
+            <div class="flex-shrink-0 w-10 h-10 bg-brand/10 rounded-xl flex items-center justify-center">
+              <svg class="w-5 h-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-ink text-sm mb-1">SAP ECC</h3>
+              <p class="text-slate-500 text-sm leading-relaxed">BAPI via middleware layer. Supports manufacturers who have not yet migrated to S/4HANA.</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm flex items-start gap-4">
+            <div class="flex-shrink-0 w-10 h-10 bg-brand/10 rounded-xl flex items-center justify-center">
+              <svg class="w-5 h-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-ink text-sm mb-1">Oracle NetSuite</h3>
+              <p class="text-slate-500 text-sm leading-relaxed">SuiteScript REST API. Assembly build and work order creation from CPP BOM output.</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm flex items-start gap-4">
+            <div class="flex-shrink-0 w-10 h-10 bg-brand/10 rounded-xl flex items-center justify-center">
+              <svg class="w-5 h-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-ink text-sm mb-1">Microsoft Dynamics 365 Business Central</h3>
+              <p class="text-slate-500 text-sm leading-relaxed">REST API connector with production order and item ledger integration. Suitable for mid-market manufacturers on the Microsoft stack.</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm flex items-start gap-4">
+            <div class="flex-shrink-0 w-10 h-10 bg-brand/10 rounded-xl flex items-center justify-center">
+              <svg class="w-5 h-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-ink text-sm mb-1">Custom ERP via webhook / REST</h3>
+              <p class="text-slate-500 text-sm leading-relaxed">For in-house or legacy ERP systems. CPP publishes BOM events to a configurable webhook endpoint. Customer-side integration typically takes 1–2 weeks.</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── Section 5 ── -->
+      <section data-aos="fade-up" class="mb-14">
+        <h2 class="font-mono font-bold text-2xl sm:text-3xl text-ink mb-6 pb-3 border-b border-slate-200">
+          Common integration mistakes to avoid
+        </h2>
+        <p class="text-slate-700 text-lg leading-relaxed mb-8">
+          Most integration failures are not connector failures — they are design failures. Three mistakes account for the majority of integration problems that surface 30–60 days after go-live.
+        </p>
+
+        <div class="space-y-5">
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-7 shadow-sm">
+            <h3 class="font-mono font-semibold text-lg text-ink mb-3 flex items-center gap-2.5">
+              <span class="flex-shrink-0 w-7 h-7 bg-brand/10 text-brand rounded-lg flex items-center justify-center text-sm font-bold">1</span>
+              Pushing BOM before validation
+            </h3>
+            <p class="text-slate-600 leading-relaxed">Some integrations push the BOM as soon as the engineer clicks "save" — before the constraint solver has confirmed the configuration is valid. CPP never pushes an invalid BOM. The solver runs first; only a fully validated, constraint-satisfying configuration triggers the ERP push event. If a configuration is incomplete or invalid, no push occurs and the engineer is notified immediately.</p>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-7 shadow-sm">
+            <h3 class="font-mono font-semibold text-lg text-ink mb-3 flex items-center gap-2.5">
+              <span class="flex-shrink-0 w-7 h-7 bg-brand/10 text-brand rounded-lg flex items-center justify-center text-sm font-bold">2</span>
+              Mapping part numbers without a master data sync
+            </h3>
+            <p class="text-slate-600 leading-relaxed">CPP part numbers must match ERP material codes exactly. If your ERP uses internal material codes that differ from the part numbers in CPP's BOM derivation rules, every push will fail or create orphaned records. Master data synchronisation — part numbers, units of measure, material groups — must be set up on day 1 of onboarding, not as an afterthought.</p>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-7 shadow-sm">
+            <h3 class="font-mono font-semibold text-lg text-ink mb-3 flex items-center gap-2.5">
+              <span class="flex-shrink-0 w-7 h-7 bg-brand/10 text-brand rounded-lg flex items-center justify-center text-sm font-bold">3</span>
+              Ignoring plant-level routing
+            </h3>
+            <p class="text-slate-600 leading-relaxed">Multi-plant manufacturers need each BOM routed to the correct plant's ERP instance or plant code. A BOM configured for the Chennai plant must not land in the Pune plant's production queue. CPP's plant assignment is part of the configuration context — the integration layer uses it to route the push to the correct destination automatically.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── FAQ Section ── -->
+      <section data-aos="fade-up" class="mb-14" x-data="{ open: null }">
+        <h2 class="font-mono font-bold text-2xl sm:text-3xl text-ink mb-8 pb-3 border-b border-slate-200">
+          Frequently asked questions
+        </h2>
+
+        <div class="space-y-3">
+
+          <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+            <button @click="open === 0 ? open = null : open = 0" class="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors" :aria-expanded="open === 0">
+              <span class="font-semibold text-ink text-sm pr-4">Does CPP support SAP B1 integration out of the box?</span>
+              <svg class="flex-shrink-0 w-5 h-5 text-brand transition-transform duration-200" :class="open === 0 ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div x-show="open === 0" x-collapse class="px-5 pb-5 text-slate-600 text-sm leading-relaxed">
+              Yes. CPP has a pre-built SAP Business One connector that uses the DI API for BOM push and material creation. Setup takes 1–2 days during onboarding. The connector handles part number mapping, unit-of-measure alignment, and draft production order creation automatically.
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+            <button @click="open === 1 ? open = null : open = 1" class="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors" :aria-expanded="open === 1">
+              <span class="font-semibold text-ink text-sm pr-4">Can CPP push BOMs to multiple ERP instances for multi-plant manufacturers?</span>
+              <svg class="flex-shrink-0 w-5 h-5 text-brand transition-transform duration-200" :class="open === 1 ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div x-show="open === 1" x-collapse class="px-5 pb-5 text-slate-600 text-sm leading-relaxed">
+              Yes. CPP routes each BOM to the plant-specific ERP instance based on the plant assignment in the configuration. A single configured order for a multi-plant BOM can trigger simultaneous pushes to 2–3 ERP instances. Each push is independently logged and retried if the target instance is temporarily unavailable.
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+            <button @click="open === 2 ? open = null : open = 2" class="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors" :aria-expanded="open === 2">
+              <span class="font-semibold text-ink text-sm pr-4">What happens if the ERP API is unavailable when CPP tries to push?</span>
+              <svg class="flex-shrink-0 w-5 h-5 text-brand transition-transform duration-200" :class="open === 2 ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div x-show="open === 2" x-collapse class="px-5 pb-5 text-slate-600 text-sm leading-relaxed">
+              CPP queues failed pushes with automatic retry — 3 attempts with exponential backoff (30 seconds, 2 minutes, 10 minutes). All push attempts are logged with timestamps, HTTP status codes, and error payloads. If all retries fail, an alert is sent to the admin console. Manual retry is available at any time from the integration monitoring dashboard.
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+            <button @click="open === 3 ? open = null : open = 3" class="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors" :aria-expanded="open === 3">
+              <span class="font-semibold text-ink text-sm pr-4">Is the BOM push one-way or can ERP update CPP?</span>
+              <svg class="flex-shrink-0 w-5 h-5 text-brand transition-transform duration-200" :class="open === 3 ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div x-show="open === 3" x-collapse class="px-5 pb-5 text-slate-600 text-sm leading-relaxed">
+              The primary flow is CPP to ERP. ERP can optionally publish inventory availability events back to CPP, which CPP uses to surface stock-out warnings during configuration — alerting the engineer before the configuration is finalised rather than after procurement has begun. This bidirectional mode is configured optionally during integration setup.
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+            <button @click="open === 4 ? open = null : open = 4" class="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors" :aria-expanded="open === 4">
+              <span class="font-semibold text-ink text-sm pr-4">How long does ERP integration take to set up?</span>
+              <svg class="flex-shrink-0 w-5 h-5 text-brand transition-transform duration-200" :class="open === 4 ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div x-show="open === 4" x-collapse class="px-5 pb-5 text-slate-600 text-sm leading-relaxed">
+              For supported ERPs (SAP B1, S/4HANA, Oracle NetSuite, Dynamics 365 Business Central), integration setup takes 3–5 business days, including master data mapping, endpoint configuration, and test order validation. Custom ERP integration via REST webhook takes 1–2 weeks, depending on the target system's API maturity.
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── CTA ── -->
+      <section class="bg-ink rounded-2xl p-10 my-14 text-center" data-aos="fade-up">
+        <h2 class="font-mono font-bold text-2xl text-white mb-3">Ready to see it live?</h2>
+        <p class="text-slate-400 mb-6 max-w-lg mx-auto">Book a 45-minute demo. We'll configure one of your product families and show you what your quote-to-ERP cycle looks like with CPP.</p>
+        <a href="../index.html#demo" class="inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white font-bold px-8 py-3.5 rounded-xl transition-colors text-base">Request a Demo →</a>
+      </section>
+
+      <!-- ── Related Posts ── -->
+      <section data-aos="fade-up" class="mb-8">
+        <h2 class="font-mono font-bold text-xl text-ink mb-6 pb-3 border-b border-slate-200">Related articles</h2>
+        <div class="grid sm:grid-cols-3 gap-5">
+          <a href="bom-errors-cost.html" class="group bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:border-brand hover:shadow-md transition-all">
+            <span class="block text-xs font-mono text-brand mb-2 uppercase tracking-wider">Quality &amp; Cost</span>
+            <span class="block font-semibold text-ink group-hover:text-brand transition-colors text-sm leading-snug">BOM Errors Cost Indian Manufacturers ₹2–50 Lakh Per Incident</span>
+          </a>
+          <a href="excel-killing-cpq.html" class="group bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:border-brand hover:shadow-md transition-all">
+            <span class="block text-xs font-mono text-brand mb-2 uppercase tracking-wider">Operations</span>
+            <span class="block font-semibold text-ink group-hover:text-brand transition-colors text-sm leading-snug">Why Excel Is Killing Your Configure-Price-Quote Process</span>
+          </a>
+          <a href="how-manufacturers-win-tenders-faster.html" class="group bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:border-brand hover:shadow-md transition-all">
+            <span class="block text-xs font-mono text-brand mb-2 uppercase tracking-wider">Sales &amp; Tendering</span>
+            <span class="block font-semibold text-ink group-hover:text-brand transition-colors text-sm leading-snug">How Indian Manufacturers Win Government Tenders Faster with CPQ</span>
+          </a>
+        </div>
+      </section>
+
+    </div><!-- /prose-blog -->
+  </div>
+</article>
+
+</main>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<footer class="bg-ink py-8 text-center">
+  <p class="text-slate-400 text-sm font-mono">© 2026 Softwaller Technologies Private Limited · CPP & CPQ are products of Softwaller Technologies · <a href="../index.html" class="text-brand hover:underline">← Back to Home</a></p>
+</footer>
+
+<!-- AOS init -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => AOS.init({ duration: 600, once: true, easing: 'ease-out-cubic', offset: 60 }));
+</script>
+
+</body>
+</html>

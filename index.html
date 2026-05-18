@@ -26,15 +26,18 @@
   <meta name="twitter:description" content="Constraint engine for Indian B2B manufacturers. Configure, price, derive BOM, push to ERP — in minutes.">
   <meta name="twitter:image" content="https://cpplatform.in/assets/images/og-image.jpg">
 
-  <!-- JSON-LD: Organization + WebSite + SoftwareApplication -->
+  <!-- JSON-LD: Organization (Softwaller Technologies) + WebSite + 2 Products (CPP, CPQ) -->
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Organization","name":"CPP Platform","alternateName":"Configurable Product Platform","url":"https://cpplatform.in/","logo":"https://cpplatform.in/assets/images/og-image.jpg","description":"Deterministic product knowledge and inference engine for Indian B2B manufacturers.","foundingDate":"2026","areaServed":{"@type":"Country","name":"India"},"contactPoint":{"@type":"ContactPoint","contactType":"sales","email":"sales@cpplatform.in","areaServed":"IN","availableLanguage":["English","Hindi"]}}
+  {"@context":"https://schema.org","@type":"Organization","name":"Softwaller Technologies Private Limited","alternateName":"Softwaller Technologies","url":"https://cpplatform.in/","logo":"https://cpplatform.in/assets/images/og-image.jpg","description":"Softwaller Technologies builds enterprise SaaS for Indian B2B manufacturers. Products: CPP (Configurable Product Platform) and CPQ (Configure-Price-Quote).","foundingDate":"2026","areaServed":{"@type":"Country","name":"India"},"contactPoint":{"@type":"ContactPoint","contactType":"sales","email":"sales@cpplatform.in","areaServed":"IN","availableLanguage":["English","Hindi"]},"makesOffer":[{"@type":"Offer","itemOffered":{"@type":"SoftwareApplication","name":"CPP","alternateName":"Configurable Product Platform"}},{"@type":"Offer","itemOffered":{"@type":"SoftwareApplication","name":"CPQ","alternateName":"Configure-Price-Quote"}}]}
   </script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebSite","name":"CPP Platform","url":"https://cpplatform.in/","potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://cpplatform.in/?q={search_term_string}"},"query-input":"required name=search_term_string"}}
+  {"@context":"https://schema.org","@type":"WebSite","name":"CPP Platform","url":"https://cpplatform.in/","publisher":{"@type":"Organization","name":"Softwaller Technologies Private Limited","url":"https://cpplatform.in/"},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://cpplatform.in/?q={search_term_string}"},"query-input":"required name=search_term_string"}}
   </script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"CPP — Configurable Product Platform","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","priceCurrency":"INR","price":"0","description":"Free trial available"},"description":"Deterministic product knowledge and inference engine for Indian B2B manufacturers. Real-time constraint propagation, BOM derivation, pricing, and ERP integration.","url":"https://cpplatform.in"}
+  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"CPP — Configurable Product Platform","applicationCategory":"BusinessApplication","operatingSystem":"Web","publisher":{"@type":"Organization","name":"Softwaller Technologies Private Limited","url":"https://cpplatform.in/"},"offers":{"@type":"Offer","priceCurrency":"INR","price":"0","description":"Free trial available"},"description":"Deterministic product knowledge and inference engine for Indian B2B manufacturers. Real-time constraint propagation, BOM derivation, pricing, and ERP integration. A product of Softwaller Technologies.","url":"https://cpplatform.in"}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"CPQ — Configure-Price-Quote","applicationCategory":"BusinessApplication","operatingSystem":"Web","publisher":{"@type":"Organization","name":"Softwaller Technologies Private Limited","url":"https://cpplatform.in/"},"offers":{"@type":"Offer","priceCurrency":"INR","price":"0","description":"Free trial available"},"description":"Rule-driven CPQ for Indian B2B manufacturers. Configure validly, price accurately, quote in minutes. A product of Softwaller Technologies.","url":"https://cpplatform.in/cpq-guide.html"}
   </script>
 
   <!-- Preconnect — all third-party origins used -->
@@ -111,6 +114,9 @@
         <a href="#how-it-works" class="nav-link">How It Works</a>
         <a href="#industries"  class="nav-link">Industries</a>
         <a href="#pricing"     class="nav-link">Pricing</a>
+        <a href="blog/index.html" class="nav-link">Blog</a>
+        <a href="case-studies/index.html" class="nav-link">Case Studies</a>
+        <a href="cpq-guide.html" class="nav-link">CPQ Guide</a>
       </div>
 
       <!-- CTA + Hamburger -->
@@ -135,6 +141,9 @@
     <a href="#how-it-works" class="text-slate-600 hover:text-brand font-medium py-1" @click="menuOpen=false">How It Works</a>
     <a href="#industries"   class="text-slate-600 hover:text-brand font-medium py-1" @click="menuOpen=false">Industries</a>
     <a href="#pricing"      class="text-slate-600 hover:text-brand font-medium py-1" @click="menuOpen=false">Pricing</a>
+    <a href="blog/index.html" class="text-slate-600 hover:text-brand font-medium py-1" @click="menuOpen=false">Blog</a>
+    <a href="case-studies/index.html" class="text-slate-600 hover:text-brand font-medium py-1" @click="menuOpen=false">Case Studies</a>
+    <a href="cpq-guide.html" class="text-slate-600 hover:text-brand font-medium py-1" @click="menuOpen=false">CPQ Guide</a>
     <a href="#demo" class="inline-flex items-center gap-1.5 bg-brand text-white font-semibold text-sm px-4 py-2 rounded-lg mt-1 w-fit" @click="menuOpen=false">Request Demo →</a>
   </div>
 </nav>
@@ -1822,7 +1831,7 @@
     </div>
 
     <div class="border-t border-slate-100 pt-6">
-      <p class="text-xs text-slate-400 font-mono text-center">© 2026 CPP Platform Pvt. Ltd. · GST: XX-XXXXXXXXX · Made in India 🇮🇳</p>
+      <p class="text-xs text-slate-400 font-mono text-center">© 2026 Softwaller Technologies Private Limited · CPP &amp; CPQ are products of Softwaller Technologies · GST: XX-XXXXXXXXX · Made in India 🇮🇳</p>
     </div>
   </div>
 </footer>

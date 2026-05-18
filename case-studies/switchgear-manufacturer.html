@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How a Switchgear Manufacturer Eliminated ₹48L in Annual Rework Costs | CPP Case Study</title>
+  <meta name="description" content="An Indian switchgear panel manufacturer reduced BOM rework costs by ₹48 lakh/year and cut panel configuration time by 83% after deploying CPP's IEC 60947 constraint engine.">
+  <link rel="canonical" href="https://cpplatform.in/case-studies/switchgear-manufacturer.html">
+  <meta name="keywords" content="switchgear manufacturer CPQ BOM automation India, IEC 60947 compliance software, panel configuration software India, BOM rework elimination, switchgear CPQ">
+  <meta name="theme-color" content="#0EA5E9">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="CPP Platform">
+  <meta property="og:title" content="How a Switchgear Manufacturer Eliminated ₹48L in Annual Rework Costs | CPP Case Study">
+  <meta property="og:description" content="An Indian switchgear panel manufacturer reduced BOM rework costs by ₹48 lakh/year and cut panel configuration time by 83% after deploying CPP's IEC 60947 constraint engine.">
+  <meta property="og:image" content="https://cpplatform.in/assets/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://cpplatform.in/case-studies/switchgear-manufacturer.html">
+  <meta property="og:locale" content="en_IN">
+  <meta property="article:published_time" content="2026-05-17">
+  <meta property="article:modified_time" content="2026-05-17">
+  <meta property="article:author" content="CPP Editorial Team">
+  <meta property="article:tag" content="Switchgear">
+  <meta property="article:tag" content="IEC 60947">
+  <meta property="article:tag" content="CPQ">
+  <meta property="article:tag" content="BOM Automation">
+  <meta property="article:tag" content="Panel Manufacturing">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How a Switchgear Manufacturer Eliminated ₹48L in Annual Rework Costs | CPP Case Study">
+  <meta name="twitter:description" content="An Indian switchgear panel manufacturer reduced BOM rework costs by ₹48 lakh/year and cut panel configuration time by 83% after deploying CPP's IEC 60947 constraint engine.">
+  <meta name="twitter:image" content="https://cpplatform.in/assets/images/og-image.jpg">
+
+  <!-- JSON-LD: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "₹48 Lakh in Annual Rework Eliminated: How a Switchgear OEM Got IEC 60947 Right at Selection Time",
+    "description": "An Indian switchgear panel manufacturer reduced BOM rework costs by ₹48 lakh/year and cut panel configuration time by 83% after deploying CPP's IEC 60947 constraint engine.",
+    "image": "https://cpplatform.in/assets/images/og-image.jpg",
+    "datePublished": "2026-05-17",
+    "dateModified": "2026-05-17",
+    "author": {
+      "@type": "Organization",
+      "name": "CPP Editorial Team",
+      "url": "https://cpplatform.in/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Softwaller Technologies Private Limited",
+      "url": "https://cpplatform.in/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://cpplatform.in/assets/images/og-image.jpg"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://cpplatform.in/case-studies/switchgear-manufacturer.html"
+    },
+    "keywords": "switchgear manufacturer CPQ BOM automation India, IEC 60947 compliance, panel configuration software, BOM rework elimination",
+    "articleSection": "Case Studies",
+    "wordCount": "850",
+    "timeRequired": "PT4M"
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cpplatform.in/" },
+      { "@type": "ListItem", "position": 2, "name": "Case Studies", "item": "https://cpplatform.in/case-studies/" },
+      { "@type": "ListItem", "position": 3, "name": "Switchgear Manufacturer — ₹48L Rework Eliminated", "item": "https://cpplatform.in/case-studies/switchgear-manufacturer.html" }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does CPP support IEC 60947 compliance for switchgear panel configuration?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. IEC 60947-2, IEC 60947-3, and IEC 60947-4 compliance constraints are encoded as hard rules in CPP. Invalid combinations — such as a 25kA breaking capacity with MV 11kV — are eliminated at the moment of selection and cannot produce a valid BOM."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can CPP generate a copper schedule automatically?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. CPP's BOM derivation engine calculates busbar cross-section, length, and hardware from the current rating and bus configuration selected by the engineer. The copper schedule is a derived output of the configuration — not a manual calculation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does CPP integrate with SAP for switchgear manufacturers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CPP pushes the completed BOM to SAP (B1, S/4HANA, ECC) via REST API within seconds of configuration. Material requisitions can be raised automatically on BOM push, eliminating the manual data entry step between quoting and procurement."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the typical ROI timeline for a switchgear manufacturer deploying CPP?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most switchgear manufacturers see positive ROI within the first quarter. The rework cost reduction alone (typically ₹30–80L per year for mid-size panel manufacturers) exceeds the annual CPP subscription cost. Quote cycle reduction and sales team capacity expansion add further value."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: {
+          brand:   { DEFAULT: '#0EA5E9', dark: '#0284C7', light: '#BAE6FD', faint: '#F0F9FF' },
+          surface: '#F1F5F9',
+          ink:     '#0F172A',
+        },
+        fontFamily: {
+          mono: ['"JetBrains Mono"', 'monospace'],
+          sans: ['Inter', 'sans-serif'],
+        }
+      }}
+    }
+  </script>
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../assets/css/custom.min.css?v=1.1.0">
+
+  <!-- Alpine -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body class="font-sans bg-surface text-ink antialiased">
+
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-brand focus:text-white focus:font-semibold focus:px-4 focus:py-2 focus:rounded-lg">Skip to main content</a>
+
+<!-- Nav -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-slate-100 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+    <a href="../index.html" class="flex items-center gap-2.5">
+      <div class="w-8 h-8 bg-brand rounded-lg flex items-center justify-center">
+        <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h10M4 18h6"/></svg>
+      </div>
+      <span class="font-mono font-bold text-xl text-ink">CPP</span>
+    </a>
+    <div class="flex items-center gap-4">
+      <a href="../blog/index.html" class="text-sm font-medium text-slate-600 hover:text-brand transition-colors">Blog</a>
+      <a href="../index.html#demo" class="inline-flex items-center gap-1.5 bg-brand hover:bg-brand-dark text-white font-semibold text-sm px-4 py-2 rounded-lg transition-colors">Request Demo →</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+  <!-- ─── Hero ─── -->
+  <section class="pt-24 pb-16 bg-ink">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Breadcrumb -->
+      <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-xs font-mono text-slate-500 mb-6">
+        <a href="../index.html" class="hover:text-brand transition-colors">Home</a>
+        <span class="text-slate-600">/</span>
+        <span class="text-slate-400">Case Studies</span>
+      </nav>
+
+      <!-- Category label -->
+      <div class="inline-flex items-center gap-2 mb-5">
+        <span class="text-xs font-mono font-semibold text-brand uppercase tracking-widest">Case Study · Switchgear &amp; Electrical Panels</span>
+      </div>
+
+      <!-- H1 -->
+      <h1 class="font-mono font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-6 max-w-4xl">
+        ₹48 Lakh in Annual Rework Eliminated:<br>
+        <span class="text-brand">How a Switchgear OEM Got IEC 60947 Right at Selection Time</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-slate-400 text-lg leading-relaxed max-w-3xl mb-8">
+        An Indian LV/MV switchgear manufacturer was losing ₹4–12 lakh per panel rework incident. Wrong busbar ratings. Wrong breaking capacities. Wrong enclosure class for the environment. All preventable. Here's how they prevented them.
+      </p>
+
+      <!-- Tags -->
+      <div class="flex flex-wrap gap-2">
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono font-semibold bg-slate-800 text-slate-300 border border-slate-700">Switchgear</span>
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono font-semibold bg-slate-800 text-slate-300 border border-slate-700">IEC 60947</span>
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono font-semibold bg-slate-800 text-slate-300 border border-slate-700">CPQ</span>
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono font-semibold bg-slate-800 text-slate-300 border border-slate-700">BOM Automation</span>
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono font-semibold bg-slate-800 text-slate-300 border border-slate-700">Panel Manufacturing</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── Results dashboard ─── -->
+  <section class="bg-white py-14 border-b border-slate-100">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-xs font-mono font-semibold text-slate-400 uppercase tracking-widest mb-8 text-center">Results — 6 months post go-live</p>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-5">
+
+        <div class="flex flex-col items-center text-center p-6 bg-surface rounded-2xl border border-slate-100 shadow-sm" data-aos="fade-up">
+          <div class="font-mono font-bold text-3xl text-brand mb-1.5">₹48L</div>
+          <div class="text-sm font-medium text-ink mb-0.5">Annual rework cost</div>
+          <div class="text-xs text-slate-500">eliminated</div>
+        </div>
+
+        <div class="flex flex-col items-center text-center p-6 bg-surface rounded-2xl border border-slate-100 shadow-sm" data-aos="fade-up" data-aos-delay="80">
+          <div class="font-mono font-bold text-3xl text-brand mb-1.5">83%</div>
+          <div class="text-sm font-medium text-ink mb-0.5">Configuration time</div>
+          <div class="text-xs text-slate-500">reduction</div>
+        </div>
+
+        <div class="flex flex-col items-center text-center p-6 bg-surface rounded-2xl border border-slate-100 shadow-sm" data-aos="fade-up" data-aos-delay="160">
+          <div class="font-mono font-bold text-3xl text-brand mb-1.5">9% → 0.4%</div>
+          <div class="text-sm font-medium text-ink mb-0.5">BOM error rate</div>
+          <div class="text-xs text-slate-500">IEC violations: zero</div>
+        </div>
+
+        <div class="flex flex-col items-center text-center p-6 bg-surface rounded-2xl border border-slate-100 shadow-sm" data-aos="fade-up" data-aos-delay="240">
+          <div class="font-mono font-bold text-3xl text-brand mb-1.5">3.2d → 6h</div>
+          <div class="text-sm font-medium text-ink mb-0.5">Quote-to-BOM cycle</div>
+          <div class="text-xs text-slate-500">end-to-end</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Challenge ─── -->
+  <section class="bg-surface py-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="max-w-3xl" data-aos="fade-up">
+        <h2 class="font-mono font-bold text-2xl sm:text-3xl text-ink mb-2">The challenge</h2>
+        <p class="text-brand font-semibold text-base mb-8">IEC 60947 compliance in 40 minutes — or ₹40 lakh in rework</p>
+
+        <div class="space-y-5 text-slate-600 leading-relaxed text-base">
+          <p>
+            The company manufactures LV and MV switchgear panels for industrial and utility customers: motor control centres (MCCs), power control centres (PCCs), distribution boards, and custom panel assemblies. Their product range spans a demanding configuration matrix — voltage class (LV ≤1kV, MV 11kV, 33kV, 66kV) × current rating (400A to 2500A) × breaking capacity (25kA, 50kA, 85kA) × enclosure class (IP41, IP54, IP65) × bus configuration (single, double, sectionalised).
+          </p>
+          <p>
+            IEC 60947 mandates specific breaking capacity minimums for given current ratings at each voltage class. IP rating requirements depend on site environment classification. Busbar sizing follows current density tables in the standard. None of these rules are optional — a non-compliant panel fails factory acceptance testing (FAT).
+          </p>
+          <p>
+            Their process: a junior sales engineer fills a quotation form, a senior engineer reviews for IEC compliance, a design engineer generates the copper schedule and BOM. Typical end-to-end timeline: 3.2 days. When the senior engineer was bypassed under deadline pressure, errors slipped through. In FY2024-25, six panels shipped with wrong busbar ratings. Average rework cost per incident: ₹8 lakh. Total annual impact: ₹48 lakh.
+          </p>
+        </div>
+      </div>
+
+      <!-- Pull quote -->
+      <div class="mt-10 max-w-3xl" data-aos="fade-up" data-aos-delay="60">
+        <blockquote class="relative border-l-4 border-brand pl-6 py-2">
+          <p class="text-slate-700 text-lg leading-relaxed italic">
+            "A wrong busbar rating isn't caught until the panel is assembled and energised for FAT. By then, you're tearing down a completed panel. That's ₹8 lakh in parts and 4 weeks of delay — and the customer is watching."
+          </p>
+          <footer class="mt-3 text-sm font-mono font-semibold text-slate-500">
+            — VP Operations, Switchgear OEM (name withheld)
+          </footer>
+        </blockquote>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── Solution ─── -->
+  <section class="bg-white py-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="max-w-3xl mb-12" data-aos="fade-up">
+        <h2 class="font-mono font-bold text-2xl sm:text-3xl text-ink mb-2">The solution</h2>
+        <p class="text-brand font-semibold text-base">IEC 60947 encoded as 12 constraint relationships</p>
+      </div>
+
+      <!-- Phase 1 -->
+      <div class="mb-12" data-aos="fade-up">
+        <div class="flex items-start gap-4 mb-4">
+          <div class="flex-shrink-0 w-8 h-8 rounded-full bg-brand/10 border border-brand/20 flex items-center justify-center">
+            <span class="font-mono font-bold text-brand text-sm">1</span>
+          </div>
+          <div>
+            <h3 class="font-semibold text-ink text-lg mb-1">Constraint mapping — Week 1–2</h3>
+            <p class="text-slate-500 text-sm font-mono">Day 0 → Day 14</p>
+          </div>
+        </div>
+        <div class="pl-12 space-y-4 text-slate-600 leading-relaxed text-base">
+          <p>
+            CPP's engineers mapped IEC 60947-2 (circuit breakers), IEC 60947-3 (switches), and IEC 60947-4 (contactors) compliance requirements into 12 constraint relationships. Each constraint is a typed rule that propagates immediately at selection — invalid combinations are never offered, not filtered after the fact.
+          </p>
+
+          <!-- Constraint examples table -->
+          <div class="mt-5 overflow-x-auto rounded-xl border border-slate-200">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="bg-surface border-b border-slate-200">
+                  <th class="text-left px-4 py-3 font-mono font-semibold text-slate-500 text-xs uppercase tracking-wide">Constraint</th>
+                  <th class="text-left px-4 py-3 font-mono font-semibold text-slate-500 text-xs uppercase tracking-wide">Effect</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100">
+                <tr class="hover:bg-surface/60 transition-colors">
+                  <td class="px-4 py-3 font-mono text-xs text-ink whitespace-nowrap"><code class="bg-brand/5 text-brand px-1.5 py-0.5 rounded">VoltageClass = MV 11kV → BreakingCapacity ≥ 50kA</code></td>
+                  <td class="px-4 py-3 text-slate-600 text-xs">Eliminates 25kA option instantly</td>
+                </tr>
+                <tr class="hover:bg-surface/60 transition-colors">
+                  <td class="px-4 py-3 font-mono text-xs text-ink whitespace-nowrap"><code class="bg-brand/5 text-brand px-1.5 py-0.5 rounded">CurrentRating ≥ 1250A → BusbarCrossSection ≥ 1600mm²</code></td>
+                  <td class="px-4 py-3 text-slate-600 text-xs">Drives BOM copper schedule line item</td>
+                </tr>
+                <tr class="hover:bg-surface/60 transition-colors">
+                  <td class="px-4 py-3 font-mono text-xs text-ink whitespace-nowrap"><code class="bg-brand/5 text-brand px-1.5 py-0.5 rounded">Environment = Outdoor OR Coastal → IP ≥ IP54</code></td>
+                  <td class="px-4 py-3 text-slate-600 text-xs">Eliminates IP41 for outdoor/coastal sites</td>
+                </tr>
+                <tr class="hover:bg-surface/60 transition-colors">
+                  <td class="px-4 py-3 font-mono text-xs text-ink whitespace-nowrap"><code class="bg-brand/5 text-brand px-1.5 py-0.5 rounded">BusConfiguration = Double → RequiresBusCoupler = true</code></td>
+                  <td class="px-4 py-3 text-slate-600 text-xs">Adds bus coupler BOM line automatically</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="mb-12" data-aos="fade-up" data-aos-delay="60">
+        <div class="flex items-start gap-4 mb-4">
+          <div class="flex-shrink-0 w-8 h-8 rounded-full bg-brand/10 border border-brand/20 flex items-center justify-center">
+            <span class="font-mono font-bold text-brand text-sm">2</span>
+          </div>
+          <div>
+            <h3 class="font-semibold text-ink text-lg mb-1">Copper schedule derivation — Week 3</h3>
+            <p class="text-slate-500 text-sm font-mono">Day 14 → Day 21</p>
+          </div>
+        </div>
+        <div class="pl-12 space-y-4 text-slate-600 leading-relaxed text-base">
+          <p>
+            CPP's BOM templates were extended to include the copper schedule as derived line items — busbar cross-section, length, and hardware calculated deterministically from current rating and bus configuration. This was the first time in the company's history that the copper schedule was generated automatically at quote stage — eliminating 4–6 hours of manual calculation per panel and removing the primary source of busbar rating errors.
+          </p>
+        </div>
+      </div>
+
+      <!-- Phase 3 -->
+      <div data-aos="fade-up" data-aos-delay="120">
+        <div class="flex items-start gap-4 mb-4">
+          <div class="flex-shrink-0 w-8 h-8 rounded-full bg-brand/10 border border-brand/20 flex items-center justify-center">
+            <span class="font-mono font-bold text-brand text-sm">3</span>
+          </div>
+          <div>
+            <h3 class="font-semibold text-ink text-lg mb-1">ERP integration — Week 4–5</h3>
+            <p class="text-slate-500 text-sm font-mono">Day 21 → Day 35</p>
+          </div>
+        </div>
+        <div class="pl-12 space-y-4 text-slate-600 leading-relaxed text-base">
+          <p>
+            The completed BOM is now pushed directly to their SAP B1 instance via CPP's REST API within seconds of configuration sign-off. Material requisitions are raised automatically on BOM push — the purchase team no longer re-keys line items from a PDF quote into SAP. The data entry step between quoting and procurement was eliminated entirely.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── Results ─── -->
+  <section class="bg-surface py-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="max-w-3xl mb-10" data-aos="fade-up">
+        <h2 class="font-mono font-bold text-2xl sm:text-3xl text-ink mb-2">Results</h2>
+        <p class="text-brand font-semibold text-base">Six months after go-live</p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-8 mb-12">
+
+        <!-- Metrics list -->
+        <div data-aos="fade-up">
+          <div class="space-y-4">
+            <div class="flex items-start gap-4 bg-white rounded-xl p-5 border border-slate-100 shadow-sm">
+              <div class="flex-shrink-0 w-2 h-2 rounded-full bg-brand mt-2"></div>
+              <div>
+                <div class="font-semibold text-ink text-sm mb-0.5">BOM error rate: 9% → 0.4%</div>
+                <div class="text-xs text-slate-500">IEC constraint violations eliminated entirely. Residual 0.4% is part master data issues — not configuration logic.</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 bg-white rounded-xl p-5 border border-slate-100 shadow-sm">
+              <div class="flex-shrink-0 w-2 h-2 rounded-full bg-brand mt-2"></div>
+              <div>
+                <div class="font-semibold text-ink text-sm mb-0.5">Quote-to-BOM: 3.2 days → 6 hours</div>
+                <div class="text-xs text-slate-500">Junior engineers can now configure independently. Senior review no longer required for standard panel configurations.</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 bg-white rounded-xl p-5 border border-slate-100 shadow-sm">
+              <div class="flex-shrink-0 w-2 h-2 rounded-full bg-brand mt-2"></div>
+              <div>
+                <div class="font-semibold text-ink text-sm mb-0.5">Rework costs: ₹48L (FY2024-25) → ₹0</div>
+                <div class="text-xs text-slate-500">Zero rework incidents attributable to IEC compliance errors in the first 6 months post-deployment.</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 bg-white rounded-xl p-5 border border-slate-100 shadow-sm">
+              <div class="flex-shrink-0 w-2 h-2 rounded-full bg-brand mt-2"></div>
+              <div>
+                <div class="font-semibold text-ink text-sm mb-0.5">Copper schedule accuracy: 100%</div>
+                <div class="text-xs text-slate-500">First time this metric was measurable — it was previously generated manually and not tracked.</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 bg-white rounded-xl p-5 border border-slate-100 shadow-sm">
+              <div class="flex-shrink-0 w-2 h-2 rounded-full bg-brand mt-2"></div>
+              <div>
+                <div class="font-semibold text-ink text-sm mb-0.5">Team capacity: doubled without headcount</div>
+                <div class="text-xs text-slate-500">3 junior engineers now handle panel configurations independently. Sales capacity expanded without additional senior hires.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline -->
+        <div data-aos="fade-up" data-aos-delay="80">
+          <h3 class="font-mono font-semibold text-sm text-slate-500 uppercase tracking-wider mb-5">Deployment timeline</h3>
+          <div class="relative">
+            <!-- Vertical line -->
+            <div class="absolute left-3.5 top-4 bottom-4 w-px bg-slate-200"></div>
+            <div class="space-y-0">
+
+              <div class="flex gap-4 pb-5">
+                <div class="flex-shrink-0 w-7 h-7 rounded-full bg-brand border-2 border-white shadow flex items-center justify-center z-10">
+                  <div class="w-2 h-2 rounded-full bg-white"></div>
+                </div>
+                <div class="pt-0.5">
+                  <div class="font-mono text-xs font-bold text-brand mb-0.5">Day 0</div>
+                  <div class="text-sm font-medium text-ink">Kickoff</div>
+                  <div class="text-xs text-slate-500">IEC 60947 constraint mapping begins</div>
+                </div>
+              </div>
+
+              <div class="flex gap-4 pb-5">
+                <div class="flex-shrink-0 w-7 h-7 rounded-full bg-brand/20 border-2 border-white shadow flex items-center justify-center z-10">
+                  <div class="w-2 h-2 rounded-full bg-brand"></div>
+                </div>
+                <div class="pt-0.5">
+                  <div class="font-mono text-xs font-bold text-brand mb-0.5">Day 14</div>
+                  <div class="text-sm font-medium text-ink">12 constraints encoded, UAT begins</div>
+                  <div class="text-xs text-slate-500">All IEC 60947-2/3/4 rules live in CPP</div>
+                </div>
+              </div>
+
+              <div class="flex gap-4 pb-5">
+                <div class="flex-shrink-0 w-7 h-7 rounded-full bg-brand/20 border-2 border-white shadow flex items-center justify-center z-10">
+                  <div class="w-2 h-2 rounded-full bg-brand"></div>
+                </div>
+                <div class="pt-0.5">
+                  <div class="font-mono text-xs font-bold text-brand mb-0.5">Day 21</div>
+                  <div class="text-sm font-medium text-ink">Copper schedule derivation complete</div>
+                  <div class="text-xs text-slate-500">BOM templates include auto-calculated busbar specs</div>
+                </div>
+              </div>
+
+              <div class="flex gap-4 pb-5">
+                <div class="flex-shrink-0 w-7 h-7 rounded-full bg-brand/20 border-2 border-white shadow flex items-center justify-center z-10">
+                  <div class="w-2 h-2 rounded-full bg-brand"></div>
+                </div>
+                <div class="pt-0.5">
+                  <div class="font-mono text-xs font-bold text-brand mb-0.5">Day 35</div>
+                  <div class="text-sm font-medium text-ink">SAP B1 integration live</div>
+                  <div class="text-xs text-slate-500">BOM push and auto-MR active</div>
+                </div>
+              </div>
+
+              <div class="flex gap-4 pb-5">
+                <div class="flex-shrink-0 w-7 h-7 rounded-full bg-brand/20 border-2 border-white shadow flex items-center justify-center z-10">
+                  <div class="w-2 h-2 rounded-full bg-brand"></div>
+                </div>
+                <div class="pt-0.5">
+                  <div class="font-mono text-xs font-bold text-brand mb-0.5">Day 42</div>
+                  <div class="text-sm font-medium text-ink">First production panel configured in CPP</div>
+                  <div class="text-xs text-slate-500">Entire team trained; go-live complete</div>
+                </div>
+              </div>
+
+              <div class="flex gap-4 pb-5">
+                <div class="flex-shrink-0 w-7 h-7 rounded-full bg-brand/20 border-2 border-white shadow flex items-center justify-center z-10">
+                  <div class="w-2 h-2 rounded-full bg-brand"></div>
+                </div>
+                <div class="pt-0.5">
+                  <div class="font-mono text-xs font-bold text-brand mb-0.5">Day 90</div>
+                  <div class="text-sm font-medium text-ink">BOM error rate 0.4% confirmed</div>
+                  <div class="text-xs text-slate-500">Zero IEC violations in 90 days</div>
+                </div>
+              </div>
+
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-7 h-7 rounded-full bg-brand border-2 border-white shadow flex items-center justify-center z-10">
+                  <svg class="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <div class="pt-0.5">
+                  <div class="font-mono text-xs font-bold text-brand mb-0.5">Day 180</div>
+                  <div class="text-sm font-medium text-ink">₹48L rework cost reduction validated</div>
+                  <div class="text-xs text-slate-500">Confirmed against FY2024-25 actuals by finance team</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Insight callout -->
+      <div class="max-w-3xl" data-aos="fade-up">
+        <div class="bg-brand/10 border-l-4 border-brand rounded-r-xl px-6 py-5">
+          <p class="text-ink text-base leading-relaxed">
+            <span class="font-semibold">The most powerful result wasn't the cost saving</span> — it was that junior engineers could now configure IEC-compliant panels without a senior review. That's team scalability, not just error elimination. The company effectively doubled its sales configuration capacity without adding a single headcount.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── FAQ ─── -->
+  <section class="bg-white py-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <h2 class="font-mono font-bold text-2xl sm:text-3xl text-ink mb-10" data-aos="fade-up">Frequently asked questions</h2>
+
+      <div class="space-y-4" x-data="{ open: null }">
+
+        <div class="border border-slate-200 rounded-xl overflow-hidden" data-aos="fade-up">
+          <button
+            class="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-surface transition-colors"
+            @click="open = open === 0 ? null : 0"
+            :aria-expanded="open === 0">
+            <span class="font-semibold text-ink text-sm pr-4">Does CPP support IEC 60947 compliance for switchgear panel configuration?</span>
+            <svg class="flex-shrink-0 w-5 h-5 text-brand transition-transform duration-200" :class="open === 0 ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div x-show="open === 0" x-collapse class="px-6 pb-5">
+            <p class="text-slate-600 text-sm leading-relaxed">Yes. IEC 60947-2, IEC 60947-3, and IEC 60947-4 compliance constraints are encoded as hard rules in CPP. Invalid combinations — such as a 25kA breaking capacity with MV 11kV — are eliminated at the moment of selection and cannot produce a valid BOM.</p>
+          </div>
+        </div>
+
+        <div class="border border-slate-200 rounded-xl overflow-hidden" data-aos="fade-up" data-aos-delay="40">
+          <button
+            class="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-surface transition-colors"
+            @click="open = open === 1 ? null : 1"
+            :aria-expanded="open === 1">
+            <span class="font-semibold text-ink text-sm pr-4">Can CPP generate a copper schedule automatically?</span>
+            <svg class="flex-shrink-0 w-5 h-5 text-brand transition-transform duration-200" :class="open === 1 ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div x-show="open === 1" x-collapse class="px-6 pb-5">
+            <p class="text-slate-600 text-sm leading-relaxed">Yes. CPP's BOM derivation engine calculates busbar cross-section, length, and hardware from the current rating and bus configuration selected by the engineer. The copper schedule is a derived output of the configuration — not a manual calculation.</p>
+          </div>
+        </div>
+
+        <div class="border border-slate-200 rounded-xl overflow-hidden" data-aos="fade-up" data-aos-delay="80">
+          <button
+            class="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-surface transition-colors"
+            @click="open = open === 2 ? null : 2"
+            :aria-expanded="open === 2">
+            <span class="font-semibold text-ink text-sm pr-4">How does CPP integrate with SAP for switchgear manufacturers?</span>
+            <svg class="flex-shrink-0 w-5 h-5 text-brand transition-transform duration-200" :class="open === 2 ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div x-show="open === 2" x-collapse class="px-6 pb-5">
+            <p class="text-slate-600 text-sm leading-relaxed">CPP pushes the completed BOM to SAP (B1, S/4HANA, ECC) via REST API within seconds of configuration. Material requisitions can be raised automatically on BOM push, eliminating the manual data entry step between quoting and procurement.</p>
+          </div>
+        </div>
+
+        <div class="border border-slate-200 rounded-xl overflow-hidden" data-aos="fade-up" data-aos-delay="120">
+          <button
+            class="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-surface transition-colors"
+            @click="open = open === 3 ? null : 3"
+            :aria-expanded="open === 3">
+            <span class="font-semibold text-ink text-sm pr-4">What is the typical ROI timeline for a switchgear manufacturer deploying CPP?</span>
+            <svg class="flex-shrink-0 w-5 h-5 text-brand transition-transform duration-200" :class="open === 3 ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div x-show="open === 3" x-collapse class="px-6 pb-5">
+            <p class="text-slate-600 text-sm leading-relaxed">Most switchgear manufacturers see positive ROI within the first quarter. The rework cost reduction alone (typically ₹30–80L per year for mid-size panel manufacturers) exceeds the annual CPP subscription cost. Quote cycle reduction and sales team capacity expansion add further value.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA ─── -->
+  <section class="bg-brand py-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
+      <h2 class="font-mono font-bold text-2xl sm:text-3xl text-white mb-4">
+        Eliminate IEC 60947 compliance errors from your panel quotes
+      </h2>
+      <p class="text-white/80 text-base leading-relaxed mb-8 max-w-xl mx-auto">
+        Book a 45-minute demo. We'll map your busbar ratings, breaking capacities, and IP class constraints into CPP and run a live panel configuration.
+      </p>
+      <a href="../index.html#demo" class="inline-flex items-center gap-2 bg-white text-brand hover:bg-brand-light font-bold px-8 py-3.5 rounded-xl transition-colors shadow-lg text-base">
+        Book Switchgear Demo →
+      </a>
+    </div>
+  </section>
+
+  <!-- ─── Related content ─── -->
+  <section class="bg-slate-50 border-t border-slate-200 py-12">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="font-mono text-sm font-semibold text-slate-500 uppercase tracking-wider mb-6">Related reading</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
+        <a href="../blog/bom-errors-cost.html" class="group block bg-white border border-slate-200 rounded-xl p-4 hover:border-brand hover:shadow-md transition-all">
+          <div class="text-xs font-mono text-brand font-semibold uppercase tracking-wider mb-2">Blog</div>
+          <div class="font-semibold text-ink text-sm mb-1 group-hover:text-brand transition-colors">What BOM Errors Actually Cost Indian Manufacturers</div>
+          <div class="text-xs text-slate-500">₹2–50L per incident — the real numbers</div>
+        </a>
+
+        <a href="../blog/excel-killing-cpq.html" class="group block bg-white border border-slate-200 rounded-xl p-4 hover:border-brand hover:shadow-md transition-all">
+          <div class="text-xs font-mono text-brand font-semibold uppercase tracking-wider mb-2">Blog</div>
+          <div class="font-semibold text-ink text-sm mb-1 group-hover:text-brand transition-colors">Why Excel Is Killing Your CPQ Process</div>
+          <div class="text-xs text-slate-500">18+ days per quote cycle — and it's getting worse</div>
+        </a>
+
+        <a href="elevator-manufacturer.html" class="group block bg-white border border-slate-200 rounded-xl p-4 hover:border-brand hover:shadow-md transition-all">
+          <div class="text-xs font-mono text-brand font-semibold uppercase tracking-wider mb-2">Case Study</div>
+          <div class="font-semibold text-ink text-sm mb-1 group-hover:text-brand transition-colors">Elevator Manufacturer Case Study</div>
+          <div class="text-xs text-slate-500">EN81 + NBC compliance at selection time</div>
+        </a>
+
+        <a href="../industries/switchgear.html" class="group block bg-white border border-slate-200 rounded-xl p-4 hover:border-brand hover:shadow-md transition-all">
+          <div class="text-xs font-mono text-brand font-semibold uppercase tracking-wider mb-2">Industry</div>
+          <div class="font-semibold text-ink text-sm mb-1 group-hover:text-brand transition-colors">CPP for Switchgear &amp; Electrical Panels</div>
+          <div class="text-xs text-slate-500">Full industry overview and feature set</div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="bg-ink py-8 text-center">
+  <p class="text-slate-400 text-sm font-mono">© 2026 Softwaller Technologies Private Limited · CPP & CPQ are products of Softwaller Technologies · <a href="../index.html" class="text-brand hover:underline">← Back to Home</a></p>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>document.addEventListener('DOMContentLoaded', () => AOS.init({ duration: 600, once: true }));</script>
+</body>
+</html>

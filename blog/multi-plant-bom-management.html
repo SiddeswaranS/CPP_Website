@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0EA5E9">
+  <title>Multi-Plant BOM Management: How Indian Manufacturers Handle Regional Variants Without Chaos | CPP Blog</title>
+  <meta name="description" content="Managing BOMs across 3+ plants with regional variants, local suppliers, and different compliance standards is the hardest scaling problem in Indian manufacturing. Here's how to solve it.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://cpplatform.in/blog/multi-plant-bom-management.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="CPP Platform">
+  <meta property="og:title" content="Multi-Plant BOM Management: How Indian Manufacturers Handle Regional Variants Without Chaos | CPP Blog">
+  <meta property="og:description" content="Managing BOMs across 3+ plants with regional variants, local suppliers, and different compliance standards is the hardest scaling problem in Indian manufacturing. Here's how to solve it.">
+  <meta property="og:image" content="https://cpplatform.in/assets/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://cpplatform.in/blog/multi-plant-bom-management.html">
+  <meta property="og:locale" content="en_IN">
+  <meta property="article:published_time" content="2026-05-17T00:00:00+05:30">
+  <meta property="article:author" content="CPP Platform">
+  <meta property="article:section" content="Operations &amp; BOM">
+  <meta property="article:tag" content="multi-plant BOM management India">
+  <meta property="article:tag" content="plant-specific BOM">
+  <meta property="article:tag" content="regional BOM variants">
+  <meta property="article:tag" content="BOM version control manufacturing">
+  <meta property="article:tag" content="multi-plant CPQ">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Multi-Plant BOM Management: How Indian Manufacturers Handle Regional Variants Without Chaos">
+  <meta name="twitter:description" content="Managing BOMs across 3+ plants with regional variants, local suppliers, and different compliance standards is the hardest scaling problem in Indian manufacturing. Here's how to solve it.">
+  <meta name="twitter:image" content="https://cpplatform.in/assets/images/og-image.jpg">
+
+  <!-- JSON-LD: BlogPosting -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Multi-Plant BOM Management: How Indian Manufacturers Handle Regional Variants Without Chaos",
+    "description": "Managing BOMs across 3+ plants with regional variants, local suppliers, and different compliance standards is the hardest scaling problem in Indian manufacturing. Here's how to solve it.",
+    "datePublished": "2026-05-17",
+    "dateModified": "2026-05-17",
+    "author": {
+      "@type": "Organization",
+      "name": "Softwaller Technologies Private Limited",
+      "url": "https://cpplatform.in"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Softwaller Technologies Private Limited",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://cpplatform.in/assets/images/og-image.jpg"
+      }
+    },
+    "url": "https://cpplatform.in/blog/multi-plant-bom-management.html",
+    "image": "https://cpplatform.in/assets/images/og-image.jpg",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://cpplatform.in/blog/multi-plant-bom-management.html"
+    },
+    "keywords": ["multi-plant BOM management India", "plant-specific BOM", "regional BOM variants", "BOM version control manufacturing", "multi-plant CPQ"],
+    "articleSection": "Operations & BOM",
+    "timeRequired": "PT8M",
+    "inLanguage": "en-IN",
+    "about": {
+      "@type": "Thing",
+      "name": "Multi-Plant BOM Management in Indian Manufacturing"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://cpplatform.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://cpplatform.in/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Multi-Plant BOM Management: How Indian Manufacturers Handle Regional Variants Without Chaos",
+        "item": "https://cpplatform.in/blog/multi-plant-bom-management.html"
+      }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can CPP manage BOMs for plants in different states with different compliance requirements?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Each plant in CPP has its own overlay configuration that includes regional compliance constraints. A Tamil Nadu plant overlay can enforce TANGEDCO specification requirements that the Maharashtra plant doesn't need — without duplicating the source BOM."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens when a component is approved at one plant but not yet at another?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CPP tracks component approval status per plant. If a component is available in the source BOM but not approved at the configured plant, CPP either selects the approved substitute (if one is configured) or flags the BOM for manual review before release."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does CPP handle local supplier preferences per plant?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Each plant overlay includes a vendor preference mapping — for a given source component, the preferred local vendor and part number at that plant. CPP applies this mapping automatically during BOM derivation. Vendor preference can be ranked (primary, secondary, tertiary) with automatic fallback."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can we start with one plant and add more plants later?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. CPP is designed for incremental plant rollout. Most customers start with their largest or home plant and add additional plants in subsequent quarters. The source BOM is authored once — adding a new plant means configuring its overlay, not re-authoring the product."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does it take to onboard a second or third plant after the first?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Once the source BOM is live for the first plant, adding a new plant takes 2–3 weeks: 1 week for vendor and part-number mapping, 1 week for regional compliance constraints, and 1 week for test orders and validation."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand:   { DEFAULT: '#0EA5E9', dark: '#0284C7', light: '#BAE6FD', faint: '#F0F9FF' },
+            surface: '#F1F5F9',
+            ink:     '#0F172A',
+          },
+          fontFamily: {
+            mono: ['"JetBrains Mono"', 'monospace'],
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../assets/css/custom.min.css?v=1.1.0">
+
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+
+<body class="font-sans bg-surface text-ink antialiased">
+
+<!-- Skip to content -->
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-brand focus:text-white focus:font-semibold focus:px-4 focus:py-2 focus:rounded-lg">Skip to main content</a>
+
+<!-- ═══════════════════════════════════════════
+     NAV
+═══════════════════════════════════════════ -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-slate-100 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+    <a href="../index.html" class="flex items-center gap-2.5">
+      <div class="w-8 h-8 bg-brand rounded-lg flex items-center justify-center">
+        <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h10M4 18h6"/></svg>
+      </div>
+      <span class="font-mono font-bold text-xl text-ink">CPP</span>
+    </a>
+    <div class="flex items-center gap-4">
+      <a href="../blog/index.html" class="text-sm font-medium text-slate-600 hover:text-brand transition-colors">Blog</a>
+      <a href="../case-studies/index.html" class="text-sm font-medium text-slate-600 hover:text-brand transition-colors">Case Studies</a>
+      <a href="../index.html#demo" class="inline-flex items-center gap-1.5 bg-brand hover:bg-brand-dark text-white font-semibold text-sm px-4 py-2 rounded-lg transition-colors">Request Demo →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════ -->
+<main id="main">
+<header class="bg-ink pt-24 pb-16">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="mb-6">
+      <ol class="flex items-center gap-2 text-sm text-slate-400 font-mono">
+        <li><a href="../index.html" class="hover:text-brand transition-colors">Home</a></li>
+        <li aria-hidden="true" class="text-slate-600">/</li>
+        <li><a href="../blog/index.html" class="hover:text-brand transition-colors">Blog</a></li>
+      </ol>
+    </nav>
+
+    <!-- Category badge -->
+    <div class="mb-5">
+      <span class="inline-flex items-center gap-1.5 bg-brand/20 text-brand text-xs font-mono font-semibold px-3 py-1.5 rounded-full uppercase tracking-widest">
+        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg>
+        Operations &amp; BOM
+      </span>
+    </div>
+
+    <!-- H1 -->
+    <h1 class="font-mono font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-6">
+      Multi-Plant BOM Management: How Indian Manufacturers Handle Regional Variants Without Chaos
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="text-slate-300 text-lg sm:text-xl leading-relaxed mb-8 max-w-3xl">
+      The moment you open a second plant, your single "master BOM" becomes a liability. Managing regional variants, local supplier preferences, and state-level compliance across 3+ plants is the hardest scaling problem in Indian manufacturing — and it has a structural solution.
+    </p>
+
+    <!-- Meta -->
+    <div class="flex flex-wrap items-center gap-4 text-sm text-slate-400 font-mono">
+      <span class="flex items-center gap-1.5">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        8 min read
+      </span>
+      <span class="text-slate-600">·</span>
+      <time datetime="2026-05-17" class="flex items-center gap-1.5">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        May 17, 2026
+      </time>
+      <span class="text-slate-600">·</span>
+      <span>CPP Platform</span>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════
+     STATS BAR
+═══════════════════════════════════════════ -->
+<section class="bg-white border-b border-slate-100" aria-label="Key statistics">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 sm:grid-cols-4 divide-x divide-y sm:divide-y-0 divide-slate-100">
+
+      <div class="flex flex-col items-center py-8 px-4 text-center" data-aos="fade-up" data-aos-delay="0">
+        <span class="font-mono font-bold text-3xl text-brand mb-1">3x</span>
+        <span class="text-xs text-slate-500 font-medium leading-snug">Avg number of plants for mid-size Indian manufacturers with ₹100Cr+ revenue</span>
+      </div>
+
+      <div class="flex flex-col items-center py-8 px-4 text-center" data-aos="fade-up" data-aos-delay="80">
+        <span class="font-mono font-bold text-3xl text-brand mb-1">40%</span>
+        <span class="text-xs text-slate-500 font-medium leading-snug">BOM variant reduction achievable by separating source BOM from plant BOM</span>
+      </div>
+
+      <div class="flex flex-col items-center py-8 px-4 text-center" data-aos="fade-up" data-aos-delay="160">
+        <span class="font-mono font-bold text-3xl text-brand mb-1">₹2.1Cr</span>
+        <span class="text-xs text-slate-500 font-medium leading-snug">Avg annual cost of plant BOM inconsistency (rework + scrap + delays)</span>
+      </div>
+
+      <div class="flex flex-col items-center py-8 px-4 text-center" data-aos="fade-up" data-aos-delay="240">
+        <span class="font-mono font-bold text-3xl text-brand mb-1">100%</span>
+        <span class="text-xs text-slate-500 font-medium leading-snug">Determinism guarantee — same inputs always produce byte-identical BOM</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     ARTICLE BODY
+═══════════════════════════════════════════ -->
+<article class="py-14">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="prose-blog max-w-none">
+
+      <!-- ── Section 1 ── -->
+      <section data-aos="fade-up" class="mb-14">
+        <h2 class="font-mono font-bold text-2xl sm:text-3xl text-ink mb-6 pb-3 border-b border-slate-200">
+          Why multi-plant BOM management breaks every tool that wasn't designed for it
+        </h2>
+        <p class="text-slate-700 text-lg leading-relaxed mb-6">
+          Indian manufacturers that grow beyond ₹100 crore in revenue typically operate 2–4 manufacturing plants. Each plant carries its own realities: a different approved vendor list built over years of supplier relationships, different component availability based on proximity to suppliers, and different regional compliance requirements driven by the state utility or standards body that has jurisdiction over that geography.
+        </p>
+        <p class="text-slate-700 text-lg leading-relaxed mb-6">
+          The standard response to this complexity is the one that comes naturally to any engineer: copy the master BOM, make the local changes, save the file with a new name. Within 18 months of opening a second plant, you have a "Pune plant BOM" and a "Chennai plant BOM" — two Excel files diverging in different directions, maintained by different engineers, with no version history and no reconciliation process. Within 36 months of opening a third plant, nobody knows which version is authoritative. Engineers are quoting from one version and manufacturing from another.
+        </p>
+        <p class="text-slate-700 text-lg leading-relaxed mb-8">
+          The tools most manufacturers use — Excel, PDM systems designed for single-plant automotive production, early ERP BOM modules — were built for one product definition, one plant, one compliance regime. They have no concept of a source BOM that spawns plant-specific instances. They offer no model for "this component is approved here but not there." They cannot enforce regional compliance constraints without creating entirely separate product records.
+        </p>
+
+        <blockquote class="border-l-4 border-brand bg-brand/5 rounded-r-xl px-7 py-5 my-8">
+          <p class="text-slate-700 text-lg italic leading-relaxed">"When we had 3 plants and 2 product lines, we had 6 'master BOMs'. Six different engineers owned them. No one knew which one was right. We were quoting from different versions and manufacturing from different versions."</p>
+        </blockquote>
+      </section>
+
+      <!-- ── Section 2 ── -->
+      <section data-aos="fade-up" class="mb-14">
+        <h2 class="font-mono font-bold text-2xl sm:text-3xl text-ink mb-6 pb-3 border-b border-slate-200">
+          The source BOM vs plant BOM distinction
+        </h2>
+        <p class="text-slate-700 text-lg leading-relaxed mb-6">
+          The structural solution to multi-plant BOM chaos is a clean separation between two concepts that most manufacturers conflate into a single document. Once you separate them, the complexity becomes manageable.
+        </p>
+
+        <div class="bg-brand/5 border border-brand/20 rounded-xl p-6 my-6">
+          <div class="space-y-5">
+            <div>
+              <h3 class="font-mono font-semibold text-ink text-base mb-2 flex items-center gap-2">
+                <span class="w-2.5 h-2.5 bg-brand rounded-full flex-shrink-0"></span>
+                Source BOM
+              </h3>
+              <p class="text-slate-700 leading-relaxed text-sm">The canonical product definition: feature definitions, constraint relationships, and derived component rules. Platform-level, version-controlled, and never plant-specific. One source BOM covers the entire product family, regardless of how many plants manufacture it.</p>
+            </div>
+            <div class="border-t border-brand/20 pt-5">
+              <h3 class="font-mono font-semibold text-ink text-base mb-2 flex items-center gap-2">
+                <span class="w-2.5 h-2.5 bg-brand rounded-full flex-shrink-0"></span>
+                Plant BOM
+              </h3>
+              <p class="text-slate-700 leading-relaxed text-sm">A resolved instance of the source BOM for a specific plant, using that plant's approved vendors, local part number mappings, and regional compliance overrides. CPP maintains one source BOM per product family. Plant BOMs are derived at configuration time by applying plant-specific overlays automatically.</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-slate-700 text-lg leading-relaxed mb-6">
+          This separation means product engineers author rules once. Plant engineers configure their local overlays once. When a sales engineer configures a product for the Chennai plant, CPP resolves: source BOM + Chennai overlay = Chennai plant BOM. The result is deterministic — same configuration, same plant, same rule version always produces identical output.
+        </p>
+        <p class="text-slate-700 text-lg leading-relaxed">
+          Adding a fourth plant doesn't mean duplicating the source BOM. It means configuring a fourth overlay. The source BOM stays untouched.
+        </p>
+      </section>
+
+      <!-- ── Section 3 ── -->
+      <section data-aos="fade-up" class="mb-14">
+        <h2 class="font-mono font-bold text-2xl sm:text-3xl text-ink mb-6 pb-3 border-b border-slate-200">
+          Three regional compliance challenges Indian manufacturers face
+        </h2>
+        <p class="text-slate-700 text-lg leading-relaxed mb-8">
+          The compliance landscape across India's states is genuinely complex — not artificially so. Each of these challenges requires a structural response, not a workaround.
+        </p>
+
+        <div class="space-y-5">
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-7 shadow-sm">
+            <h3 class="font-mono font-semibold text-lg text-ink mb-3 flex items-center gap-2.5">
+              <span class="flex-shrink-0 w-7 h-7 bg-brand/10 text-brand rounded-lg flex items-center justify-center text-sm font-bold">1</span>
+              State DISCOM specifications
+            </h3>
+            <p class="text-slate-600 leading-relaxed">Power utilities in Tamil Nadu, Maharashtra, Gujarat, and Uttar Pradesh publish different metering, protection relay, and earthing specifications for equipment connected to their grids. A transformer or switchgear BOM that is approved for MSEDCL (Maharashtra) may fail TANGEDCO (Tamil Nadu) inspection on multiple points — relay sensitivity settings, busbar material grade, or insulation coordination class. These are not minor differences. They require different components to be sourced, not the same components re-labelled. In CPP, each plant overlay contains the DISCOM-specific constraints for its state, enforced automatically when a configuration targets that plant.</p>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-7 shadow-sm">
+            <h3 class="font-mono font-semibold text-lg text-ink mb-3 flex items-center gap-2.5">
+              <span class="flex-shrink-0 w-7 h-7 bg-brand/10 text-brand rounded-lg flex items-center justify-center text-sm font-bold">2</span>
+              Bureau of Indian Standards (BIS) and IS mark requirements
+            </h3>
+            <p class="text-slate-600 leading-relaxed">BIS certifications are granted per product per manufacturing location. A component or sub-assembly certified at your Pune plant is not automatically certified at your new Hyderabad plant, even if it is manufactured using the same process and materials. Each plant must independently hold the relevant IS marks for its product scope. CPP's plant BOM overlay tracks BIS certification status per component per plant, and surfaces uncertified components as a flag before the BOM is released — not after the order is placed.</p>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-7 shadow-sm">
+            <h3 class="font-mono font-semibold text-lg text-ink mb-3 flex items-center gap-2.5">
+              <span class="flex-shrink-0 w-7 h-7 bg-brand/10 text-brand rounded-lg flex items-center justify-center text-sm font-bold">3</span>
+              ECBC climate zones
+            </h3>
+            <p class="text-slate-600 leading-relaxed">The Energy Conservation Building Code divides India into five climate zones — composite, hot and dry, warm and humid, temperate, and cold. HVAC equipment BOMs vary meaningfully by zone: refrigerant blend, compressor capacity curve, insulation material and rating, and condenser coil specification all shift with climate zone. A single source BOM covering all five zones — with five zone-specific overlays in CPP — replaces five separate Excel files maintained by five different engineers. When the base product changes, it changes once in the source BOM. All five zones update immediately at the next overlay resolution.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── Section 4 ── -->
+      <section data-aos="fade-up" class="mb-14">
+        <h2 class="font-mono font-bold text-2xl sm:text-3xl text-ink mb-6 pb-3 border-b border-slate-200">
+          What CPP's multi-plant BOM architecture looks like
+        </h2>
+        <p class="text-slate-700 text-lg leading-relaxed mb-8">
+          CPP's architecture for multi-plant BOM is built around three layers that interact at configuration time. Understanding each layer makes it clear why the approach scales to 10 plants without becoming unmanageable.
+        </p>
+
+        <div class="space-y-5 mb-8">
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-7 shadow-sm">
+            <h3 class="font-mono font-semibold text-lg text-ink mb-3 flex items-center gap-2.5">
+              <span class="flex-shrink-0 w-7 h-7 bg-brand/10 text-brand rounded-lg flex items-center justify-center text-sm font-bold">1</span>
+              Source BOM layer — authored once per product family version
+            </h3>
+            <p class="text-slate-600 leading-relaxed">Contains feature definitions, constraint relationships, and BOM derivation rules — which components are selected for which feature combinations. No plant-specific information. Released source BOM versions are immutable; changes create a new version. Product engineers own this layer.</p>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-7 shadow-sm">
+            <h3 class="font-mono font-semibold text-lg text-ink mb-3 flex items-center gap-2.5">
+              <span class="flex-shrink-0 w-7 h-7 bg-brand/10 text-brand rounded-lg flex items-center justify-center text-sm font-bold">2</span>
+              Plant overlay layer — configured per plant
+            </h3>
+            <p class="text-slate-600 leading-relaxed">Each plant has its own overlay record: approved vendor list with ranked preferences, local part number substitution map (source component → plant-specific material code), regional compliance constraints (DISCOM spec, BIS certification status, ECBC zone), and plant-specific pricing rules. Plant managers or supply chain leads own this layer. Changes to one plant's overlay never affect other plants.</p>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-7 shadow-sm">
+            <h3 class="font-mono font-semibold text-lg text-ink mb-3 flex items-center gap-2.5">
+              <span class="flex-shrink-0 w-7 h-7 bg-brand/10 text-brand rounded-lg flex items-center justify-center text-sm font-bold">3</span>
+              Plant BOM — derived at configuration time
+            </h3>
+            <p class="text-slate-600 leading-relaxed">When a sales engineer selects a plant during configuration, CPP resolves Source BOM + Plant Overlay = Plant BOM. This happens in under 2 seconds. The output is a fully validated, plant-specific BOM with local part numbers, approved vendor assignments, and compliance status on every line. No manual steps. No spreadsheet lookups. No "which version is the Chennai BOM?" moment.</p>
+          </div>
+
+        </div>
+
+        <!-- Rollout timeline -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-7 shadow-sm">
+          <h3 class="font-mono font-semibold text-base text-ink mb-5">Typical multi-plant rollout timeline</h3>
+          <ol class="space-y-4">
+            <li class="flex gap-4">
+              <div class="flex-shrink-0">
+                <div class="w-8 h-8 rounded-full bg-brand flex items-center justify-center text-white font-mono font-bold text-xs">W1</div>
+              </div>
+              <div class="pt-1">
+                <p class="font-semibold text-ink text-sm mb-0.5">Weeks 1–2: Source BOM authoring</p>
+                <p class="text-slate-500 text-sm leading-relaxed">Product engineers author the source BOM for one product family — features, constraints, and derivation rules.</p>
+              </div>
+            </li>
+            <li class="flex gap-4">
+              <div class="flex-shrink-0">
+                <div class="w-8 h-8 rounded-full bg-brand flex items-center justify-center text-white font-mono font-bold text-xs">W3</div>
+              </div>
+              <div class="pt-1">
+                <p class="font-semibold text-ink text-sm mb-0.5">Week 3: Plant overlay for home plant</p>
+                <p class="text-slate-500 text-sm leading-relaxed">Vendor mappings, local part numbers, and compliance constraints configured for the primary plant. First test configurations run.</p>
+              </div>
+            </li>
+            <li class="flex gap-4">
+              <div class="flex-shrink-0">
+                <div class="w-8 h-8 rounded-full bg-brand flex items-center justify-center text-white font-mono font-bold text-xs">W5</div>
+              </div>
+              <div class="pt-1">
+                <p class="font-semibold text-ink text-sm mb-0.5">Weeks 4–5: Plant overlays for additional plants</p>
+                <p class="text-slate-500 text-sm leading-relaxed">Each additional plant configures its overlay independently, in parallel. Source BOM is untouched throughout.</p>
+              </div>
+            </li>
+            <li class="flex gap-4">
+              <div class="flex-shrink-0">
+                <div class="w-8 h-8 rounded-full bg-brand flex items-center justify-center text-white font-mono font-bold text-xs">W6</div>
+              </div>
+              <div class="pt-1">
+                <p class="font-semibold text-ink text-sm mb-0.5">Week 6: Cross-plant test orders and reconciliation</p>
+                <p class="text-slate-500 text-sm leading-relaxed">Same product configured for all plants. Plant BOMs compared and validated. Overlay adjustments made.</p>
+              </div>
+            </li>
+            <li class="flex gap-4">
+              <div class="flex-shrink-0">
+                <div class="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center text-white font-mono font-bold text-xs">W7</div>
+              </div>
+              <div class="pt-1">
+                <p class="font-semibold text-emerald-700 text-sm mb-0.5">Week 7: Go-live across all plants</p>
+                <p class="text-slate-500 text-sm leading-relaxed">All plants configured and validated. Sales engineers can configure for any plant from day one.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ── Section 5 ── -->
+      <section data-aos="fade-up" class="mb-14">
+        <h2 class="font-mono font-bold text-2xl sm:text-3xl text-ink mb-6 pb-3 border-b border-slate-200">
+          Version control across plants — the problem CPP solves
+        </h2>
+        <p class="text-slate-700 text-lg leading-relaxed mb-6">
+          Version control in a multi-plant environment is not just about tracking which version is current — it's about being able to answer a specific question under pressure: "Which plant BOMs used this component, and when?"
+        </p>
+        <p class="text-slate-700 text-lg leading-relaxed mb-6">
+          In CPP, released source BOM versions are immutable. A new version is created for each product update. Each plant BOM is a versioned combination: source BOM v2.3 + Chennai overlay v1.1 = a specific, reproducible output with its own version fingerprint. Every configured order records which source BOM version and which plant overlay version produced the BOM.
+        </p>
+
+        <!-- Highlight box for recall scenario -->
+        <div class="bg-brand/5 border border-brand/20 rounded-xl p-6 my-8">
+          <h3 class="font-mono font-semibold text-ink text-base mb-3 flex items-center gap-2">
+            <svg class="w-5 h-5 text-brand flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            Component recall scenario
+          </h3>
+          <p class="text-slate-700 leading-relaxed text-sm">If a component is recalled — a contactor batch with a latent defect, a busbar with incorrect conductivity certification — CPP can identify every order in the last 12 months that used that component, across all plants, in under 60 seconds. The query is: which plant BOMs derived from source BOM versions that included this component? The audit trail makes the answer immediate.</p>
+        </div>
+
+        <p class="text-slate-700 text-lg leading-relaxed mb-6">
+          This is structurally impossible with the Excel-per-plant approach. When the question is asked, the answer requires someone to manually check six spreadsheets, cross-reference order records in the ERP, and phone the plant manager to confirm which version was in use during which period. The exercise takes days, not seconds, and is never fully reliable.
+        </p>
+
+        <blockquote class="border-l-4 border-brand bg-brand/5 rounded-r-xl px-7 py-5 my-8">
+          <p class="text-slate-700 text-lg italic leading-relaxed">"The version question isn't academic. When a government customer raises a quality audit query, you need to reproduce the exact BOM used for their order 14 months ago. With CPP, that's a report. With Excel, that's a week of forensic work."</p>
+        </blockquote>
+      </section>
+
+      <!-- ── FAQ Section ── -->
+      <section data-aos="fade-up" class="mb-14" x-data="{ open: null }">
+        <h2 class="font-mono font-bold text-2xl sm:text-3xl text-ink mb-8 pb-3 border-b border-slate-200">
+          Frequently asked questions
+        </h2>
+
+        <div class="space-y-3">
+
+          <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+            <button @click="open === 0 ? open = null : open = 0" class="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors" :aria-expanded="open === 0">
+              <span class="font-semibold text-ink text-sm pr-4">Can CPP manage BOMs for plants in different states with different compliance requirements?</span>
+              <svg class="flex-shrink-0 w-5 h-5 text-brand transition-transform duration-200" :class="open === 0 ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div x-show="open === 0" x-collapse class="px-5 pb-5 text-slate-600 text-sm leading-relaxed">
+              Yes. Each plant in CPP has its own overlay configuration that includes regional compliance constraints. A Tamil Nadu plant overlay can enforce TANGEDCO specification requirements — specific relay sensitivity settings, earthing material grades, metering class — that the Maharashtra plant overlay doesn't include. The source BOM is unaffected. Only the plant overlay changes.
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+            <button @click="open === 1 ? open = null : open = 1" class="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors" :aria-expanded="open === 1">
+              <span class="font-semibold text-ink text-sm pr-4">What happens when a component is approved at one plant but not yet at another?</span>
+              <svg class="flex-shrink-0 w-5 h-5 text-brand transition-transform duration-200" :class="open === 1 ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div x-show="open === 1" x-collapse class="px-5 pb-5 text-slate-600 text-sm leading-relaxed">
+              CPP tracks component approval status per plant. If a component is available in the source BOM but not approved at the configured plant, CPP either selects the approved substitute (if one is configured in the plant overlay) or flags the BOM for manual review before release. The BOM is never silently incorrect — the status is surfaced at configuration time, not at goods receipt.
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+            <button @click="open === 2 ? open = null : open = 2" class="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors" :aria-expanded="open === 2">
+              <span class="font-semibold text-ink text-sm pr-4">How does CPP handle local supplier preferences per plant?</span>
+              <svg class="flex-shrink-0 w-5 h-5 text-brand transition-transform duration-200" :class="open === 2 ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div x-show="open === 2" x-collapse class="px-5 pb-5 text-slate-600 text-sm leading-relaxed">
+              Each plant overlay includes a vendor preference mapping — for a given source component, the preferred local vendor and part number at that plant. CPP applies this mapping automatically during BOM derivation. Vendor preference can be ranked: primary, secondary, and tertiary, with automatic fallback if the primary vendor's part is flagged as unavailable in the inventory event feed.
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+            <button @click="open === 3 ? open = null : open = 3" class="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors" :aria-expanded="open === 3">
+              <span class="font-semibold text-ink text-sm pr-4">Can we start with one plant and add more plants later?</span>
+              <svg class="flex-shrink-0 w-5 h-5 text-brand transition-transform duration-200" :class="open === 3 ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div x-show="open === 3" x-collapse class="px-5 pb-5 text-slate-600 text-sm leading-relaxed">
+              Yes. CPP is designed for incremental plant rollout. Most customers start with their largest or home plant and add additional plants in subsequent quarters. The source BOM is authored once during the initial implementation — adding a new plant means configuring its overlay, not re-authoring the product. Each new plant comes online without interrupting the existing plants.
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+            <button @click="open === 4 ? open = null : open = 4" class="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors" :aria-expanded="open === 4">
+              <span class="font-semibold text-ink text-sm pr-4">How long does it take to onboard a second or third plant after the first?</span>
+              <svg class="flex-shrink-0 w-5 h-5 text-brand transition-transform duration-200" :class="open === 4 ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div x-show="open === 4" x-collapse class="px-5 pb-5 text-slate-600 text-sm leading-relaxed">
+              Once the source BOM is live for the first plant, adding a new plant takes 2–3 weeks: approximately 1 week for vendor list import and part-number mapping, 1 week for regional compliance constraint configuration, and 1 week for test orders and validation sign-off. Each subsequent plant is faster than the previous because the overlay structure is already well understood.
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── CTA ── -->
+      <section class="bg-ink rounded-2xl p-10 my-14 text-center" data-aos="fade-up">
+        <h2 class="font-mono font-bold text-2xl text-white mb-3">Ready to see it live?</h2>
+        <p class="text-slate-400 mb-6 max-w-lg mx-auto">Book a 45-minute demo. We'll configure one of your product families across two plants and show you what the source BOM and overlay model looks like for your products.</p>
+        <a href="../index.html#demo" class="inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white font-bold px-8 py-3.5 rounded-xl transition-colors text-base">Request a Demo →</a>
+      </section>
+
+      <!-- ── Related Posts ── -->
+      <section data-aos="fade-up" class="mb-8">
+        <h2 class="font-mono font-bold text-xl text-ink mb-6 pb-3 border-b border-slate-200">Related articles</h2>
+        <div class="grid sm:grid-cols-3 gap-5">
+          <a href="erp-integration-product-configurator.html" class="group bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:border-brand hover:shadow-md transition-all">
+            <span class="block text-xs font-mono text-brand mb-2 uppercase tracking-wider">Integration &amp; ERP</span>
+            <span class="block font-semibold text-ink group-hover:text-brand transition-colors text-sm leading-snug">How to Connect Your Product Configurator to SAP, Oracle, and Microsoft Dynamics</span>
+          </a>
+          <a href="bom-errors-cost.html" class="group bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:border-brand hover:shadow-md transition-all">
+            <span class="block text-xs font-mono text-brand mb-2 uppercase tracking-wider">Quality &amp; Cost</span>
+            <span class="block font-semibold text-ink group-hover:text-brand transition-colors text-sm leading-snug">BOM Errors Cost Indian Manufacturers ₹2–50 Lakh Per Incident</span>
+          </a>
+          <a href="constraint-configurator-vs-rules-engine.html" class="group bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:border-brand hover:shadow-md transition-all">
+            <span class="block text-xs font-mono text-brand mb-2 uppercase tracking-wider">Technology</span>
+            <span class="block font-semibold text-ink group-hover:text-brand transition-colors text-sm leading-snug">What Is a Constraint-Based Product Configurator?</span>
+          </a>
+        </div>
+      </section>
+
+    </div><!-- /prose-blog -->
+  </div>
+</article>
+
+</main>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<footer class="bg-ink py-8 text-center">
+  <p class="text-slate-400 text-sm font-mono">© 2026 Softwaller Technologies Private Limited · CPP & CPQ are products of Softwaller Technologies · <a href="../index.html" class="text-brand hover:underline">← Back to Home</a></p>
+</footer>
+
+<!-- AOS init -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => AOS.init({ duration: 600, once: true, easing: 'ease-out-cubic', offset: 60 }));
+</script>
+
+</body>
+</html>

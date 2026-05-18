@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0EA5E9">
+  <title>₹92 Lakh Saved: How an HVAC OEM Automated 40,000+ Chiller Configurations | CPP Case Study</title>
+  <meta name="description" content="An Indian HVAC manufacturer with 40,000+ chiller variants eliminated ₹92L in annual rework by encoding ECBC and ASHRAE constraints into CPP. Quote cycle dropped from 5 days to 45 minutes.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://cpplatform.in/case-studies/hvac-manufacturer.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="CPP Platform">
+  <meta property="og:title" content="₹92 Lakh Saved: How an HVAC OEM Automated 40,000+ Chiller Configurations | CPP Case Study">
+  <meta property="og:description" content="An Indian HVAC manufacturer with 40,000+ chiller variants eliminated ₹92L in annual rework by encoding ECBC and ASHRAE constraints into CPP. Quote cycle dropped from 5 days to 45 minutes.">
+  <meta property="og:image" content="https://cpplatform.in/assets/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://cpplatform.in/case-studies/hvac-manufacturer.html">
+  <meta property="og:locale" content="en_IN">
+  <meta property="article:published_time" content="2026-05-17">
+  <meta property="article:author" content="CPP Platform">
+  <meta property="article:section" content="HVAC &amp; Cooling Systems">
+  <meta property="article:tag" content="HVAC Chillers ECBC BOM Automation Product Configuration">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="₹92 Lakh Saved: 40,000+ Chiller Configurations Automated — Zero ECBC Violations | CPP Case Study">
+  <meta name="twitter:description" content="5 days to 45 minutes. 11% to 0.6% BOM error rate. ₹92L rework eliminated. How an HVAC OEM automated 40,000+ chiller variants with ECBC constraints in CPP.">
+  <meta name="twitter:image" content="https://cpplatform.in/assets/images/og-image.jpg">
+
+  <!-- JSON-LD: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "₹92 Lakh Saved: How an HVAC OEM Automated 40,000+ Chiller Configurations",
+    "description": "An Indian HVAC manufacturer with 40,000+ chiller variants eliminated ₹92L in annual rework by encoding ECBC and ASHRAE constraints into CPP. Quote cycle dropped from 5 days to 45 minutes.",
+    "datePublished": "2026-05-17",
+    "dateModified": "2026-05-17",
+    "author": {
+      "@type": "Organization",
+      "name": "Softwaller Technologies Private Limited",
+      "url": "https://cpplatform.in/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Softwaller Technologies Private Limited",
+      "url": "https://cpplatform.in/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://cpplatform.in/assets/images/og-image.jpg"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://cpplatform.in/case-studies/hvac-manufacturer.html"
+    },
+    "image": "https://cpplatform.in/assets/images/og-image.jpg",
+    "articleSection": "HVAC & Cooling Systems",
+    "keywords": "HVAC manufacturer CPQ BOM automation India, chiller configuration ECBC compliance, ASHRAE refrigerant constraint engine, HVAC BOM error elimination, centrifugal chiller screw chiller configuration"
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://cpplatform.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Case Studies",
+        "item": "https://cpplatform.in/case-studies/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "HVAC Manufacturer Case Study",
+        "item": "https://cpplatform.in/case-studies/hvac-manufacturer.html"
+      }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does CPP support ECBC 2017 and ECBC-R (residential) compliance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. CPP supports ECBC 2017 (commercial) constraints including COP minimums by building type and climate zone. ECBC-R (residential) constraints can be added as a product family overlay. Both sets of rules are versioned and can be updated when ECBC is revised."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can CPP calculate refrigerant charge quantity automatically?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Refrigerant charge quantity is a derived BOM output. CPP calculates it from cooling capacity, refrigerant type, and system configuration using manufacturer-specified charge density values. The result appears as a BOM line item with part number, quantity, and unit."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does CPP handle multi-zone systems where a single chiller serves multiple ECBC climate zones?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For multi-zone applications, CPP uses the most demanding climate zone's ECBC requirements as the governing constraint. The configuration records which zone drove the specification for traceability."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the go-live timeline for an HVAC manufacturer with 10+ product families?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For a first product family, go-live takes 6–8 weeks. Each subsequent product family takes 3–4 weeks (the ECBC constraint framework is reused; only product-specific BOM rules need to be authored). A 10-family rollout takes approximately 12–14 months on a one-at-a-time schedule, or 6–8 months with parallel authoring teams."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: {
+          brand:   { DEFAULT: '#0EA5E9', dark: '#0284C7', light: '#BAE6FD', faint: '#F0F9FF' },
+          surface: '#F1F5F9',
+          ink:     '#0F172A',
+        },
+        fontFamily: {
+          mono: ['"JetBrains Mono"', 'monospace'],
+          sans: ['Inter', 'sans-serif'],
+        }
+      }}
+    }
+  </script>
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../assets/css/custom.min.css?v=1.1.0">
+
+  <!-- Alpine -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+
+<body class="font-sans bg-surface text-ink antialiased">
+
+<!-- Skip link -->
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-brand focus:text-white focus:font-semibold focus:px-4 focus:py-2 focus:rounded-lg">Skip to main content</a>
+
+<!-- Nav -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-slate-100 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+    <a href="../index.html" class="flex items-center gap-2.5">
+      <div class="w-8 h-8 bg-brand rounded-lg flex items-center justify-center">
+        <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h10M4 18h6"/></svg>
+      </div>
+      <span class="font-mono font-bold text-xl text-ink">CPP</span>
+    </a>
+    <div class="flex items-center gap-4">
+      <a href="../blog/index.html" class="text-sm font-medium text-slate-600 hover:text-brand transition-colors">Blog</a>
+      <a href="../case-studies/index.html" class="text-sm font-medium text-slate-600 hover:text-brand transition-colors">Case Studies</a>
+      <a href="../index.html#demo" class="inline-flex items-center gap-1.5 bg-brand hover:bg-brand-dark text-white font-semibold text-sm px-4 py-2 rounded-lg transition-colors">Request Demo →</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+  <!-- =========================================================
+       HERO
+       ========================================================= -->
+  <section class="pt-24 pb-16 bg-ink">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Breadcrumb -->
+      <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-xs font-mono text-slate-500 mb-6">
+        <a href="../index.html" class="hover:text-brand transition-colors">Home</a>
+        <span class="text-slate-700">/</span>
+        <a href="../case-studies/index.html" class="hover:text-brand transition-colors">Case Studies</a>
+        <span class="text-slate-700">/</span>
+        <span class="text-slate-400">HVAC Manufacturer</span>
+      </nav>
+
+      <!-- Category chip -->
+      <div class="inline-flex items-center gap-2 mb-5">
+        <span class="text-xs font-mono font-semibold text-brand uppercase tracking-widest bg-brand/10 border border-brand/20 px-3 py-1 rounded-full">Case Study · HVAC &amp; Cooling Systems</span>
+      </div>
+
+      <!-- H1 -->
+      <h1 class="font-mono font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-6">
+        ₹92 Lakh Saved: How an HVAC OEM<br>
+        <span class="text-brand">Automated 40,000+ Chiller Configurations</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-slate-400 text-lg sm:text-xl leading-relaxed max-w-3xl mb-8">
+        A mid-size Indian HVAC OEM manufacturing centrifugal and screw chillers for commercial buildings was losing ₹92 lakh a year to configuration errors — wrong refrigerant charges, wrong coil specifications, ECBC violations. CPP encoded their 5-zone × 4-building-type compliance matrix as constraints and cut their quote cycle from 5 days to 45 minutes.
+      </p>
+
+      <!-- Tags -->
+      <div class="flex flex-wrap gap-2">
+        <span class="text-xs font-medium text-slate-400 bg-white/5 border border-white/10 px-3 py-1 rounded-full">HVAC</span>
+        <span class="text-xs font-medium text-slate-400 bg-white/5 border border-white/10 px-3 py-1 rounded-full">Chillers</span>
+        <span class="text-xs font-medium text-slate-400 bg-white/5 border border-white/10 px-3 py-1 rounded-full">ECBC</span>
+        <span class="text-xs font-medium text-slate-400 bg-white/5 border border-white/10 px-3 py-1 rounded-full">BOM Automation</span>
+        <span class="text-xs font-medium text-slate-400 bg-white/5 border border-white/10 px-3 py-1 rounded-full">Product Configuration</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       RESULTS DASHBOARD
+       ========================================================= -->
+  <section class="bg-white py-14 border-b border-slate-100">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-xs font-mono font-semibold text-slate-400 uppercase tracking-widest mb-8 text-center">Results — 6 months post go-live</p>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-5">
+
+        <div class="flex flex-col items-center text-center p-6 bg-surface rounded-2xl border border-slate-100 shadow-sm relative overflow-hidden group hover:border-brand/40 hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="0">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand to-brand-dark opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl"></div>
+          <div class="font-mono font-bold text-3xl text-brand mb-1.5">₹92L</div>
+          <div class="text-sm font-medium text-ink mb-0.5">Annual rework cost</div>
+          <div class="text-xs text-slate-500">eliminated</div>
+        </div>
+
+        <div class="flex flex-col items-center text-center p-6 bg-surface rounded-2xl border border-slate-100 shadow-sm relative overflow-hidden group hover:border-brand/40 hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="80">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand to-brand-dark opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl"></div>
+          <div class="font-mono font-bold text-3xl text-brand mb-1.5">92%</div>
+          <div class="text-sm font-medium text-ink mb-0.5">Configuration time</div>
+          <div class="text-xs text-slate-500">reduction (5d → 45 min)</div>
+        </div>
+
+        <div class="flex flex-col items-center text-center p-6 bg-surface rounded-2xl border border-slate-100 shadow-sm relative overflow-hidden group hover:border-brand/40 hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="160">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand to-brand-dark opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl"></div>
+          <div class="font-mono font-bold text-3xl text-brand mb-1.5">40,000+</div>
+          <div class="text-sm font-medium text-ink mb-0.5">Chiller variants</div>
+          <div class="text-xs text-slate-500">automated</div>
+        </div>
+
+        <div class="flex flex-col items-center text-center p-6 bg-surface rounded-2xl border border-slate-100 shadow-sm relative overflow-hidden group hover:border-brand/40 hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="240">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand to-brand-dark opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl"></div>
+          <div class="font-mono font-bold text-3xl text-brand mb-1.5">0</div>
+          <div class="text-sm font-medium text-ink mb-0.5">ECBC violations</div>
+          <div class="text-xs text-slate-500">post go-live</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       THE CHALLENGE
+       ========================================================= -->
+  <section class="bg-surface py-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="max-w-3xl" data-aos="fade-up">
+        <div class="text-xs font-mono font-semibold text-brand uppercase tracking-wider mb-3">The Challenge</div>
+        <h2 class="font-mono font-bold text-2xl sm:text-3xl text-ink mb-8">
+          A 60-tab Excel sheet, a 5-day queue, and a 11% error rate that cost ₹12 lakh per incident
+        </h2>
+      </div>
+
+      <div class="grid lg:grid-cols-5 gap-10 items-start">
+
+        <!-- Narrative -->
+        <div class="lg:col-span-3 space-y-5 text-slate-600 leading-relaxed" data-aos="fade-up" data-aos-delay="60">
+          <p>
+            The company is a mid-size Indian HVAC OEM manufacturing centrifugal and screw chillers for commercial buildings — hospitals, IT parks, malls, and hotels across India. Their product range spans 50 TR to 2,000 TR cooling capacity, covering R-134a and R-410A refrigerants, air-cooled and water-cooled variants, and ECBC (Energy Conservation Building Code) star ratings from 3 to 5 stars.
+          </p>
+          <p>
+            The configuration challenge was structural. Cooling capacity selection drives compressor type, refrigerant charge quantity, condenser coil area, and piping specification. ECBC compliance requires minimum COP (Coefficient of Performance) targets by building type and climate zone. Five ECBC climate zones crossed with four building types, refrigerant choice, and capacity gives more than 40,000 valid chiller combinations — and a corresponding number of ways to get it wrong.
+          </p>
+          <p>
+            Their process: a sales engineer filled a 60-tab Excel specification sheet, then sent it to application engineering for ECBC validation. Turnaround averaged 3–5 business days. The BOM error rate was 11% of orders — wrong refrigerant charge, wrong coil specification, or a climate-zone COP that did not meet ECBC minimums. Each site commissioning failure from a wrong refrigerant charge cost an average of <strong class="text-ink">₹12 lakh</strong> per incident.
+          </p>
+          <p>
+            The annual impact: 6 commissioning incidents at ₹12L average = ₹72L in field recalls. Plus ₹20L in manual engineering re-work on corrected specifications. Total: <strong class="text-ink">₹92 lakh per year</strong>.
+          </p>
+        </div>
+
+        <!-- Pull quote + pain callout -->
+        <div class="lg:col-span-2 space-y-5" data-aos="fade-up" data-aos-delay="120">
+
+          <blockquote class="relative bg-white rounded-2xl border-l-4 border-brand p-6 shadow-sm">
+            <svg class="w-8 h-8 text-brand/20 mb-3" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+            <p class="text-slate-700 text-sm leading-relaxed italic mb-4">
+              "In our business, a wrong refrigerant charge isn't a BOM error — it's a site commissioning failure. The chiller gets installed, tested, and fails performance. That's a recall at ₹15 lakh per incident."
+            </p>
+            <footer class="text-xs text-slate-500 font-medium">
+              — Application Engineering Head, HVAC OEM<br>
+              <span class="text-slate-400">(name withheld at customer request)</span>
+            </footer>
+          </blockquote>
+
+          <!-- Risk callout -->
+          <div class="bg-red-50 border border-red-100 rounded-2xl p-5">
+            <div class="text-xs font-mono font-semibold text-red-500 uppercase tracking-wider mb-3">Pre-CPP — Configuration pain points</div>
+            <div class="space-y-2">
+              <div class="flex items-start gap-2.5">
+                <div class="w-1.5 h-1.5 rounded-full bg-red-400 mt-2 flex-shrink-0"></div>
+                <span class="text-sm text-slate-700">60-tab Excel sheet as the de-facto product knowledge system</span>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <div class="w-1.5 h-1.5 rounded-full bg-red-400 mt-2 flex-shrink-0"></div>
+                <span class="text-sm text-slate-700">3–5 day average quote cycle for any non-trivial chiller spec</span>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <div class="w-1.5 h-1.5 rounded-full bg-red-400 mt-2 flex-shrink-0"></div>
+                <span class="text-sm text-slate-700">11% BOM error rate — wrong refrigerant charge or coil spec</span>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <div class="w-1.5 h-1.5 rounded-full bg-red-400 mt-2 flex-shrink-0"></div>
+                <span class="text-sm text-slate-700">6 site commissioning failures per year at ₹12L average recall cost</span>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <div class="w-1.5 h-1.5 rounded-full bg-red-400 mt-2 flex-shrink-0"></div>
+                <span class="text-sm text-slate-700">ECBC climate-zone COP validation skipped on non-government orders</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       THE SOLUTION
+       ========================================================= -->
+  <section class="bg-white py-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="max-w-3xl mb-10" data-aos="fade-up">
+        <div class="text-xs font-mono font-semibold text-brand uppercase tracking-wider mb-3">The Solution</div>
+        <h2 class="font-mono font-bold text-2xl sm:text-3xl text-ink mb-3">
+          18 constraints. 5 climate zones. 14 BOM line items derived. SAP B1 integrated. Six weeks.
+        </h2>
+        <p class="text-slate-500 leading-relaxed">
+          CPP deployed across three phases — ECBC constraint modelling, BOM derivation rules, and ERP integration — with each phase delivering a working handoff before the next began.
+        </p>
+      </div>
+
+      <!-- Phase 1 -->
+      <div class="mb-12" data-aos="fade-up">
+        <div class="flex items-start gap-4 mb-4">
+          <div class="flex-shrink-0 w-8 h-8 rounded-full bg-brand/10 border border-brand/20 flex items-center justify-center">
+            <span class="font-mono font-bold text-brand text-sm">1</span>
+          </div>
+          <div>
+            <h3 class="font-semibold text-ink text-lg mb-1">ECBC constraint modelling — Week 1–3</h3>
+            <p class="text-slate-500 text-sm font-mono">Day 0 → Day 21</p>
+          </div>
+        </div>
+        <div class="pl-12 space-y-4 text-slate-600 leading-relaxed text-base">
+          <p>
+            CPP's solution engineers worked with the company's application engineering head and chief refrigeration engineer in two weeks of intensive workshops. Every rule in the 60-tab specification workbook was extracted, verified, and encoded as a typed constraint in CPP's constraint graph.
+          </p>
+          <p>
+            The ECBC constraint set was the most complex element. ECBC 2017 COP requirements vary by climate zone (Composite, Hot &amp; Dry, Warm &amp; Humid, Temperate, Cold) and building type (commercial office, hospital, retail, IT/ITES). Eight constraints govern refrigerant selection; six govern condenser coil sizing; four govern ECBC star rating assignment.
+          </p>
+
+          <!-- Constraint table -->
+          <div class="mt-5 overflow-x-auto rounded-xl border border-slate-200">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="bg-surface border-b border-slate-200">
+                  <th class="text-left px-4 py-3 font-mono font-semibold text-slate-500 text-xs uppercase tracking-wide">Constraint</th>
+                  <th class="text-left px-4 py-3 font-mono font-semibold text-slate-500 text-xs uppercase tracking-wide">Effect</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100">
+                <tr class="hover:bg-surface/60 transition-colors">
+                  <td class="px-4 py-3 font-mono text-xs text-ink whitespace-nowrap"><code class="bg-brand/5 text-brand px-1.5 py-0.5 rounded">CapacityTR ≥ 500 → CompressorType = Centrifugal</code></td>
+                  <td class="px-4 py-3 text-slate-600 text-xs">Eliminates screw compressor for large loads; protects against undersized compressor selection</td>
+                </tr>
+                <tr class="hover:bg-surface/60 transition-colors">
+                  <td class="px-4 py-3 font-mono text-xs text-ink whitespace-nowrap"><code class="bg-brand/5 text-brand px-1.5 py-0.5 rounded">ClimateZone = HotDry AND BuildingType = Hospital → COP ≥ 4.5</code></td>
+                  <td class="px-4 py-3 text-slate-600 text-xs">Enforces ECBC 5-star minimum for hospitals in hot/dry climate zones; eliminates non-compliant selections before BOM is generated</td>
+                </tr>
+                <tr class="hover:bg-surface/60 transition-colors">
+                  <td class="px-4 py-3 font-mono text-xs text-ink whitespace-nowrap"><code class="bg-brand/5 text-brand px-1.5 py-0.5 rounded">Refrigerant = R410A AND CapacityTR &gt; 800 → RefrigerantCharge = CapacityTR × 1.42 kg/TR</code></td>
+                  <td class="px-4 py-3 text-slate-600 text-xs">Drives refrigerant BOM line with correct charge density for large R-410A systems; previous source of most field failures</td>
+                </tr>
+                <tr class="hover:bg-surface/60 transition-colors">
+                  <td class="px-4 py-3 font-mono text-xs text-ink whitespace-nowrap"><code class="bg-brand/5 text-brand px-1.5 py-0.5 rounded">CoolingType = AirCooled AND Location = Coastal → Condenser = FinAluminium</code></td>
+                  <td class="px-4 py-3 text-slate-600 text-xs">Enforces coastal corrosion protection — eliminates copper-fin condenser coil selection for coastal installations</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="mb-12" data-aos="fade-up">
+        <div class="flex items-start gap-4 mb-4">
+          <div class="flex-shrink-0 w-8 h-8 rounded-full bg-brand/10 border border-brand/20 flex items-center justify-center">
+            <span class="font-mono font-bold text-brand text-sm">2</span>
+          </div>
+          <div>
+            <h3 class="font-semibold text-ink text-lg mb-1">BOM derivation rules — Week 4–5</h3>
+            <p class="text-slate-500 text-sm font-mono">Day 22 → Day 35</p>
+          </div>
+        </div>
+        <div class="pl-12 space-y-4 text-slate-600 leading-relaxed text-base">
+          <p>
+            Each valid configuration path through the constraint graph was mapped to a BOM derivation template. Fourteen BOM line items — previously calculated manually by application engineers from separate spreadsheets — are now derived automatically from five configuration selections.
+          </p>
+          <div class="grid sm:grid-cols-3 gap-3 mt-4">
+            <div class="bg-surface rounded-xl p-4 border border-slate-100">
+              <div class="font-mono text-xs text-brand font-semibold mb-1.5">Refrigerant charge</div>
+              <div class="text-xs text-slate-500">Quantity calculated from cooling capacity × refrigerant-specific charge density. Appears as BOM line item with part number and unit.</div>
+            </div>
+            <div class="bg-surface rounded-xl p-4 border border-slate-100">
+              <div class="font-mono text-xs text-brand font-semibold mb-1.5">Condenser coil area</div>
+              <div class="text-xs text-slate-500">Derived from heat rejection load and ambient design temperature. Drives coil part number selection automatically.</div>
+            </div>
+            <div class="bg-surface rounded-xl p-4 border border-slate-100">
+              <div class="font-mono text-xs text-brand font-semibold mb-1.5">Compressor count</div>
+              <div class="text-xs text-slate-500">Compressor type and count derived from capacity and load profile. Determines compressor module BOM lines.</div>
+            </div>
+          </div>
+          <p>
+            All 14 BOM line items derive from five configuration inputs: cooling capacity (TR), refrigerant type, cooling type (air/water-cooled), condenser type, and installation location. A sales engineer makes five selections; CPP produces a complete, validated BOM in under three seconds.
+          </p>
+        </div>
+      </div>
+
+      <!-- Phase 3 -->
+      <div class="mb-12" data-aos="fade-up">
+        <div class="flex items-start gap-4 mb-4">
+          <div class="flex-shrink-0 w-8 h-8 rounded-full bg-brand/10 border border-brand/20 flex items-center justify-center">
+            <span class="font-mono font-bold text-brand text-sm">3</span>
+          </div>
+          <div>
+            <h3 class="font-semibold text-ink text-lg mb-1">SAP B1 integration and go-live — Week 6</h3>
+            <p class="text-slate-500 text-sm font-mono">Day 36 → Day 42</p>
+          </div>
+        </div>
+        <div class="pl-12 space-y-4 text-slate-600 leading-relaxed text-base">
+          <p>
+            CPP was connected to the company's SAP Business One instance for automatic BOM push on configuration confirmation. The integration includes material requisition triggering for long-lead items — refrigerant cylinders and compressor units — flagged by CPP's BOM derivation engine based on current stock levels and item master lead time data.
+          </p>
+          <p>
+            Sales team training: four hours across two sessions. The first live order was configured entirely in CPP on Day 42 of the engagement — a 600 TR water-cooled centrifugal chiller, R-134a, for a hospital in Ahmedabad (Hot &amp; Dry, ECBC 5-star required). BOM in SAP B1 within 11 seconds of configuration confirmation.
+          </p>
+          <div class="bg-ink rounded-xl p-4 font-mono text-xs overflow-x-auto mt-2">
+            <div class="text-slate-500 mb-2">// First live configuration — Day 42</div>
+            <div class="text-green-400">CapacityTR = <span class="text-yellow-300">600</span>, Refrigerant = <span class="text-yellow-300">"R134a"</span>, CoolingType = <span class="text-yellow-300">"WaterCooled"</span></div>
+            <div class="text-slate-400 pl-4">→ CompressorType = <span class="text-brand">Centrifugal</span> (CapacityTR ≥ 500 constraint)</div>
+            <div class="text-slate-400 pl-4">→ ClimateZone = <span class="text-brand">HotDry</span>, BuildingType = <span class="text-brand">Hospital</span></div>
+            <div class="text-slate-400 pl-4">→ RequiredCOP ≥ <span class="text-green-400">4.5</span> (ECBC 5-star enforced)</div>
+            <div class="text-slate-400 pl-4">→ <span class="text-purple-400">14 BOM lines derived</span> → pushed to SAP B1 in 11s</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================
+       THE RESULTS
+       ========================================================= -->
+  <section class="bg-surface py-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="max-w-3xl mb-10" data-aos="fade-up">
+        <div class="text-xs font-mono font-semibold text-brand uppercase tracking-wider mb-3">The Results</div>
+        <h2 class="font-mono font-bold text-2xl sm:text-3xl text-ink mb-3">
+          Six months after go-live
+        </h2>
+        <p class="text-slate-500 leading-relaxed">
+          Quote cycle, BOM quality, and compliance coverage all moved within the first quarter. By month six, the full financial impact was confirmed by the company's finance team.
+        </p>
+      </div>
+
+      <!-- Metric cards vertical -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
+
+        <div class="bg-white rounded-xl p-5 border border-slate-100 shadow-sm" data-aos="fade-up" data-aos-delay="0">
+          <div class="font-mono text-xs font-semibold text-brand uppercase tracking-wider mb-3">Quote cycle</div>
+          <div class="font-mono font-bold text-2xl text-ink mb-2">5 days → 45 min</div>
+          <p class="text-slate-500 text-sm leading-relaxed">The 5-day cycle was driven by engineering review queues and manual ECBC COP lookups. With constraints enforced at selection time, no engineering review is required for standard configurations. A field sales engineer now completes a full chiller quote during a site visit.</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-5 border border-slate-100 shadow-sm" data-aos="fade-up" data-aos-delay="60">
+          <div class="font-mono text-xs font-semibold text-brand uppercase tracking-wider mb-3">BOM error rate</div>
+          <div class="font-mono font-bold text-2xl text-ink mb-2">11% → 0.6%</div>
+          <p class="text-slate-500 text-sm leading-relaxed">The residual 0.6% traces entirely to part master data quality issues — incorrect unit-of-measure entries in SAP B1. The constraint engine itself has produced zero invalid refrigerant-compressor combinations or ECBC-violating configurations since go-live.</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-5 border border-slate-100 shadow-sm" data-aos="fade-up" data-aos-delay="120">
+          <div class="font-mono text-xs font-semibold text-brand uppercase tracking-wider mb-3">ECBC compliance</div>
+          <div class="font-mono font-bold text-2xl text-ink mb-2">0 violations</div>
+          <p class="text-slate-500 text-sm leading-relaxed">Every quote now includes automatic climate-zone COP validation. Sales engineers previously skipped ECBC validation on non-government projects; CPP enforces it regardless of project type. Zero non-compliant chillers have been quoted since go-live.</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-5 border border-slate-100 shadow-sm" data-aos="fade-up" data-aos-delay="0">
+          <div class="font-mono text-xs font-semibold text-brand uppercase tracking-wider mb-3">Engineering capacity freed</div>
+          <div class="font-mono font-bold text-2xl text-ink mb-2">1.5 FTE</div>
+          <p class="text-slate-500 text-sm leading-relaxed">Application engineers previously spent 60–70% of their time on specification validation and ECBC COP lookups. That bandwidth is now redirected to a new inverter-driven screw chiller product line that launched 7 months after CPP go-live.</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-5 border border-slate-100 shadow-sm" data-aos="fade-up" data-aos-delay="60">
+          <div class="font-mono text-xs font-semibold text-brand uppercase tracking-wider mb-3">Quote throughput</div>
+          <div class="font-mono font-bold text-2xl text-ink mb-2">+30% per month</div>
+          <p class="text-slate-500 text-sm leading-relaxed">The freed capacity from manual review enabled the sales team to process 30% more quotes per month without adding headcount. Several previously declined RFQs — rejected due to engineering bandwidth — are now being competed and won.</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-5 border border-slate-100 shadow-sm" data-aos="fade-up" data-aos-delay="120">
+          <div class="font-mono text-xs font-semibold text-brand uppercase tracking-wider mb-3">Total annual savings</div>
+          <div class="font-mono font-bold text-2xl text-ink mb-2">₹1.27 Cr</div>
+          <p class="text-slate-500 text-sm leading-relaxed">₹92L from rework and commissioning failure elimination, plus ₹35L from engineering time savings. Validated by finance at the 6-month mark. CPP deployment cost recovered in full within the first quarter of go-live.</p>
+        </div>
+
+      </div>
+
+      <!-- Insight callout -->
+      <div class="bg-brand/10 border-l-4 border-brand p-6 rounded-xl" data-aos="fade-up">
+        <div class="font-mono text-xs font-semibold text-brand uppercase tracking-wider mb-2">Key insight</div>
+        <p class="text-slate-700 text-sm leading-relaxed">
+          The ECBC compliance automation produced an unexpected commercial advantage. Post-deployment, the company discovered that approximately 22% of their historical quotes contained configurations that would have failed ECBC compliance checks — but were never caught because compliance was manually verified and routinely skipped for commercial (non-government) projects. CPP now enforces ECBC compliance on every quote, regardless of project classification. This has become a competitive differentiator with institutional buyers who require ECBC compliance documentation with every tender submission. Three government tenders won in the six months post-go-live were directly attributed to the company's ability to provide ECBC compliance traceability on every line item.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================
+       FAQ
+       ========================================================= -->
+  <section class="bg-surface py-16" x-data="{ open: null }">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="font-mono font-bold text-2xl sm:text-3xl text-ink mb-8">Frequently asked questions</h2>
+      <div class="space-y-3 max-w-3xl">
+
+        <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+          <button @click="open === 0 ? open = null : open = 0" class="w-full flex items-center justify-between p-5 text-left">
+            <span class="font-semibold text-ink text-sm pr-4">Does CPP support ECBC 2017 and ECBC-R (residential) compliance?</span>
+            <svg class="flex-shrink-0 w-5 h-5 text-brand transition-transform duration-200" :class="open === 0 ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div x-show="open === 0" x-transition:enter="transition-all ease-out duration-200" x-transition:enter-start="opacity-0 max-h-0" x-transition:enter-end="opacity-100 max-h-96" x-transition:leave="transition-all ease-in duration-150" x-transition:leave-start="opacity-100 max-h-96" x-transition:leave-end="opacity-0 max-h-0" class="overflow-hidden">
+            <div class="px-5 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4">
+              Yes. CPP supports ECBC 2017 (commercial) constraints including COP minimums by building type and climate zone. ECBC-R (residential) constraints can be added as a product family overlay — they coexist with commercial ECBC constraints in the same system without interference. <strong class="text-ink">Both rule sets are versioned</strong> and can be updated independently when BEE revises the code.
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+          <button @click="open === 1 ? open = null : open = 1" class="w-full flex items-center justify-between p-5 text-left">
+            <span class="font-semibold text-ink text-sm pr-4">Can CPP calculate refrigerant charge quantity automatically?</span>
+            <svg class="flex-shrink-0 w-5 h-5 text-brand transition-transform duration-200" :class="open === 1 ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div x-show="open === 1" x-transition:enter="transition-all ease-out duration-200" x-transition:enter-start="opacity-0 max-h-0" x-transition:enter-end="opacity-100 max-h-96" x-transition:leave="transition-all ease-in duration-150" x-transition:leave-start="opacity-100 max-h-96" x-transition:leave-end="opacity-0 max-h-0" class="overflow-hidden">
+            <div class="px-5 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4">
+              Yes. Refrigerant charge quantity is a <strong class="text-ink">derived BOM output</strong>. CPP calculates it from cooling capacity, refrigerant type, and system configuration using the manufacturer's specified charge density values. The result appears as a BOM line item with part number, quantity in kg, and unit of measure — ready for the SAP material requisition.
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+          <button @click="open === 2 ? open = null : open = 2" class="w-full flex items-center justify-between p-5 text-left">
+            <span class="font-semibold text-ink text-sm pr-4">How does CPP handle multi-zone systems where a single chiller serves multiple ECBC climate zones?</span>
+            <svg class="flex-shrink-0 w-5 h-5 text-brand transition-transform duration-200" :class="open === 2 ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div x-show="open === 2" x-transition:enter="transition-all ease-out duration-200" x-transition:enter-start="opacity-0 max-h-0" x-transition:enter-end="opacity-100 max-h-96" x-transition:leave="transition-all ease-in duration-150" x-transition:leave-start="opacity-100 max-h-96" x-transition:leave-end="opacity-0 max-h-0" class="overflow-hidden">
+            <div class="px-5 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4">
+              For multi-zone applications, CPP uses the <strong class="text-ink">most demanding climate zone's ECBC requirements</strong> as the governing constraint. The configuration records which zone drove the specification for traceability — so the compliance audit trail is complete when a customer asks which climate zone determined the minimum COP requirement.
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+          <button @click="open === 3 ? open = null : open = 3" class="w-full flex items-center justify-between p-5 text-left">
+            <span class="font-semibold text-ink text-sm pr-4">What is the go-live timeline for an HVAC manufacturer with 10+ product families?</span>
+            <svg class="flex-shrink-0 w-5 h-5 text-brand transition-transform duration-200" :class="open === 3 ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div x-show="open === 3" x-transition:enter="transition-all ease-out duration-200" x-transition:enter-start="opacity-0 max-h-0" x-transition:enter-end="opacity-100 max-h-96" x-transition:leave="transition-all ease-in duration-150" x-transition:leave-start="opacity-100 max-h-96" x-transition:leave-end="opacity-0 max-h-0" class="overflow-hidden">
+            <div class="px-5 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4">
+              For a first product family, go-live takes <strong class="text-ink">6–8 weeks</strong>. Each subsequent product family takes 3–4 weeks — the ECBC constraint framework is reused; only product-specific BOM rules need to be authored. A 10-family rollout takes approximately 12–14 months on a one-at-a-time schedule, or 6–8 months with parallel authoring teams.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       CTA
+       ========================================================= -->
+  <section class="py-16 bg-brand">
+    <div class="max-w-3xl mx-auto px-4 text-center" data-aos="fade-up">
+      <h2 class="font-mono font-bold text-3xl text-white mb-4">Your product family. Your numbers.</h2>
+      <p class="text-white/80 mb-8 text-lg">Book a 45-minute demo. We'll configure one of your actual chiller families in CPP — including your ECBC climate zone requirements — and show you what your quote cycle and BOM error rate could look like.</p>
+      <a href="../index.html#demo" class="inline-flex items-center gap-2 bg-white text-brand hover:bg-brand-light font-bold px-8 py-3.5 rounded-xl transition-colors shadow-lg text-base">Request Your Demo →</a>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       BLOG CROSS-LINKS
+       ========================================================= -->
+  <section class="py-14 bg-surface border-t border-slate-200">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="font-mono text-sm font-semibold text-slate-500 uppercase tracking-wider">From the CPP blog</h2>
+        <a href="../blog/index.html" class="text-sm text-brand font-medium hover:underline">All articles →</a>
+      </div>
+      <div class="grid sm:grid-cols-3 gap-5">
+
+        <a href="../blog/bom-errors-cost.html" class="group block bg-white border border-slate-200 rounded-xl p-5 hover:border-brand hover:shadow-md transition-all">
+          <div class="text-xs font-mono font-semibold text-slate-400 uppercase tracking-wider mb-2">Blog</div>
+          <div class="font-semibold text-ink text-sm group-hover:text-brand transition-colors mb-1.5 leading-snug">BOM Errors Cost Indian Manufacturers ₹2–50 Lakh Per Incident</div>
+          <div class="text-xs text-slate-500">Rework, field recalls, and the hidden cost of configuration errors at scale</div>
+        </a>
+
+        <a href="../blog/constraint-configurator-vs-rules-engine.html" class="group block bg-white border border-slate-200 rounded-xl p-5 hover:border-brand hover:shadow-md transition-all">
+          <div class="text-xs font-mono font-semibold text-slate-400 uppercase tracking-wider mb-2">Blog</div>
+          <div class="font-semibold text-ink text-sm group-hover:text-brand transition-colors mb-1.5 leading-snug">Constraint Configurator vs Rules Engine: What's the Difference?</div>
+          <div class="text-xs text-slate-500">Why constraint propagation catches errors a rules engine never will</div>
+        </a>
+
+        <a href="../blog/erp-integration-product-configurator.html" class="group block bg-white border border-slate-200 rounded-xl p-5 hover:border-brand hover:shadow-md transition-all">
+          <div class="text-xs font-mono font-semibold text-slate-400 uppercase tracking-wider mb-2">Blog</div>
+          <div class="font-semibold text-ink text-sm group-hover:text-brand transition-colors mb-1.5 leading-snug">How to Connect Your Product Configurator to SAP, Oracle, and Dynamics</div>
+          <div class="text-xs text-slate-500">Integration patterns for BOM push, material requisitions, and order flow</div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-ink py-8 text-center">
+  <p class="text-slate-400 text-sm font-mono">© 2026 Softwaller Technologies Private Limited · CPP & CPQ are products of Softwaller Technologies · <a href="../index.html" class="text-brand hover:underline">← Back to Home</a></p>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>document.addEventListener('DOMContentLoaded', () => AOS.init({ duration: 600, once: true, easing: 'ease-out-cubic', offset: 60 }));</script>
+
+</body>
+</html>
