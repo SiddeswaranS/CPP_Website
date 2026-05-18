@@ -1005,13 +1005,23 @@
 
     <div x-data="{ tab: 'elevators' }">
 
-      <!-- Tab bar — scrollable on mobile with hidden scrollbar; touch-swipeable -->
-      <div class="flex overflow-x-auto scrollbar-hide gap-0 border-b border-slate-200 mb-10 -mx-4 px-4 sm:mx-0 sm:px-0" data-aos="fade-up" style="scroll-snap-type: x mandatory;">
-        <button @click="tab='elevators'"   :class="tab==='elevators'   ? 'ind-tab-active' : 'ind-tab-inactive'" class="px-3 sm:px-5 py-2.5 sm:py-3 text-xs sm:text-sm font-medium whitespace-nowrap transition-all" style="scroll-snap-align: start;">Elevators</button>
-        <button @click="tab='switchgear'"  :class="tab==='switchgear'  ? 'ind-tab-active' : 'ind-tab-inactive'" class="px-3 sm:px-5 py-2.5 sm:py-3 text-xs sm:text-sm font-medium whitespace-nowrap transition-all" style="scroll-snap-align: start;">Switchgear</button>
-        <button @click="tab='hvac'"        :class="tab==='hvac'        ? 'ind-tab-active' : 'ind-tab-inactive'" class="px-3 sm:px-5 py-2.5 sm:py-3 text-xs sm:text-sm font-medium whitespace-nowrap transition-all" style="scroll-snap-align: start;">HVAC</button>
-        <button @click="tab='machinery'"   :class="tab==='machinery'   ? 'ind-tab-active' : 'ind-tab-inactive'" class="px-3 sm:px-5 py-2.5 sm:py-3 text-xs sm:text-sm font-medium whitespace-nowrap transition-all" style="scroll-snap-align: start;">Industrial Machinery</button>
-        <button @click="tab='transformers'" :class="tab==='transformers' ? 'ind-tab-active' : 'ind-tab-inactive'" class="px-3 sm:px-5 py-2.5 sm:py-3 text-xs sm:text-sm font-medium whitespace-nowrap transition-all" style="scroll-snap-align: start;">Power Transformers</button>
+      <!-- Tab bar — pills that wrap on mobile, traditional tabs on desktop -->
+      <div class="flex flex-wrap gap-2 sm:gap-0 mb-8 sm:mb-10 sm:border-b sm:border-slate-200 justify-center sm:justify-start" data-aos="fade-up">
+        <button @click="tab='elevators'"
+          :class="tab==='elevators' ? 'ind-pill-active sm:ind-tab-active' : 'ind-pill-inactive sm:ind-tab-inactive'"
+          class="ind-tab-btn">Elevators</button>
+        <button @click="tab='switchgear'"
+          :class="tab==='switchgear' ? 'ind-pill-active sm:ind-tab-active' : 'ind-pill-inactive sm:ind-tab-inactive'"
+          class="ind-tab-btn">Switchgear</button>
+        <button @click="tab='hvac'"
+          :class="tab==='hvac' ? 'ind-pill-active sm:ind-tab-active' : 'ind-pill-inactive sm:ind-tab-inactive'"
+          class="ind-tab-btn">HVAC</button>
+        <button @click="tab='machinery'"
+          :class="tab==='machinery' ? 'ind-pill-active sm:ind-tab-active' : 'ind-pill-inactive sm:ind-tab-inactive'"
+          class="ind-tab-btn">Machinery</button>
+        <button @click="tab='transformers'"
+          :class="tab==='transformers' ? 'ind-pill-active sm:ind-tab-active' : 'ind-pill-inactive sm:ind-tab-inactive'"
+          class="ind-tab-btn">Transformers</button>
       </div>
 
       <!-- Elevators -->

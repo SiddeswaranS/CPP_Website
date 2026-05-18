@@ -267,7 +267,64 @@ form select option:checked {
 .scrollbar-hide { scrollbar-width: none; -ms-overflow-style: none; }
 .scrollbar-hide::-webkit-scrollbar { display: none; }
 
-/* ── Industry tab active underline ── */
+/* ── Industry tabs — responsive: pills on mobile, underline tabs on desktop ── */
+.ind-tab-btn {
+  font-family: inherit;
+  font-size: 0.8125rem;       /* mobile */
+  font-weight: 500;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+  cursor: pointer;
+  /* Mobile pill default sizing */
+  padding: 0.4rem 0.85rem;
+  border-radius: 9999px;
+}
+@media (min-width: 640px) {   /* sm: — switches to underline tab style */
+  .ind-tab-btn {
+    font-size: 0.875rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0;
+  }
+}
+
+/* Mobile pill states */
+.ind-pill-active {
+  background-color: #0EA5E9;
+  color: #fff;
+}
+.ind-pill-inactive {
+  background-color: #F1F5F9;
+  color: #475569;
+}
+.ind-pill-inactive:hover {
+  background-color: #E0F2FE;
+  color: #0EA5E9;
+}
+
+/* Desktop tab states (sm: and above) — override pill styles */
+@media (min-width: 640px) {
+  .ind-pill-active.sm\:ind-tab-active,
+  .sm\:ind-tab-active {
+    background-color: transparent;
+    border-bottom: 2px solid #0EA5E9;
+    color: #0EA5E9;
+    font-weight: 600;
+  }
+  .ind-pill-inactive.sm\:ind-tab-inactive,
+  .sm\:ind-tab-inactive {
+    background-color: transparent;
+    border-bottom: 2px solid transparent;
+    color: #64748B;
+  }
+  .ind-pill-inactive.sm\:ind-tab-inactive:hover,
+  .sm\:ind-tab-inactive:hover {
+    background-color: transparent;
+    color: #0F172A;
+    border-color: #CBD5E1;
+  }
+}
+
+/* Legacy class kept for backwards compat */
 .ind-tab-active {
   border-bottom: 2px solid #0EA5E9;
   color: #0EA5E9;
