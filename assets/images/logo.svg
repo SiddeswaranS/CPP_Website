@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  CPP + CPQ Suite Logo  —  Full Horizontal Lockup  (320 × 60)
+  Softwaller Technologies Private Limited  ·  Light-mode / transparent bg
+  "The Constraint Selector": bars narrow left-to-right representing
+  the CPP constraint engine collapsing the full option space to a
+  single valid configuration, delivered as a CPQ quote (amber dot).
+  Palette : #0F172A ink · #0EA5E9 brand blue · #F59E0B amber
+  Fonts   : Inter 800 / 300  ·  JetBrains Mono (tagline)
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 60" fill="none"
+     role="img" aria-label="CPP CPQ — Configurable Product Platform by Softwaller Technologies">
+
+  <!-- ═══════════════════════════════════════
+       ICON MARK  (60 × 60, transparent bg)
+       ═══════════════════════════════════════ -->
+
+  <!-- Bar 1 — full option space -->
+  <rect x="8" y="16" width="44" height="5" rx="2.5" fill="#94A3B8"/>
+
+  <!-- Bar 2 — constrained set -->
+  <rect x="8" y="27" width="28" height="5" rx="2.5" fill="#0EA5E9" opacity="0.65"/>
+
+  <!-- Bar 3 — single valid configuration -->
+  <rect x="8" y="38" width="15" height="5" rx="2.5" fill="#0EA5E9"/>
+
+  <!-- Amber dot — CPQ output: priced quote result -->
+  <circle cx="31.5" cy="40.5" r="4.5" fill="#F59E0B"/>
+
+
+  <!-- ═══════════════════════════════════════
+       WORDMARK  (starts at x = 72)
+       ═══════════════════════════════════════ -->
+
+  <!-- CPP  ExtraBold 800 -->
+  <text x="72" y="41"
+        font-family="'Inter','Segoe UI','Helvetica Neue',Arial,sans-serif"
+        font-size="30" font-weight="800" letter-spacing="-1.5"
+        fill="#0F172A">CPP</text>
+
+  <!-- Thin vertical separator -->
+  <rect x="140" y="15" width="1.5" height="32" rx="0.75" fill="#CBD5E1"/>
+
+  <!-- CPQ  Light 300 -->
+  <text x="152" y="41"
+        font-family="'Inter','Segoe UI','Helvetica Neue',Arial,sans-serif"
+        font-size="30" font-weight="300" letter-spacing="-1.5"
+        fill="#0F172A">CPQ</text>
+
+  <!-- Tagline -->
+  <text x="72" y="55"
+        font-family="'JetBrains Mono','Consolas','Courier New',monospace"
+        font-size="7.5" letter-spacing="1.8"
+        fill="#64748B">by Softwaller Technologies</text>
+
+</svg>

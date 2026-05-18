@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  CPP + CPQ Suite Logo  —  Dark Surface Variant  (320 × 60)
+  Use on: dark hero sections, footers, dark slide decks
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 60" fill="none"
+     role="img" aria-label="CPP CPQ — Configurable Product Platform by Softwaller Technologies">
+
+  <!-- Bar 1 -->
+  <rect x="8" y="16" width="44" height="5" rx="2.5" fill="white" opacity="0.30"/>
+
+  <!-- Bar 2 -->
+  <rect x="8" y="27" width="28" height="5" rx="2.5" fill="#38BDF8" opacity="0.72"/>
+
+  <!-- Bar 3 -->
+  <rect x="8" y="38" width="15" height="5" rx="2.5" fill="#0EA5E9"/>
+
+  <!-- Amber result dot -->
+  <circle cx="31.5" cy="40.5" r="4.5" fill="#F59E0B"/>
+
+  <!-- CPP (white) -->
+  <text x="72" y="41"
+        font-family="'Inter','Segoe UI','Helvetica Neue',Arial,sans-serif"
+        font-size="30" font-weight="800" letter-spacing="-1.5"
+        fill="white">CPP</text>
+
+  <rect x="140" y="15" width="1.5" height="32" rx="0.75" fill="white" opacity="0.25"/>
+
+  <!-- CPQ (white) -->
+  <text x="152" y="41"
+        font-family="'Inter','Segoe UI','Helvetica Neue',Arial,sans-serif"
+        font-size="30" font-weight="300" letter-spacing="-1.5"
+        fill="white">CPQ</text>
+
+  <!-- Tagline -->
+  <text x="72" y="55"
+        font-family="'JetBrains Mono','Consolas','Courier New',monospace"
+        font-size="7.5" letter-spacing="1.8"
+        fill="#94A3B8">by Softwaller Technologies</text>
+
+</svg>
