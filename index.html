@@ -1005,8 +1005,8 @@
 
     <div x-data="{ tab: 'elevators' }">
 
-      <!-- Tab bar — pills that wrap on mobile, traditional tabs on desktop -->
-      <div class="flex flex-wrap gap-2 sm:gap-0 mb-8 sm:mb-10 sm:border-b sm:border-slate-200 justify-center sm:justify-start" data-aos="fade-up">
+      <!-- Tab bar — wrapping pills on mobile, touch-scrollable underline tabs on desktop (no visible scrollbar at any width) -->
+      <div class="flex flex-wrap sm:flex-nowrap sm:overflow-x-auto scrollbar-hide gap-2 sm:gap-0 mb-8 sm:mb-10 sm:border-b sm:border-slate-200 justify-center sm:justify-start ind-tab-bar" data-aos="fade-up">
         <button @click="tab='elevators'"
           :class="tab==='elevators' ? 'ind-pill-active sm:ind-tab-active' : 'ind-pill-inactive sm:ind-tab-inactive'"
           class="ind-tab-btn">Elevators</button>
@@ -1018,10 +1018,10 @@
           class="ind-tab-btn">HVAC</button>
         <button @click="tab='machinery'"
           :class="tab==='machinery' ? 'ind-pill-active sm:ind-tab-active' : 'ind-pill-inactive sm:ind-tab-inactive'"
-          class="ind-tab-btn">Machinery</button>
+          class="ind-tab-btn">Industrial Machinery</button>
         <button @click="tab='transformers'"
           :class="tab==='transformers' ? 'ind-pill-active sm:ind-tab-active' : 'ind-pill-inactive sm:ind-tab-inactive'"
-          class="ind-tab-btn">Transformers</button>
+          class="ind-tab-btn">Power Transformers</button>
       </div>
 
       <!-- Elevators -->

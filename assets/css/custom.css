@@ -39,9 +39,15 @@
   color: #334155;
   user-select: none;
 }
-.demo-chip:hover:not([disabled]) {
+.demo-chip:hover:not([disabled]):not(.selected) {
   border-color: #0EA5E9;
   color: #0EA5E9;
+}
+/* Hovering a selected chip — keep white text on blue, just deepen the shadow */
+.demo-chip.selected:hover {
+  background: #0284C7;
+  color: #fff;
+  box-shadow: 0 0 0 3px #BAE6FD;
 }
 .demo-chip.selected {
   background: #0EA5E9;
